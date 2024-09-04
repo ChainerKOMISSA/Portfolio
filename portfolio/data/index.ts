@@ -1,10 +1,9 @@
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
+  { name: "A propos", link: "#about" },
+  { name: "Projets", link: "#projects" },
+  { name: "Expérience", link: "#experience" },
+  { name: "Contacts", link: "#contact" },
 ];
-
 export const gridItems = [
   {
     id: 1,
@@ -203,6 +202,13 @@ export const workExperience = [
   {
     id: 4,
     title: "Lead Frontend Developer",
+    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    className: "md:col-span-2",
+    thumbnail: "/exp4.svg",
+  },
+  {
+    id: 5,
+    title: "Test Frontend Developer",
     desc: "Developed and maintained user-facing features using modern frontend technologies.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
