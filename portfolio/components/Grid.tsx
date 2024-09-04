@@ -1,6 +1,7 @@
 import React from 'react'
 import { BentoGrid, BentoGridItem } from './ui/BentoGrid'
 import { gridItems } from '@/data'
+import { InfiniteMovingCards } from './ui/InfiniteCards2'
 
 const Grid = () => {
   return (
@@ -21,6 +22,19 @@ const Grid = () => {
         ))
         }
       </BentoGrid>
+      <InfiniteMovingCards
+        items={[
+          { quote: "Python", name: "", title: "" },
+          { quote: "CSS", name: "", title: "" },
+          { quote: "React JS", name: "", title: "" },
+          { quote: "Next JS", name: "", title: "" },
+          { quote: "MySQL", name: "", title: "" },
+        ]}
+        pauseOnHover
+        direction='left'
+        speed='slow'
+        className=""
+      />
     </section>
   )
 }
