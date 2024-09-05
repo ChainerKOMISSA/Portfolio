@@ -180,23 +180,25 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "STAGIAIRE DEVELOPPEUSE D'APPLICATIONS",
+    desc: `<h5>Mars 2024 - Août 2024</h5>
+            <p><em>AXIANS MAROC, Casablanca, MAROC </em></p>`,
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
     title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
+    desc: `<h5>Mars 2024 - Août 2024</h5>
+            <p><em>AXIANS MAROC, Casablanca, MAROC </em></p>`,
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
     title: "Freelance App Dev Project",
     desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {
@@ -215,17 +217,24 @@ export const workExperience = [
   },
 ];
 
+
 export const socialMedia = [
   {
     id: 1,
-    img: "/git.svg",
+    img: "",
+    title: "Github",
+    link: "https://github.com/ChainerKOMISSA"
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "",
+    title: "LinkedIn",
+    link: "https://www.linkedin.com/in/cha%C3%AFner-komissa-zotsu-aba1b81a3"
   },
   {
     id: 3,
-    img: "/link.svg",
+    img: "",
+    title: "Whatsapp",
+    link: "https://wa.me/message/3RTFYUDPU2WAO1"
   },
 ];
