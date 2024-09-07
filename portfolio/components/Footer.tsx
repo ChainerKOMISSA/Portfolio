@@ -32,7 +32,7 @@ const Footer = () => {
         </a>
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-        <p className="md:text-base text-sm md:font-normal font-light">
+        <p className="md:text-base text-sm md:font-normal font-light text-white-200">
           Copyright © {new Date().getFullYear()} Essi Chainer KOMISSA ZOTSU
         </p>
 
@@ -50,6 +50,7 @@ const Footer = () => {
               title: info.title, 
               icon: info.id === 1 ? <FaGithub /> : info.id === 2 ? <FaLinkedin /> : <FaWhatsapp />,
               href: info.link, 
+               target: "_blank"
             }))}
           />
         </div>

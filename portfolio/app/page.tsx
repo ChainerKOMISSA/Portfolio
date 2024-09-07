@@ -7,8 +7,9 @@ import RecentProjects from "@/components/RecentProjects";
 import { FloatingNavbar } from "@/components/ui/FloatingNavbar";
 import { use } from "react";
 import { FaHome } from "react-icons/fa";
-
 import { navItems } from "@/data";
+import { HoverEffect } from "@/components/ui/CardHoverEffect";
+import { CardHoverEffectDemo } from "@/components/Projects";
 
 
 export default function Home() {
@@ -16,12 +17,12 @@ export default function Home() {
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
         <FloatingNavbar
-        navItems={navItems}/>
-        <Hero/>
-        <Grid/>
+          navItems={navItems} />
+        <Hero />
+        <Grid />
         <RecentProjects/>
-        <Experience/>
-        <Footer/>
+        <Experience />
+        <Footer />
       </div>
     </main>
   );

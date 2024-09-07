@@ -1,9 +1,13 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import { useState } from "react";
+import { CardHoverEffectDemo } from "./Projects";
 
 const RecentProjects = () => {
   return (
@@ -13,7 +17,8 @@ const RecentProjects = () => {
           Quelques uns de mes{" "}
           <span className="text-purple">récents projets</span>
         </h1>
-        <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
+        <CardHoverEffectDemo />
+        {/* <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
           {projects.map((item) => (
             <div
               className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
@@ -76,7 +81,8 @@ const RecentProjects = () => {
               </PinContainer>
             </div>
           ))}
-        </div>
+        </div> */}
+
       </div>
     </section>
   );
