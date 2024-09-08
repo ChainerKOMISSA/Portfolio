@@ -1,5 +1,4 @@
 "use client";
-import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
@@ -10,6 +9,8 @@ import { FaHome } from "react-icons/fa";
 import { navItems } from "@/data";
 import { HoverEffect } from "@/components/ui/CardHoverEffect";
 import { CardHoverEffectDemo } from "@/components/Projects";
+import Experience from "@/components/Experience";
+import { StickyScrollRevealDemo } from "@/components/Work";
 
 
 export default function Home() {
@@ -21,7 +22,8 @@ export default function Home() {
         <Hero />
         <Grid />
         <RecentProjects/>
-        <Experience />
+        {/* <Experience/> */}
+        <StickyScrollRevealDemo/>
         <Footer />
       </div>
     </main>

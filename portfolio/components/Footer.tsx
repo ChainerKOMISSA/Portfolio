@@ -3,6 +3,8 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { socialMedia } from "@/data";
 import MagicButton from "./ui/MagicButton";
 import { FloatingDock } from "./ui/FloatingDock";
+import { SiGitlab } from "react-icons/si";
+
 
 const Footer = () => {
   return (
@@ -48,7 +50,7 @@ const Footer = () => {
           <FloatingDock
             items={socialMedia.map((info) => ({
               title: info.title, 
-              icon: info.id === 1 ? <FaGithub /> : info.id === 2 ? <FaLinkedin /> : <FaWhatsapp />,
+              icon: info.id === 1 ? <FaGithub /> : info.id === 2 ? <FaLinkedin /> :info.id === 4? <SiGitlab/> : <FaWhatsapp />,
               href: info.link, 
                target: "_blank"
             }))}

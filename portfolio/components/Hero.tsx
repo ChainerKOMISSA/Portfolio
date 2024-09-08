@@ -2,7 +2,8 @@ import React from 'react'
 import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
 import MagicButton from './ui/MagicButton'
-import { FaLocationArrow } from 'react-icons/fa'
+import { HiOutlineDownload } from "react-icons/hi";
+
 
 const Hero = () => {
     return (
@@ -27,10 +28,10 @@ const Hero = () => {
                         à l'Université de Technologie de Belfort-Montbéliard.
                     </p>
 
-                    <a href="#about"><MagicButton
-                        title='Découvrir'
-                        icon={<FaLocationArrow />}
-                        position='right'
+                    <a href="/CV_KOMISSA_ZOTSU_alternance.pdf" target='_blank'><MagicButton
+                        title='Télécharger mon cv'
+                        icon={<HiOutlineDownload />}
+                        position='left'
                     /></a>
                 </div>
             </div>

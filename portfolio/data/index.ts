@@ -226,6 +226,12 @@ export const socialMedia = [
     link: "https://github.com/ChainerKOMISSA"
   },
   {
+    id: 4,
+    img: "",
+    title: "Gitlab",
+    link: "https://gitlab.com/Shine17"
+  },
+  {
     id: 2,
     img: "",
     title: "LinkedIn",
@@ -236,5 +242,5 @@ export const socialMedia = [
     img: "",
     title: "Whatsapp",
     link: "https://wa.me/message/3RTFYUDPU2WAO1"
-  },
+  }
 ];
