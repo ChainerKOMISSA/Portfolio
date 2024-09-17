@@ -66,30 +66,30 @@ const content = [
             </div>
         ),
     },
-    {
-        title: `Développeuse d'applications <br>
-        <small>Décembre 2023<span></small>`,
-        description: (
-            <div>
-                Développement d'une application web de gestion de restaurants dans une équipe de 3 développeurs.<br /><br />
-                <small><em>Freelance - Lomé, Togo</em></small><br />
-                <FaPython className="text-yellow-400 inline-block mx-1" />
-                <SiDjango className="text-green-600 inline-block mx-1" />
-                <SiSqlite className="text-blue-500 inline-block mx-1" />
-            </div>
-        ),
-        content: (
-            <div className="h-full w-full bg-white flex items-center justify-center text-white">
-                <Image
-                    src=""
-                    width={300}
-                    height={300}
-                    className="h-full w-full object-cover"
-                    alt=""
-                />
-            </div>
-        ),
-    },
+    // {
+    //     title: `Développeuse d'applications <br>
+    //     <small>Décembre 2023<span></small>`,
+    //     description: (
+    //         <div>
+    //             Développement d'une application web de gestion de restaurants dans une équipe de 3 développeurs.<br /><br />
+    //             <small><em>Freelance - Lomé, Togo</em></small><br />
+    //             <FaPython className="text-yellow-400 inline-block mx-1" />
+    //             <SiDjango className="text-green-600 inline-block mx-1" />
+    //             <SiSqlite className="text-blue-500 inline-block mx-1" />
+    //         </div>
+    //     ),
+    //     content: (
+    //         <div className="h-full w-full bg-white flex items-center justify-center text-white">
+    //             <Image
+    //                 src=""
+    //                 width={300}
+    //                 height={300}
+    //                 className="h-full w-full object-cover"
+    //                 alt=""
+    //             />
+    //         </div>
+    //     ),
+    // },
     {
         title: `Intervenante en informatique<br>
         <small>Octobre 2022 - Décembre 2023<span></small>`,

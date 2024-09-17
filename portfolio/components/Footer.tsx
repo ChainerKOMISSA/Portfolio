@@ -9,7 +9,6 @@ import { SiGitlab } from "react-icons/si";
 const Footer = () => {
   return (
     <footer className="w-full pt-20 pb-10" id="contact">
-      {/* background grid */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
         <img
           src="/footer-grid.svg"
@@ -23,7 +22,7 @@ const Footer = () => {
           Prêt à faire passer <span className="text-purple">votre présence numérique</span> au niveau supérieur ?
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Contactez-moi aujourd'hui et discutons de la manière dont je peux vous aider à atteindre vos objectifs.
+          Contactez-moi et discutons de la manière dont je peux vous aider à atteindre vos objectifs.
         </p>
         <a href="mailto:essikomissa@gmail.com" target="_blank">
           <MagicButton

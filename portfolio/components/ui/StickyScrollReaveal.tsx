@@ -93,7 +93,7 @@ export const StickyScroll = ({
                                 className="text-2xl font-bold text-slate-100"
                                 dangerouslySetInnerHTML={{ __html: item.title }}
                             />
-                            <motion.p
+                            <motion.div
                                 initial={{
                                     opacity: 0,
                                 }}
@@ -103,7 +103,7 @@ export const StickyScroll = ({
                                 className="text-kg text-slate-300 max-w-sm mt-10"
                             >
                                 {item.description}
-                            </motion.p>
+                            </motion.div>
 
                         </div>
                     ))}
