@@ -22,8 +22,8 @@ export default function Home() {
         <Hero />
         <Grid />
         <RecentProjects/>
-        {/* <Experience/> */}
         <StickyScrollRevealDemo/>
+        <Experience/>
         <Footer />
       </div>
     </main>

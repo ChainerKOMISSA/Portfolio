@@ -7,7 +7,7 @@ import { HiOutlineDownload } from "react-icons/hi";
 
 const Hero = () => {
     return (
-        <div className='pb-20 pt-36'>
+        <div className='pb-20 pt-6'>
             <div>
                 <Spotlight className='-top-40 -left-10 md:-top-20 md:-left-32 h-screen' fill='white' />
                 <Spotlight className='top-10 left-full h-[80vh] w-[50vw]' fill='purple' />
@@ -18,17 +18,16 @@ const Hero = () => {
             </div>
             <div className='flex justify-center relative my-20 z-10'>
                 <div className='max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center'>
-                    {/* <h2 className='uppercase tracking-widest text-xs text-center text-blue-100 max-w-80'>Bienvenue sur mon portfolio</h2> */}
+                    <h2 className='uppercase tracking-widest text-xs text-center text-blue-100 max-w-80'>Bienvenue sur mon portfolio</h2>
                     <TextGenerateEffect
                         className='text-center text-[40px] md:text-5xl lg:text-6xl'
                         words='Je suis Chainer KOMISSA ZOTSU'
                     />
                     <p className='text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
-                        Développeuse web et mobile fullstack. Etudiante en Master Entreprenariat Technologique et Innovation
-                        à l'Université de Technologie de Belfort-Montbéliard.
+                        Développeuse web et mobile fullstack.
                     </p>
 
-                    <a href="/CV_KOMISSA_ZOTSU_alternance.pdf" target='_blank'><MagicButton
+                    <a href="/CV_KOMISSA_ZOTSU.pdf" target='_blank'><MagicButton
                         title='Télécharger mon cv'
                         icon={<HiOutlineDownload />}
                         position='left'

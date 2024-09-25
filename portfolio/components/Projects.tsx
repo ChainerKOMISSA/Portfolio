@@ -32,7 +32,7 @@ export const projects = [
     title: "STOCKLY",
     description:
       "Application web de gestion de boutique. Gestion et suivi du stock, du personnel, des commandes et des livraisons. Statistiques en temps réel.",
-    link: "",
+    link: "https://chainerkomissa.github.io/projet_stockly.html",
     image: "/logo stockly 2.png",
     icons: [<FaReact className="text-blue-400 rounded-full"/>, <BiLogoJavascript className="rounded-full text-yellow-400"/>, <FaNodeJs className="rounded-full text-green-600"/>, <SiMysql className="text-blue-500"/>],
   },
@@ -56,7 +56,7 @@ export const projects = [
     title: "MY POCKET ENGLISH",
     description:
       "Application mobile d'apprentissage de l'anglais. Règles de grammaire, conjugaison, vocabulaire. Quizzes interactifs à la fin des leçons.",
-    link: "/carousel4.png",
+    link: "",
     image: "/logopocket.png",
     icons: [<FaReact className="rounded-full text-purple"/>, <FaNodeJs className="rounded-full text-green-600"/>, <FaCss3Alt className="text-blue-500"/>, <SiMysql className="text-blue-500"/>],
   },
@@ -72,7 +72,7 @@ export const projects = [
     title: "ETTIAM",
     description:
       "Site web de présentation de l'entreprise ETTIAM. Présentation des services de l'entreprise.",
-    link: "",
+    link: "https://ettiam.com/",
     image: "portfolio-1-1.png",
     icons: [<FaHtml5 className="text-orange-600"/>, <FaCss3Alt className="text-blue-500"/>, <FaBootstrap className="rounded-full text-purple"/>],
   },
@@ -80,7 +80,7 @@ export const projects = [
     title: "INNOVE CORP",
     description:
       "Site web de présentation de l'entreprise INNOVE CORP. Présentation des services de l'entreprise.",
-    link: "",
+    link: "https://innove-corp.com/",
     image: "/portfolio-3-3.png",
     icons: [<FaHtml5 className="text-orange-600"/>, <FaCss3Alt className="text-blue-500"/>, <FaBootstrap className="rounded-full text-purple"/>],
   },

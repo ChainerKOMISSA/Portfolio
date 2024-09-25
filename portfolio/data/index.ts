@@ -2,13 +2,14 @@ export const navItems = [
   { name: "A propos", link: "#about" },
   { name: "Projets", link: "#projects" },
   { name: "Expérience", link: "#experience" },
+  { name: "Services", link: "#services" },
   { name: "Contacts", link: "#contact" },
 ];
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
-    description: "I constantly try to improve",
+    title: "Je suis Chainer KOMISSA ZOTSU, étudiante en Master Entrepreneuriat Technologique et Innovation à l'Université de Technologie de Belfort-Montbéliard.",
+    description: "A propos de moi",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
@@ -17,8 +18,8 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "I'm very flexible with time zone communications",
-    description: "",
+    title: "motivée, dynamique et polyvalente",
+    description: "Je suis",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-start",
@@ -27,8 +28,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "mes compétences techniques",
+    description: "Chaque jour, j'essaye d'améliorer",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -37,7 +38,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Me contacter pour un projet ?",
+    title: "N'hésitez pas à me contacter!",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -48,8 +49,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
+    title: "Allez sur ma page Github pour avoir un aperçu de mes projets",
+    description: "Mon profil Github",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -180,41 +181,46 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "STAGIAIRE DEVELOPPEUSE D'APPLICATIONS",
-    desc: `<h5>Mars 2024 - Août 2024</h5>
-            <p><em>AXIANS MAROC, Casablanca, MAROC </em></p>`,
+    title: "Développement d'applications",
+    desc: `Conception et développement d'application <b>web</b> et <b>mobiles</b> avec des interfaces permettant une belle expérience utilisateur.`,
     className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    thumbnail: "/exp4.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: `<h5>Mars 2024 - Août 2024</h5>
-            <p><em>AXIANS MAROC, Casablanca, MAROC </em></p>`,
-    className: "md:col-span-2",
-    thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "Administration de bases de données",
+    desc: `Création, Gestion, Sécurité et administration de bases de données SQL et NoSQL. SGBDs : MySQL, PostgreSQL, MongoDB.`,
     className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    id: 3,
+    title: "Création des sites web",
+    desc: "Conception et développement de sites web vitrines ou dynamiques avec conception de tableaux de bord.",
     className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    thumbnail: "/exp2.svg",
   },
   {
-    id: 5,
-    title: "Test Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    id: 4,
+    title: "UI/UX Design",
+    desc: "Conception d'interfaces simples et efficaces améliorant l'expérience utilisateur.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
+  // {
+  //   id: 5,
+  //   title: "Social media management",
+  //   desc: "Gestion de réseaux sociaux, planification de posts, Création de contenus.",
+  //   className: "md:col-span-2",
+  //   thumbnail: "/exp4.svg",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Graphisme",
+  //   desc: "Conception d'affiches publicitaires, de calendriers, etc. Conception et Impression de bâches et autocollants. Impression sur tous supports.",
+  //   className: "md:col-span-2",
+  //   thumbnail: "/exp4.svg",
+  // },
 ];
 
 

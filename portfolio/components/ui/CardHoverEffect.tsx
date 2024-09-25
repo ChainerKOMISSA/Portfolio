@@ -32,6 +32,7 @@ export const HoverEffect = ({
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          target="_blank"
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -52,6 +53,7 @@ export const HoverEffect = ({
           </AnimatePresence>
           <Card image={item.image} icons={item.icons}>
             <CardTitle>{item.title}</CardTitle>
+            <CardLink>{item.link}</CardLink>
             <CardDescription>{item.description}</CardDescription>
           </Card>
         </Link>
@@ -125,6 +127,25 @@ export const CardDescription = ({
     <p
       className={cn(
         "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
+        className
+      )}
+    >
+      {children}
+    </p>
+  );
+};
+
+export const CardLink = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <p
+      className={cn(
+        "mt-2 text-xs text-purple",
         className
       )}
     >
