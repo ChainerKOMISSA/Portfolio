@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
+import { FaGithub, FaWordpress } from "react-icons/fa";
+import { SiPostman, SiGitlab, SiPowerbi } from "react-icons/si";
+import { BiLogoFigma } from "react-icons/bi";
+import { VscVscode } from "react-icons/vsc";
+
 
 // Also install this npm i --save-dev @types/react-lottie
 // import Lottie from "react-lottie";
@@ -11,6 +16,7 @@ import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
+import { AnimatedTooltip } from "./AnimatedTooltip";
 
 export const BentoGrid = ({
   className,
@@ -71,6 +77,53 @@ export const BentoGridItem = ({
     setCopied(true);
   };
 
+  const outils = [
+    {
+      id: 1,
+      name: "Git/Github",
+      designation: "",
+      image: <FaGithub className="text-yellow-500 h-20 w-20" />,
+    },
+    {
+      id: 2,
+      name: "Figma",
+      designation: "",
+      image: <BiLogoFigma className="text-green-500 h-20 w-20" />
+    },
+    {
+      id: 3,
+      name: "VS Code",
+      designation: "",
+      image: <VscVscode className="text-blue-500 h-20 w-20" />
+    },
+    {
+      id: 4,
+      name: "Postman",
+      designation: "",
+      image: <SiPostman className="text-orange-500 h-20 w-20"/>
+    },
+    {
+      id: 5,
+      name: "Wordpress",
+      designation: "",
+      image: <FaWordpress className="text-blue-500 h-20 w-20" />,
+    }
+    ,
+    {
+      id: 6,
+      name: "Gitlab",
+      designation: "",
+      image: <SiGitlab className="text-orange-600 h-20 w-20" />,
+    }
+    ,
+    {
+      id: 7,
+      name: "Power BI",
+      designation: "",
+      image: <SiPowerbi className="text-yellow-300 h-20 w-20" />,
+    }
+  ];
+
   return (
     <div
       className={cn(
@@ -102,13 +155,11 @@ export const BentoGridItem = ({
             <img
               src={spareImg}
               alt={spareImg}
-              //   width={220}
               className="object-cover object-center w-full h-full"
             />
           )}
         </div>
         {id === 6 && (
-          // add background animation , remove the p tag
           <BackgroundGradientAnimation>
             <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
           </BackgroundGradientAnimation>
@@ -132,36 +183,10 @@ export const BentoGridItem = ({
             {title}
           </div>
 
-          {/* for the github 3d globe */}
-          {/* {id === 2 && <GridGlobe />} */}
-
-          {/* Tech stack list div */}
           {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              {/* tech stack lists */}
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {leftLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-                {rightLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
-                  >
-                    {item}
-                  </span>
-                ))}
+            <div className="flex gap-1 lg:gap-5 w-fit -right-3 lg:-right-2">
+              <div className="flex flex-row items-center justify-center mb-2 mt-5 w-full">
+                <AnimatedTooltip items={outils} />
               </div>
             </div>
           )}
