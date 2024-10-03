@@ -18,7 +18,7 @@ export const projects = [
       "Site web de présentation de l'entreprise RBNET Maroc. Présentation des services de l'entreprise.",
     link: "https://www.rbnetmaroc.com/",
     image: "/rbnet.png",
-    icons: [<FaWordpress className="text-blue-400 rounded-full" />],
+    icons: [<FaWordpress className="text-blue-400 rounded-full" key="wordpress" />],
   },
   {
     title: "PRO CROWNED",
@@ -26,7 +26,7 @@ export const projects = [
       "Site web de présentation de services pour un particulier. Intégration de Tutor LMS pour la gestion des cours. Création de questionnaires.",
     link: "https://pro-crowned.com/",
     image: "/pro.png",
-    icons: [<FaWordpress className="text-blue-400 rounded-full" />],
+    icons: [<FaWordpress className="text-blue-400 rounded-full" key="wordpress" />],
   },
   {
     title: "STOCKLY",
@@ -34,7 +34,7 @@ export const projects = [
       "Application web de gestion de boutique. Gestion et suivi du stock, du personnel, des commandes et des livraisons. Statistiques en temps réel.",
     link: "https://chainerkomissa.github.io/projet_stockly.html",
     image: "/logo stockly 2.png",
-    icons: [<FaReact className="text-blue-400 rounded-full"/>, <BiLogoJavascript className="rounded-full text-yellow-400"/>, <FaNodeJs className="rounded-full text-green-600"/>, <SiMysql className="text-blue-500"/>],
+    icons: [<FaReact className="text-blue-400 rounded-full" key="react"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
     title: "CMS BETHEDA",
@@ -42,7 +42,7 @@ export const projects = [
       "Application de gestion de centre médical. Gestion de carnet médical, vente de produits pharmaceutiques, gynécologie, analyses médiciales.",
     link: "",
     image: "/portfolio-2-2.jpg",
-    icons: [<FaLaravel className="text-red-600"/>, <FaPhp className="rounded-full text-purple"/>, <SiMysql className="text-blue-500"/>],
+    icons: [<FaLaravel className="text-red-600" key="laravel"/>, <FaPhp className="rounded-full text-purple" key="php"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
     title: "EASY TRAVEL",
@@ -50,7 +50,7 @@ export const projects = [
       "Application mobile d'achat de tickets de voyages. Conception de la partie mobile et intégration à une API existante.",
     link: "https://youtu.be/YQvYps2Te4E",
     image: "/logo2.png",
-    icons: [<FaReact className="rounded-full text-purple"/>, <FaNodeJs className="rounded-full text-green-600"/>, <FaCss3Alt className="text-blue-500"/>],
+    icons: [<FaReact className="rounded-full text-purple" key="react"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <FaCss3Alt className="text-blue-500" key="css"/>],
   },
   {
     title: "MY POCKET ENGLISH",
@@ -58,7 +58,7 @@ export const projects = [
       "Application mobile d'apprentissage de l'anglais. Règles de grammaire, conjugaison, vocabulaire. Quizzes interactifs à la fin des leçons.",
     link: "",
     image: "/logopocket.png",
-    icons: [<FaReact className="rounded-full text-purple"/>, <FaNodeJs className="rounded-full text-green-600"/>, <FaCss3Alt className="text-blue-500"/>, <SiMysql className="text-blue-500"/>],
+    icons: [<FaReact className="rounded-full text-purple" key="react"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
     title: "SHARE HUB",
@@ -66,15 +66,15 @@ export const projects = [
       "Application web de partage de fichiers en ligne. Utilisable en entreprise, organisation.",
     link: "",
     image: "/sharehub-2.png",
-    icons: [<FaPython className="rounded-full text-yellow-400"/>, <SiFlask className="text-white"/>, <FaBootstrap className="rounded-full text-purple"/>, <SiMysql className="text-blue-500"/>],
+    icons: [<FaPython className="rounded-full text-yellow-400" key="python"/>, <SiFlask className="text-white" key="flask"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
     title: "ETTIAM",
     description:
       "Site web de présentation de l'entreprise ETTIAM. Présentation des services de l'entreprise.",
     link: "https://ettiam.com/",
-    image: "portfolio-1-1.png",
-    icons: [<FaHtml5 className="text-orange-600"/>, <FaCss3Alt className="text-blue-500"/>, <FaBootstrap className="rounded-full text-purple"/>],
+    image: "/portfolio-1-1.png",
+    icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
   },
   {
     title: "INNOVE CORP",
@@ -82,6 +82,6 @@ export const projects = [
       "Site web de présentation de l'entreprise INNOVE CORP. Présentation des services de l'entreprise.",
     link: "https://innove-corp.com/",
     image: "/portfolio-3-3.png",
-    icons: [<FaHtml5 className="text-orange-600"/>, <FaCss3Alt className="text-blue-500"/>, <FaBootstrap className="rounded-full text-purple"/>],
+    icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
   },
 ];

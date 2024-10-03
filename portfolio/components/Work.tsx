@@ -13,7 +13,7 @@ const content = [
         <small>Mars - Août 2024<span></small>`,
         description: (
             <div>
-                Stage de fin de formation pour l'obtention du diplôme de Master en Informatique et Systèmes. <br />
+                Stage de fin de formation pour l&apos;obtention du diplôme de Master en Informatique et Systèmes. <br />
                 Découverte et utilisation de plusieurs outils tels que : TinyMCE, TomSelect, Tabler.io, etc.<br /><br />
                 <small><em>Axians Maroc - Casablanca, Maroc</em></small><br />
                 <FaHtml5 className="text-orange-600 inline-block mx-1" />
@@ -42,7 +42,7 @@ const content = [
         <small>Décembre 2023 - Janvier 2024<span></small>`,
         description: (
             <div>
-                Conception et développement d'une application web à caractère confidentiel dans une équipe de 4 développeurs.<br />
+                Conception et développement d&apos;une application web à caractère confidentiel dans une équipe de 4 développeurs.<br />
                 Découverte et utilisation de plusieurs packages ReactJS et Javascript tels que : reactpdf, sweetalert2, papaparse, xlsx, jspdf, etc.<br /><br />
                 <small><em>Centre National de Traitement des Données - Lomé, Togo</em></small><br />
                 <FaReact className="text-blue-500 inline-block mx-1" />
@@ -96,8 +96,8 @@ const content = [
         description: (
             <div>
                 Conception et développement de sites web. <br />
-                Conception et développement d'une application web de partage de fichiers.<br />
-                Conception et développement d'un site web destiné à collecter des fonds pour des réalisations en milieu rural.<br /><br />
+                Conception et développement d&apos;une application web de partage de fichiers.<br />
+                Conception et développement d&apos;un site web destiné à collecter des fonds pour des réalisations en milieu rural.<br /><br />
                 <small><em>ETTIAM & INNOVE CORP - Lomé, Togo</em></small><br />
                 <FaHtml5 className="text-orange-600 inline-block mx-1" />
                 <FaCss3Alt className="text-blue-500 inline-block mx-1" />
@@ -128,8 +128,8 @@ const content = [
         <small>Octobre 2022 - Décembre 2023<span></small>`,
         description: (
             <div>
-                Stage de fin de formation pour l'obtention du diplôme de licence en Ingénierie des Travaux Informatiques. <br />
-                Conception et développement d'un outil d'analyse prédictive pour l'équipe marketing : TarzanBI. Cet outil a permis à l'équipe marketing d'identifier les produits à promouvoir selon les villes .<br /><br />
+                Stage de fin de formation pour l&apos;obtention du diplôme de licence en Ingénierie des Travaux Informatiques. <br />
+                Conception et développement d&apos;un outil d'analyse prédictive pour l&apos;équipe marketing : TarzanBI. Cet outil a permis à l&apos;équipe marketing d&apos;identifier les produits à promouvoir selon les villes .<br /><br />
                 <small><em>Tarzan Express - Lomé, Togo</em></small><br />
                 <BiLogoJavascript className="text-yellow-400 inline-block mx-1" />
                 <FaLaravel className="text-red-600 inline-block mx-1" />

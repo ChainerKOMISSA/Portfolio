@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 export const HoverEffect = ({
   items,
@@ -80,9 +81,11 @@ export const Card = ({
         className
       )}
     >
-      <img
+      <Image
         src={image}
         alt="Card image"
+        width={500}
+        height={300}
         className="h-48 w-full object-cover rounded-xl mb-4"
       />
       <div className="relative z-50">

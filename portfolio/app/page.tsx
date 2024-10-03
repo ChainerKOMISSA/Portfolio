@@ -4,11 +4,7 @@ import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNavbar } from "@/components/ui/FloatingNavbar";
-import { use } from "react";
-import { FaHome } from "react-icons/fa";
 import { navItems } from "@/data";
-import { HoverEffect } from "@/components/ui/CardHoverEffect";
-import { CardHoverEffectDemo } from "@/components/Projects";
 import Experience from "@/components/Experience";
 import { StickyScrollRevealDemo } from "@/components/Work";
 
