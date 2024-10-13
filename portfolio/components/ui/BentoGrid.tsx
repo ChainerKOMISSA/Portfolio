@@ -4,6 +4,8 @@ import { FaGithub, FaWordpress } from "react-icons/fa";
 import { SiPostman, SiGitlab, SiPowerbi } from "react-icons/si";
 import { BiLogoFigma } from "react-icons/bi";
 import { VscVscode } from "react-icons/vsc";
+import { FaLocationArrow } from "react-icons/fa6";
+
 import Image from "next/image";
 
 
@@ -209,13 +211,20 @@ export const BentoGridItem = ({
                 {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
               </div>
 
-              <MagicButton
-                title={copied ? "Email copié" : "Copier mon mail"}
+              {/* <MagicButton
+                title={copied ? "Email copié" : "Envoyez moi un mail!"}
                 icon={<IoCopyOutline />}
                 position="left"
                 handleClick={handleCopy}
                 otherClasses="!bg-[#161A31]"
-              />
+              /> */}
+              <a href="mailto:essikomissa@gmail.com" target="_blank">
+                <MagicButton
+                  title="Envoyez moi un mail"
+                  icon={<FaLocationArrow />}
+                  position="left"
+                />
+              </a>
             </div>
           )}
         </div>
