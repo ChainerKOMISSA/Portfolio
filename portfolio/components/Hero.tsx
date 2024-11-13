@@ -26,9 +26,9 @@ const Hero = () => {
                     <p className='text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
                         Développeuse web et mobile fullstack 
                         dotée de compétences en gestion de projet, innovation et gestion de crise. 
-                        Spécialisée dans le développement d'applications modernes et performantes, 
+                        Spécialisée dans le développement d&apos;applications modernes et performantes, 
                         maîtrisant les technologies modernes et les bonnes pratiques. 
-                        Passionnée par l'optimisation de l'expérience utilisateur et 
+                        Passionnée par l&apos;optimisation de l&apos;expérience utilisateur et 
                         la mise en œuvre de solutions novatrices adaptées aux besoins des clients
                     </p>
 
