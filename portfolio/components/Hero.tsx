@@ -23,7 +23,7 @@ const Hero = () => {
                         className='text-center text-[40px] md:text-5xl lg:text-6xl'
                         words='Je suis Chainer KOMISSA ZOTSU'
                     />
-                    <p className='text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
+                    <p className='text-justify md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
                         Développeuse web et mobile fullstack 
                         dotée de compétences en gestion de projet, innovation et gestion de crise. 
                         Spécialisée dans le développement d&apos;applications modernes et performantes, 
