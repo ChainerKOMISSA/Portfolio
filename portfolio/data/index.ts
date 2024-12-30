@@ -241,7 +241,7 @@ export const socialMedia = [
     id: 2,
     img: "",
     title: "LinkedIn",
-    link: "https://www.linkedin.com/in/cha%C3%AFner-komissa-zotsu-aba1b81a3"
+    link: "https://www.linkedin.com/in/essi-chainer-komissa-zotsu-aba1b81a3/"
   },
   {
     id: 3,
