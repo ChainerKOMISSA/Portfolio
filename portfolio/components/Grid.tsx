@@ -4,7 +4,7 @@ import { gridItems } from '@/data'
 import { InfiniteMovingCards } from './ui/InfiniteCards2'
 import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaNodeJs, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
 import { SiMysql, SiFlask, SiDjango, SiSqlite, SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
-import { BiLogoJavascript, BiLogoPostgresql, BiLogoTypescript } from "react-icons/bi";
+import { BiLogoJavascript, BiLogoPostgresql, BiLogoTypescript, BiLogoAngular } from "react-icons/bi";
 
 const Grid = () => {
   return (
@@ -37,6 +37,7 @@ const Grid = () => {
           { quote: "Tailwind CSS", name: "Tailwind CSS", title: "Tailwind CSS" , image : <SiTailwindcss/>, color : "text-aqua", logo : "/css3.png"},
           { quote: "Javascript", name: "Javascript", title: "Javascript" , image : <BiLogoJavascript/>, color : "text-yellow-400", logo : "/javascript.png"},
           { quote: "Typescript", name: "Typescript", title: "Typescript" , image : <BiLogoTypescript/>, color : "text-blue-500", logo : ""},
+          { quote: "Angular", name: "Angular", title: "Angular" , image : <BiLogoAngular/>, color : "text-red-500", logo : ""},
           { quote: "Php", name: "Php", title: "Php" , image : <FaPhp/>, color : "text-purple", logo : "/javascript.png"},
           { quote: "Laravel", name: "Laravel", title: "Laravel" , image : <FaLaravel/>, color : "text-red-600", logo : "/javascript.png"},
           { quote: "Bootstrap", name: "Bootstrap", title: "Bootstrap" , image : <FaBootstrap/>, color : "text-purple", logo : ""},

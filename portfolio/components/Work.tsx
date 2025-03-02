@@ -2,12 +2,42 @@
 import React from "react";
 import { StickyScroll } from "./ui/StickyScrollReaveal";
 import Image from "next/image";
-import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
+import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5, FaJava  } from "react-icons/fa";
 import { SiMysql, SiFlask, SiDjango, SiSqlite, SiMongodb } from "react-icons/si";
-import { BiLogoJavascript } from "react-icons/bi";
+import { BiLogoJavascript, BiLogoAngular, BiLogoTypescript } from "react-icons/bi";
 
 
 const content = [
+    {
+        title: `Stagiaire développeuse full stack Java <br>
+        <small>Février - Août 2025 (en cours)<span></small>`,
+        description: (
+            <div>
+                Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique : 
+                développement d'application avec gestion de projet informatique.<br/>
+                Découverte et utilisation de plusieurs outils tels que : Bitbucket, Sourcetree, Jenkins, Sonar, Bruno, etc.<br /><br />
+                <small><em>MMA Assurances - Le Mans, France</em></small><br />
+                <BiLogoAngular  className="text-red-500 inline-block mx-1" />
+                <BiLogoTypescript className="text-blue-500 inline-block mx-1"/>
+                <FaJava  className="text-orange-500 inline-block mx-1" />
+                <FaCss3Alt className="text-blue-500 inline-block mx-1" />
+                <FaHtml5 className="text-orange-600 inline-block mx-1" />
+            </div>
+        ),
+        content: (
+            <div className="h-full w-full bg-white flex items-center justify-center text-white">
+                <Image
+                    src="/Logo_MMA.jpg"
+                    width={300}
+                    height={300}
+                    className="h-full w-full object-contain"
+                    alt="Axians"
+                    onClick={() => window.open("https://www.vinci-energies.ma/que-faisons-nous/nos-marques/axians/", "_blank")}
+                    style={{ cursor: 'pointer' }}
+                />
+            </div>
+        ),
+    },
     {
         title: `Stagiaire développeuse d'applications <br>
         <small>Mars - Août 2024<span></small>`,

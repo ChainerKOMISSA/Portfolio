@@ -67,21 +67,21 @@ export const projects = [
     link: "",
     image: "/sharehub-2.png",
     icons: [<FaPython className="rounded-full text-yellow-400" key="python"/>, <SiFlask className="text-white" key="flask"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>, <SiMysql className="text-blue-500" key="mysql"/>],
-  },
-  {
-    title: "ETTIAM",
-    description:
-      "Site web de présentation de l'entreprise ETTIAM. Présentation des services de l'entreprise.",
-    link: "https://ettiam.com/",
-    image: "/portfolio-1-1.png",
-    icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
-  },
-  {
-    title: "INNOVE CORP",
-    description:
-      "Site web de présentation de l'entreprise INNOVE CORP. Présentation des services de l'entreprise.",
-    link: "https://innove-corp.com/",
-    image: "/portfolio-3-3.png",
-    icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
-  },
+  }
+  // {
+  //   title: "ETTIAM",
+  //   description:
+  //     "Site web de présentation de l'entreprise ETTIAM. Présentation des services de l'entreprise.",
+  //   link: "https://ettiam.com/",
+  //   image: "/portfolio-1-1.png",
+  //   icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
+  // },
+  // {
+  //   title: "INNOVE CORP",
+  //   description:
+  //     "Site web de présentation de l'entreprise INNOVE CORP. Présentation des services de l'entreprise.",
+  //   link: "https://innove-corp.com/",
+  //   image: "/portfolio-3-3.png",
+  //   icons: [<FaHtml5 className="text-orange-600" key="html"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>],
+  // },
 ];
