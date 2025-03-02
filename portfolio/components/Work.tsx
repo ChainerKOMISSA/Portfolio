@@ -14,7 +14,7 @@ const content = [
         description: (
             <div>
                 Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique : 
-                développement d'application avec gestion de projet informatique.<br/>
+                développement d&apos;application avec gestion de projet informatique.<br/>
                 Découverte et utilisation de plusieurs outils tels que : Bitbucket, Sourcetree, Jenkins, Sonar, Bruno, etc.<br /><br />
                 <small><em>MMA Assurances - Le Mans, France</em></small><br />
                 <BiLogoAngular  className="text-red-500 inline-block mx-1" />
