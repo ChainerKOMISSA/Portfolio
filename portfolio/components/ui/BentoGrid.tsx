@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import { FaGithub, FaWordpress } from "react-icons/fa";
-import { SiPostman, SiGitlab, SiPowerbi } from "react-icons/si";
+import { SiPostman, SiIntellijidea, SiBruno, SiSourcetree } from "react-icons/si";
 import { BiLogoFigma } from "react-icons/bi";
 import { VscVscode } from "react-icons/vsc";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import Image from "next/image";
-
-
-// Also install this npm i --save-dev @types/react-lottie
-// import Lottie from "react-lottie";
 
 import { cn } from "@/lib/utils";
 
@@ -113,16 +109,16 @@ export const BentoGridItem = ({
     ,
     {
       id: 6,
-      name: "Gitlab",
+      name: "Bruno",
       designation: "",
-      image: <SiGitlab className="text-orange-600 h-20 w-20" />,
+      image: <SiBruno className="text-orange-500 h-20 w-20" />,
     }
     ,
     {
       id: 7,
-      name: "Power BI",
+      name: "Bruno",
       designation: "",
-      image: <SiPowerbi className="text-yellow-300 h-20 w-20" />,
+      image: <SiSourcetree className="text-blue-700 h-20 w-20" />,
     }
   ];
 

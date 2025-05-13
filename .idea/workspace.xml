@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9927f602-9d65-4757-823b-7e21f98999a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/portfolio/components/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/Hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/components/Projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/Projects.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/components/ui/BentoGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/ui/BentoGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/data/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/data/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portfolio/public/CV_KOMISSA_ZOTSU.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/public/CV_KOMISSA_ZOTSU.pdf" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ChainerKOMISSA"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ChainerKOMISSA/Portfolio.git",
+    "accountId": "2dae39f8-992a-439f-b2c5-a1ac3ee44001"
+  }
+}]]></component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2x3W7lX1o5mMaOdyywvc274h3AM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/essik/OneDrive/Documents/GitHub/Portfolio",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\essik\\OneDrive\\Documents\\GitHub\\Portfolio\\portfolio\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9927f602-9d65-4757-823b-7e21f98999a2" name="Changes" comment="" />
+      <created>1747167072407</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747167072407</updated>
+      <workItem from="1747167073652" duration="1001000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

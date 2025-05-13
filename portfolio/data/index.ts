@@ -8,7 +8,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "Je suis Chainer KOMISSA ZOTSU, étudiante en Master Entrepreneuriat Technologique et Innovation à l'Université de Technologie de Belfort-Montbéliard.",
+    title: "Je suis Chainer KOMISSA ZOTSU, développeuse web full stack.",
     description: "A propos de moi",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",

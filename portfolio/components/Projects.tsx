@@ -1,6 +1,6 @@
-import { FaGithub, FaLinkedin, FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
-import { SiMysql, SiNextdotjs, SiFlask } from "react-icons/si";
-import { BiLogoJavascript } from "react-icons/bi";
+import { FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
+import { SiMysql,SiFlask, SiMongodb, SiTailwindcss } from "react-icons/si";
+import { BiLogoJavascript, BiLogoTypescript, BiLogoAngular } from "react-icons/bi";
 
 import { HoverEffect } from "./ui/CardHoverEffect";
 
@@ -12,6 +12,14 @@ export function CardHoverEffectDemo() {
   );
 }
 export const projects = [
+  {
+    title: "FLOWZY",
+    description:
+      "Application de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
+    link: "",
+    image: "/rbnet.png",
+    icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />,<SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>,<SiMongodb className="rounded-full text-green-600" key="mongodb"/>],
+  },
   {
     title: "RBNET MAROC",
     description:

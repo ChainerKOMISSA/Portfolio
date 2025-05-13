@@ -24,12 +24,11 @@ const Hero = () => {
                         words='Je suis Chainer KOMISSA ZOTSU'
                     />
                     <p className='text-justify md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
-                        Développeuse web et mobile fullstack 
-                        dotée de compétences en gestion de projet, innovation et gestion de crise. 
-                        Spécialisée dans le développement d&apos;applications modernes et performantes, 
-                        maîtrisant les technologies modernes et les bonnes pratiques. 
-                        Passionnée par l&apos;optimisation de l&apos;expérience utilisateur et 
-                        la mise en œuvre de solutions novatrices adaptées aux besoins des clients
+                        Étudiante en dernière année de Master à 
+                        l&apos;UTBM, je suis passionnée par le développement web full stack. 
+                        Grâce à mon parcours, j&apos;ai acquis des compétences solides en front-end et back-end à 
+                        travers divers projets. Je recherche un CDI à partir d&apos;Août 2025 dans un environnement 
+                        stimulant, où je pourrai continuer à apprendre et contribuer à des projets innovants.
                     </p>
 
                     <a href="/CV_KOMISSA_ZOTSU.pdf" target='_blank'><MagicButton
