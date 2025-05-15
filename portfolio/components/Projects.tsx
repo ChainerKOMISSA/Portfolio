@@ -1,4 +1,4 @@
-import { FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
+import { FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap } from "react-icons/fa";
 import { SiMysql,SiFlask, SiMongodb, SiTailwindcss } from "react-icons/si";
 import { BiLogoJavascript, BiLogoTypescript, BiLogoAngular } from "react-icons/bi";
 
