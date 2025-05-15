@@ -4,6 +4,7 @@ export const navItems = [
   { name: "Expérience", link: "#experience" },
   { name: "Services", link: "#services" },
   { name: "Contacts", link: "#contact" },
+  { name: "Blog", link: "/blog" },
 ];
 export const gridItems = [
   {
@@ -18,8 +19,8 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "motivée, dynamique et polyvalente",
-    description: "Je suis",
+    title: "CDI en développement web full stack\nAoût 2025",
+    description: "En recherche de ",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-start",
