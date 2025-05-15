@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9927f602-9d65-4757-823b-7e21f98999a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/portfolio/components/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/Hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/components/Projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/Projects.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/components/ui/BentoGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/components/ui/BentoGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/data/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/data/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/portfolio/public/CV_KOMISSA_ZOTSU.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/portfolio/public/CV_KOMISSA_ZOTSU.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,25 +15,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ChainerKOMISSA"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ChainerKOMISSA&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ChainerKOMISSA/Portfolio.git",
-    "accountId": "2dae39f8-992a-439f-b2c5-a1ac3ee44001"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ChainerKOMISSA/Portfolio.git&quot;,
+    &quot;accountId&quot;: &quot;2dae39f8-992a-439f-b2c5-a1ac3ee44001&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2x3W7lX1o5mMaOdyywvc274h3AM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -57,10 +53,23 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\essik\\OneDrive\\Documents\\GitHub\\Portfolio\\portfolio\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\essik\\AppData\\Local\\Programs\\IntelliJ IDEA Ultimate\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Portfolio" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Portfolio" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -76,7 +85,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747167072407</updated>
-      <workItem from="1747167073652" duration="1001000" />
+      <workItem from="1747167073652" duration="1187000" />
+      <workItem from="1747330199595" duration="684000" />
     </task>
     <servers />
   </component>

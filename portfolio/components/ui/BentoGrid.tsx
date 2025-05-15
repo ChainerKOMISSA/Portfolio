@@ -106,7 +106,7 @@ export const BentoGridItem = ({
       designation: "",
       image: <FaWordpress className="text-blue-500 h-20 w-20" />,
     }
-    ,
+    /*,
     {
       id: 6,
       name: "Bruno",
@@ -116,10 +116,10 @@ export const BentoGridItem = ({
     ,
     {
       id: 7,
-      name: "Bruno",
+      name: "Sourcetree",
       designation: "",
       image: <SiSourcetree className="text-blue-700 h-20 w-20" />,
-    }
+    }*/
   ];
 
   return (

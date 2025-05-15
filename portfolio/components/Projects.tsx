@@ -17,7 +17,7 @@ export const projects = [
     description:
       "Application de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
     link: "",
-    image: "/rbnet.png",
+    image: "/flowzy.png",
     icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />,<SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>,<SiMongodb className="rounded-full text-green-600" key="mongodb"/>],
   },
   {
