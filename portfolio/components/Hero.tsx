@@ -3,6 +3,8 @@ import { Spotlight } from './ui/Spotlight'
 import { TextGenerateEffect } from './ui/TextGenerateEffect'
 import MagicButton from './ui/MagicButton'
 import { HiOutlineDownload } from "react-icons/hi";
+import { IoNavigate } from "react-icons/io5";
+
 
 
 const Hero = () => {
@@ -30,12 +32,18 @@ const Hero = () => {
                         travers divers projets. Je recherche un CDI à partir d&apos;Août 2025 dans un environnement 
                         stimulant, où je pourrai continuer à apprendre et contribuer à des projets innovants.
                     </p>
-
-                    <a href="/CV_KOMISSA_ZOTSU.pdf" target='_blank'><MagicButton
-                        title='Télécharger mon cv'
-                        icon={<HiOutlineDownload />}
-                        position='left'
-                    /></a>
+                    <div className="flex flex-row justify-center gap-6">
+                        <a href="/CV_KOMISSA_ZOTSU.pdf" target='_blank'><MagicButton
+                            title='Télécharger mon cv'
+                            icon={<HiOutlineDownload />}
+                            position='left'
+                        /></a>
+                        <a href="/blog"><MagicButton
+                            title='Aller sur mon blog'
+                            icon={<IoNavigate />}
+                            position='left'
+                        /></a>
+                    </div>
                 </div>
             </div>
         </div>
