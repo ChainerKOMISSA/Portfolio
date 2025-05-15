@@ -15,7 +15,7 @@ export const projects = [
   {
     title: "FLOWZY",
     description:
-      "Application de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
+      "Développement en cours.\nApplication de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
     link: "",
     image: "/flowzy.png",
     icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />,<SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>,<SiMongodb className="rounded-full text-green-600" key="mongodb"/>],
@@ -48,7 +48,7 @@ export const projects = [
     title: "CMS BETHEDA",
     description:
       "Application de gestion de centre médical. Gestion de carnet médical, vente de produits pharmaceutiques, gynécologie, analyses médiciales.",
-    link: "",
+    link: "https://github.com/ChainerKOMISSA/CLS-BETHESDA",
     image: "/portfolio-2-2.jpg",
     icons: [<FaLaravel className="text-red-600" key="laravel"/>, <FaPhp className="rounded-full text-purple" key="php"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
@@ -72,7 +72,7 @@ export const projects = [
     title: "SHARE HUB",
     description:
       "Application web de partage de fichiers en ligne. Utilisable en entreprise, organisation.",
-    link: "",
+    link: "https://github.com/ChainerKOMISSA/ShareHub",
     image: "/sharehub-2.png",
     icons: [<FaPython className="rounded-full text-yellow-400" key="python"/>, <SiFlask className="text-white" key="flask"/>, <FaBootstrap className="rounded-full text-purple" key="bootstrap"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   }
