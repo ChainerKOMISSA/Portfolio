@@ -103,21 +103,31 @@ export function CardDemo({
             <p className="mb-2">{desc}</p>
             {categoryDateLine}
             {projectLink ? (
-                <a
-                    href={projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block bg-indigo-950 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition"
-                >
-                    Voir le projet
-                </a>
+                category === "Templates de code" ? (
+                    <a
+                        href={projectLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-indigo-950 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition"
+                    >
+                        Voir le projet
+                    </a>
+                ) : (
+                    <a
+                        href={projectLink}
+                        className="inline-block bg-indigo-950 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition"
+                    >
+                        Voir le projet
+                    </a>
+                )
             ) : (
                 <span className="inline-block bg-gray-400 text-white font-semibold px-4 py-2 rounded cursor-not-allowed select-none">
-    Non disponible
-  </span>
+                Non disponible
+            </span>
             )}
         </>
     );
+
     return (
         <BentoGridItem
             header={header}

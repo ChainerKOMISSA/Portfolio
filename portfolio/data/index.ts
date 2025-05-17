@@ -278,7 +278,7 @@ export const blogItems = [
     img: "/b5.svg",
     date: "2025-05-17",
     category: categories[3].name,
-    link : "",
+    link : "/blog/tests-bruno",
     technologies: [],
   }
 ]
