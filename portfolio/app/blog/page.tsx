@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Input } from "./ui/Input";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import {categories, blogItems} from "@/data";
+import {CardDemo} from "./ui/Card";
 
 
 
@@ -27,10 +29,35 @@ export default function BlogPage() {
                     </Link>
                 </div>
             </div>
-            <div className="flew flew-row w-full mt-4 bg-red-300">
-                <div className="left w-4/5 bg-green-400">
+            <div className="flex flex-row w-full mx-auto mt-4 py-2 gap-4">
+                <div className="left w-4/5 p-4 space-y-8 overflow-y-auto">
+                    {categories.map((category) => {
+                        const itemsInCategory = blogItems.filter(
+                            (item) => item.category === category.name
+                        );
+                        return (
+                            <div key={category.id} className="space-y-4">
+                                <div className="flex items-center gap-2">
+                                    <h2 className="text-lg font-bold text-white">{category.name}</h2>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    {itemsInCategory.map((item) => (
+                                        <CardDemo
+                                            key={item.id}
+                                            title={item.title}
+                                            desc={item.desc}
+                                            img={item.img}
+                                            date={item.date}
+                                            category={item.category}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
-                <div className="right w-1/5 bg-blue-300">
+                <div className="right w-1/5">
+                    ubggug
                 </div>
             </div>
         </main>
