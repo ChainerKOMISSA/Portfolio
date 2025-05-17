@@ -1,6 +1,9 @@
 "use client";
 import { cn } from "@/lib/utils";
-import {SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiTailwindcss, SiNextdotjs, SiPython, SiMongodb, SiExpress } from "react-icons/si";
+import {SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiTailwindcss, SiNextdotjs, SiPython,
+    SiMongodb, SiExpress, SiAngular } from "react-icons/si";
+import { BiLogoJava } from "react-icons/bi";
+
 
 
 type CardDemoProps = {
@@ -14,15 +17,17 @@ type CardDemoProps = {
 };
 
 const techIcons: Record<string, JSX.Element> = {
-    react: <SiReact className="text-blue-400 w-6 h-6" />,
-    typescript: <SiTypescript className="text-blue-600 w-6 h-6" />,
-    javascript: <SiJavascript className="text-yellow-400 w-6 h-6" />,
-    nodejs: <SiNodedotjs className="text-green-600 w-6 h-6" />,
-    tailwindcss: <SiTailwindcss className="text-cyan-400 w-6 h-6" />,
-    nextjs: <SiNextdotjs className="text-gray-900 w-6 h-6" />,
-    python: <SiPython className="text-yellow-600 w-6 h-6" />,
-    mongodb: <SiMongodb className="text-green-600 w-6 h-6" />,
-    express: <SiExpress className="text-white w-6 h-6" />,
+    react: <SiReact className="text-blue-400 w-5 h-5" />,
+    typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
+    javascript: <SiJavascript className="text-yellow-400 w-5 h-5" />,
+    nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
+    tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
+    nextjs: <SiNextdotjs className="text-gray-900 w-5 h-5" />,
+    python: <SiPython className="text-yellow-600 w-5 h-5" />,
+    mongodb: <SiMongodb className="text-green-600 w-5 h-5" />,
+    express: <SiExpress className="text-white w-5 h-5" />,
+    angular: <SiAngular className="text-red-600 w-5 h-5" />,
+    java: <BiLogoJava className="text-red-600 w-6 h-6" />,
 };
 
 export const BentoGridItem = ({
