@@ -244,45 +244,31 @@ export const socialMedia = [
 export const categories = [
   {
     id: 1,
-    name: "Boilerplates"
+    name: "Templates de code"
   },
   {
     id: 2,
-    name: "Bugs"
+    name: "Débogage & Astuces"
+  },
+  {
+    id: 3,
+    name: "Expériences"
+  },
+  {
+    id: 4,
+    name: "Tutoriels"
   }
 ]
 
 export const blogItems = [
   {
     id: 1,
-    title: "Blog 1",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    img: "/css3.png",
-    date: "2022-01-01",
-    category: categories[0].name
-  },
-  {
-    id: 2,
-    title: "Blog 2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    img: "/css3.png",
-    date: "2022-01-01",
-    category: categories[0].name
-  },
-  {
-    id: 3,
-    title: "Blog 3",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    img: "/css3.png",
-    date: "2022-01-01",
-    category: categories[1].name
-  },
-  {
-    id: 4,
-    title: "Blog 4",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
-    img: "/css3.png",
-    date: "2022-01-01",
-    category: categories[0].name
+    title: "Backend NodeJS",
+    desc: "Template de base pour un projet NodeJS avec Express.js et MongoDB.",
+    img: "/b5.svg",
+    date: "2025-05-17",
+    category: categories[0].name,
+    link : "",
+    technologies: ["nodejs", "javascript", "mongodb", "express"],
   }
 ]

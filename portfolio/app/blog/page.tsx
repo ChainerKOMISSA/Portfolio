@@ -40,6 +40,9 @@ export default function BlogPage() {
                                 <div className="flex items-center gap-2">
                                     <h2 className="text-lg font-bold text-white">{category.name}</h2>
                                 </div>
+                                {itemsInCategory.length === 0 ? (
+                                    <p className="text-gray-400 italic">Aucune donnée pour cette catégorie.</p>
+                                ) : (
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                     {itemsInCategory.map((item) => (
                                         <CardDemo
@@ -49,9 +52,12 @@ export default function BlogPage() {
                                             img={item.img}
                                             date={item.date}
                                             category={item.category}
+                                            technologies={item.technologies}
+                                            projectLink={item.link}
                                         />
                                     ))}
                                 </div>
+                                )}
                             </div>
                         );
                     })}

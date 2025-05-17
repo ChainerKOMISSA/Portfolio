@@ -1,48 +1,123 @@
 "use client";
 import { cn } from "@/lib/utils";
+import {SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiTailwindcss, SiNextdotjs, SiPython, SiMongodb, SiExpress } from "react-icons/si";
+
 
 type CardDemoProps = {
     title: string;
     desc: string;
     date: string;
     category: string;
-    img : string;
+    img: string;
+    technologies: string[];
+    projectLink: string;
 };
 
-export function CardDemo({title, desc, img, date, category,}: CardDemoProps) {
+const techIcons: Record<string, JSX.Element> = {
+    react: <SiReact className="text-blue-400 w-6 h-6" />,
+    typescript: <SiTypescript className="text-blue-600 w-6 h-6" />,
+    javascript: <SiJavascript className="text-yellow-400 w-6 h-6" />,
+    nodejs: <SiNodedotjs className="text-green-600 w-6 h-6" />,
+    tailwindcss: <SiTailwindcss className="text-cyan-400 w-6 h-6" />,
+    nextjs: <SiNextdotjs className="text-gray-900 w-6 h-6" />,
+    python: <SiPython className="text-yellow-600 w-6 h-6" />,
+    mongodb: <SiMongodb className="text-green-600 w-6 h-6" />,
+    express: <SiExpress className="text-white w-6 h-6" />,
+};
+
+export const BentoGridItem = ({
+                                  className,
+                                  title,
+                                  description,
+                                  header,
+                                  icon,
+                              }: {
+    className?: string;
+    title?: string | React.ReactNode;
+    description?: string | React.ReactNode;
+    header?: React.ReactNode;
+    icon?: React.ReactNode;
+}) => {
     return (
-        <div className="max-w-xs w-full group/card">
-            <div
-                className={cn(
-                    " cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",
-                    "bg-[url(https://images.unsplash.com/photo-1544077960-604201fe74bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80)] bg-cover"
-                )}
-            >
-                <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-                <div className="flex flex-row items-center space-x-4 z-10">
-                    <img
-                        height="100"
-                        width="100"
-                        alt="Avatar"
-                        src={img}
-                        className="h-10 w-10 rounded-full border-2 object-cover"
-                    />
-                    <div className="flex flex-col">
-                        <p className="font-normal text-base text-gray-50 relative z-10">
-                            {category}
-                        </p>
-                        <p className="text-sm text-gray-400">{date}</p>
-                    </div>
+        <div
+            className={cn(
+                "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+                className
+            )}
+        >
+            {header}
+            <div className="transition duration-200 group-hover/bento:translate-x-2">
+                {icon}
+                <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200">
+                    {title}
                 </div>
-                <div className="text content">
-                    <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
-                        {title}
-                    </h1>
-                    <p className="font-normal text-sm text-gray-50 relative z-10 my-4">
-                        {desc}
-                    </p>
+                <div className="font-sans text-xs font-normal text-neutral-600 dark:text-neutral-300">
+                    {description}
                 </div>
             </div>
         </div>
+    );
+};
+
+export function CardDemo({
+                             title,
+                             desc,
+                             img,
+                             date,
+                             category,
+                             technologies,
+                             projectLink,
+                         }: CardDemoProps) {
+    // header = image en grand
+    const header = (
+        <img
+            src={img}
+            alt={title}
+            className="w-full h-40 object-cover rounded-md mb-4"
+        />
+    );
+
+    // icon = liste d'icônes technologies sur une ligne
+    const icon = (
+        <div className="flex space-x-3 mb-2">
+            {technologies.map((tech) => (
+                <div key={tech} title={tech} className="flex items-center">
+                    {techIcons[tech.toLowerCase()] || null}
+                </div>
+            ))}
+        </div>
+    );
+
+    // ligne catégorie à gauche, date à droite
+    const categoryDateLine = (
+        <div className="flex justify-between text-gray-500 dark:text-gray-400 mb-4
+        font-sans text-xs font-normal">
+            <span>{category}</span>
+            <span>{date}</span>
+        </div>
+    );
+
+    // description + categoryDateLine + bouton dans la description pour garder tout ensemble
+    const description = (
+        <>
+            <p className="mb-2">{desc}</p>
+            {categoryDateLine}
+            <a
+                href={projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-indigo-950 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition"
+            >
+                Voir le projet
+            </a>
+        </>
+    );
+    return (
+        <BentoGridItem
+            header={header}
+            icon={icon}
+            title={title}
+            description={description}
+        />
     );
 }
