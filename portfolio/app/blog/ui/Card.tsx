@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import {SiReact, SiTypescript, SiJavascript, SiNodedotjs, SiTailwindcss, SiNextdotjs, SiPython,
     SiMongodb, SiExpress, SiAngular } from "react-icons/si";
 import { BiLogoJava } from "react-icons/bi";
+import Image from "next/image";
 
 
 
@@ -75,10 +76,12 @@ export function CardDemo({
                          }: CardDemoProps) {
     // header = image en grand
     const header = (
-        <img
+        <Image
             src={img}
             alt={title}
-            className="w-full h-40 object-cover rounded-md mb-4"
+            className="object-cover rounded-md mb-4"
+            width={1000}
+            height={350}
         />
     );
 

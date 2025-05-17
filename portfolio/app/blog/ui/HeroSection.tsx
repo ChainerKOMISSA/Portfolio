@@ -76,7 +76,7 @@ export function HeroSectionOne() {
                             <section id="conclusion">
                                 <h2 className="text-2xl font-bold mb-4 text-white">Conclusion</h2>
                                 <p className="text-gray-300 mb-6">
-                                    Bruno vous permet de simplifier vos tests d'API tout en restant flexible. Essayez-le dans vos prochains projets !
+                                    Bruno vous permet de simplifier vos tests d&apos;API tout en restant flexible. Essayez-le dans vos prochains projets !
                                 </p>
                                 <Link href="/blog" className="inline-block bg-blue-600 hover:bg-blue-500 text-white text-sm px-4 py-2 rounded-md transition">
                                     ← Retour au blog
