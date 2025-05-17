@@ -214,7 +214,6 @@ export const workExperience = [
   // },
 ];
 
-
 export const socialMedia = [
   {
     id: 1,
@@ -241,3 +240,25 @@ export const socialMedia = [
     link: "https://wa.me/message/3RTFYUDPU2WAO1"
   }
 ];
+
+export const categories = [
+  {
+    id: 1,
+    name: "Boilerplates"
+  },
+  {
+    id: 2,
+    name: "Bugs"
+  }
+]
+
+export const blogItems = [
+  {
+    id: 1,
+    title: "Blog 1",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.",
+    thumbnail: "/blog1.jpg",
+    date: "2022-01-01",
+    category: categories[0]
+  }
+]
