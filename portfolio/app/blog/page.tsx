@@ -24,9 +24,9 @@ export default function BlogPage() {
                     <Input id="search" type="text" placeholder="Effectuer une recherche ..." className="pl-10 w-full"/>
                 </div>
                 <div className="flex flex-col justify-center">
-                    <Link href="/" className="inline-block px-4 py-2 w-32 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">
+                    <button className="cursor-not-allowed inline-block px-4 py-2 w-32 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">
                         Rechercher
-                    </Link>
+                    </button>
                 </div>
             </div>
             <div className="flex flex-row w-full mx-auto mt-4 py-2 gap-4">
@@ -63,7 +63,7 @@ export default function BlogPage() {
                     })}
                 </div>
                 <div className="right w-1/5">
-                    ubggug
+                    <h2 className="text-lg font-bold text-white hidden">Filtrer</h2>
                 </div>
             </div>
         </main>
