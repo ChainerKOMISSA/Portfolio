@@ -270,5 +270,15 @@ export const blogItems = [
     category: categories[0].name,
     link : "",
     technologies: ["nodejs", "javascript", "mongodb", "express"],
+  },
+  {
+    id: 2,
+    title: "Tests unitaires avec Bruno",
+    desc: "Tutoriel expliquant pas à pas comment réaliser des tests unitaires avec Bruno.",
+    img: "/b5.svg",
+    date: "2025-05-17",
+    category: categories[3].name,
+    link : "",
+    technologies: [],
   }
 ]
