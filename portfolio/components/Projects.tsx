@@ -13,6 +13,7 @@ export function CardHoverEffectDemo() {
 }
 export const projects = [
   {
+    id:1,
     title: "FLOWZY",
     description:
       "Développement en cours.\nApplication de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
@@ -21,6 +22,7 @@ export const projects = [
     icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />,<SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>,<SiMongodb className="rounded-full text-green-600" key="mongodb"/>],
   },
   {
+    id:2,
     title: "RBNET MAROC",
     description:
       "Site web de présentation de l'entreprise RBNET Maroc. Présentation des services de l'entreprise.",
@@ -29,6 +31,7 @@ export const projects = [
     icons: [<FaWordpress className="text-blue-400 rounded-full" key="wordpress" />],
   },
   {
+    id:3,
     title: "PRO CROWNED",
     description:
       "Site web de présentation de services pour un particulier. Intégration de Tutor LMS pour la gestion des cours. Création de questionnaires.",
@@ -37,6 +40,7 @@ export const projects = [
     icons: [<FaWordpress className="text-blue-400 rounded-full" key="wordpress" />],
   },
   {
+    id:4,
     title: "STOCKLY",
     description:
       "Application web de gestion de boutique. Gestion et suivi du stock, du personnel, des commandes et des livraisons. Statistiques en temps réel.",
@@ -45,6 +49,7 @@ export const projects = [
     icons: [<FaReact className="text-blue-400 rounded-full" key="react"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
+    id:5,
     title: "CMS BETHEDA",
     description:
       "Application de gestion de centre médical. Gestion de carnet médical, vente de produits pharmaceutiques, gynécologie, analyses médiciales.",
@@ -53,6 +58,7 @@ export const projects = [
     icons: [<FaLaravel className="text-red-600" key="laravel"/>, <FaPhp className="rounded-full text-purple" key="php"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
+    id:6,
     title: "EASY TRAVEL",
     description:
       "Application mobile d'achat de tickets de voyages. Conception de la partie mobile et intégration à une API existante.",
@@ -61,6 +67,7 @@ export const projects = [
     icons: [<FaReact className="rounded-full text-purple" key="react"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <FaCss3Alt className="text-blue-500" key="css"/>],
   },
   {
+    id:7,
     title: "MY POCKET ENGLISH",
     description:
       "Application mobile d'apprentissage de l'anglais. Règles de grammaire, conjugaison, vocabulaire. Quizzes interactifs à la fin des leçons.",
@@ -69,6 +76,7 @@ export const projects = [
     icons: [<FaReact className="rounded-full text-purple" key="react"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <FaCss3Alt className="text-blue-500" key="css"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
   {
+    id:8,
     title: "SHARE HUB",
     description:
       "Application web de partage de fichiers en ligne. Utilisable en entreprise, organisation.",
