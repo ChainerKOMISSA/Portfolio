@@ -278,8 +278,8 @@ export const blogItems = [
     img: "/b5.svg",
     date: "A venir",
     category: categories[3].name,
-    //link : "",
-    link : "/blog/tests-bruno",
+    link : "",
+    //link : "/blog/tests-bruno",
     technologies: [],
   },
   {
