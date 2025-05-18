@@ -1,28 +1,7 @@
 "use client";
-
-import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export function HeroSectionOne() {
-    const [activeId, setActiveId] = useState(null);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const headings = document.querySelectorAll("h2, h3");
-            let currentId = null;
-            for (let heading of headings) {
-                const rect = heading.getBoundingClientRect();
-                if (rect.top < 150) {
-                    currentId = heading.id;
-                }
-            }
-            setActiveId(currentId);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
         <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
@@ -90,19 +69,19 @@ export function HeroSectionOne() {
                 <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
                     <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
                     <nav className="flex flex-col gap-2 text-sm text-gray-400">
-                        <Link href="#intro" className={activeId === "intro" ? "text-blue-400" : ""}>
+                        <Link href="#intro" className="hover:text-white">
                             Introduction
                         </Link>
-                        <Link href="#install" className={activeId === "install" ? "text-blue-400" : ""}>
+                        <Link href="#install" className="hover:text-white">
                             Installation de Bruno
                         </Link>
-                        <Link href="#writing-tests" className={activeId === "writing-tests" ? "text-blue-400" : ""}>
+                        <Link href="#writing-tests" className="hover:text-white">
                             Écriture de tests
                         </Link>
-                        <Link href="#good-practices" className={activeId === "good-practices" ? "text-blue-400" : ""}>
+                        <Link href="#good-practices" className="hover:text-white">
                             Bonnes pratiques
                         </Link>
-                        <Link href="#conclusion" className={activeId === "conclusion" ? "text-blue-400" : ""}>
+                        <Link href="#conclusion" className="hover:text-white">
                             Conclusion
                         </Link>
                     </nav>
