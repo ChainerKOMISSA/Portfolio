@@ -245,21 +245,6 @@ export function HeroSectionOne() {
                                 <p className="text-gray-300 mb-6">
                                     N&apos;hésitez pas à l&apos;essayer dans vos prochains projets!
                                 </p>
-                                <div className="flex items-center gap-4 mt-6">
-                                    <button
-                                        onClick={() => alert("Merci pour le like 👍")}
-                                        className="flex items-center gap-2 px-4 py-2 text-sm rounded-md bg-green-600 text-white hover:bg-green-500 transition"
-                                    >
-                                        👍 J&apos;ai aimé
-                                    </button>
-                                    <button
-                                        onClick={() => alert("Merci pour votre retour 👎")}
-                                        className="flex items-center gap-2 px-4 py-2 text-sm rounded-md bg-red-600 text-white hover:bg-red-500 transition"
-                                    >
-                                        👎 Pas convaincu
-                                    </button>
-                                </div>
-
                             </section>
 
                             <Link href="/blog" className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition">

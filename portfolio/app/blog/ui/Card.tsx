@@ -125,7 +125,7 @@ export function CardDemo({
                         href={projectLink}
                         className="inline-block bg-indigo-950 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded transition"
                     >
-                        Voir le projet
+                        Voir
                     </a>
                 )
             ) : (
