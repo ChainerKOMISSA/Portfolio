@@ -288,6 +288,7 @@ export const blogItems = [
     img: "/b5.svg",
     date: "A venir",
     category: categories[0].name,
+    //link : "https://github.com/ChainerKOMISSA/Boilerplate_Angular",
     link : "",
     technologies: ["angular", "typescript", "tailwindcss"],
   },
