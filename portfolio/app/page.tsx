@@ -1,5 +1,4 @@
 "use client";
-import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
@@ -7,6 +6,8 @@ import { FloatingNavbar } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
 import Experience from "@/components/Experience";
 import { StickyScrollRevealDemo } from "@/components/Work";
+import Footer from "@/components/Footer";
+
 
 
 export default function Home() {

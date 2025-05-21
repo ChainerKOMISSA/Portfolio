@@ -1,10 +1,12 @@
+import {GridItem, Category, BlogItem, SocialMedia, Service} from "./types";
+
 export const navItems = [
   { name: "A propos", link: "#about" },
   { name: "Projets", link: "#projects" },
   { name: "Expérience", link: "#experience" },
   { name: "Services", link: "#services" },
   { name: "Contacts", link: "#contact" },
-  { name: "Blog", link: "/blog" },
+  { name: "Blog", link: "/blog" }
 ];
 export const gridItems = [
   {
@@ -169,7 +171,7 @@ export const companies = [
   },
 ];
 
-export const workExperience = [
+export const workExperience= [
   {
     id: 1,
     title: "Développement d'applications",
@@ -214,7 +216,7 @@ export const workExperience = [
   // },
 ];
 
-export const socialMedia = [
+export const socialMedia  = [
   {
     id: 1,
     img: "",
@@ -260,7 +262,7 @@ export const categories = [
   }
 ]
 
-export const blogItems = [
+export const blogItems= [
   {
     id: 1,
     title: "Backend NodeJS",
