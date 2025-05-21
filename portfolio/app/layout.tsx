@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProviderWrapper } from "./ThemeProviderWrapper"; // 👈 new import
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
                                        children,
-                                   }: Readonly<{
+                                   }: {
     children: React.ReactNode;
-}>) {
+}) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <ThemeProviderWrapper>
-                {children}
-                <Analytics />
-                </ThemeProviderWrapper>
-            </body>
+        <body className={inter.className}>
+        <Providers>
+            {children}
+            <Analytics />
+        </Providers>
+        </body>
         </html>
     );
 }
