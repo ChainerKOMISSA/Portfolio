@@ -288,10 +288,9 @@ export const blogItems= [
     title: "Application Angular",
     desc: "Template de base pour un projet avec Angular 16",
     img: "/b5.svg",
-    date: "A venir",
+    date: "29/05/2025",
     category: categories[0].name,
-    //link : "https://github.com/ChainerKOMISSA/Boilerplate_Angular",
-    link : "",
+    link : "https://github.com/ChainerKOMISSA/Boilerplate_Angular",
     technologies: ["angular", "typescript", "tailwindcss"],
   },
   {
