@@ -17,7 +17,7 @@ export default function BlogPage() {
         const regex = new RegExp(`(${query})`, 'gi');
         const parts = text.split(regex);
         return parts.map((part, index) =>
-            regex.test(part) ? <mark key={index} className="bg-yellow-300 text-black">{part}</mark> : part
+            regex.test(part) ? <mark key={index} className="bg-purple text-black">{part}</mark> : part
         );
     };
 
@@ -51,7 +51,7 @@ export default function BlogPage() {
                 </div>*/}
             </div>
             <div className="flex flex-row w-full mx-auto mt-4 py-2 gap-4">
-                <div className="left w-4/5 p-4 space-y-8 overflow-y-auto">
+                <div className="left w-full p-4 space-y-8 overflow-y-auto">
                     {categories.map((category) => {
                         const itemsInCategory = filteredItems.filter(
                             (item) => item.category === category.name
@@ -65,12 +65,12 @@ export default function BlogPage() {
                                 {itemsInCategory.length === 0 ? (
                                     <p className="text-gray-400 italic">Aucune donnée pour cette catégorie.</p>
                                 ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                     {itemsInCategory.map((item) => (
                                         <CardDemo
                                             key={item.id}
-                                            title={item.title}
-                                            desc={item.desc}
+                                            title={highlight(item.title, search)}
+                                            desc={highlight(item.desc, search)}
                                             img={item.img}
                                             date={item.date}
                                             category={item.category}
@@ -86,9 +86,6 @@ export default function BlogPage() {
                     {filteredItems.length === 0 && (
                         <p className="text-gray-400 italic">Aucun résultat trouvé.</p>
                     )}
-                </div>
-                <div className="right w-1/5">
-                    <h2 className="text-lg font-bold text-white hidden">Filtrer</h2>
                 </div>
             </div>
         </main>

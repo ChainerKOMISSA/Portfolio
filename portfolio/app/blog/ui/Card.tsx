@@ -8,8 +8,8 @@ import Image from "next/image";
 
 
 type CardDemoProps = {
-    title: string;
-    desc: string;
+    title: string | React.ReactNode;
+    desc: string | React.ReactNode;
     date: string;
     category: string;
     img: string;
@@ -24,7 +24,7 @@ const techIcons: Record<string, JSX.Element> = {
     nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
     tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
     nextjs: <SiNextdotjs className="text-gray-900 w-5 h-5" />,
-    python: <SiPython className="text-yellow-600 w-5 h-5" />,
+    python: <SiPython className="text-yellow-400 w-5 h-5" />,
     mongodb: <SiMongodb className="text-green-600 w-5 h-5" />,
     express: <SiExpress className="text-white w-5 h-5" />,
     angular: <SiAngular className="text-red-600 w-5 h-5" />,
