@@ -365,4 +365,15 @@ export const blogItems= [
     link : "",
     technologies: [],
   }*/
+  ,
+  {
+    id: 11,
+    title: "Déployer une application web sur Github Pages",
+    desc: "Tutoriel expliquant comment déployer une application web sur Github Pages.",
+    img: "/bggithub.png",
+    date: "01/06/2025",
+    category: categories[3].name,
+    link : "/blog/github-pages",
+    technologies: [],
+  }
 ]

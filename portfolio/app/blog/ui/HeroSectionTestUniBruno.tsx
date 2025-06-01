@@ -1,9 +1,13 @@
 "use client";
 import Link from "next/link";
+import {IoIosArrowRoundBack} from "react-icons/io";
 
 export function HeroSectionOne() {
     return (
-        <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
+        <>
+            <Link href="/blog" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
+                <IoIosArrowRoundBack /></Link>
+            <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
             {/* Header */}
             <header className="w-full px-4 md:px-8 py-6">
                 <h1 className="text-5xl font-bold text-slate-500 text-center">Tester ses APIs avec Bruno</h1>
@@ -52,9 +56,7 @@ export function HeroSectionOne() {
                                     site officiel</a> ou installez-le via npm si vous utilisez la version CLI.
                                 </p><br/>
                                 <p>Lorsque vous l&apos;ouvrez, la page d&apos;acceuil s&apos;affiche comme ceci:</p><br/>
-                                <div className="bg-[url('/bruno1.png')] bg-cover bg-center h-96 w-full">
-
-                                </div>
+                                <div className="bg-[url('/bruno1.png')] bg-cover bg-center h-96 w-full"></div>
                             </section>
 
                             <section id="writing-tests">
@@ -304,6 +306,7 @@ export function HeroSectionOne() {
                 </aside>
             </div>
         </div>
+        </>
     );
 }
 
