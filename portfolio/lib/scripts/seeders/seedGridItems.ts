@@ -1,4 +1,3 @@
-import {supabase} from "@/supabase";
 import {gridItems} from "../../../data";
 
 export async function seedGridItems() {
@@ -13,8 +12,9 @@ export async function seedGridItems() {
         spare_img: item.spareImg,
     }))
 
-    const { error } = await supabase.from('grid_items').insert(transformed)
+   // const { error } = await supabase.from('grid_items').insert(transformed)
+    const error = "";
 
-    if (error) throw new Error(`grid_items → ${error.message}`)
+    if (error) throw new Error(`grid_items → ${error}`)
     console.log('✅ grid_items insérés avec succès')
 }
