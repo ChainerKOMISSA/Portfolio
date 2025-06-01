@@ -17,16 +17,6 @@ export default function SignInPage() {
         if (session) router.push("/admin");
     }, [session, router]);
 
-    useEffect(() => {
-        async function fetchCsrf() {
-            const res = await fetch("/api/auth/csrf");
-            const data = await res.json();
-            setCsrfToken(data.csrfToken);
-        }
-        fetchCsrf();
-    }, []);
-
-
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const res = await signIn("credentials", {
@@ -50,7 +40,6 @@ export default function SignInPage() {
             Entrez les informations pour vous connecter
         </p>
         <form className="my-8" onSubmit={handleSubmit}>
-            <input name="csrfToken" type="hidden" value={csrfToken} />
             <LabelInputContainer className="mb-4">
                 <Label htmlFor="email">Nom d&apos;utilisateur</Label>
                 <Input id="email" name="username" placeholder="Nom d'utilisateur" type="text" required value={userInfo.username}

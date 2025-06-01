@@ -21,12 +21,12 @@ export default function AdminPage() {
 
     return (
         <div className="flex flex-col min-h-screen">
-            <Navbar />
+            {/*<Navbar />
             <div className="flex flex-1">
                 <Sidebar />
                 <MainContent />
             </div>
-            <Footer />
+            <Footer />*/}
         </div>
     );
 }
