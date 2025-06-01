@@ -12,12 +12,12 @@ export default function AdminPage() {
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (status === "loading") return;
         if (!session) router.push("/auth/signin");
     }, [session, status, router]);
 
-    if (status === "loading") return <p>Chargement...</p>;
+    if (status === "loading") return <p>Chargement...</p>;*/
 
     return (
         <div className="flex flex-col min-h-screen">
