@@ -78,7 +78,7 @@ export function CardDemo({
     const header = (
         <Image
             src={img}
-            alt={title}
+            alt=""
             className="object-cover rounded-md mb-4"
             width={1000}
             height={350}
