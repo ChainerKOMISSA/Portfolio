@@ -12,7 +12,7 @@ export function HeroSectionOne() {
             <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
                 {/* Header */}
                 <header className="w-full px-4 md:px-8 py-6">
-                    <h1 className="text-5xl font-bold text-slate-500 text-center">Déployer son application sur Vercel</h1>
+                    <h1 className="text-5xl font-bold text-slate-500 text-center">Déployer une application sur Vercel</h1>
                 </header>
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="relative flex-1 flex flex-col items-center justify-center">
