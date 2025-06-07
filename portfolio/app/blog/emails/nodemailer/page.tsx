@@ -1,18 +1,17 @@
-"use client";
 import Link from "next/link";
+import {IoIosArrowRoundBack} from "react-icons/io";
 import Image from "next/image";
-import { IoIosArrowRoundBack } from "react-icons/io";
 
-export function HeroSectionOne() {
+export default function BlogPage(){
     return (
-        <>
+        <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
             <Link href="/blog" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
                 <IoIosArrowRoundBack />
             </Link>
             <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
                 {/* Header */}
                 <header className="w-full px-4 md:px-8 py-6">
-                    <h1 className="text-5xl font-bold text-slate-500 text-center">Tutoriels envoi de mail avec Email JS</h1>
+                    <h1 className="text-5xl font-bold text-slate-500 text-center">Tutoriels envoi de mail avec NodeMailer</h1>
                 </header>
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="relative flex-1 flex flex-col items-center justify-center">
@@ -106,8 +105,6 @@ export function HeroSectionOne() {
                     </aside>
                 </div>
             </div>
-        </>
-    );
+        </main>
+    )
 }
-
-export default HeroSectionOne;
