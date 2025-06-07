@@ -373,5 +373,47 @@ export const blogItems= [
     category: categories[3].name,
     link : "/blog/github-pages",
     technologies: [],
+  },
+  {
+    id: 12,
+    title: "Playlist : Envoyer des emails depuis ton code",
+    desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
+    img: "/bggithub.png",
+    date: "2025-06-07",
+    category: categories[3].name,
+    link : "/blog/emails",
+    technologies: [],
+  }
+]
+export const emailtutorialsItems= [
+  {
+    id: 1,
+    title: "Envoyer un mail directement via ton code HTML",
+    desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
+    img: "/bggithub.png",
+    date: "2025-06-07",
+    category: categories[3].name,
+    link : "/blog/emails",
+    technologies: ["html"],
+  },
+  {
+    id: 2,
+    title: "Envoyer un mail avec EmailJS",
+    desc: "Tutoriels expliquant comment coder des envois de mail avec EmailJS.",
+    img: "/bggithub.png",
+    date: "2025-06-07",
+    category: categories[3].name,
+    link : "/blog/emails",
+    technologies: ["javascript"],
+  },
+  {
+    id: 3,
+    title: "Envoyer un mail avec NodeJS et NodeMailer",
+    desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
+    img: "/bggithub.png",
+    date: "2025-06-07",
+    category: categories[3].name,
+    link : "/blog/emails",
+    technologies: ["nodejs"],
   }
 ]
