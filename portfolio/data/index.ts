@@ -383,7 +383,7 @@ export const blogItems= [
     category: categories[3].name,
     link : "/blog/emails",
     technologies: ["serie"],
-  },
+  }/*,
   {
     id: 13,
     title: "MermaidJS",
@@ -393,7 +393,17 @@ export const blogItems= [
     category: categories[1].name,
     link : "",
     technologies: [],
-  }
+  },
+  {
+    id: 14,
+    title: "Radix UI",
+    desc: "Une bibliothèque JavaScript qui permet de créer des diagrammes et des graphiques en texte brut.",
+    img: "/bgradix.png",
+    date: "A venir",
+    category: categories[1].name,
+    link : "",
+    technologies: [],
+  }*/
 ]
 export const emailtutorialsItems= [
   {
