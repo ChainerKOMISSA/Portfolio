@@ -376,7 +376,7 @@ export const blogItems= [
   },
   {
     id: 12,
-    title: "Playlist : Envoyer des emails depuis ton code",
+    title: "Playlist : Envoyer des emails en Javascript",
     desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
     img: "/bggithub.png",
     date: "2025-06-07",
@@ -388,12 +388,12 @@ export const blogItems= [
 export const emailtutorialsItems= [
   {
     id: 1,
-    title: "Envoyer un mail directement via ton code HTML",
-    desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
+    title: "Envoyer un email en utilisant mailto:",
+    desc: "Tutoriel expliquant comment envoyer un mail avec  la méthode mailto:",
     img: "/bggithub.png",
     date: "2025-06-07",
     category: categories[3].name,
-    link : "/blog/emails",
+    link : "/blog/emails/mailto",
     technologies: ["html"],
   },
   {
