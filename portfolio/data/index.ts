@@ -250,7 +250,7 @@ export const categories = [
   },
   {
     id: 2,
-    name: "Débogage & Astuces"
+    name: "Découvertes"
   },
   {
     id: 3,
@@ -376,12 +376,22 @@ export const blogItems= [
   },
   {
     id: 12,
-    title: "Playlist : Envoyer des emails en Javascript",
-    desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
+    title: "Série : Envoyer des emails en Javascript",
+    desc: " Cette série de tutoriels vous guide pas à pas pour envoyer des emails avec JavaScript, SMTP.js, Node.js, etc.",
     img: "/bgemails.jpg",
     date: "2025-06-07",
     category: categories[3].name,
     link : "/blog/emails",
+    technologies: ["serie"],
+  },
+  {
+    id: 13,
+    title: "MermaidJS",
+    desc: "Une bibliothèque JavaScript qui permet de créer des diagrammes et des graphiques en texte brut.",
+    img: "/bgmermaid.png",
+    date: "A venir",
+    category: categories[1].name,
+    link : "",
     technologies: [],
   }
 ]
@@ -411,19 +421,32 @@ export const emailtutorialsItems= [
     title: "Envoyer un mail avec NodeJS et NodeMailer",
     desc: "Liste de tutoriels expliquant comment coder des envois de mail avec différents outils.",
     img: "/bgnodemailer.png",
-    date: "2025-06-07",
+    date: "A venir",
     category: categories[3].name,
-    link : "/blog/emails/nodemailer",
-    technologies: ["nodejs"],
+    link:"",
+    //link : "/blog/emails/nodemailer",
+    technologies: [],
   },
   {
     id: 4,
     title: "Envoyer un mail avec EmailJS",
     desc: "Tutoriels expliquant comment coder des envois de mail avec EmailJS.",
     img: "/bgemailjs.png",
-    date: "2025-06-07",
+    date: "A venir",
     category: categories[3].name,
-    link : "/blog/emails/emailjs",
-    technologies: ["javascript"],
+    link:"",
+    //link : "/blog/emails/emailjs",
+    technologies: [],
+  },
+  {
+    id: 5,
+    title: "Envoyer un mail avec Sendgrid",
+    desc: "Tutoriels expliquant comment coder des envois de mail avec Sendgrid.",
+    img: "/bgsendgrid.png",
+    date: "A venir",
+    category: categories[3].name,
+    link:"",
+    ///link : "/blog/emails/sendgrid",
+    technologies: [],
   }
 ]
