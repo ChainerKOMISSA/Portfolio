@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
+import Image from "next/image";
 
 const formHtmlCode = `<form id="contact-form">
   <input type="text" name="user_name" placeholder="Nom" required />
@@ -64,12 +65,30 @@ export default function BlogPage() {
                                         et connecte-toi.
                                         <br />
                                         Dans ton tableau de bord :
+                                        <div className="relative w-full h-96 rounded-lg overflow-hidden my-4">
+                                            <Image src="/emailjs1.png" alt="Tableau de bord EmailJS" fill className="object-cover"/>
+                                        </div>
                                     </p>
                                     <ul className="list-disc list-inside mt-2 space-y-1">
-                                        <li>Crée un nouveau service (Gmail par exemple).</li>
-                                        <li>Crée un nouveau template avec les variables : <code className="text-blue-400">`user_name`</code>, <code className="text-blue-400">`user_email`</code>, <code className="text-blue-400">`message`</code>.</li>
-                                        <li>Récupère ton <code className="text-blue-400">`Service ID`</code>, <code className="text-blue-400">`Template ID`</code> et <code className="text-blue-400">`Public Key`</code>.</li>
+                                        <li className="my-4">Crée un nouveau service (Gmail par exemple).</li>
+                                        <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                                            <Image src="/emailjs2.png" alt="Service Emailjs" fill className="object-cover"/>
+                                        </div>
+                                        <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                                            <Image src="/emailjs3.png" alt="Service Emailjs" fill className="object-cover"/>
+                                        </div>
+                                        <li className="mt-4">Crée un nouveau template avec les variables : <code className="text-blue-400">`user_name`</code>, <code className="text-blue-400">`user_email`</code>, <code className="text-blue-400">`message`</code>.</li>
+                                        <div className="relative w-full h-96 rounded-lg overflow-hidden my-4">
+                                            <Image src="/emailjs4.png" alt="Service Emailjs" fill className="object-cover"/>
+                                        </div>
+                                        <li className="mt-4">Récupère ton <code className="text-blue-400">`Service ID`</code>, <code className="text-blue-400">`Template ID`</code> et <code className="text-blue-400">`Public Key`</code>.</li>
                                     </ul>
+                                    <p className="text-gray-300 mt-4">
+                                        Le Public Key se situe dans l&apos;onglet Account :
+                                    </p>
+                                    <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                                        <Image src="/emailjs5.png" alt="Service Emailjs" fill className="object-cover"/>
+                                    </div>
                                 </section>
 
                                 <section id="installation">
