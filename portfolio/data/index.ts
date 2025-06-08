@@ -443,8 +443,7 @@ export const emailtutorialsItems= [
     img: "/bgemailjs.png",
     date: "A venir",
     category: categories[3].name,
-    link:"",
-    //link : "/blog/emails/emailjs",
+    link : "/blog/emails/emailjs",
     technologies: [],
   },
   {
