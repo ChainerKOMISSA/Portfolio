@@ -379,7 +379,7 @@ export const blogItems= [
     title: "Série : Envoyer des emails en Javascript",
     desc: " Cette série de tutoriels vous guide pas à pas pour envoyer des emails avec JavaScript, SMTP.js, Node.js, etc.",
     img: "/bgemails.jpg",
-    date: "2025-06-07",
+    date: " ",
     category: categories[3].name,
     link : "/blog/emails",
     technologies: ["serie"],
@@ -413,7 +413,7 @@ export const blogItems= [
     date: "2025-06-08",
     category: categories[3].name,
     link : "/blog/bloc-code",
-    technologies: ["react", "nextjs"],
+    technologies: [],
   }
 ]
 export const emailtutorialsItems= [

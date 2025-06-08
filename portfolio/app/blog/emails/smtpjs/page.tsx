@@ -1,10 +1,46 @@
 import Link from "next/link";
 import {IoIosArrowRoundBack} from "react-icons/io";
+import CodeBlock from "@/app/blog/ui/CodeBlock";
 
 export default function BlogPage(){
+
+    const code = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envoyer un email avec SMTP.js</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Application d'envoi d'email</h1> 
+        <p>Cliquez sur le bouton ci-dessous pour envoyer un email avec SMTP.js</p> 
+    </header>
+    <button onclick="sendEmail()">Envoyer un email</button> 
+
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.servicesmtp.com",
+                Username: "nom_utilisateur",
+                Password: "mot_de_passe",
+                To: 'destinataire@example.com',
+                From: "expediteur@example.com",
+                Subject: "Email",
+                Body: "Ceci est un email de test envoyé avec SMTP.js"
+            })
+            .then(function (message) {
+                alert("Email envoyé avec succès")
+            });
+        }
+    </script>
+</body>
+</html>`;
+
     return (
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
-            <Link href="/blog" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
+            <Link href="/blog/emails" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
                 <IoIosArrowRoundBack />
             </Link>
             <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
@@ -53,43 +89,7 @@ export default function BlogPage(){
                                     <p className="text-gray-300">
                                         Voici un exemple complet d&apos;utilisation de <code className="text-blue-400">SmtpJS</code> dans une page Html :
                                     </p><br/>
-                                    <pre className="bg-gray-800 text-gray-100 p-4 rounded-md overflow-auto text-sm mb-4">
-                                        <code>
-                                            {`<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envoyer un email avec SMTP.js</title>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-</head>
-<body>
-    <header>
-        <h1>Application d'envoi d'email</h1> 
-        <p>Cliquez sur le bouton ci-dessous pour envoyer un email avec SMTP.js</p> 
-    </header>
-    <button onclick="sendEmail()">Envoyer un email</button> 
-
-    <script>
-        function sendEmail() {
-            Email.send({
-                Host: "smtp.servicesmtp.com",
-                Username: "nom_utilisateur",
-                Password: "mot_de_passe",
-                To: 'destinataire@example.com',
-                From: "expediteur@example.com",
-                Subject: "Email",
-                Body: "Ceci est un email de test envoyé avec SMTP.js"
-            })
-            .then(function (message) {
-                alert("Email envoyé avec succès")
-            });
-        }
-    </script>
-</body>
-</html>`}
-  </code>
-</pre>
+                                    <CodeBlock code={code} language="html"/>
                                 </section>
 
                                 <section id="configuration">

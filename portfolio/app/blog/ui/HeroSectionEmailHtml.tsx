@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import CodeBlock from "@/app/blog/ui/CodeBlock";
 
 export function HeroSectionOne() {
     return (
@@ -15,7 +16,6 @@ export function HeroSectionOne() {
                 </header>
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="relative flex-1 flex flex-col items-center justify-center">
-                        {/* Borders */}
                         <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
                             <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
                         </div>
@@ -27,7 +27,6 @@ export function HeroSectionOne() {
                         </div>
 
                         <div className="px-4 py-10 md:py-20 w-full">
-                            {/* Content */}
                             <div className="w-full space-y-16">
                                 <section id="intro">
                                     <h2 className="text-2xl font-bold mb-4 text-white">1. Introduction</h2>
