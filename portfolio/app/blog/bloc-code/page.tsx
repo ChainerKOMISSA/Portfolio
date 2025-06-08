@@ -91,8 +91,8 @@ export default function BlogPage() {
                                     <h2 className="text-2xl font-bold mb-4 text-white">1. Introduction</h2>
                                     <p className="text-gray-300">
                                         Si tu veux afficher des extraits de code propres, lisibles et facilement copiables
-                                        sur ton site, ce tutoriel est pour toi. Nous allons créer un composant <code className="text-blue-400">CodeBlock</code>avec
-                                        surlignage de syntaxe et un bouton de copie.
+                                        sur ton site, ce tutoriel est pour toi. Nous allons créer un
+                                        composant <code className="text-blue-400">CodeBlock</code> avec surlignage de syntaxe et un bouton de copie.
                                     </p>
 
                                 </section>
@@ -189,8 +189,8 @@ export default function BlogPage() {
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">Conclusion</h2>
                                     <p className="text-gray-300 mb-6">
-                                        Afficher du code sur un site web devient simple et propre grâce à un composant comme
-                                        <code className="text-blue-400">CodeBlock</code>. Avec la possibilité de copier en un
+                                        Afficher du code sur un site web devient simple et propre grâce à un composant
+                                        comme <code className="text-blue-400">CodeBlock</code>. Avec la possibilité de copier en un
                                         clic et de préciser le langage, tu améliores l&apos;expérience de lecture et de partage
                                         de contenu technique.
                                     </p>
@@ -199,9 +199,6 @@ export default function BlogPage() {
                                         className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
                                     >
                                         ← Retour au blog
-                                    </Link>
-                                    <Link href="/blog/emails" className=" ml-4 inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition">
-                                        ← Retour aux tutoriels email
                                     </Link>
                                 </section>
                             </div>

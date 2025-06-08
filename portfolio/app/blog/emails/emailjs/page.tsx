@@ -111,7 +111,7 @@ export default function BlogPage() {
                                         ← Retour au blog
                                     </Link>
                                     <Link href="/blog/emails" className=" ml-4 inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition">
-                                        ← Retour aux tutoriels email
+                                        ← Retourner à la série
                                     </Link>
                                 </section>
                             </div>
