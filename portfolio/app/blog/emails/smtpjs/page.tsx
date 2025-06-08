@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {IoIosArrowRoundBack} from "react-icons/io";
-import Image from "next/image";
 
 export default function BlogPage(){
     return (
@@ -74,7 +73,7 @@ export default function BlogPage(){
     <script>
         function sendEmail() {
             Email.send({
-                Host: "smtp.adresseIP.com",
+                Host: "smtp.servicesmtp.com",
                 Username: "nom_utilisateur",
                 Password: "mot_de_passe",
                 To: 'destinataire@example.com',
