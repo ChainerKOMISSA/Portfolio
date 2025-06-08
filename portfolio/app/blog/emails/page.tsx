@@ -10,6 +10,7 @@ export default function BlogPage() {
             <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
                 <Link href="/blog" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
                     <IoIosArrowRoundBack /></Link>
+
                 <div className="w-full px-4 md:px-8 py-6">
                     <h1 className="text-5xl font-bold text-slate-500 text-center">Envoyer des emails depuis ton code</h1>
                 </div>

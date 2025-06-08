@@ -30,21 +30,23 @@ document.getElementById('contact-form').addEventListener('submit', sendEmail);`;
 export default function BlogPage() {
     return (
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
-            <Link
-                href="/blog/emails"
-                className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition"
-            >
-                <IoIosArrowRoundBack />
-            </Link>
+            <Link href="/blog/emails" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition"><IoIosArrowRoundBack /></Link>
             <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
                 <header className="w-full px-4 md:px-8 py-6">
-                    <h1 className="text-5xl font-bold text-slate-500 text-center">
-                        Envoyer un email avec EmailJS
-                    </h1>
+                    <h1 className="text-5xl font-bold text-slate-500 text-center">Envoyer un email avec EmailJS</h1>
                 </header>
 
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="relative flex-1 flex flex-col items-center justify-center">
+                        <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
+                            <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+                        </div>
+                        <div className="absolute inset-y-0 right-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
+                            <div className="absolute h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+                        </div>
+                        <div className="absolute inset-x-0 bottom-0 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80">
+                            <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+                        </div>
                         <div className="px-4 py-10 md:py-20 w-full">
                             <div className="w-full space-y-16">
                                 <section id="intro">

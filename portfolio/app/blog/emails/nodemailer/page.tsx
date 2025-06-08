@@ -306,22 +306,23 @@ export default function ContactForm() {
 
                         </div>
                     </div>
-                </div>
+                    </div>
 
-                {/* Sidebar TOC */}
-                <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
-                    <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
-                    <nav className="flex flex-col gap-2 text-sm text-gray-400">
-                        <Link href="#intro" className="hover:text-white">1. Introduction</Link>
-                        <Link href="#installation" className="hover:text-white">2. Installation</Link>
-                        <Link href="#configuration" className="hover:text-white">3. Configurer NodeMailer</Link>
-                        <Link href="#test" className="hover:text-white">4. Lancer l&apos;envoi de mail</Link>
-                        <Link href="#exemple" className="hover:text-white">5. Exemple dans un formulaire</Link>
-                        <Link href="#personnalisation" className="hover:text-white">6. Personnalisation et mise en production</Link>
-                        <Link href="#best-practices" className="hover:text-white">7. Bonnes pratiques</Link>
-                        <Link href="#conclusion" className="hover:text-white">Conclusion</Link>
-                    </nav>
-                </aside>
+
+                    {/* Sidebar TOC */}
+                    <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
+                        <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
+                        <nav className="flex flex-col gap-2 text-sm text-gray-400">
+                            <Link href="#intro" className="hover:text-white">1. Introduction</Link>
+                            <Link href="#installation" className="hover:text-white">2. Installation</Link>
+                            <Link href="#configuration" className="hover:text-white">3. Configurer NodeMailer</Link>
+                            <Link href="#test" className="hover:text-white">4. Lancer l&apos;envoi de mail</Link>
+                            <Link href="#exemple" className="hover:text-white">5. Exemple dans un formulaire</Link>
+                            <Link href="#personnalisation" className="hover:text-white">6. Personnalisation et mise en production</Link>
+                            <Link href="#best-practices" className="hover:text-white">7. Bonnes pratiques</Link>
+                            <Link href="#conclusion" className="hover:text-white">Conclusion</Link>
+                        </nav>
+                    </aside>
             </div>
         </div>
 </main>
