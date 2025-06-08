@@ -5,9 +5,54 @@ import MagicButton from "./ui/MagicButton";
 import { FloatingDock } from "./ui/FloatingDock";
 import { SiGitlab } from "react-icons/si";
 import { SparklesCore } from "./ui/Sparkles";
+import {Label} from "../app/admin/ui/Label";
+import {Input} from "../app/blog/ui/Input"
+import React, {useRef} from "react";
+import {cn} from "@/lib/utils";
+import emailjs from "emailjs-com";
+
+
+const LabelInputContainer = ({
+                                 children,
+                                 className,
+                             }: {
+    children: React.ReactNode;
+    className?: string;
+}) => {
+    return (
+        <div className={cn("flex w-full flex-col space-y-2", className)}>
+            {children}
+        </div>
+    );
+};
+
 
 
 const Footer = () => {
+    const form = useRef<HTMLFormElement>(null);
+
+    const handleSubmit = () => {
+        if (
+            !process.env.NEXT_PUBLIC_SERVICE_ID ||
+            !process.env.NEXT_PUBLIC_TEMPLATE_ID ||
+            !process.env.NEXT_PUBLIC_PUBLIC_KEY
+        ) {
+            throw new Error("Une ou plusieurs variables d'environnement sont manquantes.");
+        }
+
+        emailjs.sendForm(
+            process.env.NEXT_PUBLIC_SERVICE_ID,
+            process.env.NEXT_PUBLIC_TEMPLATE_ID,
+            form.current!,
+            process.env.NEXT_PUBLIC_PUBLIC_KEY
+        ).then((result) => {
+            console.log('Email envoyé !');
+        }).catch((error) => {
+            console.error('Erreur :', error.text);
+        });
+
+    }
+
   return (
     <footer className="w-full pt-20 pb-10 relative" id="contact">
       <SparklesCore
@@ -20,7 +65,7 @@ const Footer = () => {
         particleColor="#FFFFFF"
       />
 
-      <div className="relative z-10 flex flex-col items-center">
+      {/*<div className="relative z-10 flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Prêt à faire passer <span className="text-purple">votre présence numérique</span> au niveau supérieur ?
         </h1>
@@ -34,9 +79,53 @@ const Footer = () => {
             position="right"
           />
         </a>
-      </div>
+      </div>*/}
 
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center relative z-10">
+        <div className="relative z-10 flex flex-col md:flex-row items-start justify-between gap-10 max-w-7xl mx-auto">
+            {/* Partie gauche */}
+            <div className="flex-1">
+                <h1 className="text-5xl font-bold text-left">
+                    Prêt à faire passer <span className="text-purple">votre présence numérique</span> au niveau supérieur ?
+                </h1>
+                <p className="text-white-200 md:mt-10 my-5 text-left">
+                    Contactez-moi et discutons de la manière dont je peux vous aider à atteindre vos objectifs.
+                </p>
+            </div>
+
+            {/* Partie droite : formulaire */}
+            <div className="flex-1 w-full">
+                <form ref={form} className="bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
+                    <LabelInputContainer>
+                        <Label htmlFor="name" className="block text-white mb-1">Nom</Label>
+                        <Input id="name" name="name" placeholder="Votre nom" type="text" required />
+                    </LabelInputContainer>
+                    <LabelInputContainer>
+                        <Label htmlFor="email" className="block text-white mb-1">Email</Label>
+                        <Input id="email" name="email" placeholder="Votre adresse mail" type="text" required />
+                    </LabelInputContainer>
+                    <LabelInputContainer>
+                        <Label htmlFor="message" className="block text-white mb-1">Message</Label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Votre message"
+                            rows={4}
+                            required
+                            className="w-full p-2 rounded bg-zinc-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple"
+                        />
+                    </LabelInputContainer>
+                    <MagicButton
+                        title="Envoyez"
+                        icon={<FaLocationArrow />}
+                        position="right"
+                        handleClick={() => {handleSubmit()}}
+                    />
+                </form>
+            </div>
+        </div>
+
+
+        <div className="flex mt-16 md:flex-row flex-col justify-between items-center relative z-10">
         <p className="md:text-base text-sm md:font-normal font-light text-white-200">
           Copyright © {new Date().getFullYear()} Essi Chainer KOMISSA ZOTSU
         </p>
