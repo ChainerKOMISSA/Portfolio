@@ -404,6 +404,17 @@ export const blogItems= [
     link : "",
     technologies: [],
   }*/
+    ,
+  {
+    id: 15,
+    title: "Ajouter un bloc de code à copier sur son site web",
+    desc: "Tutoriel expliquant comment ajouter un bloc de code en Reactjs ou Nextjs.",
+    img: "/b5.svg",
+    date: "2025-06-08",
+    category: categories[3].name,
+    link : "/blog/bloc-code",
+    technologies: ["react", "nextjs"],
+  }
 ]
 export const emailtutorialsItems= [
   {

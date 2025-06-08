@@ -25,7 +25,7 @@ const techIcons: Record<string, JSX.Element> = {
     javascript: <SiJavascript className="text-yellow-400 w-5 h-5" />,
     nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
     tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
-    nextjs: <SiNextdotjs className="text-gray-900 w-5 h-5" />,
+    nextjs: <SiNextdotjs className="text-gray-300 w-5 h-5" />,
     python: <SiPython className="text-yellow-400 w-5 h-5" />,
     mongodb: <SiMongodb className="text-green-600 w-5 h-5" />,
     express: <SiExpress className="text-white w-5 h-5" />,
@@ -33,7 +33,6 @@ const techIcons: Record<string, JSX.Element> = {
     java: <BiLogoJava className="text-red-600 w-6 h-6" />,
     html:<IoLogoHtml5 className="text-orange-500 w-5 h-5"/>,
     serie:<LuFiles className="text-white w-5 h-5"/>
-
 };
 
 export const BentoGridItem = ({
