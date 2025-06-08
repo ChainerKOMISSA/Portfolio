@@ -469,3 +469,37 @@ export const emailtutorialsItems= [
     technologies: [],
   }
 ]
+
+
+export const links = [
+  {
+    id : 1,
+    name : "React Icons",
+    link : "https://react-icons.github.io/react-icons/",
+    logo : "react"
+  },
+  {
+    id : 2,
+    name : "Radix UI",
+    link : "https://www.radix-ui.com/",
+    logo : "javascript"
+  },
+  {
+    id : 3,
+    name : "SweetAlert2",
+    link : "https://sweetalert2.github.io/",
+    logo : "javascript"
+  },
+  {
+    id : 4,
+    name : "Aceternity UI",
+    link : "https://ui.aceternity.com/",
+    logo : "react"
+  },
+  {
+    id : 5,
+    name : "Wappalyser",
+    link : "https://www.wappalyzer.com/",
+    logo : "web"
+  }
+]

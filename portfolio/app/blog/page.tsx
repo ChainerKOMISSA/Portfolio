@@ -4,8 +4,25 @@ import {useState} from "react";
 import { Input } from "./ui/Input";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import {categories, blogItems} from "@/data";
+import {categories, blogItems, links} from "@/data";
 import {CardDemo} from "./ui/Card";
+import {
+    SiAngular,
+    SiExpress,
+    SiJavascript,
+    SiMongodb,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiPython,
+    SiReact,
+    SiTailwindcss,
+    SiTypescript
+} from "react-icons/si";
+import {BiLogoJava} from "react-icons/bi";
+import {IoLogoHtml5} from "react-icons/io5";
+import {LuFiles} from "react-icons/lu";
+import { IoGlobeOutline } from "react-icons/io5";
+
 
 
 
@@ -27,6 +44,22 @@ export default function BlogPage() {
         const inDesc = item.desc.toLowerCase().includes(search.toLowerCase());
         return inTitle || inDesc;
     });
+
+    const techIcons: Record<string, JSX.Element> = {
+        react: <SiReact className="text-blue-400 w-5 h-5" />,
+        typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
+        javascript: <SiJavascript className="text-yellow-400 w-5 h-5" />,
+        nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
+        tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
+        nextjs: <SiNextdotjs className="text-gray-300 w-5 h-5" />,
+        python: <SiPython className="text-yellow-400 w-5 h-5" />,
+        mongodb: <SiMongodb className="text-green-600 w-5 h-5" />,
+        express: <SiExpress className="text-white w-5 h-5" />,
+        angular: <SiAngular className="text-red-600 w-5 h-5" />,
+        java: <BiLogoJava className="text-red-600 w-6 h-6" />,
+        html:<IoLogoHtml5 className="text-orange-500 w-5 h-5"/>,
+        web:<IoGlobeOutline className="text-white w-5 h-5"/>
+    };
 
     return (
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -50,44 +83,69 @@ export default function BlogPage() {
                     </button>
                 </div>*/}
             </div>
-            <div className="flex flex-row w-full mx-auto mt-4 py-2 gap-4">
-                <div className="left w-full p-4 space-y-8 overflow-y-auto">
-                    {categories.map((category) => {
-                        const itemsInCategory = filteredItems.filter(
-                            (item) => item.category === category.name
-                        );
-                        if (itemsInCategory.length === 0) return null;
-                        return (
-                            <div key={category.id} className="space-y-4">
-                                <div className="flex items-center gap-2">
-                                    <h2 className="text-lg font-bold text-white">{highlight(category.name, search)}</h2>
+            <div className=" flex flex-row w-full">
+                <div className="flex flex-row w-3/4 mx-auto mt-4 py-2 gap-2">
+                    <div className="left w-full p-4 space-y-8 overflow-y-auto">
+                        {categories.map((category) => {
+                            const itemsInCategory = filteredItems.filter(
+                                (item) => item.category === category.name
+                            );
+                            if (itemsInCategory.length === 0) return null;
+                            return (
+                                <div key={category.id} className="space-y-4">
+                                    <div className="flex items-center gap-2">
+                                        <h2 className="text-lg font-bold text-white">{highlight(category.name, search)}</h2>
+                                    </div>
+                                    {itemsInCategory.length === 0 ? (
+                                        <p className="text-gray-400 italic">Aucune donnée pour cette catégorie.</p>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                            {itemsInCategory.map((item) => (
+                                                <CardDemo
+                                                    key={item.id}
+                                                    title={highlight(item.title, search)}
+                                                    desc={highlight(item.desc, search)}
+                                                    img={item.img}
+                                                    date={item.date}
+                                                    category={item.category}
+                                                    technologies={item.technologies}
+                                                    projectLink={item.link}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                                {itemsInCategory.length === 0 ? (
-                                    <p className="text-gray-400 italic">Aucune donnée pour cette catégorie.</p>
-                                ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                    {itemsInCategory.map((item) => (
-                                        <CardDemo
-                                            key={item.id}
-                                            title={highlight(item.title, search)}
-                                            desc={highlight(item.desc, search)}
-                                            img={item.img}
-                                            date={item.date}
-                                            category={item.category}
-                                            technologies={item.technologies}
-                                            projectLink={item.link}
-                                        />
-                                    ))}
+                            );
+                        })}
+                        {filteredItems.length === 0 && (
+                            <p className="text-gray-400 italic">Aucun résultat trouvé.</p>
+                        )}
+                    </div>
+                </div>
+
+                <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
+                    <h2 className="text-lg font-bold text-white">Liens utiles</h2>
+                    <ul role="list" className="divide-y divide-gray-800">
+                        {links.map((link) => (
+                            <li key={link.id} className="flex justify-between gap-x-6 py-5">
+                                <div className="flex min-w-0 gap-x-4">
+                                    <div className="size-12 flex items-center justify-center rounded-full bg-gray-900">
+                                        {techIcons[link.logo] ?? (
+                                            <span className="text-gray-400 text-sm">?</span>
+                                        )}
+                                    </div>
+                                    <div className="min-w-0 flex-auto">
+                                        <p className="text-md font-semibold text-white">{link.name}</p>
+                                        <a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">{link.link}</a>
+                                    </div>
                                 </div>
-                                )}
-                            </div>
-                        );
-                    })}
-                    {filteredItems.length === 0 && (
-                        <p className="text-gray-400 italic">Aucun résultat trouvé.</p>
-                    )}
+                            </li>
+                        ))}
+                    </ul>
+
                 </div>
             </div>
+
         </main>
     );
 }
