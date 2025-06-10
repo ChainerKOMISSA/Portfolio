@@ -473,35 +473,28 @@ export const emailtutorialsItems= [
 
 
 export const links = [
-  {
-    id : 1,
-    name : "React Icons",
-    link : "https://react-icons.github.io/react-icons/",
-    logo : "react"
-  },
-  {
-    id : 2,
-    name : "Radix UI",
-    link : "https://www.radix-ui.com/",
-    logo : "javascript"
-  },
-  {
-    id : 3,
-    name : "SweetAlert2",
-    link : "https://sweetalert2.github.io/",
-    logo : "javascript"
-  },
-  {
-    id : 4,
-    name : "Aceternity UI",
-    link : "https://ui.aceternity.com/",
-    logo : "react"
-  },
-  {
-    id : 5,
-    name : "Wappalyser",
-    link : "https://www.wappalyzer.com/",
-    logo : "web"
-  }
+  {id : 1, name : "React Icons",link : "https://react-icons.github.io/react-icons/", logo : "react"},
+  {id : 2, name : "Radix UI",link : "https://www.radix-ui.com/", logo : "javascript"},
+  {id : 3,name : "SweetAlert2",link : "https://sweetalert2.github.io/", logo : "javascript"},
+  {id : 4,name : "Aceternity UI",link : "https://ui.aceternity.com/",logo : "react"},
+  {id : 5,name : "Wappalyser",link : "https://www.wappalyzer.com/",logo : "web"},
+  {id : 6,name : "Coolors",link : "https://coolors.co/",logo : "css"},
+  {id : 7,name : "Tailwind UI",link : "https://tailwindcss.com/plus/ui-blocks",logo : "tailwindcss" },
+  {id : 8,name : "React Native Paper",link : "https://reactnativepaper.com/",logo : "reactnative"},
+  {id : 9,name : "Appetize.io",link : "https://appetize.io/",logo : "web"},
+  {id : 10,name : "Shots",link : "https://shots.so/",logo : "design"},
+  {id : 11,name : "Rapid API",link : "https://rapidapi.com/",logo : "code"},
+  {id : 12,name : "Crypto JS",link : "https://cryptojs.gitbook.io/docs", logo : "javascript"},
+  {id : 13,name : "Sentry.io",link : "https://sentry.io/welcome/", logo : "code"},
+  {id : 14,name : "Calendly",link : "https://calendly.com/", logo : "web"},
+  {id : 15,name : "Motion.dev",link : "https://motion.dev/", logo : "javascript"},
+  {id : 16,name : "Railway",link : "https://railway.com/features#network-and-connect",logo : "web"},
+  {id : 17,name : "Handlebars",link : "https://handlebarsjs.com/",logo : "javascript"},
+  {id : 18,name : "Origin UI",link : "https://originui.com/",logo : "react"},
+  {id : 19,name : "21st dev",link : "https://21st.dev/home",logo : "javascript"},
+  {id : 20,name : "Tiny MCE",link : "https://www.tiny.cloud/",logo : "javascript"},
+  {id : 21,name : "ZeroBounce",link : "https://www.zerobounce.net/api/email-validation-api/",logo : "code"},
+  {id : 22,name : "Tom Select",link : "https://tom-select.js.org/",logo : "code"},
+  //{id : 23,name : "Tiny MCE",link : "https://www.tiny.cloud/",logo : "javascript"}
 ]
 

@@ -16,18 +16,22 @@ import {
     SiPython,
     SiReact,
     SiTailwindcss,
-    SiTypescript
+    SiTypescript, SiCss3
 } from "react-icons/si";
-import {BiLogoJava} from "react-icons/bi";
+import {BiLogoJava, BiCodeAlt} from "react-icons/bi";
 import {IoLogoHtml5} from "react-icons/io5";
-import {LuFiles} from "react-icons/lu";
 import { IoGlobeOutline } from "react-icons/io5";
+import { RiPencilFill } from "react-icons/ri";
+
 
 
 
 
 export default function BlogPage() {
     const [search, setSearch] = useState("");
+    const [showAll, setShowAll] = useState(false);
+
+
 
     const highlight = (text: string, query: string) => {
         if (!query) return text;
@@ -52,6 +56,10 @@ export default function BlogPage() {
         return inName || inLogo;
     })
 
+    const visibleLinks = search || showAll
+        ? filteredLinks
+        : filteredLinks.slice(0, 10);
+
     const techIcons: Record<string, JSX.Element> = {
         react: <SiReact className="text-blue-400 w-5 h-5" />,
         typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
@@ -65,7 +73,11 @@ export default function BlogPage() {
         angular: <SiAngular className="text-red-600 w-5 h-5" />,
         java: <BiLogoJava className="text-red-600 w-6 h-6" />,
         html:<IoLogoHtml5 className="text-orange-500 w-5 h-5"/>,
-        web:<IoGlobeOutline className="text-white w-5 h-5"/>
+        web:<IoGlobeOutline className="text-white w-5 h-5"/>,
+        css:<SiCss3 className="text-blue-600 w-5 h-5"/>,
+        code:<BiCodeAlt className="text-white w-5 h-5"/>,
+        design:<RiPencilFill className="text-white w-5 h-5"/>,
+        reactnative: <SiReact className="text-purple w-5 h-5" />
     };
 
     return (
@@ -84,11 +96,6 @@ export default function BlogPage() {
                     <Input id="search" type="text" placeholder="Effectuer une recherche ..." className="pl-10 w-full"
                            value={search} onChange={(e) => setSearch(e.target.value)}/>
                 </div>
-                {/*<div className="flex flex-col justify-center">
-                    <button className="cursor-not-allowed inline-block px-4 py-2 w-32 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">
-                        Rechercher
-                    </button>
-                </div>*/}
             </div>
             <div className=" flex flex-row w-full">
                 <div className="flex flex-row w-3/4 mx-auto mt-4 py-2 gap-2">
@@ -130,7 +137,7 @@ export default function BlogPage() {
                     </div>
                 </div>
 
-                <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
+                {/*<div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
                     <h2 className="text-lg font-bold text-white">Liens utiles</h2>
                     <ul role="list" className="divide-y divide-gray-800">
                         {filteredLinks.map((link) =>(
@@ -152,8 +159,44 @@ export default function BlogPage() {
                             <p className="text-gray-400 italic">Aucun résultat.</p>
                         )}
                     </ul>
-
+                </div>*/}
+                <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
+                    <h2 className="text-lg font-bold text-white">Liens utiles</h2>
+                    <ul role="list" className="divide-y divide-gray-800">
+                        {visibleLinks.map((link) => (
+                            <li key={link.id} className="flex justify-between gap-x-6 py-5">
+                                <div className="flex min-w-0 gap-x-4">
+                                    <div className="size-12 flex items-center justify-center rounded-full bg-gray-900">
+                                        {techIcons[link.logo] ?? (
+                                            <span className="text-gray-400 text-sm">?</span>
+                                        )}
+                                    </div>
+                                    <div className="min-w-0 flex-auto">
+                                        <p className="text-md font-semibold text-white">
+                                            {highlight(link.name, search)}
+                                        </p>
+                                        <a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">
+                                            {link.link}
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                        {filteredLinks.length === 0 && (
+                            <p className="text-gray-400 italic">Aucun résultat.</p>
+                        )}
+                    </ul>
+                    {/* Bouton "Afficher plus" visible uniquement si pas en recherche et si trop de liens */}
+                    {filteredLinks.length > 10 && !search && !showAll && (
+                        <button
+                            className="mt-2 text-sm text-blue-400 hover:underline"
+                            onClick={() => setShowAll(true)}
+                        >
+                            Afficher plus
+                        </button>
+                    )}
                 </div>
+
             </div>
 
         </main>
