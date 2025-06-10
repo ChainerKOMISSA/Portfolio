@@ -176,7 +176,7 @@ export const workExperience= [
   {
     id: 1,
     title: "Développement d'applications",
-    desc: `Conception et développement d'application <b>web</b> et <b>mobiles</b> avec des interfaces permettant une belle expérience utilisateur.`,
+    desc: `Conception et développement d&apos;application <b>web</b> avec des interfaces permettant une belle expérience utilisateur.`,
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
@@ -415,8 +415,8 @@ export const blogItems= [
     category: categories[3].name,
     link : "/blog/bloc-code",
     technologies: [],
-  }
-]
+  }]
+
 export const emailtutorialsItems= [
   {
     id: 1,
@@ -470,7 +470,6 @@ export const emailtutorialsItems= [
     technologies: [],
   }
 ]
-
 
 export const links = [
   {id : 1, name : "React Icons",link : "https://react-icons.github.io/react-icons/", logo : "react"},

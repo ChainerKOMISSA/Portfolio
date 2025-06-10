@@ -16,7 +16,7 @@ const content = [
                 Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique : 
                 développement d&apos;application avec gestion de projet informatique.<br/>
                 Découverte et utilisation de plusieurs outils tels que : Bitbucket, Sourcetree, Jenkins, Sonar, Bruno, etc.<br /><br />
-                <small><em>MMA Assurances - Le Mans, France</em></small><br />
+                <small><em>Groupe Covéa (MMA) - Le Mans, France</em></small><br />
                 <BiLogoAngular  className="text-red-500 inline-block mx-1" />
                 <BiLogoTypescript className="text-blue-500 inline-block mx-1"/>
                 <FaJava  className="text-orange-500 inline-block mx-1" />

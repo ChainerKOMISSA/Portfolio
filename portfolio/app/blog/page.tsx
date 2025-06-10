@@ -56,9 +56,7 @@ export default function BlogPage() {
         return inName || inLogo;
     })
 
-    const visibleLinks = search || showAll
-        ? filteredLinks
-        : filteredLinks.slice(0, 10);
+    const visibleLinks = search || showAll ? filteredLinks : filteredLinks.slice(0, 10);
 
     const techIcons: Record<string, JSX.Element> = {
         react: <SiReact className="text-blue-400 w-5 h-5" />,
@@ -84,10 +82,11 @@ export default function BlogPage() {
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
             <Link href="/" className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition">
                     <IoIosArrowRoundBack /></Link>
-            <div className="flex flex-col items-center justify-center px-4">
-                    <h1 className="text-4xl font-bold mb-4 text-center">Bienvenue sur mon blog</h1>
+            <div className="flex flex-col items-center justify-center px-2">
+                <h1 className="text-5xl font-bold mb-4 text-center">Bienvenue sur <span className="text-purple">mon blog</span></h1>
                     <p className="max-w-2xl text-center text-sm sm:text-base">
-                        Un espace pour les devs curieux : vous trouverez ici mes boilerplates, des retours d’expérience sur des bugs tordus, et les solutions que j’ai trouvées en chemin.<br/>Open source, bien sûr.
+                        Un espace pour les devs curieux : vous trouverez ici mes boilerplates, des tutoriels sur des outils que j&apos;ai testé et des liens
+                        vers des plateformes, des outils bref des ressources utiles que j&apos;ai découvert. Open source, bien sûr.
                     </p>
                 </div>
             <div className="flex flex-row w-2/3 mx-auto gap-4 mt-4">
@@ -136,30 +135,6 @@ export default function BlogPage() {
                         )}
                     </div>
                 </div>
-
-                {/*<div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
-                    <h2 className="text-lg font-bold text-white">Liens utiles</h2>
-                    <ul role="list" className="divide-y divide-gray-800">
-                        {filteredLinks.map((link) =>(
-                            <li key={link.id} className="flex justify-between gap-x-6 py-5">
-                                <div className="flex min-w-0 gap-x-4">
-                                    <div className="size-12 flex items-center justify-center rounded-full bg-gray-900">
-                                        {techIcons[link.logo] ?? (
-                                            <span className="text-gray-400 text-sm">?</span>
-                                        )}
-                                    </div>
-                                    <div className="min-w-0 flex-auto">
-                                        <p className="text-md font-semibold text-white">{highlight(link.name, search)}</p>
-                                        <a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">{link.link}</a>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                        {filteredLinks.length === 0 && (
-                            <p className="text-gray-400 italic">Aucun résultat.</p>
-                        )}
-                    </ul>
-                </div>*/}
                 <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
                     <h2 className="text-lg font-bold text-white">Liens utiles</h2>
                     <ul role="list" className="divide-y divide-gray-800">
