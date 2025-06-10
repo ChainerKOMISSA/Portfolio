@@ -1,4 +1,5 @@
 import {GridItem, Category, BlogItem, SocialMedia, Service} from "./types";
+import {CardDemo} from "@/app/blog/ui/Card";
 
 export const navItems = [
   { name: "A propos", link: "#about" },
@@ -503,3 +504,4 @@ export const links = [
     logo : "web"
   }
 ]
+

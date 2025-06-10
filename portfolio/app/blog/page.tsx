@@ -45,6 +45,13 @@ export default function BlogPage() {
         return inTitle || inDesc;
     });
 
+    // Filtrage des liens en fonction de la recherche
+    const filteredLinks = links.filter((item) => {
+        const inName= item.name.toLowerCase().includes(search.toLowerCase());
+        const inLogo = item.logo.toLowerCase().includes(search.toLowerCase());
+        return inName || inLogo;
+    })
+
     const techIcons: Record<string, JSX.Element> = {
         react: <SiReact className="text-blue-400 w-5 h-5" />,
         typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
@@ -126,7 +133,7 @@ export default function BlogPage() {
                 <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
                     <h2 className="text-lg font-bold text-white">Liens utiles</h2>
                     <ul role="list" className="divide-y divide-gray-800">
-                        {links.map((link) => (
+                        {filteredLinks.map((link) =>(
                             <li key={link.id} className="flex justify-between gap-x-6 py-5">
                                 <div className="flex min-w-0 gap-x-4">
                                     <div className="size-12 flex items-center justify-center rounded-full bg-gray-900">
@@ -135,12 +142,15 @@ export default function BlogPage() {
                                         )}
                                     </div>
                                     <div className="min-w-0 flex-auto">
-                                        <p className="text-md font-semibold text-white">{link.name}</p>
+                                        <p className="text-md font-semibold text-white">{highlight(link.name, search)}</p>
                                         <a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">{link.link}</a>
                                     </div>
                                 </div>
                             </li>
                         ))}
+                        {filteredLinks.length === 0 && (
+                            <p className="text-gray-400 italic">Aucun résultat.</p>
+                        )}
                     </ul>
 
                 </div>
