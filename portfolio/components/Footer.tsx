@@ -5,11 +5,14 @@ import MagicButton from "./ui/MagicButton";
 import { FloatingDock } from "./ui/FloatingDock";
 import { SiGitlab } from "react-icons/si";
 import { SparklesCore } from "./ui/Sparkles";
-import {Label} from "../app/admin/ui/Label";
-import {Input} from "../app/blog/ui/Input"
+import {Label} from "@/app/admin/ui/Label";
+import {Input} from "@/app/blog/ui/Input"
 import React, {useRef} from "react";
 import {cn} from "@/lib/utils";
 import emailjs from "emailjs-com";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const LabelInputContainer = ({
@@ -31,13 +34,15 @@ const LabelInputContainer = ({
 const Footer = () => {
     const form = useRef<HTMLFormElement>(null);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e?: React.FormEvent) => {
+        e?.preventDefault();
         if (
             !process.env.NEXT_PUBLIC_SERVICE_ID ||
             !process.env.NEXT_PUBLIC_TEMPLATE_ID ||
             !process.env.NEXT_PUBLIC_PUBLIC_KEY
         ) {
-            throw new Error("Une ou plusieurs variables d'environnement sont manquantes.");
+            toast.error("Configuration incorrecte : variables d'environnement manquantes.");
+            return;
         }
 
         emailjs.sendForm(
@@ -46,11 +51,11 @@ const Footer = () => {
             form.current!,
             process.env.NEXT_PUBLIC_PUBLIC_KEY
         ).then((result) => {
-            console.log('Email envoyé !');
+            toast.success("Email envoyé!");
+            form.current?.reset();
         }).catch((error) => {
-            console.error('Erreur :', error.text);
+            toast.error('Erreur :', error.text);
         });
-
     }
 
   return (
@@ -64,23 +69,18 @@ const Footer = () => {
         className="absolute top-0 left-0 w-full h-full z-0"
         particleColor="#FFFFFF"
       />
-
-      {/*<div className="relative z-10 flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
-          Prêt à faire passer <span className="text-purple">votre présence numérique</span> au niveau supérieur ?
-        </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
-          Contactez-moi et discutons de la manière dont je peux vous aider à atteindre vos objectifs.
-        </p>
-        <a href="mailto:essikomissa@gmail.com" target="_blank">
-          <MagicButton
-            title="Envoyez un mail"
-            icon={<FaLocationArrow />}
-            position="right"
-          />
-        </a>
-      </div>*/}
-
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+        />
         <div className="relative z-10 flex flex-col md:flex-row items-start justify-between gap-10 max-w-7xl mx-auto">
             {/* Partie gauche */}
             <div className="flex-1">
@@ -118,7 +118,7 @@ const Footer = () => {
                         title="Envoyez"
                         icon={<FaLocationArrow />}
                         position="right"
-                        handleClick={() => {handleSubmit()}}
+                        handleClick={(e) => handleSubmit(e)}
                     />
                 </form>
             </div>
@@ -141,6 +141,7 @@ const Footer = () => {
           />
         </div>
       </div>
+
     </footer>
   );
 };

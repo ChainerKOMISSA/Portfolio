@@ -10,7 +10,7 @@ const MagicButton = ({
     title: string;
     icon: React.ReactNode;
     position: string;
-    handleClick?: () => void;
+    handleClick?: (e: any) => void;
     otherClasses?: string
 }) => {
     return (
