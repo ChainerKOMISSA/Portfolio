@@ -251,7 +251,7 @@ export const categories = [
   },
   {
     id: 2,
-    name: "Découvertes"
+    name: "Cheat Sheets"
   },
   {
     id: 3,
@@ -384,28 +384,17 @@ export const blogItems= [
     category: categories[3].name,
     link : "/blog/emails",
     technologies: ["serie"],
-  }/*,
-  {
-    id: 13,
-    title: "MermaidJS",
-    desc: "Une bibliothèque JavaScript qui permet de créer des diagrammes et des graphiques en texte brut.",
-    img: "/bgmermaid.png",
-    date: "A venir",
-    category: categories[1].name,
-    link : "",
-    technologies: [],
   },
   {
-    id: 14,
-    title: "Radix UI",
+    id: 13,
+    title: "Cheat Sheet Git",
     desc: "Une bibliothèque JavaScript qui permet de créer des diagrammes et des graphiques en texte brut.",
-    img: "/bgradix.png",
-    date: "A venir",
+    img: "/bgmermaid.png",
+    date: "2025-06-21",
     category: categories[1].name,
-    link : "",
+    link : "/blog/git-cheatsheet",
     technologies: [],
-  }*/
-    ,
+  },
   {
     id: 15,
     title: "Ajouter un bloc de code à copier sur son site web",
