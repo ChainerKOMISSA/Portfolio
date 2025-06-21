@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import {useState} from "react";
+import React, {useState} from "react";
 import { Input } from "./ui/Input";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { HiMagnifyingGlass } from "react-icons/hi2";
@@ -22,6 +22,7 @@ import {BiLogoJava, BiCodeAlt} from "react-icons/bi";
 import {IoLogoHtml5} from "react-icons/io5";
 import { IoGlobeOutline } from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
+import {HoverBorderGradient} from "@/app/blog/ui/hover-border-gradient";
 
 
 
@@ -61,7 +62,7 @@ export default function BlogPage() {
     const techIcons: Record<string, JSX.Element> = {
         react: <SiReact className="text-blue-400 w-5 h-5" />,
         typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
-        javascript: <SiJavascript className="text-yellow-400 w-5 h-5" />,
+        javascript: <SiJavascript className="text-yellow-400 w-4 h-4" />,
         nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
         tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
         nextjs: <SiNextdotjs className="text-gray-300 w-5 h-5" />,
@@ -97,7 +98,7 @@ export default function BlogPage() {
                 </div>
             </div>
             <div className=" flex flex-row w-full">
-                <div className="flex flex-row w-3/4 mx-auto mt-4 py-2 gap-2">
+                <div className="flex flex-row w-full mx-auto mt-4 py-2 gap-2">
                     <div className="left w-full p-4 space-y-8 overflow-y-auto">
                         {categories.map((category) => {
                             const itemsInCategory = filteredItems.filter(
@@ -112,7 +113,7 @@ export default function BlogPage() {
                                     {itemsInCategory.length === 0 ? (
                                         <p className="text-gray-400 italic">Aucune donnée pour cette catégorie.</p>
                                     ) : (
-                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                             {itemsInCategory.map((item) => (
                                                 <CardDemo
                                                     key={item.id}
@@ -135,7 +136,7 @@ export default function BlogPage() {
                         )}
                     </div>
                 </div>
-                <div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
+                {/*<div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
                     <h2 className="text-lg font-bold text-white">Liens utiles</h2>
                     <ul role="list" className="divide-y divide-gray-800">
                         {visibleLinks.map((link) => (
@@ -161,7 +162,6 @@ export default function BlogPage() {
                             <p className="text-gray-400 italic">Aucun résultat.</p>
                         )}
                     </ul>
-                    {/* Bouton "Afficher plus" visible uniquement si pas en recherche et si trop de liens */}
                     {filteredLinks.length > 10 && !search && !showAll && (
                         <button
                             className="mt-2 text-sm text-blue-400 hover:underline"
@@ -170,8 +170,31 @@ export default function BlogPage() {
                             Afficher plus
                         </button>
                     )}
-                </div>
+                </div>*/}
+            </div>
 
+            <h2 className="text-lg font-bold text-white mb-4">Liens utiles</h2>
+            <div className=" flex flex-row w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    {filteredLinks.map((link) => (
+                        <HoverBorderGradient key = {link.id}
+                            containerClassName="rounded-full"
+                            as="button"
+                            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                        >
+                            {techIcons[link.logo] ?? (
+                                <span className="text-gray-400 text-sm">?</span>
+                            )}
+                            <span><a href={link.link} target="_blank">{highlight(link.name, search)}</a></span>
+                            {/*<a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">
+                                {link.link}
+                            </a>*/}
+                        </HoverBorderGradient>
+                    ))}
+                    {filteredLinks.length === 0 && (
+                        <p className="text-gray-400 italic">Aucun résultat.</p>
+                    )}
+                </div>
             </div>
 
         </main>
