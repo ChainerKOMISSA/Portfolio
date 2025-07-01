@@ -385,16 +385,17 @@ export const blogItems= [
     link : "/blog/emails",
     technologies: ["serie"],
   },
-  {
+  /*{
     id: 13,
     title: "Cheat Sheet Git",
     desc: "Une bibliothèque JavaScript qui permet de créer des diagrammes et des graphiques en texte brut.",
     img: "/bgmermaid.png",
     date: "2025-06-21",
     category: categories[1].name,
-    link : "/blog/git-cheatsheet",
+    link:"",
+    //link : "/blog/git-cheatsheet",
     technologies: [],
-  },
+  },*/
   {
     id: 15,
     title: "Ajouter un bloc de code à copier sur son site web",

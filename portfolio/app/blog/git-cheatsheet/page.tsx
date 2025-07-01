@@ -88,11 +88,10 @@ export default function BlogPage() {
                         <div className="px-4 py-10 md:py-20 w-full">
                             <div className="w-full space-y-16">
                                 <section id="intro">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">1. Installation de Git</h2>
+                                    <h2 className="text-2xl font-bold mb-4 text-white">1. Installation de Github</h2>
                                     <p className="text-gray-300">
-                                        Pour utiliser Git, tu peux passer par GitHub  ou GitLab. GitHub met à disposition plusieurs
-                                        applications desktop pratiques, ainsi qu&apos;un outil en ligne
-                                        de commande toujours à jour:
+                                        GitHub met à disposition plusieurs applications desktop pratiques, ainsi qu&apos;un outil
+                                        en ligne de commande toujours à jour:
                                     </p>
                                         <ul className="space-y-2 my-2">
                                             <li className="flex items-start space-x-2">
@@ -102,8 +101,11 @@ export default function BlogPage() {
                                                 <span><code className="text-blue-400">GitHub Desktop</code> une interface graphique simple et intuitive, disponible sur Windows et macOS.</span>
                                             </li>
                                             <li className="flex items-start space-x-2">
-                                                <svg className="w-5 h-5 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                                <svg className="w-5 h-5 text-green-600 mt-1" fill="currentColor"
+                                                     viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd"
+                                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                          clipRule="evenodd"/>
                                                 </svg>
                                                 <span><code className="text-blue-400">GitHub CLI</code> une interface en ligne de commande puissante,
                                                 maintenue à jour automatiquement, pour gérer dépôts, issues, pull requests, releases et bien
@@ -111,26 +113,33 @@ export default function BlogPage() {
                                             </li>
                                         </ul>
                                     <p className="text-gray-300">
-                                        Cette combinaison d&apos;outils facilite le travail collaboratif sur GitHub, en proposant
-                                        une prise en main rapide aux débutants grâce à GitHub Desktop, et une flexibilité maximale
-                                        aux utilisateurs avancés grâce à la GitHub CLI.
+                                        Cette combinaison d&apos;outils facilite le travail collaboratif sur GitHub, en
+                                        proposant une prise en main rapide aux débutants grâce à GitHub Desktop, et une
+                                        flexibilité maximale aux utilisateurs avancés grâce à la GitHub CLI.<br/><br/>
+                                        Liens d&apos;installation de Github:
                                     </p>
                                     <ul className="space-y-2 my-2">
                                         <li className="flex items-start space-x-2">
-                                            <svg className="w-4 h-4 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                            <svg className="w-5 h-5 text-white mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
                                             </svg>
                                             <span>GitHub pour Windows: <code className="text-blue-400"><a href="https://github.com/apps/desktop" target="_blank">windows.github.com</a></code></span>
                                         </li>
                                         <li className="flex items-start space-x-2">
-                                            <svg className="w-4 h-4 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                            <svg className="w-5 h-5 text-white mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
                                             </svg>
                                             <span>GitHub pour Mac: <code className="text-blue-400"><a href="https://github.com/apps/desktop" target="_blank">mac.github.com</a></code></span>
                                         </li>
                                         <li className="flex items-start space-x-2">
-                                            <svg className="w-4 h-4 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                            <svg className="w-5 h-5 text-white mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
                                             </svg>
                                             <span>Git pour toutes les plate-formes: <code className="text-blue-400"><a href="https://git-scm.com/" target="_blank">git-scm.com</a></code></span>
                                         </li>
@@ -138,32 +147,83 @@ export default function BlogPage() {
                                 </section>
 
                                 <section id="setup">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">2. Installer les dépendances nécessaires</h2>
-                                    <p className="text-gray-300">Nous allons utiliser :</p>
+                                    <h2 className="text-2xl font-bold mb-4 text-white">2. Configuration</h2>
+                                    <p className="text-gray-300">Pour configurer les informations de l&apos;utilisateur pour tous les
+                                        dépôts locaux, vous allez avoir besoin de ces commandes:
+                                    </p>
+                                    <ul className="space-y-2 ml-4 my-2">
+                                        <li className="flex items-start space-x-2">
+                                            <svg className="w-4 h-4 text-yellow-500 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" >
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"/>
+                                            </svg>
+                                            <span>Définir le nom que vous voulez associer à toutes vos opérations de commit: </span>
+                                        </li>
+                                        <CodeBlock language="bash" code={`$ git config --global user.name "[nom]"`}/>
+                                    </ul>
+                                    <ul className="space-y-2 ml-4 my-2">
+                                        <li className="flex items-start space-x-2">
+                                            <svg className="w-4 h-4 text-yellow-500 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" >
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"/>
+                                            </svg>
+                                            <span>Définir l’email que vous voulez associer à toutes vos opérations de commit: </span>
+                                        </li>
+                                        <CodeBlock language="bash" code={`$ git config --global user.email "[adresse email]"`}/>
+                                    </ul>
                                     <ul className="space-y-2 my-2">
                                         <li className="flex items-start space-x-2">
-                                            <svg className="w-4 h-4 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                            <svg className="w-4 h-4 text-green-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/>
                                             </svg>
-                                            <span><code className="text-blue-400">GitHub Desktop</code> une interface graphique simple et intuitive, disponible sur Windows et macOS.</span>
-                                        </li>
-                                        <li className="flex items-start space-x-2">
-                                            <svg className="w-4 h-4 text-green-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                                            </svg>
-                                            <span><code className="text-blue-400">GitHub CLI</code> une interface en ligne de commande puissante,
-                                                maintenue à jour automatiquement, pour gérer dépôts, issues, pull requests, releases et bien
-                                                d&apos;autres directement depuis le terminal. </span>
+                                            <span>Un commit est un enregistrement des fichiers à un moment précis, accompagné d&apos;un message décrivant
+                                                les changements.</span>
                                         </li>
                                     </ul>
-                                    <CodeBlock language="bash" code={`npm install react-copy-to-clipboard react-syntax-highlighter react-icons`} />
                                 </section>
 
                                 <section id="composant">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">3. Créer un composant CodeBlock</h2>
-                                    <p className="text-gray-300">Dans ton dossier <code className="text-blue-400">components/CodeBlock.js</code> :</p>
-                                    <CodeBlock code={blocCode} language="javascript"/>
-                                    <p className="text-gray-300 mt-2">Tu peux maintenant utiliser ce composant dans toutes les pages où tu veux l&apos;utiliser.</p>
+                                    <h2 className="text-2xl font-bold mb-4 text-white">3. Création de dépôts</h2>
+                                    <p className="text-gray-300">Pour configurer les informations de l&apos;utilisateur pour tous les
+                                        dépôts locaux, vous allez avoir besoin de ces commandes:
+                                    </p>
+                                    <ul className="space-y-2 ml-4 my-2">
+                                        <li className="flex items-start space-x-2">
+                                            <svg className="w-4 h-4 text-yellow-500 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" >
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"/>
+                                            </svg>
+                                            <span>Démarrer un nouveau dépôt ou en obtenir un depuis une URL existante:  </span>
+                                        </li>
+                                        <CodeBlock language="bash" code={`$ git config --global user.name "[nom]"`}/>
+                                    </ul>
+                                    <ul className="space-y-2 ml-4 my-2">
+                                        <li className="flex items-start space-x-2">
+                                            <svg className="w-4 h-4 text-yellow-500 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" >
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"/>
+                                            </svg>
+                                            <span>Définir l’email que vous voulez associer à toutes vos opérations de commit: </span>
+                                        </li>
+                                        <CodeBlock language="bash" code={`$ git config --global user.email "[adresse email]"`}/>
+                                    </ul>
+                                    <ul className="space-y-2 my-2">
+                                        <li className="flex items-start space-x-2">
+                                            <svg className="w-4 h-4 text-green-600 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/>
+                                            </svg>
+                                            <span>Un dépôt GitHub est un espace en ligne où sont stockés le code source d’un projet,
+                                                son historique de modifications et ses ressources associées.</span>
+                                        </li>
+                                    </ul>
                                 </section>
 
                                 <section id="exemple">
@@ -240,17 +300,6 @@ export default function BlogPage() {
                             </div>
                         </div>
                     </div>
-
-                    <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
-                        <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
-                        <nav className="flex flex-col gap-2 text-sm text-gray-400">
-                            <Link href="#intro" className="hover:text-white">1. Introduction</Link>
-                            <Link href="#setup" className="hover:text-white">2. Créer un composant CodeBlock</Link>
-                            <Link href="#composant" className="hover:text-white">3. Créer un composant CodeBlock</Link>
-                            <Link href="#exemple" className="hover:text-white">4. Utiliser le composant dans une page</Link>
-                            <Link href="#conclusion" className="hover:text-white">Conclusion</Link>
-                        </nav>
-                    </aside>
                 </div>
             </div>
         </main>
