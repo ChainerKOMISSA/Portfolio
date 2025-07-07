@@ -22,8 +22,7 @@ import {BiLogoJava, BiCodeAlt} from "react-icons/bi";
 import {IoLogoHtml5} from "react-icons/io5";
 import { IoGlobeOutline } from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
-import {HoverBorderGradient} from "@/app/blog/ui/hover-border-gradient";
-import Image from "next/image";
+
 
 
 
@@ -31,8 +30,6 @@ import Image from "next/image";
 
 export default function BlogPage() {
     const [search, setSearch] = useState("");
-    const [showAll, setShowAll] = useState(false);
-
 
 
     const highlight = (text: string, query: string) => {
@@ -57,8 +54,6 @@ export default function BlogPage() {
         const inLogo = item.logo.toLowerCase().includes(search.toLowerCase());
         return inName || inLogo;
     })
-
-    const visibleLinks = search || showAll ? filteredLinks : filteredLinks.slice(0, 10);
 
     const techIcons: Record<string, JSX.Element> = {
         react: <SiReact className="text-blue-400 w-8 h-8" />,
