@@ -44,7 +44,7 @@ export const projects = [
     title: "STOCKLY",
     description:
       "Application web de gestion de boutique. Gestion et suivi du stock, du personnel, des commandes et des livraisons. Statistiques en temps réel.",
-    link: "https://chainerkomissa.github.io/projet_stockly.html",
+    link: "https://github.com/ChainerKOMISSA/Stockly",
     image: "/logo stockly 2.png",
     icons: [<FaReact className="text-blue-400 rounded-full" key="react"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <SiMysql className="text-blue-500" key="mysql"/>],
   },
