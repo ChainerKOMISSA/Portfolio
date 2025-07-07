@@ -462,28 +462,160 @@ export const emailtutorialsItems= [
 ]
 
 export const links = [
-  {id : 1, name : "React Icons",link : "https://react-icons.github.io/react-icons/", logo : "react"},
-  {id : 2, name : "Radix UI",link : "https://www.radix-ui.com/", logo : "javascript"},
-  {id : 3,name : "SweetAlert2",link : "https://sweetalert2.github.io/", logo : "javascript"},
-  {id : 4,name : "Aceternity UI",link : "https://ui.aceternity.com/",logo : "react"},
-  {id : 5,name : "Wappalyser",link : "https://www.wappalyzer.com/",logo : "web"},
-  {id : 6,name : "Coolors",link : "https://coolors.co/",logo : "css"},
-  {id : 7,name : "Tailwind UI",link : "https://tailwindcss.com/plus/ui-blocks",logo : "tailwindcss" },
-  {id : 8,name : "React Native Paper",link : "https://reactnativepaper.com/",logo : "reactnative"},
-  {id : 9,name : "Appetize.io",link : "https://appetize.io/",logo : "web"},
-  {id : 10,name : "Shots",link : "https://shots.so/",logo : "design"},
-  {id : 11,name : "Rapid API",link : "https://rapidapi.com/",logo : "code"},
-  {id : 12,name : "Crypto JS",link : "https://cryptojs.gitbook.io/docs", logo : "javascript"},
-  {id : 13,name : "Sentry.io",link : "https://sentry.io/welcome/", logo : "code"},
-  {id : 14,name : "Calendly",link : "https://calendly.com/", logo : "web"},
-  {id : 15,name : "Motion.dev",link : "https://motion.dev/", logo : "javascript"},
-  {id : 16,name : "Railway",link : "https://railway.com/features#network-and-connect",logo : "web"},
-  {id : 17,name : "Handlebars",link : "https://handlebarsjs.com/",logo : "javascript"},
-  {id : 18,name : "Origin UI",link : "https://originui.com/",logo : "react"},
-  {id : 19,name : "21st dev",link : "https://21st.dev/home",logo : "javascript"},
-  {id : 20,name : "Tiny MCE",link : "https://www.tiny.cloud/",logo : "javascript"},
-  {id : 21,name : "ZeroBounce",link : "https://www.zerobounce.net/api/email-validation-api/",logo : "code"},
-  {id : 22,name : "Tom Select",link : "https://tom-select.js.org/",logo : "code"},
-  //{id : 23,name : "Tiny MCE",link : "https://www.tiny.cloud/",logo : "javascript"}
+  {
+    id: 1,
+    name: "React Icons",
+    link: "https://react-icons.github.io/react-icons/",
+    logo: "react",
+    description: "Une collection d’icônes populaires unifiées pour les projets React."
+  },
+  {
+    id: 2,
+    name: "Radix UI",
+    link: "https://www.radix-ui.com/",
+    logo: "javascript",
+    description: "Des composants accessibles et non stylés pour construire des interfaces design."
+  },
+  {
+    id: 3,
+    name: "SweetAlert2",
+    link: "https://sweetalert2.github.io/",
+    logo: "javascript",
+    description: "Une bibliothèque élégante pour afficher des pop-ups personnalisés."
+  },
+  {
+    id: 4,
+    name: "Aceternity UI",
+    link: "https://ui.aceternity.com/",
+    logo: "react",
+    description: "Composants et animations modernes pour sites React avec un style épuré."
+  },
+  {
+    id: 5,
+    name: "Wappalyser",
+    link: "https://www.wappalyzer.com/",
+    logo: "web",
+    description: "Outil d’analyse pour détecter les technologies utilisées sur un site web."
+  },
+  {
+    id: 6,
+    name: "Coolors",
+    link: "https://coolors.co/",
+    logo: "css",
+    description: "Générateur de palettes de couleurs intuitif pour tes projets créatifs."
+  },
+  {
+    id: 7,
+    name: "Tailwind UI",
+    link: "https://tailwindcss.com/plus/ui-blocks",
+    logo: "tailwindcss",
+    description: "Composants UI premium et réactifs conçus pour Tailwind CSS."
+  },
+  {
+    id: 8,
+    name: "React Native Paper",
+    link: "https://reactnativepaper.com/",
+    logo: "reactnative",
+    description: "Bibliothèque de composants Material Design pour React Native."
+  },
+  {
+    id: 9,
+    name: "Appetize.io",
+    link: "https://appetize.io/",
+    logo: "web",
+    description: "Émulateur en ligne pour tester des applications mobiles dans un navigateur."
+  },
+  {
+    id: 10,
+    name: "Shots",
+    link: "https://shots.so/",
+    logo: "design",
+    description: "Générateur de maquettes visuelles pour présenter des captures d’écran."
+  },
+  {
+    id: 11,
+    name: "Rapid API",
+    link: "https://rapidapi.com/",
+    logo: "code",
+    description: "Marketplace centralisée pour découvrir et intégrer des APIs facilement."
+  },
+  {
+    id: 12,
+    name: "Crypto JS",
+    link: "https://cryptojs.gitbook.io/docs",
+    logo: "javascript",
+    description: "Bibliothèque JavaScript pour chiffrer, décrypter et hasher facilement des données."
+  },
+  {
+    id: 13,
+    name: "Sentry.io",
+    link: "https://sentry.io/welcome/",
+    logo: "code",
+    description: "Surveillance d’erreurs en temps réel pour améliorer la stabilité de vos apps."
+  },
+  {
+    id: 14,
+    name: "Calendly",
+    link: "https://calendly.com/",
+    logo: "web",
+    description: "Planificateur en ligne pour réserver des rendez-vous sans prise de tête."
+  },
+  {
+    id: 15,
+    name: "Motion.dev",
+    link: "https://motion.dev/",
+    logo: "javascript",
+    description: "Animations web fluides et performantes avec une API moderne pour React."
+  },
+  {
+    id: 16,
+    name: "Railway",
+    link: "https://railway.com/features#network-and-connect",
+    logo: "web",
+    description: "Plateforme tout-en-un pour déployer et gérer facilement tes applications back-end."
+  },
+  {
+    id: 17,
+    name: "Handlebars",
+    link: "https://handlebarsjs.com/",
+    logo: "javascript",
+    description: "Moteur de templates JavaScript simple et puissant pour générer du HTML."
+  },
+  {
+    id: 18,
+    name: "Origin UI",
+    link: "https://originui.com/",
+    logo: "react",
+    description: "Composants React élégants et prêts à l’emploi pour accélérer ton design."
+  },
+  {
+    id: 19,
+    name: "21st dev",
+    link: "https://21st.dev/home",
+    logo: "javascript",
+    description: "Ressources, boilerplates et outils modernes pour développeurs JavaScript."
+  },
+  {
+    id: 20,
+    name: "Tiny MCE",
+    link: "https://www.tiny.cloud/",
+    logo: "javascript",
+    description: "Éditeur WYSIWYG puissant pour créer des contenus HTML riches facilement."
+  },
+  {
+    id: 21,
+    name: "ZeroBounce",
+    link: "https://www.zerobounce.net/api/email-validation-api/",
+    logo: "code",
+    description: "API de validation d’email pour améliorer la délivrabilité de tes campagnes."
+  },
+  {
+    id: 22,
+    name: "Tom Select",
+    link: "https://tom-select.js.org/",
+    logo: "code",
+    description: "Plugin JavaScript pour des champs de sélection dynamiques et personnalisables."
+  }
 ]
+
 

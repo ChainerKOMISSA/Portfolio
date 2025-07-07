@@ -23,6 +23,7 @@ import {IoLogoHtml5} from "react-icons/io5";
 import { IoGlobeOutline } from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
 import {HoverBorderGradient} from "@/app/blog/ui/hover-border-gradient";
+import Image from "next/image";
 
 
 
@@ -60,23 +61,23 @@ export default function BlogPage() {
     const visibleLinks = search || showAll ? filteredLinks : filteredLinks.slice(0, 10);
 
     const techIcons: Record<string, JSX.Element> = {
-        react: <SiReact className="text-blue-400 w-5 h-5" />,
-        typescript: <SiTypescript className="text-blue-600 w-5 h-5" />,
-        javascript: <SiJavascript className="text-yellow-400 w-4 h-4" />,
-        nodejs: <SiNodedotjs className="text-green-600 w-5 h-5" />,
-        tailwindcss: <SiTailwindcss className="text-cyan-400 w-5 h-5" />,
-        nextjs: <SiNextdotjs className="text-gray-300 w-5 h-5" />,
-        python: <SiPython className="text-yellow-400 w-5 h-5" />,
-        mongodb: <SiMongodb className="text-green-600 w-5 h-5" />,
-        express: <SiExpress className="text-white w-5 h-5" />,
-        angular: <SiAngular className="text-red-600 w-5 h-5" />,
-        java: <BiLogoJava className="text-red-600 w-6 h-6" />,
-        html:<IoLogoHtml5 className="text-orange-500 w-5 h-5"/>,
-        web:<IoGlobeOutline className="text-white w-5 h-5"/>,
-        css:<SiCss3 className="text-blue-600 w-5 h-5"/>,
-        code:<BiCodeAlt className="text-white w-5 h-5"/>,
-        design:<RiPencilFill className="text-white w-5 h-5"/>,
-        reactnative: <SiReact className="text-purple w-5 h-5" />
+        react: <SiReact className="text-blue-400 w-8 h-8" />,
+        typescript: <SiTypescript className="text-blue-600 w-8 h-8" />,
+        javascript: <SiJavascript className="text-yellow-400 w-7 h-7" />,
+        nodejs: <SiNodedotjs className="text-green-600 w-8 h-8" />,
+        tailwindcss: <SiTailwindcss className="text-cyan-400 w-8 h-8" />,
+        nextjs: <SiNextdotjs className="text-gray-300 w-8 h-8" />,
+        python: <SiPython className="text-yellow-400 w-8 h-8" />,
+        mongodb: <SiMongodb className="text-green-600 w-8 h-8" />,
+        express: <SiExpress className="text-whitew-8 h-8" />,
+        angular: <SiAngular className="text-red-600 w-8 h-8" />,
+        java: <BiLogoJava className="text-red-600 w-8 h-8" />,
+        html:<IoLogoHtml5 className="text-orange-500 w-8 h-8"/>,
+        web:<IoGlobeOutline className="text-white w-8 h-8"/>,
+        css:<SiCss3 className="text-blue-600 w-8 h-8"/>,
+        code:<BiCodeAlt className="text-white w-9 h-9"/>,
+        design:<RiPencilFill className="text-white w-8 h-8"/>,
+        reactnative: <SiReact className="text-purple w-8 h-8" />
     };
 
     return (
@@ -174,28 +175,45 @@ export default function BlogPage() {
             </div>
 
             <h2 className="text-lg font-bold text-white mb-4">Liens utiles</h2>
-            <div className=" flex flex-row w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                    {filteredLinks.map((link) => (
-                        <HoverBorderGradient key = {link.id}
-                            containerClassName="rounded-full"
-                            as="button"
-                            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
-                        >
-                            {techIcons[link.logo] ?? (
-                                <span className="text-gray-400 text-sm">?</span>
-                            )}
-                            <span><a href={link.link} target="_blank">{highlight(link.name, search)}</a></span>
-                            {/*<a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">
-                                {link.link}
-                            </a>*/}
-                        </HoverBorderGradient>
-                    ))}
-                    {filteredLinks.length === 0 && (
+            <div className="flex flex-row w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                    {filteredLinks.length > 0 ? (
+                        filteredLinks.map((link) => (
+                            <div
+                                key={link.id}
+                                className="card overflow-hidden rounded-3xl border border-white/[0.1] bg-white/5 hover:bg-white/10 transition">
+                                <div className="flex lg:flex-row flex-col lg:items-center p-6 gap-4">
+                                    <div className="text-3xl">
+                                        {techIcons[link.logo] ? techIcons[link.logo] : (
+                                            <span className="text-gray-400 text-sm">?</span>
+                                        )}
+                                    </div>
+                                    <div className="flex flex-col lg:ms-5">
+                                        <h2 className="text-xl font-bold text-white">
+                                            {link.name}
+                                        </h2>
+                                        <p className="text-sm text-gray-300 mt-2">
+                                            {link.description}
+                                        </p>
+                                        <a
+                                            href={link.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-purple hover:underline text-sm mt-1"
+                                        >
+                                            Voir...
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
                         <p className="text-gray-400 italic">Aucun résultat.</p>
                     )}
                 </div>
             </div>
+
+
 
         </main>
     );
