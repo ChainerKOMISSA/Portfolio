@@ -22,7 +22,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "CDI en développement web full stack\nAoût 2025",
+    title: "CDI en développement web full stack Septembre 2025",
     description: "En recherche de ",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -405,7 +405,18 @@ export const blogItems= [
     category: categories[3].name,
     link : "/blog/bloc-code",
     technologies: [],
-  }]
+  },
+  {
+    id: 16,
+    title: "Série : Intégrer des solutions de paiement en ligne",
+    desc: " Cette série de tutoriels vous guide pas à pas dans l'intégration de solutions de paiement en ligne comme PayPal, Stripe, Square ainsi que Google Pay et Apple Pay.",
+    img: "/paiements.png",
+    date: " ",
+    category: categories[3].name,
+    link : "/blog/paiements",
+    technologies: ["serie"],
+  },
+  ]
 
 export const emailtutorialsItems= [
   {
@@ -443,7 +454,7 @@ export const emailtutorialsItems= [
     title: "Envoyer un mail en utilisant EmailJS",
     desc: "Tutoriels expliquant comment coder des envois de mail avec EmailJS.",
     img: "/bgemailjs.png",
-    date: "A venir",
+    date: "2025-06-08",
     category: categories[3].name,
     link : "/blog/emails/emailjs",
     technologies: [],
@@ -459,6 +470,50 @@ export const emailtutorialsItems= [
     ///link : "/blog/emails/sendgrid",
     technologies: [],
   }
+]
+
+export const paiementtutorialsItems= [
+  {
+    id: 1,
+    title: "Paypal",
+    desc: "Tutoriel expliquant comment intégrer PayPal comme solution de paiement en ligne, étape par étape",
+    img: "/bgpaypal.png",
+    date: "",
+    category: categories[3].name,
+    link : "/blog/paiements/paypal",
+    technologies: [],
+  },
+  {
+    id: 2,
+    title: "Stripe",
+    desc: "Tutoriel pratique pour mettre en place Stripe et accepter des paiements par carte bancaire de façon sécurisée.",
+    img: "/bgstripe.png",
+    date: "2",
+    category: categories[3].name,
+    link : "/blog/paiements/stripe",
+    technologies: [],
+  },
+  {
+    id: 3,
+    title: "Google Pay / Apple Pay",
+    desc: "Découvrez comment proposer Google Pay ou Apple Pay comme méthode de paiement rapide et fluide dans vos applications.",
+    img: "/bggpay.png",
+    date: "",
+    category: categories[3].name,
+    link : "/blog/paiements/pay",
+    technologies: [],
+  }
+  /*,
+  {
+    id: 4,
+    title: "Square",
+    desc: "Apprenez à intégrer Square pour gérer les transactions en ligne et en magasin avec une seule solution",
+    img: "/bgemailjs.png",
+    date: "2025-06-08",
+    category: categories[3].name,
+    link : "/blog/paiements/square",
+    technologies: [],
+  }*/
 ]
 
 export const links = [

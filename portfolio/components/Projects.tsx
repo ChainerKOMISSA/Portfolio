@@ -14,12 +14,12 @@ export function CardHoverEffectDemo() {
 export const projects = [
   {
     id:1,
-    title: "FLOWZY",
+    title: "APPLIED",
     description:
-      "Développement en cours.\nApplication de gestion de finances personnelles. Gestion de budget, dépenses, revenus, statistiques.",
-    link: "",
-    image: "/flowzy.png",
-    icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />,<SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaNodeJs className="rounded-full text-green-600" key="nodejs"/>, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>,<SiMongodb className="rounded-full text-green-600" key="mongodb"/>],
+      "Développement en cours.\nApplication de gestion des candidatures. Centralisation des offres, génération de CV et lettre de motivation adaptés à chaque offre, suivi des statuts, filtres et recherche rapide pour une organisation facile.",
+    link: "https://applied-eight.vercel.app/home",
+    image: "/applied.png",
+    icons: [<BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>],
   },
   {
     id:2,

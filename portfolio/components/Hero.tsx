@@ -26,10 +26,9 @@ const Hero = () => {
                         words='Je suis Chainer KOMISSA ZOTSU'
                     />
                     <p className='text-justify md:tracking-wider mb-4 text-sm md:text-lg lg:text-xl'>
-                        Étudiante en dernière année de Master à 
-                        l&apos;UTBM, je suis passionnée par le développement web full stack. 
-                        Grâce à mon parcours, j&apos;ai acquis des compétences solides en front-end et back-end à 
-                        travers divers projets.
+                        Développeuse web fullstack récemment diplômée d’un Master ETI, je suis passionnée par la conception
+                        d&apos;applications web robustes et performantes. Je souhaite mettre mes compétences au service d&apos;une
+                        équipe dynamique, sur des projets innovants à fort impact.
                     </p>
                     <div className="flex flex-row justify-center gap-6">
                         <a href="/CV_KOMISSA_ZOTSU.pdf" target='_blank'><MagicButton
