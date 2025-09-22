@@ -490,7 +490,8 @@ export const paiementtutorialsItems= [
     img: "/bgstripe.png",
     date: "2",
     category: categories[3].name,
-    link : "/blog/paiements/stripe",
+    link : "",
+    //link : "/blog/paiements/stripe",
     technologies: [],
   },
   {
@@ -500,7 +501,8 @@ export const paiementtutorialsItems= [
     img: "/bggpay.png",
     date: "",
     category: categories[3].name,
-    link : "/blog/paiements/pay",
+    link : "",
+    //link : "/blog/paiements/pay",
     technologies: [],
   }
   /*,
