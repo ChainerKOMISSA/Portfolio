@@ -115,13 +115,130 @@ export default function BlogPage() {
                                     <CodeBlock code={scriptCode} language="javascript"/>
                                 </section>
 
+                                <section id="exemple">
+                                    <h2 className="text-2xl font-bold mb-4 text-white">6. Exemple dans un projet React/Next.js</h2>
+
+                                    <h4 className="text-xl font-semibold text-white mt-6">Étape 1. Créer un fichier <code>.env.local</code></h4>
+                                    <p className="text-gray-300 mb-4">
+                                        Stocke tes identifiants EmailJS dans un fichier <code className="text-blue-400">.env.local</code> (non versionné sur GitHub).
+                                    </p>
+                                    <CodeBlock
+                                        code={`NEXT_PUBLIC_EMAILJS_SERVICE_ID=xxxxxx
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=xxxxxx
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxxxxx`}
+                                        language="bash"
+                                    />
+
+                                    <h4 className="text-xl font-semibold text-white mt-6">Étape 2. Créer un composant ContactForm</h4>
+                                    <p className="text-gray-300 mb-4">
+                                        Dans ton projet, crée un composant React <code>ContactForm.jsx</code> (ou <code>ContactForm.tsx</code> si tu utilises TypeScript).
+                                    </p>
+                                    <CodeBlock
+                                        code={`"use client";
+import { useRef } from "react";
+import emailjs from "emailjs-com";
+
+export default function ContactForm() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      form.current,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    )
+    .then((result) => {
+      console.log("Email envoyé !", result.text);
+      alert("Message envoyé avec succès");
+    })
+    .catch((error) => {
+      console.error("Erreur :", error.text);
+      alert("Une erreur est survenue");
+    });
+  };
+
+  return (
+    <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4 p-4 border rounded-lg">
+      <input type="text" name="user_name" placeholder="Nom" required className="p-2 border rounded"/>
+      <input type="email" name="user_email" placeholder="Email" required className="p-2 border rounded"/>
+      <textarea name="message" placeholder="Message" required className="p-2 border rounded"/>
+      <button type="submit" className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+        Envoyer
+      </button>
+    </form>
+  );
+}`}
+                                        language="javascript"
+                                    />
+
+                                    <h4 className="text-xl font-semibold text-white mt-6">Étape 3. Importer le formulaire</h4>
+                                    <p className="text-gray-300 mb-4">
+                                        Tu peux ensuite l&apos;utiliser dans une page Next.js (par exemple <code>app/contact/page.jsx</code>).
+                                    </p>
+                                    <CodeBlock
+                                        code={`import ContactForm from "@/components/ContactForm";
+
+export default function ContactPage() {
+  return (
+    <main className="min-h-screen flex items-center justify-center bg-black">
+      <div className="max-w-lg w-full bg-gray-900 p-8 rounded-lg">
+        <h1 className="text-2xl font-bold text-white mb-4">Contact</h1>
+        <ContactForm />
+      </div>
+    </main>
+  );
+}`}
+                                        language="javascript"
+                                    />
+
+                                    <p className="text-gray-300 mt-6">
+                                        Avec cette configuration, ton formulaire envoie directement les emails via EmailJS, sans backend supplémentaire.
+                                    </p>
+                                    <h4 className="text-xl font-semibold text-white mt-6">Étape 4. Ajouter les variables en production</h4>
+                                    <p className="text-gray-300 mb-4">
+                                        Les fichiers <code className="text-blue-400">.env.local</code> ne sont pas envoyés lors du déploiement.
+                                        Il faut donc définir tes variables dans l&apos;environnement de ton hébergeur.
+                                    </p>
+
+                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                        <li>Sur <span className="text-blue-400">Vercel</span> : va dans ton projet → <em>Settings</em> → <em>Environment Variables</em> → ajoute <code>NEXT_PUBLIC_EMAILJS_SERVICE_ID</code>, <code>NEXT_PUBLIC_EMAILJS_TEMPLATE_ID</code>, <code>NEXT_PUBLIC_EMAILJS_PUBLIC_KEY</code>.</li>
+                                        <li>Sur <span className="text-blue-400">Netlify</span> : va dans <em>Site settings</em> → <em>Build & Deploy</em> → <em>Environment</em> → ajoute les mêmes variables.</li>
+                                        <li>Sur un autre hébergeur, recherche la section <em>Environment Variables</em> ou <em>Config Vars</em> et ajoute-les.</li>
+                                    </ul>
+
+                                    <p className="text-gray-300 mt-4 flex items-start gap-2">
+                                        <svg
+                                            className="w-5 h-5 text-yellow-500 mt-1 flex-shrink-0"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M8.257 3.099c.765-1.36 2.721-1.36 3.486 0l6.518 11.614c.75 1.338-.213 3.0-1.742 3.0H3.48c-1.53 0-2.492-1.662-1.742-3.0L8.257 3.1zM11 13a1 1 0 10-2 0 1 1 0 002 0zm-1-2a1 1 0 01-1-1V7a1 1 0 112 0v3a1 1 0 01-1 1z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                        <span>
+    <strong>Important :</strong> comme ce sont des variables <code>NEXT_PUBLIC_</code>, elles seront accessibles
+    dans ton code côté client (React).<br />
+    C’est normal avec EmailJS, car la clé publique (<em>Public Key</em>) est conçue pour être exposée dans le front-end.
+  </span>
+                                    </p>
+
+
+                                </section>
+
+
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">Conclusion</h2>
                                     <p className="text-gray-300 mb-6">
                                         Tu peux maintenant envoyer des e-mails directement depuis
                                         ton site, sans backend ni configuration complexe. Pour aller
-                                        plus loin, personnalise tes templates, ajoute des pièces
-                                        jointes, ou intègre avec React.
+                                        plus loin, personnalise tes templates ou ajoute des pièces
+                                        jointes.
                                     </p>
                                     <Link
                                         href="/blog"
@@ -147,6 +264,7 @@ export default function BlogPage() {
                             <Link href="#installation" className="hover:text-white">3. Installation d&apos;EmailJS</Link>
                             <Link href="#formulaire" className="hover:text-white"> 4. Créer un formulaire HTML</Link>
                             <Link href="#script" className="hover:text-white">5. Ajouter le script JavaScript</Link>
+                            <Link href="#exemple" className="hover:text-white">6. Exemple dans un projet React/Next js</Link>
                             <Link href="#conclusion" className="hover:text-white">Conclusion</Link>
                         </nav>
                     </aside>

@@ -6,7 +6,7 @@ export default function BlogPage() {
     return (
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
             <Link
-                href="/blog"
+                href="/blog/paiements"
                 className="inline-block px-4 py-2 w-14 bg-black-100 border-2 border-indigo-950 hover:bg-indigo-950 text-white rounded-lg transition"
             >
                 <IoIosArrowRoundBack />
