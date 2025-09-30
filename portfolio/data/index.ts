@@ -660,6 +660,41 @@ export const links = [
     link: "https://tom-select.js.org/",
     logo: "code",
     description: "Plugin JavaScript pour des champs de sélection dynamiques et personnalisables."
+  },
+  {
+    id: 23,
+    name: "Bolt.new",
+    link: "https://bolt.new/",
+    logo: "ia",
+    description: "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle."
+  },
+  {
+    id: 24,
+    name: "Flexbox froggy",
+    link: "https://flexboxfroggy.com/",
+    logo: "css",
+    description: "Jeu permettant d'apprendre CSS flexbox."
+  },
+  {
+    id: 25,
+    name: "Stitch",
+    link: "https://stitch.withgoogle.com/",
+    logo: "ia",
+    description: "Outil de création de maquettes UX basé sur navigateur et optimisé par l'intelligence artificielle."
+  },
+  {
+    id: 26,
+    name: "Git Branching",
+    link: "https://learngitbranching.js.org/",
+    logo: "git",
+    description: "Jeu permettant d'apprendre git"
+  },
+  {
+    id: 27,
+    name: "Grid Garden",
+    link: "https://cssgridgarden.com/",
+    logo: "css",
+    description: "Jeu permettant d'apprendre CSS grid."
   }
 ]
 

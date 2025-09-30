@@ -19,13 +19,10 @@ import {
     SiTypescript, SiCss3
 } from "react-icons/si";
 import {BiLogoJava, BiCodeAlt} from "react-icons/bi";
-import {IoLogoHtml5} from "react-icons/io5";
-import { IoGlobeOutline } from "react-icons/io5";
+import {IoLogoHtml5, IoGlobeOutline} from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
-
-
-
-
+import { PiBrainLight } from "react-icons/pi";
+import { FaGitAlt } from "react-icons/fa";
 
 
 export default function BlogPage() {
@@ -64,7 +61,7 @@ export default function BlogPage() {
         nextjs: <SiNextdotjs className="text-gray-300 w-8 h-8" />,
         python: <SiPython className="text-yellow-400 w-8 h-8" />,
         mongodb: <SiMongodb className="text-green-600 w-8 h-8" />,
-        express: <SiExpress className="text-whitew-8 h-8" />,
+        express: <SiExpress className="text-white w-8 h-8" />,
         angular: <SiAngular className="text-red-600 w-8 h-8" />,
         java: <BiLogoJava className="text-red-600 w-8 h-8" />,
         html:<IoLogoHtml5 className="text-orange-500 w-8 h-8"/>,
@@ -72,7 +69,9 @@ export default function BlogPage() {
         css:<SiCss3 className="text-blue-600 w-8 h-8"/>,
         code:<BiCodeAlt className="text-white w-9 h-9"/>,
         design:<RiPencilFill className="text-white w-8 h-8"/>,
-        reactnative: <SiReact className="text-purple w-8 h-8" />
+        reactnative: <SiReact className="text-purple w-8 h-8" />,
+        ia: <PiBrainLight className="text-red-500 w-8 h-8" />,
+        git: <FaGitAlt className="text-orange-500 w-8 h-8" />
     };
 
     return (
@@ -132,46 +131,11 @@ export default function BlogPage() {
                         )}
                     </div>
                 </div>
-                {/*<div className="flex flex-col w-1/4 mx-auto mt-4 py-2 gap-2">
-                    <h2 className="text-lg font-bold text-white">Liens utiles</h2>
-                    <ul role="list" className="divide-y divide-gray-800">
-                        {visibleLinks.map((link) => (
-                            <li key={link.id} className="flex justify-between gap-x-6 py-5">
-                                <div className="flex min-w-0 gap-x-4">
-                                    <div className="size-12 flex items-center justify-center rounded-full bg-gray-900">
-                                        {techIcons[link.logo] ?? (
-                                            <span className="text-gray-400 text-sm">?</span>
-                                        )}
-                                    </div>
-                                    <div className="min-w-0 flex-auto">
-                                        <p className="text-md font-semibold text-white">
-                                            {highlight(link.name, search)}
-                                        </p>
-                                        <a className="mt-1 truncate text-xs/5 text-purple" href={link.link} target="_blank">
-                                            {link.link}
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                        {filteredLinks.length === 0 && (
-                            <p className="text-gray-400 italic">Aucun résultat.</p>
-                        )}
-                    </ul>
-                    {filteredLinks.length > 10 && !search && !showAll && (
-                        <button
-                            className="mt-2 text-sm text-blue-400 hover:underline"
-                            onClick={() => setShowAll(true)}
-                        >
-                            Afficher plus
-                        </button>
-                    )}
-                </div>*/}
             </div>
 
             <h2 className="text-lg font-bold text-white mb-4">Liens utiles</h2>
             <div className="flex flex-row w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
                     {filteredLinks.length > 0 ? (
                         filteredLinks.map((link) => (
                             <div
@@ -207,9 +171,6 @@ export default function BlogPage() {
                     )}
                 </div>
             </div>
-
-
-
         </main>
     );
 }
