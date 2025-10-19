@@ -2,8 +2,8 @@ import React from 'react'
 import { BentoGrid, BentoGridItem } from './ui/BentoGrid'
 import { gridItems } from '@/data'
 import { InfiniteMovingCards } from './ui/InfiniteCards2'
-import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaNodeJs, FaPython, FaBootstrap, FaHtml5 } from "react-icons/fa";
-import { SiMysql, SiFlask, SiDjango, SiSqlite, SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaNodeJs, FaPython, FaBootstrap, FaHtml5, FaJava  } from "react-icons/fa";
+import { SiMysql, SiFlask, SiMongodb, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import { BiLogoJavascript, BiLogoPostgresql, BiLogoTypescript, BiLogoAngular } from "react-icons/bi";
 
 const Grid = () => {
@@ -44,6 +44,7 @@ const Grid = () => {
           { quote: "MySQL", name: "MySQL", title: "MySQL" , image : <SiMysql/>, color : "text-blue-500", logo : ""},
           { quote: "MongoDB", name: "MongoDB", title: "MongoDB" , image : <SiMongodb/>, color : "text-green-600", logo : ""},
           { quote: "PostgreSQL", name: "PostgreSQL", title: "PostgreSQL" , image : <BiLogoPostgresql/>, color : "text-blue-700", logo : ""},
+          { quote: "Java", name: "Java", title: "Java" , image : <FaJava/>, color : "text-orange-500", logo : ""},
         ]}
         pauseOnHover
         direction='left'

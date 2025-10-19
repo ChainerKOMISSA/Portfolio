@@ -3,7 +3,7 @@ import React from "react";
 import { StickyScroll } from "./ui/StickyScrollReaveal";
 import Image from "next/image";
 import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5, FaJava  } from "react-icons/fa";
-import { SiMysql, SiFlask, SiDjango, SiSqlite, SiMongodb } from "react-icons/si";
+import { SiMysql, SiFlask, SiMongodb } from "react-icons/si";
 import { BiLogoJavascript, BiLogoAngular, BiLogoTypescript } from "react-icons/bi";
 
 

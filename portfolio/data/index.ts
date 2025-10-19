@@ -22,7 +22,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "CDI en développement web full stack Septembre 2025",
+    title: "CDI en développement web full stack",
     description: "En recherche de ",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -695,6 +695,13 @@ export const links = [
     link: "https://cssgridgarden.com/",
     logo: "css",
     description: "Jeu permettant d'apprendre CSS grid."
+  },
+  {
+    id: 28,
+    name: "Base 44",
+    link: "https://base44.com/",
+    logo: "ia",
+    description: "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle."
   }
 ]
 
