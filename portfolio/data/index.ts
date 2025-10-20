@@ -333,7 +333,7 @@ export const blogItems= [
     category: categories[0].name,
     link : "https://github.com/ChainerKOMISSA/Boilerplat_Reactjs",
     technologies: ["react", "javascript", "tailwindcss"],
-  },
+  }/*,
   {
     id: 8,
     title: "Application Python",
@@ -343,7 +343,7 @@ export const blogItems= [
     category: categories[0].name,
     link: "",
     technologies: ["python"],
-  }/*,
+  }*//*,
   {
     id: 9,
     title: "Mon expérience aux 24h du code",
