@@ -1,5 +1,5 @@
-import {GridItem, Category, BlogItem, SocialMedia, Service} from "./types";
-import {CardDemo} from "@/app/blog/ui/Card";
+import { GridItem, Category, BlogItem, SocialMedia, Service } from "./types";
+import { CardDemo } from "@/app/blog/ui/Card";
 
 export const navItems = [
   { name: "A propos", link: "#about" },
@@ -7,7 +7,7 @@ export const navItems = [
   { name: "Expérience", link: "#experience" },
   { name: "Services", link: "#services" },
   { name: "Contacts", link: "#contact" },
-  { name: "Blog", link: "/blog" }
+  { name: "Blog", link: "/blog" },
 ];
 export const gridItems = [
   {
@@ -60,7 +60,7 @@ export const gridItems = [
     titleClassName: "justify-center md:justify-start lg:justify-center",
     img: "/b5.svg",
     spareImg: "/grid.svg",
-  }
+  },
 ];
 
 export const projects = [
@@ -172,7 +172,7 @@ export const companies = [
   },
 ];
 
-export const workExperience= [
+export const workExperience = [
   {
     id: 1,
     title: "Développement d'applications",
@@ -217,53 +217,53 @@ export const workExperience= [
   // },
 ];
 
-export const socialMedia  = [
+export const socialMedia = [
   {
     id: 1,
     img: "",
     title: "Github",
-    link: "https://github.com/ChainerKOMISSA"
+    link: "https://github.com/ChainerKOMISSA",
   },
   {
     id: 4,
     img: "",
     title: "Gitlab",
-    link: "https://gitlab.com/Shine17"
+    link: "https://gitlab.com/Shine17",
   },
   {
     id: 2,
     img: "",
     title: "LinkedIn",
-    link: "https://www.linkedin.com/in/essi-chainer-komissa-zotsu-aba1b81a3/"
+    link: "https://www.linkedin.com/in/essi-chainer-komissa-zotsu-aba1b81a3/",
   },
   {
     id: 3,
     img: "",
     title: "Whatsapp",
-    link: "https://wa.me/message/3RTFYUDPU2WAO1"
-  }
+    link: "https://wa.me/message/3RTFYUDPU2WAO1",
+  },
 ];
 
 export const categories = [
   {
     id: 1,
-    name: "Templates de code"
+    name: "Templates de code",
   },
   {
     id: 2,
-    name: "Cheat Sheets"
+    name: "Cheat Sheets",
   },
   {
     id: 3,
-    name: "Expériences"
+    name: "Expériences",
   },
   {
     id: 4,
-    name: "Tutoriels"
-  }
-]
+    name: "Tutoriels",
+  },
+];
 
-export const blogItems= [
+export const blogItems = [
   {
     id: 1,
     title: "Backend NodeJS",
@@ -271,7 +271,7 @@ export const blogItems= [
     img: "/imgnode.png",
     date: "2025-05-17",
     category: categories[0].name,
-    link : "https://github.com/ChainerKOMISSA/BackendNodeJS",
+    link: "https://github.com/ChainerKOMISSA/BackendNodeJS",
     technologies: ["nodejs", "javascript", "mongodb", "express"],
   },
   {
@@ -281,7 +281,7 @@ export const blogItems= [
     img: "/bruno3-2.png",
     date: "2025-05-19",
     category: categories[3].name,
-    link : "/blog/tests-bruno",
+    link: "/blog/tests-bruno",
     technologies: [],
   },
   {
@@ -291,7 +291,7 @@ export const blogItems= [
     img: "/imgangular.png",
     date: "2025-05-29",
     category: categories[0].name,
-    link : "https://github.com/ChainerKOMISSA/Boilerplate_Angular",
+    link: "https://github.com/ChainerKOMISSA/Boilerplate_Angular",
     technologies: ["angular", "typescript", "tailwindcss"],
   },
   {
@@ -301,7 +301,7 @@ export const blogItems= [
     img: "/imgjava.png",
     date: "2025-05-31",
     category: categories[0].name,
-    link : "https://github.com/ChainerKOMISSA/Boilerplate_JEE",
+    link: "https://github.com/ChainerKOMISSA/Boilerplate_JEE",
     technologies: ["java"],
   },
   {
@@ -311,7 +311,7 @@ export const blogItems= [
     img: "/bgvercel.png",
     date: "2025-06-01",
     category: categories[3].name,
-    link : "/blog/deploiement-vercel",
+    link: "/blog/deploiement-vercel",
     technologies: [],
   },
   {
@@ -321,7 +321,7 @@ export const blogItems= [
     img: "/bgvercelanalytics.png",
     date: "2025-06-01",
     category: categories[3].name,
-    link : "/blog/vercel-analytics",
+    link: "/blog/vercel-analytics",
     technologies: [],
   },
   {
@@ -331,9 +331,9 @@ export const blogItems= [
     img: "/imgreact.png",
     date: "2025-06-04",
     category: categories[0].name,
-    link : "https://github.com/ChainerKOMISSA/Boilerplat_Reactjs",
+    link: "https://github.com/ChainerKOMISSA/Boilerplat_Reactjs",
     technologies: ["react", "javascript", "tailwindcss"],
-  }/*,
+  } /*,
   {
     id: 8,
     title: "Application Python",
@@ -343,7 +343,7 @@ export const blogItems= [
     category: categories[0].name,
     link: "",
     technologies: ["python"],
-  }*//*,
+  }*/ /*,
   {
     id: 9,
     title: "Mon expérience aux 24h du code",
@@ -363,8 +363,7 @@ export const blogItems= [
     category: categories[2].name,
     link : "",
     technologies: [],
-  }*/
-  ,
+  }*/,
   {
     id: 11,
     title: "Déployer une application web sur Github Pages",
@@ -372,7 +371,7 @@ export const blogItems= [
     img: "/bggithub.png",
     date: "2025-06-01",
     category: categories[3].name,
-    link : "/blog/github-pages",
+    link: "/blog/github-pages",
     technologies: [],
   },
   {
@@ -382,7 +381,7 @@ export const blogItems= [
     img: "/bgemails.jpg",
     date: " ",
     category: categories[3].name,
-    link : "/blog/emails",
+    link: "/blog/emails",
     technologies: ["serie"],
   },
   /*{
@@ -403,7 +402,7 @@ export const blogItems= [
     img: "/b5.svg",
     date: "2025-06-08",
     category: categories[3].name,
-    link : "/blog/bloc-code",
+    link: "/blog/bloc-code",
     technologies: [],
   },
   {
@@ -411,14 +410,24 @@ export const blogItems= [
     title: "Série : Intégrer des solutions de paiement en ligne",
     desc: " Cette série de tutoriels vous guide pas à pas dans l'intégration de solutions de paiement en ligne comme PayPal, Stripe, Square ainsi que Google Pay et Apple Pay.",
     img: "/paiements.png",
-    date: " ",
+    date: "",
     category: categories[3].name,
-    link : "/blog/paiements",
+    link: "/blog/paiements",
     technologies: ["serie"],
   },
-  ]
+  {
+    id: 17,
+    title: "Série : Mettre en place du CI/CD",
+    desc: "Cette série de tutoriels te guide pas à pas dans la mise en place de pipelines d’intégration et de déploiement continus (CI/CD) à l’aide d’outils modernes.",
+    img: "/cicd-serie.png",
+    date: "",
+    category: categories[3].name,
+    link: "/blog/ci-cd",
+    technologies: ["serie"],
+  },
+];
 
-export const emailtutorialsItems= [
+export const emailtutorialsItems = [
   {
     id: 1,
     title: "Envoyer un email en utilisant mailto:",
@@ -426,7 +435,7 @@ export const emailtutorialsItems= [
     img: "/bghtml.png",
     date: "2025-06-07",
     category: categories[3].name,
-    link : "/blog/emails/mailto",
+    link: "/blog/emails/mailto",
     technologies: ["html"],
   },
   {
@@ -436,7 +445,7 @@ export const emailtutorialsItems= [
     img: "/bgsmtpjs.png",
     date: "2025-06-07",
     category: categories[3].name,
-    link : "/blog/emails/smtpjs",
+    link: "/blog/emails/smtpjs",
     technologies: ["javascript"],
   },
   {
@@ -446,7 +455,7 @@ export const emailtutorialsItems= [
     img: "/bgnodemailer.png",
     date: "2025-06-08",
     category: categories[3].name,
-    link : "/blog/emails/nodemailer",
+    link: "/blog/emails/nodemailer",
     technologies: ["nodejs"],
   },
   {
@@ -456,7 +465,7 @@ export const emailtutorialsItems= [
     img: "/bgemailjs.png",
     date: "2025-06-08",
     category: categories[3].name,
-    link : "/blog/emails/emailjs",
+    link: "/blog/emails/emailjs",
     technologies: [],
   },
   {
@@ -466,13 +475,13 @@ export const emailtutorialsItems= [
     img: "/bgsendgrid.png",
     date: "A venir",
     category: categories[3].name,
-    link:"",
+    link: "",
     ///link : "/blog/emails/sendgrid",
     technologies: [],
-  }
-]
+  },
+];
 
-export const paiementtutorialsItems= [
+export const paiementtutorialsItems = [
   {
     id: 1,
     title: "Paypal",
@@ -480,7 +489,7 @@ export const paiementtutorialsItems= [
     img: "/bgpaypal.png",
     date: "2025-09-26",
     category: categories[3].name,
-    link : "/blog/paiements/paypal",
+    link: "/blog/paiements/paypal",
     technologies: [],
   },
   {
@@ -490,7 +499,7 @@ export const paiementtutorialsItems= [
     img: "/bgstripe.png",
     date: "2025-09-28",
     category: categories[3].name,
-    link : "/blog/paiements/stripe",
+    link: "/blog/paiements/stripe",
     technologies: [],
   },
   /*,
@@ -504,7 +513,91 @@ export const paiementtutorialsItems= [
     link : "/blog/paiements/square",
     technologies: [],
   }*/
-]
+];
+
+export const cicdtutorialsItems = [
+  {
+    id: 1,
+    title: "Comprendre le CI/CD : les bases et les concepts clés",
+    desc: "Découvre les principes fondamentaux du CI/CD et pourquoi ils sont essentiels dans un workflow moderne.",
+    img: "/cicd-bases.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 2,
+    title: "Créer ton premier pipeline CI/CD avec GitHub Actions",
+    desc: "Automatise les tests et le déploiement de ton projet grâce à GitHub Actions.",
+    img: "/cicd-github.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 3,
+    title: "CI/CD avec GitLab : du push au déploiement automatique",
+    desc: "Apprends à créer un pipeline complet et robuste avec GitLab CI/CD pour tes projets web.",
+    img: "/cicd-gitlab.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 4,
+    title: "Utiliser Jenkins pour un pipeline local ou sur serveur",
+    desc: "Installe et configure Jenkins pour automatiser tes builds et déploiements en toute flexibilité.",
+    img: "/cicd-jenkins.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 5,
+    title: "Déployer sur AWS avec CodePipeline et CodeBuild",
+    desc: "Crée un pipeline cloud complet avec les outils natifs d’AWS pour ton application.",
+    img: "/cicd-aws.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 6,
+    title: "Déployer sur Firebase automatiquement avec GitHub Actions",
+    desc: "Automatise le déploiement de ton application sur Firebase Hosting en quelques étapes.",
+    img: "/cicd-firebase.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 7,
+    title: "Pipeline multiplateforme avec Bitbucket Pipelines",
+    desc: "Apprends à configurer un pipeline complet et collaboratif sur Bitbucket.",
+    img: "/cicd-bitbucket.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+  {
+    id: 8,
+    title: "Optimiser et sécuriser ton pipeline CI/CD",
+    desc: "Découvre les meilleures pratiques pour rendre ton pipeline plus rapide, stable et sécurisé.",
+    img: "/cicd-optimisation.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+  },
+];
+
 
 export const links = [
   {
@@ -512,197 +605,219 @@ export const links = [
     name: "React Icons",
     link: "https://react-icons.github.io/react-icons/",
     logo: "react",
-    description: "Une collection d’icônes populaires unifiées pour les projets React."
+    description:
+      "Une collection d’icônes populaires unifiées pour les projets React.",
   },
   {
     id: 2,
     name: "Radix UI",
     link: "https://www.radix-ui.com/",
     logo: "javascript",
-    description: "Des composants accessibles et non stylés pour construire des interfaces design."
+    description:
+      "Des composants accessibles et non stylés pour construire des interfaces design.",
   },
   {
     id: 3,
     name: "SweetAlert2",
     link: "https://sweetalert2.github.io/",
     logo: "javascript",
-    description: "Une bibliothèque élégante pour afficher des pop-ups personnalisés."
+    description:
+      "Une bibliothèque élégante pour afficher des pop-ups personnalisés.",
   },
   {
     id: 4,
     name: "Aceternity UI",
     link: "https://ui.aceternity.com/",
     logo: "react",
-    description: "Composants et animations modernes pour sites React avec un style épuré."
+    description:
+      "Composants et animations modernes pour sites React avec un style épuré.",
   },
   {
     id: 5,
     name: "Wappalyser",
     link: "https://www.wappalyzer.com/",
     logo: "web",
-    description: "Outil d’analyse pour détecter les technologies utilisées sur un site web."
+    description:
+      "Outil d’analyse pour détecter les technologies utilisées sur un site web.",
   },
   {
     id: 6,
     name: "Coolors",
     link: "https://coolors.co/",
     logo: "css",
-    description: "Générateur de palettes de couleurs intuitif pour tes projets créatifs."
+    description:
+      "Générateur de palettes de couleurs intuitif pour tes projets créatifs.",
   },
   {
     id: 7,
     name: "Tailwind UI",
     link: "https://tailwindcss.com/plus/ui-blocks",
     logo: "tailwindcss",
-    description: "Composants UI premium et réactifs conçus pour Tailwind CSS."
+    description: "Composants UI premium et réactifs conçus pour Tailwind CSS.",
   },
   {
     id: 8,
     name: "React Native Paper",
     link: "https://reactnativepaper.com/",
     logo: "reactnative",
-    description: "Bibliothèque de composants Material Design pour React Native."
+    description:
+      "Bibliothèque de composants Material Design pour React Native.",
   },
   {
     id: 9,
     name: "Appetize.io",
     link: "https://appetize.io/",
     logo: "web",
-    description: "Émulateur en ligne pour tester des applications mobiles dans un navigateur."
+    description:
+      "Émulateur en ligne pour tester des applications mobiles dans un navigateur.",
   },
   {
     id: 10,
     name: "Shots",
     link: "https://shots.so/",
     logo: "design",
-    description: "Générateur de maquettes visuelles pour présenter des captures d’écran."
+    description:
+      "Générateur de maquettes visuelles pour présenter des captures d’écran.",
   },
   {
     id: 11,
     name: "Rapid API",
     link: "https://rapidapi.com/",
     logo: "code",
-    description: "Marketplace centralisée pour découvrir et intégrer des APIs facilement."
+    description:
+      "Marketplace centralisée pour découvrir et intégrer des APIs facilement.",
   },
   {
     id: 12,
     name: "Crypto JS",
     link: "https://cryptojs.gitbook.io/docs",
     logo: "javascript",
-    description: "Bibliothèque JavaScript pour chiffrer, décrypter et hasher facilement des données."
+    description:
+      "Bibliothèque JavaScript pour chiffrer, décrypter et hasher facilement des données.",
   },
   {
     id: 13,
     name: "Sentry.io",
     link: "https://sentry.io/welcome/",
     logo: "code",
-    description: "Surveillance d’erreurs en temps réel pour améliorer la stabilité de vos apps."
+    description:
+      "Surveillance d’erreurs en temps réel pour améliorer la stabilité de vos apps.",
   },
   {
     id: 14,
     name: "Calendly",
     link: "https://calendly.com/",
     logo: "web",
-    description: "Planificateur en ligne pour réserver des rendez-vous sans prise de tête."
+    description:
+      "Planificateur en ligne pour réserver des rendez-vous sans prise de tête.",
   },
   {
     id: 15,
     name: "Motion.dev",
     link: "https://motion.dev/",
     logo: "javascript",
-    description: "Animations web fluides et performantes avec une API moderne pour React."
+    description:
+      "Animations web fluides et performantes avec une API moderne pour React.",
   },
   {
     id: 16,
     name: "Railway",
     link: "https://railway.com/features#network-and-connect",
     logo: "web",
-    description: "Plateforme tout-en-un pour déployer et gérer facilement tes applications back-end."
+    description:
+      "Plateforme tout-en-un pour déployer et gérer facilement tes applications back-end.",
   },
   {
     id: 17,
     name: "Handlebars",
     link: "https://handlebarsjs.com/",
     logo: "javascript",
-    description: "Moteur de templates JavaScript simple et puissant pour générer du HTML."
+    description:
+      "Moteur de templates JavaScript simple et puissant pour générer du HTML.",
   },
   {
     id: 18,
     name: "Origin UI",
     link: "https://originui.com/",
     logo: "react",
-    description: "Composants React élégants et prêts à l’emploi pour accélérer ton design."
+    description:
+      "Composants React élégants et prêts à l’emploi pour accélérer ton design.",
   },
   {
     id: 19,
     name: "21st dev",
     link: "https://21st.dev/home",
     logo: "javascript",
-    description: "Ressources, boilerplates et outils modernes pour développeurs JavaScript."
+    description:
+      "Ressources, boilerplates et outils modernes pour développeurs JavaScript.",
   },
   {
     id: 20,
     name: "Tiny MCE",
     link: "https://www.tiny.cloud/",
     logo: "javascript",
-    description: "Éditeur WYSIWYG puissant pour créer des contenus HTML riches facilement."
+    description:
+      "Éditeur WYSIWYG puissant pour créer des contenus HTML riches facilement.",
   },
   {
     id: 21,
     name: "ZeroBounce",
     link: "https://www.zerobounce.net/api/email-validation-api/",
     logo: "code",
-    description: "API de validation d’email pour améliorer la délivrabilité de tes campagnes."
+    description:
+      "API de validation d’email pour améliorer la délivrabilité de tes campagnes.",
   },
   {
     id: 22,
     name: "Tom Select",
     link: "https://tom-select.js.org/",
     logo: "code",
-    description: "Plugin JavaScript pour des champs de sélection dynamiques et personnalisables."
+    description:
+      "Plugin JavaScript pour des champs de sélection dynamiques et personnalisables.",
   },
   {
     id: 23,
     name: "Bolt.new",
     link: "https://bolt.new/",
     logo: "ia",
-    description: "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle."
+    description:
+      "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle.",
   },
   {
     id: 24,
     name: "Flexbox froggy",
     link: "https://flexboxfroggy.com/",
     logo: "css",
-    description: "Jeu permettant d'apprendre CSS flexbox."
+    description: "Jeu permettant d'apprendre CSS flexbox.",
   },
   {
     id: 25,
     name: "Stitch",
     link: "https://stitch.withgoogle.com/",
     logo: "ia",
-    description: "Outil de création de maquettes UX basé sur navigateur et optimisé par l'intelligence artificielle."
+    description:
+      "Outil de création de maquettes UX basé sur navigateur et optimisé par l'intelligence artificielle.",
   },
   {
     id: 26,
     name: "Git Branching",
     link: "https://learngitbranching.js.org/",
     logo: "git",
-    description: "Jeu permettant d'apprendre git"
+    description: "Jeu permettant d'apprendre git",
   },
   {
     id: 27,
     name: "Grid Garden",
     link: "https://cssgridgarden.com/",
     logo: "css",
-    description: "Jeu permettant d'apprendre CSS grid."
+    description: "Jeu permettant d'apprendre CSS grid.",
   },
   {
     id: 28,
     name: "Base 44",
     link: "https://base44.com/",
     logo: "ia",
-    description: "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle."
-  }
-]
-
-
+    description:
+      "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle.",
+  },
+];

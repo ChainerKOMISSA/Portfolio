@@ -1,4 +1,3 @@
-import {categories} from "@/data";
 import {CardDemo} from "@/app/blog/ui/Card";
 import {emailtutorialsItems} from "@/data";
 import Link from "next/link";
