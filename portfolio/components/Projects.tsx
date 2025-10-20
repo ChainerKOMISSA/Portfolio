@@ -16,9 +16,9 @@ export const projects = [
     id:1,
     title: "HOMEAID",
     description:
-      "Développement en cours.\nApplication web interactive qui permet aux membres d’une famille de voter pour le dîner du jour directement depuis un écran partagé installé dans le couloir ou la cuisine. ",
+      "Développement en cours.\nApplication web interactive qui permet aux membres d'une famille de voter pour le dîner du jour directement depuis un écran partagé.",
     link: "",
-    image: "/applied.png",
+    image: "/homeaid.png",
     icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaJava className="rounded-full text-orange-500" key="java"/>, <BiLogoPostgresql  className="rounded-full text-purple" key="postgresql"/>],
   },
   {

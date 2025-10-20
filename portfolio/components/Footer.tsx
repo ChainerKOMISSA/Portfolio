@@ -36,6 +36,7 @@ const Footer = () => {
 
     const handleSubmit = (e?: React.FormEvent) => {
         e?.preventDefault();
+        if(!form.current) return;
         if (
             !process.env.NEXT_PUBLIC_SERVICE_ID ||
             !process.env.NEXT_PUBLIC_TEMPLATE_ID ||
@@ -82,7 +83,6 @@ const Footer = () => {
             theme="dark"
         />
         <div className="relative z-10 flex flex-col md:flex-row items-start justify-between gap-10 max-w-7xl mx-auto">
-            {/* Partie gauche */}
             <div className="flex-1">
                 <h1 className="text-5xl font-bold text-left">
                     Prêt à faire passer <span className="text-purple">votre présence numérique</span> au niveau supérieur ?
@@ -92,9 +92,8 @@ const Footer = () => {
                 </p>
             </div>
 
-            {/* Partie droite : formulaire */}
             <div className="flex-1 w-full">
-                <form ref={form} className="bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
+                <form ref={form} onSubmit={handleSubmit} className="bg-gray-900 p-6 rounded-lg shadow-lg space-y-4">
                     <LabelInputContainer>
                         <Label htmlFor="name" className="block text-white mb-1">Nom</Label>
                         <Input id="name" name="name" placeholder="Votre nom" type="text" required />
@@ -118,7 +117,7 @@ const Footer = () => {
                         title="Envoyez"
                         icon={<FaLocationArrow />}
                         position="right"
-                        handleClick={(e) => handleSubmit(e)}
+                        type="submit"
                     />
                 </form>
             </div>
