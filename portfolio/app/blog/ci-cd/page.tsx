@@ -23,21 +23,36 @@ export default function BlogPage() {
         <section id="intro">
           <p className="text-gray-300">
             Dans cette série de tutoriels, tu apprendras à automatiser tes
-            processus de développement grâce à l&apos;intégration continue (CI) et au
-            déploiement continu (CD). <br /> <br />
-            Que tu développes une application front-end, un back-end ou
-            un projet complet, le CI/CD te permettra d&apos;optimiser ton flux de
+            processus de développement grâce à l&apos;intégration continue (CI)
+            et au déploiement continu (CD). <br /> <br />
+            Que tu développes une application front-end, un back-end ou un
+            projet complet, le CI/CD te permettra d&apos;optimiser ton flux de
             travail, d&apos;éviter les erreurs manuelles et de déployer plus
-            rapidement et en toute confiance.
-            <br /> <br />
+            rapidement et en toute confiance. <br /> <br />
             Nous explorerons plusieurs outils modernes comme{" "}
             <span className="text-indigo-400 font-semibold">
-              GitHub Actions, GitLab CI/CD, Jenkins, Bitbucket Pipelines </span> et <span className="text-indigo-400 font-semibold"> AWS CodePipeline
-            </span>{" "} afin que tu puisses choisir la solution la plus adaptée à ton environnement.
-            <br /> <br />
-            Chaque tutoriel est conçu pour être pratique, accompagné d&apos;exemples
-            concrets, d&apos;images explicatives et de fichiers de configuration prêts
-            à copier-coller.
+              GitHub Actions, GitLab CI/CD, Jenkins, Bitbucket Pipelines,
+              Firebase
+            </span>{" "}
+            et{" "}
+            <span className="text-indigo-400 font-semibold">
+              AWS CodePipeline
+            </span>{" "}
+            afin que tu puisses choisir la solution la plus adaptée à ton
+            environnement. <br /> <br />
+            Ces tutoriels sont également l&apos;occasion pour moi d&apos;apprendre et
+            d&apos;expérimenter en direct. Si tu as des suggestions, des idées ou des
+            retours à me partager, tu peux me contacter via :{" "}
+            <a
+              href="http://localhost:3000/#contact"
+              className="text-blue-400 underline"
+            >
+              ce formulaire
+            </a>
+            . <br /> <br />
+            Chaque tutoriel est conçu pour être pratique, accompagné
+            d&apos;exemples concrets, d&apos;images explicatives et de fichiers
+            de configuration prêts à copier-coller.
           </p>
         </section>
 

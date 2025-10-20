@@ -14,7 +14,7 @@ export default function BlogPage() {
             <div className="relative mx-auto my-10 flex max-w-7xl flex-col">
                 <header className="w-full px-4 md:px-8 py-6">
                     <h1 className="text-5xl font-bold text-slate-500 text-center">
-                        Intégration PayPal
+                       Déployer sur Firebase automatiquement avec GitHub Actions
                     </h1>
                 </header>
 
