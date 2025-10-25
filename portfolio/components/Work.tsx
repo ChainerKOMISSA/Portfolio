@@ -10,7 +10,7 @@ import { BiLogoJavascript, BiLogoAngular, BiLogoTypescript } from "react-icons/b
 const content = [
     {
         title: `Stagiaire développeuse full stack Java <br>
-        <small>Février - Août 2025 (en cours)<span></small>`,
+        <small>Février - Août 2025<span></small>`,
         description: (
             <div>
                 Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique : 
