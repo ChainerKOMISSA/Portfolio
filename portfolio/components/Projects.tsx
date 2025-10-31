@@ -26,7 +26,8 @@ export const projects = [
     title: "APPLIED",
     description:
       "Développement en cours.\nApplication de gestion des candidatures. Centralisation des offres, génération de CV et lettre de motivation adaptés à chaque offre, suivi des statuts, filtres et recherche rapide pour une organisation facile.",
-    link: "https://applied-eight.vercel.app/home",
+    //link: "https://applied-eight.vercel.app/home",
+    link: "",
     image: "/applied.png",
     icons: [<BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>],
   },
