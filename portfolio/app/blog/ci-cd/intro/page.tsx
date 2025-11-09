@@ -59,18 +59,14 @@ export default function BlogPage() {
                     <br />
                     Voici un aperçu général d&apos;un pipeline CI/CD typique :
                   </p>
-
-                  <div className="flex justify-center my-6">
-                    <div className="relative w-full h-96 rounded-lg overflow-hidden my-4">
-                      <Image
-                        src="/images/cicd-overview.png"
-                        alt="Schéma du processus CI/CD"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                  <div className="relative w-full h-96 rounded-lg overflow-hidden my-4">
+                    <Image
+                      src="/cicd-overview.png"
+                      alt="Schéma du processus CI/CD"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
-
                   <p className="text-gray-300">
                     Sans CI/CD, les équipes doivent souvent effectuer les tests
                     et déploiements manuellement, ce qui multiplie les risques
@@ -183,7 +179,7 @@ jobs:
                   />
 
                   <p className="text-gray-300 mt-4">
-                    💡 <strong>Comment ça marche :</strong>
+                    <strong>Comment ça marche :</strong>
                     <br />
                     À chaque push ou pull request, GitHub exécute ce pipeline
                     dans une machine virtuelle Ubuntu : il télécharge le code,
@@ -230,7 +226,6 @@ jobs:
                   </ul>
                 </section>
 
-                {/* BONNES PRATIQUES */}
                 <section id="pratiques">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     5. Bonnes pratiques CI/CD
@@ -254,7 +249,6 @@ jobs:
                   </ul>
                 </section>
 
-                {/* CONCLUSION */}
                 <section id="conclusion">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     6. Conclusion
@@ -266,17 +260,16 @@ jobs:
                     <br />
                     <br />
                     Dans les prochains tutoriels, nous mettrons en pratique ces
-                    concepts avec
+                    concepts avec {" "}
                     <span className="text-blue-400 font-semibold">
-                      {" "}
-                      GitHub Actions, GitLab CI/CD
+                      GitHub Actions, GitLab CI/CD, Jenkins, Bitbucket
+                      Pipelines, Firebase
                     </span>{" "}
-                    et
+                    et{" "}
                     <span className="text-blue-400 font-semibold">
-                      {" "}
-                      Jenkins
-                    </span>
-                    , pour créer des pipelines réels et déployer automatiquement
+                      AWS CodePipeline
+                    </span>{" "}
+                    pour créer des pipelines réels et déployer automatiquement
                     des applications.
                   </p>
 
