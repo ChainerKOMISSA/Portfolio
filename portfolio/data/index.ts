@@ -524,8 +524,7 @@ export const cicdtutorialsItems = [
     date: "",
     category: categories[3].name,
     technologies: [""],
-    link: "",
-    //link: "/blog/ci-cd/intro",
+    link: "/blog/ci-cd/intro",
   },
   {
     id: 2,
