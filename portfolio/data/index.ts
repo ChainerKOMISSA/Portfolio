@@ -603,6 +603,17 @@ export const cicdtutorialsItems = [
     link: "",
     //link: "/blog/ci-cd/security",
   },
+  {
+    id: 9,
+    title: "Comment fonctionne le CI/CD sur Vercel",
+    desc: "Explore le système de CI/CD intégré de Vercel pour déployer tes applications front-end en un clin d'œil.",
+    img: "/bgvercel.png",
+    date: "",
+    category: categories[3].name,
+    technologies: [""],
+    link: "",
+    //link: "/blog/ci-cd/vercel",
+  },
 ];
 
 export const links = [
