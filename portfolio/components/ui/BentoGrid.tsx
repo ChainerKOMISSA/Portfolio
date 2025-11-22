@@ -1,16 +1,10 @@
 import { useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
-import { FaGithub, FaWordpress } from "react-icons/fa";
-import { SiPostman, SiIntellijidea, SiBruno, SiSourcetree } from "react-icons/si";
+import { FaGithub, FaWordpress, FaJira } from "react-icons/fa";
+import { SiPostman, SiBruno, SiSourcetree, SiJenkins, SiSonarqube } from "react-icons/si";
 import { BiLogoFigma } from "react-icons/bi";
-import { VscVscode } from "react-icons/vsc";
-import { FaLocationArrow } from "react-icons/fa6";
-
+import { FaLocationArrow, FaGitlab} from "react-icons/fa6";
 import Image from "next/image";
-
 import { cn } from "@/lib/utils";
-
-
 import { BackgroundGradientAnimation } from "./GradientBg";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
@@ -78,21 +72,21 @@ export const BentoGridItem = ({
   const outils = [
     {
       id: 1,
-      name: "Git/Github",
+      name: "Github",
       designation: "",
       image: <FaGithub className="text-yellow-500 h-20 w-20" />,
     },
     {
       id: 2,
-      name: "Figma",
+      name: "Gitlab",
       designation: "",
-      image: <BiLogoFigma className="text-green-500 h-20 w-20" />
+      image: <FaGitlab  className="text-orange-500 h-20 w-20" />
     },
     {
       id: 3,
-      name: "VS Code",
+      name: "Sourcetree",
       designation: "",
-      image: <VscVscode className="text-blue-500 h-20 w-20" />
+      image: <SiSourcetree className="text-blue-600 h-20 w-20" />
     },
     {
       id: 4,
@@ -101,25 +95,35 @@ export const BentoGridItem = ({
       image: <SiPostman className="text-orange-500 h-20 w-20" />
     },
     {
-      id: 5,
-      name: "Wordpress",
-      designation: "",
-      image: <FaWordpress className="text-blue-500 h-20 w-20" />,
-    }
-    /*,
-    {
       id: 6,
       name: "Bruno",
       designation: "",
-      image: <SiBruno className="text-orange-500 h-20 w-20" />,
-    }
-    ,
+      image: <SiBruno className="text-yellow-500 h-20 w-20" />,
+    },
     {
       id: 7,
-      name: "Sourcetree",
+      name: "Wordpress",
       designation: "",
-      image: <SiSourcetree className="text-blue-700 h-20 w-20" />,
-    }*/
+      image: <FaWordpress className="text-blue-600 h-20 w-20" />,
+    },
+    {
+      id: 8,
+      name: "SonarQube",
+      designation: "",
+      image: <SiSonarqube className="text-blue-300 h-20 w-20" />,
+    },
+    {
+      id: 9,
+      name: "Jenkins",
+      designation: "",
+      image: <SiJenkins className="text-red-500 h-20 w-20" />,
+    },
+    {
+      id: 10,
+      name: "Jira",
+      designation: "",
+      image: <FaJira className="text-blue-600 h-20 w-20" />,
+    }
   ];
 
   return (
