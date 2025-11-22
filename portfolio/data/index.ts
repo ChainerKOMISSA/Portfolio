@@ -531,11 +531,10 @@ export const cicdtutorialsItems = [
     title: "Créer ton premier pipeline CI/CD avec GitHub Actions",
     desc: "Automatise les tests et le déploiement de ton projet grâce à GitHub Actions.",
     img: "/actions.png",
-    date: "",
+    date: "2025-11-22",
     category: categories[3].name,
     technologies: [""],
-    link: "",
-    //link: "/blog/ci-cd/github-actions",
+    link: "/blog/ci-cd/github-actions",
   },
   {
     id: 3,

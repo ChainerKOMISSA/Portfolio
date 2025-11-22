@@ -22,6 +22,7 @@ export default function BlogPage() {
 
         <div className="flex flex-col md:flex-row justify-between">
           <div className="relative flex-1 flex flex-col items-center justify-center">
+            {/* DECORATIONS */}
             <div className="absolute inset-y-0 left-0 h-full w-px bg-neutral-200/80 dark:bg-neutral-800/80">
               <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
             </div>
@@ -34,169 +35,257 @@ export default function BlogPage() {
 
             <div className="px-4 py-10 md:py-20 w-full">
               <div className="w-full space-y-16">
+
                 {/* INTRODUCTION */}
                 <section id="intro">
-                  <h2 className="text-2xl font-bold mb-4 text-white">
-                    1. Introduction
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-4 text-white">1. Introduction</h2>
+
                   <p className="text-gray-300">
-                    GitHub Actions est un service d&apos;intégration et de
-                    déploiement continu directement intégré à GitHub. Il te
-                    permet d&apos;automatiser les tests, le linting, le
-                    déploiement et bien plus encore, à chaque push ou pull
-                    request.
-                    <br />
-                    <br />
-                    Dans ce tutoriel, tu vas apprendre à :
-                    <ul className="list-disc list-inside mt-2">
-                      <li>Créer un workflow GitHub Actions</li>
-                      <li>Configurer un pipeline de test automatisé</li>
-                      <li>Exécuter ce pipeline à chaque push sur ton dépôt</li>
-                    </ul>
-                    <br />
-                    <div className="relative w-full h-96 rounded-lg overflow-hidden my-4">
-                      <Image
-                        src="/actions.webp"
-                        alt="Github Actions"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
+                    GitHub Actions est un service d&apos;intégration et de déploiement continu 
+                    directement intégré à GitHub. Il te permet d&apos;automatiser les tests, 
+                    le linting, le déploiement et plus encore, à chaque push ou pull request.
                   </p>
+
+                  <p className="text-gray-300 mt-4">Dans ce tutoriel, tu vas apprendre à :</p>
+
+                  <ul className="list-disc list-inside text-gray-300 mt-2">
+                    <li>Créer un workflow GitHub Actions</li>
+                    <li>Configurer un pipeline de test automatisé</li>
+                    <li>Exécuter ce pipeline à chaque push sur ton dépôt</li>
+                  </ul>
                 </section>
 
                 {/* PREREQUIS */}
                 <section id="prerequis">
-                  <h2 className="text-2xl font-bold mb-4 text-white">
-                    2. Prérequis
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-4 text-white">2. Prérequis</h2>
                   <ul className="list-disc list-inside text-gray-300 space-y-2">
                     <li>Un compte GitHub</li>
+                    <li>Un dépôt contenant ton projet (Node.js, React, Python…)</li>
                     <li>
-                      Un dépôt contenant ton projet (ex : Node.js, React,
-                      Python...)
-                    </li>
-                    <li>
-                      Un fichier{" "}
-                      <code className="text-blue-400">package.json</code> (si
-                      c&apos;est un projet Node.js)
+                      Un fichier <code className="text-blue-400">package.json</code>{" "}
+                      (pour les projets Node.js)
                     </li>
                     <li>Git installé sur ta machine</li>
                   </ul>
                 </section>
 
-                {/* CREER LE PIPELINE */}
+                {/* PIPELINE */}
                 <section id="pipeline">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     3. Créer ton premier pipeline
                   </h2>
+
                   <p className="text-gray-300 mb-3">
-                    Un pipeline GitHub Actions est défini dans un fichier YAML à
-                    placer dans le dossier :{" "}
-                    <code className="text-blue-400">
-                      .github/workflows/ci.yml
-                    </code>
+                    Un pipeline GitHub Actions est défini dans un fichier YAML.  
+                    <br />Crée un répertoire :
+                    <code className="text-blue-400"> .github/workflows/ </code>
+                    à la racine de ton dépôt.  
+                    Ensuite, crée un fichier{" "}
+                    <code className="text-blue-400">ci.yml</code>.
                   </p>
-                  <p className="text-gray-300 mt-3">
-                    Crée ce fichier et ajoute le contenu suivant :
-                  </p>
+
+                  <p className="text-gray-300 mt-3">Ajoute ce contenu :</p>
+
                   <CodeBlock
                     language="yaml"
-                    code={`name: CI - Tests automatiques
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+                    code={`name: learn-github-actions
+run-name: \${{ github.actor }} is learning GitHub Actions
+on: [push]
 
 jobs:
-  build:
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Cloner le dépôt
-        uses: actions/checkout@v3
-
-      - name: Configurer Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
-
-      - name: Installer les dépendances
-        run: npm install
-
-      - name: Lancer les tests
-        run: npm test`}
+          node-version: '20'
+      - run: npm install -g bats
+      - run: bats -v`}
                   />
+
                   <p className="text-gray-300 mt-3">
-                    Ce workflow s’exécute automatiquement à chaque push ou pull
-                    request sur la branche
-                    <code className="text-blue-400"> main</code>. Il installe
-                    Node.js, tes dépendances, puis exécute les tests.
-                    <br />
-                    <br />
-                    📸{" "}
-                    <em>
-                      (Image suggérée : schéma illustrant le pipeline : push →
-                      install → test → résultat)
-                    </em>
+                    Fais ensuite un commit et un push pour envoyer ces modifications.  
+                    Le workflow s&apos;exécutera automatiquement à chaque push sur la branche
+                    <code className="text-blue-400"> main</code>.
                   </p>
                 </section>
 
-                {/* VERIFIER LE PIPELINE */}
+                {/* EXECUTION */}
                 <section id="execution">
-                  <h2 className="text-2xl font-bold mb-4 text-white">
-                    4. Lancer et vérifier ton workflow
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-4 text-white">4. Lancer et vérifier ton workflow</h2>
+
                   <p className="text-gray-300">
-                    Une fois ton fichier <code>.yml</code> poussé sur GitHub :
+                    Une fois ton fichier <code>.yml</code> poussé :
                   </p>
+
                   <ul className="list-disc list-inside text-gray-300 mt-3 space-y-2">
                     <li>Va sur ton dépôt GitHub</li>
-                    <li>
-                      Ouvre l&apos;onglet <strong>Actions</strong>
-                    </li>
-                    <li>
-                      Tu verras ton pipeline s&apos;exécuter automatiquement
-                    </li>
+                    <li>Ouvre l&apos;onglet <strong>Actions</strong></li>
+                    <div className="relative w-full h-28 rounded-lg overflow-hidden">
+                    <Image
+                      src="/actions-4.png"
+                      alt="GitHub Actions"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                    <li>Ton pipeline apparaîtra et s&apos;exécutera automatiquement</li>
+                    <div className="relative w-full h-24 rounded-lg overflow-hidden">
+                    <Image
+                      src="/actions-2.png"
+                      alt="GitHub Actions"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   </ul>
-                  <br />
-                  <p className="text-gray-300">
-                    Si tout se passe bien, tu verras une coche verte ✅
-                    indiquant que le pipeline a réussi. En cas d&apos;erreur, tu
-                    peux consulter les logs pour déboguer.
-                    <br />
-                    <br />
-                    📸{" "}
-                    <em>
-                      (Image suggérée : capture d&apos;écran de la page Actions
-                      avec un workflow en cours)
-                    </em>
+
+                  <p className="text-gray-300 mt-4">
+                    Si tout est bon, une coche verte apparaîtra.  
+                    <div className="relative w-full h-28 rounded-lg overflow-hidden">
+                    <Image
+                      src="/actions-1.png"
+                      alt="GitHub Actions"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                    En cas d&apos;erreur, tu peux consulter les logs pour identifier le problème.
+                    <div className="relative w-full h-28 rounded-lg overflow-hidden">
+                    <Image
+                      src="/actions-3.png"
+                      alt="GitHub Actions"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   </p>
                 </section>
+
+                <section id="understanding">
+  <h2 className="text-2xl font-bold mb-4 text-white">
+    5. Comprendre le fichier workflow
+  </h2>
+
+  <p className="text-gray-300 mb-4">
+    Pour mieux comprendre comment fonctionne la syntaxe YAML dans un fichier
+    GitHub Actions, analysons chaque ligne de l&apos;exemple présenté
+    précédemment. Cela t&apos;aidera à savoir exactement ce que fait ton workflow
+    et comment l&apos;adapter.
+  </p>
+
+  <ul className="list-disc list-inside text-gray-300 space-y-4">
+
+    <li>
+      <code className="text-blue-400">name: learn-github-actions</code><br />
+      <span className="text-gray-400">
+        (Optionnel). Nom du workflow tel qu&apos;il apparaît dans l&apos;onglet
+        <strong> Actions </strong> du dépôt GitHub.  
+        Si cette ligne est absente, GitHub utilisera par défaut le nom du fichier.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">{"run-name: ${{ github.actor }} is learning GitHub Actions"}</code><br />
+      <span className="text-gray-400">
+        (Optionnel). Nom donné à chaque exécution (run) du workflow.
+        Ici, on utilise une expression qui récupère l&apos;utilisateur ayant
+        déclenché le workflow.  
+        Cela permet d&apos;afficher par exemple : “Essi is learning GitHub Actions”.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">on: [push]</code><br />
+      <span className="text-gray-400">
+        Déclencheur du workflow.  
+        Ici, le pipeline se lance à chaque <strong>push</strong> sur n&apos;importe
+        quelle branche.  
+        Il existe d&apos;autres déclencheurs (branches spécifiques, tags, chemins, etc.).
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">jobs:</code><br />
+      <span className="text-gray-400">
+        Regroupe tous les jobs du workflow.  
+        Un workflow peut contenir un ou plusieurs jobs, exécutés en parallèle ou en séquence.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">check-bats-version:</code><br />
+      <span className="text-gray-400">
+        Nom du job.  
+        Tout ce qui est indenté dessous correspond aux étapes et propriétés de ce job.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">runs-on: ubuntu-latest</code><br />
+      <span className="text-gray-400">
+        Spécifie la machine utilisée pour exécuter le job.  
+        Ici : un runner Ubuntu fraîchement préparé par GitHub.  
+        D&apos;autres runners existent (Windows, macOS, self-hosted…).
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">steps:</code><br />
+      <span className="text-gray-400">
+        Liste des étapes exécutées par le job.  
+        Chaque élément de cette liste est une action ou une commande shell.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">- uses: actions/checkout@v5</code><br />
+      <span className="text-gray-400">
+        Télécharge (checkout) ton dépôt sur la machine du runner.
+        C&apos;est nécessaire si tu veux accéder à ton code dans les étapes suivantes.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">- uses: actions/setup-node@v4</code><br />
+      <span className="text-gray-400">
+        Installe Node.js sur la machine.  
+        La clé <code>with:</code> permet de préciser la version souhaitée. Dans notre cas : {" "}
+        <code className="text-blue-400">{"node-version: '20'"}</code>
+      </span> 
+    </li>
+
+    <li>
+      <code className="text-blue-400">- run: npm install -g bats</code><br />
+      <span className="text-gray-400">
+        Exécute une commande shell sur la machine.  
+        Ici : installation globale du paquet <strong>bats</strong>, un outil de test.
+      </span>
+    </li>
+
+    <li>
+      <code className="text-blue-400">- run: bats -v</code><br />
+      <span className="text-gray-400">
+        Exécute la commande <strong>bats -v</strong> pour afficher la version du logiciel.
+        Cela sert de vérification finale.
+      </span>
+    </li>
+  </ul>
+</section>
+
 
                 {/* ASTUCES */}
                 <section id="tips">
-                  <h2 className="text-2xl font-bold mb-4 text-white">
-                    5. Astuces et bonnes pratiques
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-4 text-white">6. Astuces et bonnes pratiques</h2>
+
                   <ul className="list-disc list-inside text-gray-300 space-y-2">
-                    <li>Nommer clairement chaque étape de ton workflow.</li>
-                    <li>
-                      Utiliser des{" "}
-                      <code className="text-blue-400">actions</code> officielles
-                      (checkout, setup-node, etc.).
-                    </li>
-                    <li>
-                      Limiter le déclenchement du pipeline à certaines branches
-                      si nécessaire.
-                    </li>
-                    <li>
-                      Configurer un badge dans ton README pour afficher le
-                      statut du pipeline.
-                    </li>
+                    <li>Nommer clairement chaque étape du workflow.</li>
+                    <li>Utiliser des <code className="text-blue-400">actions</code> officielles.</li>
+                    <li>Limiter le déclenchement à certaines branches.</li>
+                    <li>Ajouter un badge dans ton README.</li>
                   </ul>
+
                   <CodeBlock
                     language="markdown"
                     code={`![CI](https://github.com/<ton-user>/<ton-repo>/actions/workflows/ci.yml/badge.svg)`}
@@ -205,25 +294,21 @@ jobs:
 
                 {/* CONCLUSION */}
                 <section id="conclusion">
-                  <h2 className="text-2xl font-bold mb-4 text-white">
-                    6. Conclusion
-                  </h2>
+                  <h2 className="text-2xl font-bold mb-4 text-white">7. Conclusion</h2>
+
                   <p className="text-gray-300 mb-6">
-                    Félicitations! Tu viens de créer ton premier pipeline CI/CD
-                    avec GitHub Actions !
-                    <br />
-                    <br />
-                    Tu as automatisé l&apos;installation, les tests et les
-                    vérifications de ton code. Dans le prochain tutoriel, nous
-                    irons plus loin avec le déploiement automatique sur des
-                    plateformes comme Firebase ou Vercel.
+                    Félicitations ! Tu viens de créer ton premier pipeline CI/CD. Pour aller plus loin avec Github Actions, je te 
+                    conseille de consulter <a href="https://docs.github.com/en/actions/tutorials" className="text-blue-400">la documentation officielle</a>.
+                    Dans le prochain tutoriel, on verra le déploiement automatique sur Gitlab.
                   </p>
+
                   <Link
                     href="/blog/ci-cd"
                     className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
                   >
                     ← Retour à la série
                   </Link>
+
                   <Link
                     href="/blog"
                     className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 ml-2 py-2 rounded-md transition"
@@ -235,27 +320,17 @@ jobs:
             </div>
           </div>
 
+          {/* SIDEBAR */}
           <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
             <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
             <nav className="flex flex-col gap-2 text-sm text-gray-400">
-              <Link href="#intro" className="hover:text-white">
-                1. Introduction
-              </Link>
-              <Link href="#prerequis" className="hover:text-white">
-                2. Prérequis
-              </Link>
-              <Link href="#pipeline" className="hover:text-white">
-                3. Créer ton pipeline
-              </Link>
-              <Link href="#execution" className="hover:text-white">
-                4. Vérifier ton workflow
-              </Link>
-              <Link href="#tips" className="hover:text-white">
-                5. Astuces
-              </Link>
-              <Link href="#conclusion" className="hover:text-white">
-                6. Conclusion
-              </Link>
+              <Link href="#intro" className="hover:text-white">1. Introduction</Link>
+              <Link href="#prerequis" className="hover:text-white">2. Prérequis</Link>
+              <Link href="#pipeline" className="hover:text-white">3. Pipeline</Link>
+              <Link href="#execution" className="hover:text-white">4. Workflow</Link>
+              <Link href="#understanding" className="hover:text-white">5. Comprendre le fichier workflow</Link>
+              <Link href="#tips" className="hover:text-white">6. Astuces</Link>
+              <Link href="#conclusion" className="hover:text-white">7. Conclusion</Link>
             </nav>
           </aside>
         </div>
