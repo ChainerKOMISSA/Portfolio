@@ -544,8 +544,7 @@ export const cicdtutorialsItems = [
     date: "",
     category: categories[3].name,
     technologies: [""],
-    link: "",
-    //link: "/blog/ci-cd/gitlab",
+    link: "/blog/ci-cd/gitlab",
   },
   {
     id: 4,
