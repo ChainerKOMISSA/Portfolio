@@ -44,7 +44,7 @@ export default function BlogPage() {
             d&apos;expérimenter en direct. Si tu as des suggestions, des idées ou des
             retours à me partager, tu peux me contacter via :{" "}
             <a
-              href="http://localhost:3000/#contact"
+              href="/#contact"
               className="text-blue-400 underline"
             >
               ce formulaire
