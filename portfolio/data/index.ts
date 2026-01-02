@@ -425,6 +425,17 @@ export const blogItems = [
     link: "/blog/ci-cd",
     technologies: ["serie"],
   },
+  {
+    id: 18,
+    title: "Installer Jenkins sur Docker",
+    desc: "Guide complet pour installer Jenkins rapidement et facilement avec Docker, incluant toutes les étapes depuis le téléchargement jusqu’à la configuration initiale.",
+    img: "/docker-jenkins.png",
+    date: "",
+    category: categories[3].name,
+    //link: "/blog/docker",
+    link:"",
+    technologies: [],
+  },
 ];
 
 export const emailtutorialsItems = [
