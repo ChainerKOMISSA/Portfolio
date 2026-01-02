@@ -2,7 +2,7 @@
 import Link from "next/link";
 import {IoIosArrowRoundBack} from "react-icons/io";
 
-export function HeroSectionOne() {
+export default function BlogPage() {
     return (
         <main className="min-h-screen p-10 bg-black-100 flex flex-col overflow-hidden mx-auto sm:px-10 px-5">
             <Link
@@ -285,5 +285,3 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
         </main>
     );
 }
-
-export default HeroSectionOne;
