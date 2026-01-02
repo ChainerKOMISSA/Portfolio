@@ -99,7 +99,7 @@ export default function BlogPage() {
                   </ul>
 
                   <p className="text-gray-300 mt-4">
-                    ℹ️ Si tu n&apos;as pas encore de projet sur Gitab, tu peux
+                    ℹ️ Si tu n&apos;as pas encore de projet sur Gitlab, tu peux
                     en créer un :{" "}
                     <a
                       href="https://gitlab.com"
@@ -126,29 +126,136 @@ export default function BlogPage() {
                 </section>
 
                 {/* 3. PIPELINE DE BASE */}
+
                 <section id="pipeline">
                   <h2 className="text-2xl font-bold mb-4 text-white">
-                    3. Pipeline minimal
+                    3. Pipeline minimal : déployer avec un seul job <code>pages</code>
                   </h2>
 
                   <p className="text-gray-300 mb-3">
-                    ℹ️Notre déploiement sera fait sur GitLab Pages. <br />
-                    <br />
-                    Pour un déploiement statique simple nous avons besoin
-                    d&apos;un seul Job <strong>
-                      obligatoirement
-                    </strong> nommé <code className="text-blue-400">pages</code>
-                    . Ce nom permettra à GitLab de détecter le pour publier le
-                    contenu du dossier{" "}
-                    <code className="text-blue-400">public/</code> en tant que
-                    site web.
+                    Dans cette première approche, nous allons volontairement faire
+                    <strong> le pipeline le plus simple possible</strong>.
+                    <br /><br />
+                    L’objectif est de comprendre le mécanisme de déploiement de
+                    <strong> GitLab Pages</strong>, sans se préoccuper pour l’instant des tests
+                    ou de la construction du projet.
                   </p>
+
                   <p className="text-gray-300 mb-3">
-                    Comme avec Github Actions, Gitlab CI/CD requiert un fichier
-                    YAML contenant presque les mêmes instructions. <br />A la
-                    racine du projet, crée donc un fichier{" "}
-                    <code className="text-blue-400">.gitlab-ci.yml</code>. Dans
-                    ce fichier recopies le code suivant :
+                    Pour un déploiement statique via GitLab Pages, un seul job est requis :
+                    <strong> il doit obligatoirement s’appeler </strong>
+                    <code className="text-blue-400">pages</code>.
+                    <br />
+                    Ce nom permet à GitLab de détecter automatiquement le job chargé de publier
+                    le contenu du dossier{" "}
+                    <code className="text-blue-400">public/</code> en tant que site web.
+                  </p>
+
+                  <p className="text-gray-300 mb-3">
+                    Comme avec GitHub Actions, GitLab CI/CD repose sur un fichier YAML.
+                    <br />
+                    À la racine de votre projet, créez un fichier{" "}
+                    <code className="text-blue-400">.gitlab-ci.yml</code> contenant le code
+                    suivant :
+                  </p>
+
+                  <CodeBlock
+                      language="yaml"
+                      code={`pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - echo "Mon premier site GitLab Pages" > public/index.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - main`}
+                  />
+
+                  <div className="text-gray-300 mt-4 space-y-3">
+                    <p>
+                      <strong>Que fait ce pipeline ?</strong>
+                    </p>
+                    <ul className="list-disc list-inside space-y-1">
+                      <li>
+                        Le job <code>pages</code> s’exécute uniquement sur la branche{" "}
+                        <code className="text-blue-400">main</code>.
+                      </li>
+                      <li>
+                        Il génère un dossier{" "}
+                        <code className="text-blue-400">public/</code>, requis par GitLab Pages.
+                      </li>
+                      <li>
+                        Les fichiers contenus dans ce dossier sont publiés automatiquement.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <p className="text-gray-300 mt-3">
+                    Une fois le pipeline exécuté avec succès, GitLab publie automatiquement le
+                    contenu du dossier{" "}
+                    <code className="text-blue-400">public/</code> via <strong>GitLab Pages</strong>.
+                  </p>
+
+                  <p className="text-gray-300 mt-2">
+                    Pour accéder à votre site :
+                  </p>
+
+                  <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
+                    <li>
+                      Rendez-vous dans votre projet GitLab
+                    </li>
+                    <li>
+                      Allez dans <strong>Deploy → Pages</strong>
+                    </li>
+                    <li>
+                      Cliquez sur l’URL fournie par GitLab
+                    </li>
+                  </ul>
+
+                  <p className="text-gray-300 mt-3">
+                    L’URL suit généralement le format : {""}
+                    <code className="text-blue-400">
+                      https://&lt;username&gt;.gitlab.io/&lt;nom-du-projet&gt;/
+                    </code>
+                  </p>
+
+                  <p className="text-gray-300 mt-2 italic">
+                    La première publication peut prendre quelques secondes après la fin du pipeline.
+                  </p>
+
+                  <p className="text-gray-300 mt-5">
+                    Lorsque tout est correctement configuré, le pipeline apparaît avec un statut
+                    <strong> réussi </strong> dans l’onglet{" "}
+                    <strong>Build → Pipelines</strong>.
+                  </p>
+
+                  <p className="text-gray-300 mt-2">
+                    L’exemple ci-dessous montre un pipeline minimal composé uniquement du job{" "}
+                    <code className="text-blue-400">pages</code>, exécuté avec succès.
+                  </p>
+                  <div className="relative w-full h-96 rounded-lg overflow-hidden">
+                    <Image
+                        src="/gitlab-ci.png"
+                        alt="Exemple de pipeline réussi"
+                        fill
+                        className="object-contain"
+                    />
+                  </div>
+                </section>
+
+                <section id="pipeline2">
+                  <h2 className="text-2xl font-bold mb-4 text-white">
+                    4. Pipeline avec plusieurs jobs
+                  </h2>
+
+                  <p className="text-gray-300 mb-3">
+                    Maintenant que le mécanisme de base de GitLab Pages est compris,
+                    observons un pipeline composé de plusieurs jobs.
+                    <br /><br />
+                     <strong>⚠️Attention</strong> : Ce pipeline n’est pas destiné au déploiement Pages.
+                    Ll sert uniquement à comprendre le fonctionnement interne de GitLab CI/CD.
                   </p>
 
                   <CodeBlock
@@ -179,310 +286,348 @@ deploy-prod:
   environment: production`}
                   />
 
-                  <p className="text-gray-300 mt-3">
-                    Cet exemple présente quatre tâches : build-job, test-job1,
-                    test-job2 et deploy-prod. Les commentaires des commandes
-                    echo s&apos;affichent dans l&apos;interface utilisateur lors de la
-                    consultation des tâches. Les valeurs des variables
-                    prédéfinies $GITLAB_USER_LOGIN et $CI_COMMIT_BRANCH sont
-                    renseignées lors de l&apos;exécution des tâches.
-                  </p>
+                  <div className="text-gray-300 mt-3 space-y-4">
+                    <p>
+                      Cet exemple illustre un pipeline <strong>GitLab CI/CD</strong> composé de
+                      plusieurs tâches exécutées de manière séquentielle.
+                    </p>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-200 mb-2">
+                        Tâches définies dans le pipeline
+                      </h4>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>
+                          <strong>build-job</strong> : étape de construction du projet
+                        </li>
+                        <li>
+                          <strong>test-job1</strong> : premier ensemble de tests automatisés
+                        </li>
+                        <li>
+                          <strong>test-job2</strong> : second ensemble de tests
+                        </li>
+                        <li>
+                          <strong>deploy-prod</strong> : déploiement de l’application en
+                          production
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-200 mb-2">
+                        Affichage dans l’interface GitLab
+                      </h4>
+                      <p>
+                        Les messages définis via les commandes <code className="text-blue-400">echo</code> sont affichés
+                        directement dans l’interface utilisateur de GitLab lors de la consultation
+                        de chaque tâche, ce qui permet de suivre facilement le déroulement du
+                        pipeline.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-gray-200 mb-2">
+                        Variables prédéfinies utilisées
+                      </h4>
+                      <p>
+                        Lors de l’exécution des tâches, GitLab renseigne automatiquement certaines
+                        variables d’environnement, notamment :
+                      </p>
+                      <ul className="list-disc list-inside space-y-1">
+                        <li>
+                          <code className="text-blue-400">$GITLAB_USER_LOGIN</code> : identifie l’utilisateur ayant déclenché
+                          le pipeline
+                        </li>
+                        <li>
+                          <code className="text-blue-400">$CI_COMMIT_BRANCH</code> : indique la branche Git sur laquelle le
+                          pipeline est exécuté
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
 
                   <p className="text-gray-300 mt-3">
-                    Dès que vous poussez ce fichier vers votre dépôt, GitLab
-                    détectera et lancera automatiquement le pipeline sur les
-                    pushs vers <code className="text-blue-400">main</code>. Si
-                    le job <code className="text-blue-400">pages</code> réussit,
-                    votre site sera disponible via l&apos;URL GitLab Pages de
-                    votre projet.
+                    Ce type de pipeline est utile pour apprendre à :
+                    <strong> organiser des jobs</strong>,
+                    <strong> comprendre les stages</strong> et
+                    <strong> exploiter les variables prédéfinies</strong>,
+                    avant de passer à un vrai pipeline de production.
                   </p>
+
                 </section>
 
                 {/* 4. EXEMPLE AVANCÉ MULTI-STAGE */}
                 <section id="advanced">
                   <h2 className="text-2xl font-bold mb-4 text-white">
-                    4. Exemple avancé : Pipeline multi-stage (build, test,
-                    deploy)
+                    5. Pipeline avancé : build, test et déploiement avec GitLab Pages
                   </h2>
 
-                  <p className="text-gray-300">
-                    Pour les projets utilisant des outils modernes (Node.js,
-                    tests unitaires, compilation de code), un pipeline
-                    multi-stage est essentiel. Il sépare clairement les
-                    responsabilités, garantissant que le code est testé avant
-                    d&apos;être déployé.
+                  <p className="text-gray-300 mb-3">
+                    Ce pipeline représente un <strong>cas proche d’un projet réel</strong>.
+                    Il combine une organisation claire des étapes et un déploiement automatique
+                    sur <strong>GitLab Pages</strong> grâce au job{" "}
+                    <code className="text-blue-400">pages</code>.
                   </p>
-                  <p className="text-gray-300 font-semibold mt-2 mb-3">
-                    Ce pipeline suit l&apos;ordre :{" "}
-                    <code className="text-blue-400">build</code> →
-                    <code className="text-blue-400">test</code> →
-                    <code className="text-blue-400">deploy</code>.
+
+                  <p className="text-gray-300 mb-3">
+                    L’objectif d’un pipeline multi-stage est de <strong>séparer les responsabilités</strong> :
+                    le code est d’abord construit, ensuite testé, puis déployé uniquement si
+                    toutes les étapes précédentes ont réussi.
+                  </p>
+
+                  <p className="text-gray-300 font-semibold mb-4">
+                    Ordre d’exécution :
+                    <code className="text-blue-400 ml-2">build</code> →
+                    <code className="text-blue-400 ml-1">test</code> →
+                    <code className="text-blue-400 ml-1">deploy</code>
                   </p>
 
                   <CodeBlock
-                    language="yaml"
-                    code={`# Utilise une image Docker avec Node.js préinstallé
+                      language="yaml"
+                      code={`# Image Docker utilisée pour tous les jobs
 image: node:18-alpine
 
-# Définition de l'ordre des étapes (stages)
+# Définition des étapes du pipeline
 stages:
-  - build # Préparation (installation des dépendances, compilation)
-  - test  # Exécution des tests unitaires
-  - deploy # Déploiement réel
+  - build   # Installation des dépendances et compilation
+  - test    # Exécution des tests automatisés
+  - deploy  # Déploiement sur GitLab Pages
 
-# Mise en cache : les chemins spécifiés sont conservés entre les runs
+# Cache partagé entre les jobs pour accélérer les exécutions
 cache:
-  paths:
-    - node_modules/ # Accélère l'étape 'install'
+  paths:
+    - node_modules/
 
-# Job 1 : Installation et compilation (Stage 'build')
+# Job build : installation et compilation
 install:
-  stage: build
-  script:
-    - npm ci  # Installation propre des dépendances
-    - npm run build # Exécute la compilation (ex: Next.js, Webpack)
-  # Les artifacts transmettent les fichiers de sortie (ex: dossier 'dist/')
-  artifacts:
-    paths:
-      - dist/ # Assurez-vous que ce chemin correspond à votre build
-      
-# Job 2 : Tests unitaires (Stage 'test')
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+# Job test : tests unitaires
 unit_tests:
-  stage: test
-  script:
-    - npm test # Exécute vos tests (Jest, Mocha, etc.)
-  # Dépendance : ce job a besoin des artifacts du job 'install'
-  dependencies:
-    - install
-      
-# Job 3 : Déploiement (Stage 'deploy')
+  stage: test
+  script:
+    - npm test
+  dependencies:
+    - install
+
+# Job deploy : publication via GitLab Pages
 pages:
-  stage: deploy
-  script:
-    - mkdir -p public
-    # Copie les fichiers compilés de 'dist/' vers le dossier 'public/'
-    - cp -r dist/* public/
-    # Copie les assets non-compilés
-    - cp -r assets/ public/
-  artifacts:
-    paths:
-      - public
-  only:
-    - main`}
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r dist/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main`}
                   />
 
-                  <p className="text-gray-300 mt-3">
-                    **Concepts Clés dans cet exemple :**
-                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
+                  <div className="text-gray-300 mt-4 space-y-3">
+                    <p className="font-semibold">Points clés à retenir</p>
+                    <ul className="list-disc list-inside space-y-1">
                       <li>
-                        **`image`** : Définit l&apos;environnement
-                        d&apos;exécution (ici Node.js 18 sur Alpine).
+                        <code className="text-blue-400">image</code> définit l’environnement
+                        d’exécution commun à tous les jobs.
                       </li>
                       <li>
-                        **`cache`** : Optimise la vitesse en réutilisant le
-                        dossier{" "}
-                        <code className="text-blue-400">node_modules/</code>{" "}
-                        entre les exécutions.
+                        Le <code className="text-blue-400">cache</code> permet de réutiliser
+                        <code className="text-blue-400 ml-1">node_modules/</code> et de réduire
+                        le temps d’exécution du pipeline.
                       </li>
                       <li>
-                        **`artifacts`** : La sortie du job{" "}
-                        <code className="text-blue-400">install</code> (le
-                        dossier <code className="text-blue-400">dist/</code>)
-                        est stockée pour être utilisée comme entrée par le job{" "}
-                        <code className="text-blue-400">pages</code>.
+                        Les <code className="text-blue-400">artifacts</code> transmettent le
+                        résultat du build (<code className="text-blue-400">dist/</code>)
+                        entre les stages.
                       </li>
                       <li>
-                        **`dependencies`** : Force explicitement le job{" "}
-                        <code className="text-blue-400">unit_tests</code> à
-                        attendre et utiliser la sortie du job{" "}
-                        <code className="text-blue-400">install</code>.
+                        Le job <code className="text-blue-400">pages</code> est le seul chargé
+                        du déploiement et publie le contenu du dossier
+                        <code className="text-blue-400 ml-1">public/</code>.
                       </li>
                     </ul>
-                  </p>
+                  </div>
                 </section>
 
-                {/* 5. VARIABLES CI ET SECRETS (Ancienne Section 5) */}
+
+                {/* 6. VARIABLES CI ET SECRETS */}
                 <section id="variables">
                   <h2 className="text-2xl font-bold mb-4 text-white">
-                    5. Gestion Sécurisée : Variables CI et Secrets
+                    6. Variables CI et gestion sécurisée des secrets
                   </h2>
 
-                  <p className="text-gray-300">
-                    Il est **crucial** de ne jamais stocker de secrets (tokens,
-                    clés API, mots de passe) directement dans{" "}
-                    <code className="text-blue-400">.gitlab-ci.yml</code> ou
-                    dans votre code source. GitLab fournit une interface
-                    sécurisée pour cela : **Settings → CI/CD → Variables**.
+                  <p className="text-gray-300 mb-3">
+                    Dans un pipeline CI/CD, il est <strong>impératif</strong> de ne jamais exposer
+                    des informations sensibles (tokens, clés API, mots de passe) dans le code
+                    source ou dans le fichier{" "}
+                    <code className="text-blue-400">.gitlab-ci.yml</code>.
                   </p>
 
-                  <p className="text-gray-300 mt-2">
-                    Les variables configurées dans l&apos;interface deviennent
-                    des variables d&apos;environnement dans les jobs de votre
-                    pipeline (par exemple,{" "}
-                    <code className="text-blue-400">$MY_API_TOKEN</code>).
+                  <p className="text-gray-300 mb-3">
+                    GitLab fournit un mécanisme sécurisé via l&apos;onglet{" "}
+                    <strong className="text-blue-400">Settings → CI/CD → Variables</strong>.
+                    Les valeurs définies dans cette interface sont injectées automatiquement
+                    comme <strong>variables d’environnement</strong> dans vos jobs.
                   </p>
 
-                  <p className="text-gray-300 mt-4 font-semibold">
-                    Points clés lors de la configuration de variables :
+                  <p className="text-gray-300 mb-4 italic">
+                    Exemple : une variable nommée{" "}
+                    <code className="text-blue-400">MY_API_TOKEN</code> pourra être utilisée
+                    directement dans vos scripts.
                   </p>
-                  <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
+
+                  <p className="text-gray-300 font-semibold mb-2">
+                    Bonnes pratiques lors de la configuration :
+                  </p>
+
+                  <ul className="list-disc list-inside text-gray-300 space-y-2">
                     <li>
-                      **Protected** : Limite l&apos;accès à cette variable aux
+                      <strong>Protected</strong> : restreint l’utilisation de la variable aux
                       branches protégées (comme{" "}
                       <code className="text-blue-400">main</code>).
                     </li>
                     <li>
-                      **Masked** : Masque la valeur dans les logs du pipeline,
-                      empêchant ainsi sa fuite accidentelle. **À utiliser
-                      systématiquement pour les secrets.**
+                      <strong>Masked</strong> : masque la valeur dans les logs du pipeline.
+                      <br />
+                      👉 À activer systématiquement pour les secrets.
                     </li>
                   </ul>
+
                   <p className="text-gray-300 mt-4">
-                    Exemple d&apos;utilisation dans votre fichier{" "}
-                    <code className="text-blue-400">.gitlab-ci.yml</code> :
+                    Exemple d’utilisation d’une variable secrète dans un job :
                   </p>
 
                   <CodeBlock
-                    language="yaml"
-                    code={`deploy_to_external:
-  stage: deploy
-  script:
-    # La variable MY_API_TOKEN est injectée automatiquement
-    - curl -X POST -H "Authorization: Bearer $MY_API_TOKEN" https://api.external.com/deploy
-    - echo "Déploiement initié." 
-  only:
-    - main`}
+                      language="yaml"
+                      code={`deploy_to_external:
+  stage: deploy
+  script:
+    - curl -X POST -H "Authorization: Bearer $MY_API_TOKEN" https://api.external.com/deploy
+    - echo "Déploiement déclenché"
+  only:
+    - main`}
                   />
                 </section>
 
-                {/* 6. DÉPANNAGE & BONNES PRATIQUES (Ancienne Section 6/9) */}
+                {/* 7. DÉPANNAGE & BONNES PRATIQUES */}
                 <section id="debug">
                   <h2 className="text-2xl font-bold mb-4 text-white">
-                    6. Dépannage et Bonnes Pratiques
+                    7. Dépannage et bonnes pratiques CI/CD
                   </h2>
 
-                  <p className="text-gray-300 font-semibold mb-2">
-                    Diagnostics courants :
+                  <p className="text-gray-300 mb-3">
+                    Lors de la mise en place de pipelines, certains problèmes reviennent
+                    fréquemment. Voici les plus courants et comment les résoudre.
                   </p>
-                  <ul className="list-disc list-inside text-gray-300 space-y-2">
+
+                  <ul className="list-disc list-inside text-gray-300 space-y-3">
                     <li>
-                      **Pipeline ne démarre pas :**
+                      <strong>Le pipeline ne démarre pas</strong>
                       <p className="mt-1">
                         Vérifiez que le fichier{" "}
-                        <code className="text-blue-400">.gitlab-ci.yml</code>{" "}
-                        est à la racine du dépôt et que les conditions{" "}
-                        <code className="text-blue-400">only:</code> /{" "}
-                        <code className="text-blue-400">rules:</code>
-                        correspondent à votre *commit* (branche, tag, etc.).
+                        <code className="text-blue-400">.gitlab-ci.yml</code> est bien à la racine
+                        du dépôt et que les règles d’exécution (
+                        <code className="text-blue-400">only</code> ou{" "}
+                        <code className="text-blue-400">rules</code>) correspondent à la branche
+                        ou au type de commit.
                       </p>
                     </li>
+
                     <li>
-                      **404 sur GitLab Pages :**
+                      <strong>Erreur 404 sur GitLab Pages</strong>
                       <p className="mt-1">
-                        Le dossier{" "}
-                        <code className="text-blue-400">public/</code> doit
-                        impérativement être créé par le job{" "}
-                        <code className="text-blue-400">pages</code> et contenir
-                        un <code className="text-blue-400">index.html</code>.
-                        Assurez-vous que le chemin de l&apos;artifact est
-                        correctement défini sur{" "}
-                        <code className="text-blue-400">public</code>.
+                        Le job <code className="text-blue-400">pages</code> doit impérativement
+                        produire un dossier{" "}
+                        <code className="text-blue-400">public/</code> contenant un fichier{" "}
+                        <code className="text-blue-400">index.html</code>.
                       </p>
                     </li>
+
                     <li>
-                      **Commandes non trouvées :**
+                      <strong>Commande introuvable</strong>
                       <p className="mt-1">
-                        Le runner utilise une image Docker (défini par{" "}
-                        <code className="text-blue-400">image:</code>). Si vous
-                        avez besoin de commandes spécifiques (ex:{" "}
-                        <code className="text-blue-400">npm</code>,{" "}
-                        <code className="text-blue-400">python</code>), changez
-                        d&apos;image (ex:{" "}
-                        <code className="text-blue-400">node:20</code>) ou
-                        installez-les dans le script via{" "}
-                        <code className="text-blue-400">apt-get</code> ou{" "}
-                        <code className="text-blue-400">apk add</code>.
+                        Le runner s’exécute dans une image Docker. Assurez-vous que l’image
+                        utilisée contient les outils nécessaires (ex.{" "}
+                        <code className="text-blue-400">node</code>,{" "}
+                        <code className="text-blue-400">python</code>) ou installez-les dans le
+                        script.
                       </p>
                     </li>
                   </ul>
 
                   <p className="text-gray-300 font-semibold mt-6 mb-2">
-                    Astuces et Bonnes Pratiques :
+                    Bonnes pratiques générales :
                   </p>
+
                   <ul className="list-disc list-inside text-gray-300 space-y-2">
                     <li>
-                      **Logs du Job :** Le meilleur outil de dépannage est la
-                      *Trace* du job. Cliquez sur un job en échec pour voir sa
-                      sortie complète et identifier la ligne de commande qui a
-                      échoué.
+                      Consultez toujours les <strong>logs du job</strong> pour identifier
+                      précisément l’erreur.
                     </li>
                     <li>
-                      **Atomicité des Jobs :** Gardez les jobs simples et axés
-                      sur une seule responsabilité (un job = build, un autre =
-                      test).
+                      Gardez des <strong>jobs simples et atomiques</strong> (une responsabilité
+                      par job).
                     </li>
                     <li>
-                      **Utiliser `rules:` :** Pour un contrôle plus fin et plus
-                      moderne des conditions d&apos;exécution des jobs, préférez{" "}
-                      <code className="text-blue-400">rules:</code> à
-                      l&apos;ancien <code className="text-blue-400">only:</code>
-                      .
+                      Préférez <code className="text-blue-400">rules</code> à{" "}
+                      <code className="text-blue-400">only</code> pour un contrôle plus précis et
+                      moderne.
                     </li>
                   </ul>
                 </section>
 
-                {/* 7. CONCLUSION & RESSOURCES (Ancienne Section 10) */}
+                {/* 8. CONCLUSION */}
                 <section id="conclusion">
                   <h2 className="text-2xl font-bold mb-4 text-white">
-                    7. Conclusion et Prochaines Étapes
+                    8. Conclusion
                   </h2>
 
                   <p className="text-gray-300 mb-4">
-                    Vous avez maintenant toutes les bases pour configurer et
-                    gérer des pipelines CI/CD robustes sur GitLab, du
-                    déploiement statique simple à une chaîne d&apos;intégration
-                    complète (build, test, deploy) avec une gestion sécurisée de
-                    vos variables.
+                    Vous disposez désormais des bases essentielles pour concevoir des pipelines
+                    CI/CD efficaces avec GitLab : du déploiement statique via GitLab Pages à des
+                    pipelines multi-stage robustes, sécurisés et maintenables.
                   </p>
 
-                  <p className="text-gray-300 mb-6 font-semibold">
-                    Pour aller plus loin, vous pourriez :
+                  <p className="text-gray-300 mb-3 font-semibold">
+                    Pour aller plus loin vous pouvez :
                   </p>
 
                   <ul className="list-disc list-inside text-gray-300 space-y-2">
                     <li>
-                      **Intégrer des scans de sécurité** : Ajouter des jobs de
-                      Static Application Security Testing (SAST) ou de détection
-                      de dépendances vulnérables.
+                      Ajouter des analyses de sécurité (SAST, Dependency Scanning).
                     </li>
                     <li>
-                      **Déploiement avancé** : Adapter les exemples pour
-                      déployer sur des plateformes comme AWS, Azure, ou
-                      Kubernetes en utilisant des images Docker dédiées.
+                      Étendre ces pipelines vers des plateformes cloud ou Kubernetes.
                     </li>
                     <li>
-                      **Améliorer la documentation** : Ajouter des images et des
-                      captures d&apos;écran des interfaces Pipelines, Jobs et
-                      Pages de GitLab.
+                      Améliorer la visibilité avec des badges, des logs structurés et une
+                      documentation enrichie.
                     </li>
                   </ul>
 
-                  <div className="flex gap-3 mt-4">
+                  <div className="flex gap-3 mt-5">
                     <Link
-                      href="/blog/ci-cd"
-                      className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
+                        href="/blog/ci-cd"
+                        className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
                     >
                       ← Retour à la série
                     </Link>
 
                     <Link
-                      href="/blog"
-                      className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 ml-2 py-2 rounded-md transition"
+                        href="/blog"
+                        className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
                     >
                       ← Retour au blog
                     </Link>
                   </div>
                 </section>
+
               </div>
             </div>
           </div>
@@ -495,22 +640,25 @@ pages:
                 1. Introduction
               </Link>
               <Link href="#prerequis" className="hover:text-white">
-                2. Prérequis & Structure
+                2. Prérequis
               </Link>
               <Link href="#pipeline" className="hover:text-white">
                 3. Pipeline minimal
               </Link>
+              <Link href="#pipeline2" className="hover:text-white">
+                4. Pipeline avec plusieurs jobs
+              </Link>
               <Link href="#advanced" className="hover:text-white">
-                4. Pipeline avancé
+                5. Pipeline avancé
               </Link>
               <Link href="#variables" className="hover:text-white">
-                5. Variables & Secrets
+                6. Variables & Secrets
               </Link>
               <Link href="#debug" className="hover:text-white">
-                6. Dépannage & Astuces
+                7. Dépannage & Astuces
               </Link>
               <Link href="#conclusion" className="hover:text-white">
-                7. Conclusion
+                8. Conclusion
               </Link>
             </nav>
           </aside>

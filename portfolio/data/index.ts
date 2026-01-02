@@ -541,11 +541,10 @@ export const cicdtutorialsItems = [
     title: "CI/CD avec GitLab : du push au déploiement automatique",
     desc: "Apprends à créer un pipeline complet et robuste avec GitLab CI/CD pour tes projets web.",
     img: "/gitlab.png",
-    date: "",
+    date: "2026-01-02",
     category: categories[3].name,
     technologies: [""],
-    link:""
-    //link: "/blog/ci-cd/gitlab",
+    link: "/blog/ci-cd/gitlab",
   },
   {
     id: 4,
