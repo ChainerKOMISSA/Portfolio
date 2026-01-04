@@ -33,7 +33,8 @@ export default function BlogPage() {
     const filterRef = useRef<HTMLDivElement>(null);
     const categoriesList = [
         "Templates de code",
-        "Tutoriels"
+        "Tutoriels",
+        "Série de tutoriels"
     ];
 
     useEffect(() => {

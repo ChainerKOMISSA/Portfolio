@@ -261,6 +261,10 @@ export const categories = [
     id: 4,
     name: "Tutoriels",
   },
+  {
+    id: 5,
+    name: "Série de tutoriels",
+  },
 ];
 
 export const blogItems = [
@@ -380,7 +384,7 @@ export const blogItems = [
     desc: " Cette série de tutoriels vous guide pas à pas pour envoyer des emails avec JavaScript, SMTP.js, Node.js, etc.",
     img: "/bgemails.jpg",
     date: " ",
-    category: categories[3].name,
+    category: categories[4].name,
     link: "/blog/emails",
     technologies: ["serie"],
   },
@@ -411,7 +415,7 @@ export const blogItems = [
     desc: " Cette série de tutoriels vous guide pas à pas dans l'intégration de solutions de paiement en ligne comme PayPal, Stripe, Square ainsi que Google Pay et Apple Pay.",
     img: "/paiements.png",
     date: "",
-    category: categories[3].name,
+    category: categories[4].name,
     link: "/blog/paiements",
     technologies: ["serie"],
   },
@@ -421,7 +425,7 @@ export const blogItems = [
     desc: "Cette série de tutoriels te guide pas à pas dans la mise en place de pipelines d’intégration et de déploiement continus (CI/CD) à l’aide d’outils modernes.",
     img: "/intro.png",
     date: "",
-    category: categories[3].name,
+    category: categories[4].name,
     link: "/blog/ci-cd",
     technologies: ["serie"],
   },
