@@ -380,7 +380,7 @@ export const blogItems = [
   },
   {
     id: 12,
-    title: "Série : Envoyer des emails en Javascript",
+    title: "Envoyer des emails en Javascript",
     desc: " Cette série de tutoriels vous guide pas à pas pour envoyer des emails avec JavaScript, SMTP.js, Node.js, etc.",
     img: "/bgemails.jpg",
     date: " ",
@@ -411,7 +411,7 @@ export const blogItems = [
   },
   {
     id: 16,
-    title: "Série : Intégrer des solutions de paiement en ligne",
+    title: "Intégrer des solutions de paiement en ligne",
     desc: " Cette série de tutoriels vous guide pas à pas dans l'intégration de solutions de paiement en ligne comme PayPal, Stripe, Square ainsi que Google Pay et Apple Pay.",
     img: "/paiements.png",
     date: "",
@@ -421,7 +421,7 @@ export const blogItems = [
   },
   {
     id: 17,
-    title: "Série : Mettre en place du CI/CD",
+    title: "Mettre en place du CI/CD",
     desc: "Cette série de tutoriels te guide pas à pas dans la mise en place de pipelines d’intégration et de déploiement continus (CI/CD) à l’aide d’outils modernes.",
     img: "/intro.png",
     date: "",
