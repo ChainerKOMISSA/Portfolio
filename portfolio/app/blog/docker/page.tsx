@@ -39,18 +39,20 @@ export default function BlogPage() {
                                         Jenkins est l’un des outils de <strong>CI/CD</strong> les plus utilisés au monde.
                                         Il permet d’automatiser des tâches clés comme :
                                         les tests, le build, l’analyse de code et le déploiement.
+                                        C’est aujourd’hui un incontournable dans les équipes de développement modernes.
                                     </p>
 
                                     <p className="text-gray-300 mb-4">
                                         Dans ce tutoriel, nous allons apprendre à <strong>installer Jenkins avec Docker</strong>.
                                         Cette approche permet d’éviter les installations complexes,
-                                        tout en garantissant un environnement stable et reproductible.
+                                        tout en garantissant un environnement stable, isolé et reproductible.
                                     </p>
 
-                                    <p className="text-gray-300 italic">
-                                        L&apos;objectif visé ici est de disposer d’un Jenkins fonctionnel en quelques minutes,
-                                        prêt à accueillir ses premiers pipelines.
+                                    <p className="text-gray-300">
+                                        À la fin de ce guide, vous aurez un Jenkins fonctionnel en quelques minutes,
+                                        accessible depuis votre navigateur, et prêt à accueillir ses premiers pipelines CI/CD.
                                     </p>
+
                                 </section>
 
                                 <section id="prerequisites">
