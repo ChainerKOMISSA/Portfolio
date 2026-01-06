@@ -48,7 +48,7 @@ export default function BlogPage() {
                                     </p>
 
                                     <p className="text-gray-300 italic">
-                                        🎯 Objectif : disposer d’un Jenkins fonctionnel en quelques minutes,
+                                        L&apos;objectif visé ici est de disposer d’un Jenkins fonctionnel en quelques minutes,
                                         prêt à accueillir ses premiers pipelines.
                                     </p>
                                 </section>

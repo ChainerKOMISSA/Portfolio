@@ -436,8 +436,7 @@ export const blogItems = [
     img: "/docker-jenkins.png",
     date: "",
     category: categories[3].name,
-    //link: "/blog/docker",
-    link:"",
+    link: "/blog/docker",
     technologies: [],
   },
 ];
