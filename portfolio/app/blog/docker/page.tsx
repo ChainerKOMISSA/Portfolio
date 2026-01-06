@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import {IoIosArrowRoundBack} from "react-icons/io";
+import {IoIosArrowRoundBack, IoIosArrowDown } from "react-icons/io";
+import Image from "next/image";
 
 export default function BlogPage() {
     return (
@@ -67,15 +68,121 @@ export default function BlogPage() {
                                     <ul className="list-disc list-inside text-gray-300 space-y-2">
                                         <li>Docker installé sur ta machine</li>
                                         <li>Docker Desktop en cours d’exécution</li>
-                                        <li>Un navigateur web moderne</li>
+                                        <li>Un navigateur web moderne (Chrome, Firefox, Edge…)</li>
                                         <li>Des bases en ligne de commande (terminal)</li>
                                     </ul>
+                                    <p className="text-gray-300 mt-3">
+                                        ℹ️ Docker Desktop inclut déjà Docker et permet de gérer facilement tes conteneurs via une interface graphique.
+                                    </p>
 
-                                    <p className="text-gray-300 mt-3 italic">
+                                    <p className="text-gray-300 mt-3">
                                         ℹ️ Jenkins fonctionnera ici en local, mais la même approche
                                         s’applique à un serveur distant.
+                                        Tout au long de ce tutoriel, des captures d’écran viendront illustrer chaque étape.
+                                    </p>
+                                    <details className="mt-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>🔧 Installation rapide de Docker Desktop</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+
+                                        <div className="px-4 pb-4">
+                                            <p className="text-gray-300 mb-2">
+                                                Si Docker n’est pas encore installé sur ta machine, télécharge Docker Desktop depuis le site officiel :
+                                            </p>
+
+                                            <a
+                                                href="https://www.docker.com/products/docker-desktop/"
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="text-blue-400 hover:underline"
+                                            >
+                                                👉 https://www.docker.com/products/docker-desktop/
+                                            </a>
+
+                                            <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                                <Image
+                                                    src="/docker1.png"
+                                                    alt="Page officielle de téléchargement Docker"
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+
+                                            <p className="text-gray-300 mt-3">
+                                                Docker Desktop est disponible sur Windows, macOS et Linux.
+                                                Une fois l’installation terminée, lance l’application et assure-toi qu’elle est bien en cours d’exécution avant de continuer ce tutoriel.
+                                            </p>
+                                            <details className="mt-4 rounded bg-[#0b1220] border border-orange-800 group">
+                                                <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                    <span>⚠️ Erreur WSL trop ancien (Windows)</span>
+                                                    <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                                </summary>
+
+                                                <div className="px-4 pb-4 text-gray-300">
+                                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                                        <Image
+                                                            src="/docker2.png"
+                                                            alt="Erreur WSL"
+                                                            fill
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                    <p className="mb-2">
+                                                        Si tu vois le message indiquant que ta version de WSL est trop ancienne,
+                                                        exécute la commande suivante dans un terminal ouvert en administrateur :
+                                                    </p>
+
+                                                    <pre className="bg-[#020617] p-3 rounded mb-2 text-gray-200">
+wsl --update
+    </pre>
+
+                                                    <p className="mb-2">
+                                                        Redémarre ensuite ton ordinateur, puis vérifie avec :
+                                                    </p>
+
+                                                    <pre className="bg-[#020617] p-3 rounded text-gray-200">
+wsl --version
+    </pre>
+                                                    <p className="text-gray-300 mt-3">
+                                                        ⚠️ Tu dois lancer la commande avec Windows Terminal ou PowerShell en mode <strong>Admin</strong>
+                                                    </p>
+                                                </div>
+
+                                            </details>
+
+                                        </div>
+                                    </details>
+
+
+                                    <h3 className="text-xl font-semibold mt-6 mb-3 text-white" id="verify">
+                                        2.1 Vérifier l’installation de Docker
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Ouvre un terminal et exécute les commandes suivantes pour vérifier que Docker est bien installé
+                                        et qu’il fonctionne correctement :
+                                    </p>
+
+                                    <pre className="bg-[#0f172a] text-gray-200 p-4 rounded mb-3">
+{`docker --version
+docker ps`}
+  </pre>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Si Docker est bien installé, la première commande affiche la version de Docker,
+                                        et la seconde retourne une liste (éventuellement vide) de conteneurs.
+                                    </p>
+
+                                    {/* 📸 Capture d’écran : terminal montrant la version de Docker */}
+                                    {/* 📸 Capture d’écran : Docker Desktop ouvert et en cours d’exécution */}
+
+                                    <p className="text-gray-300">
+                                        Une fois ces vérifications effectuées, tu peux passer à l’étape suivante :
+                                        l’installation et le lancement de Jenkins avec Docker.
                                     </p>
                                 </section>
+
 
                                 <section id="why-docker">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
@@ -241,8 +348,11 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
                             <Link href="#intro" className="hover:text-white">
                                 1. Introduction
                             </Link>
-                            <Link href="#install" className="hover:text-white">
-                                2. Installation de Bruno
+                            <Link href="#prerequisites" className="hover:text-white">
+                                2. Prérequis
+                            </Link>
+                            <Link href="#verify" className="hover:text-white ml-2">
+                                2.1 Vérifier l’installation de Docker
                             </Link>
                             <Link href="#writing-tests" className="hover:text-white">
                                 3. Écriture de tests
