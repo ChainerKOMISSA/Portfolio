@@ -434,7 +434,7 @@ export const blogItems = [
     title: "Installer Jenkins sur Docker",
     desc: "Guide complet pour installer Jenkins rapidement et facilement avec Docker, incluant toutes les étapes depuis le téléchargement jusqu’à la configuration initiale.",
     img: "/docker-jenkins.png",
-    date: "",
+    date: "2026-01-07",
     category: categories[3].name,
     link: "/blog/docker",
     technologies: [],
