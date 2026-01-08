@@ -439,6 +439,42 @@ export const blogItems = [
     link: "/blog/docker",
     technologies: [],
   },
+  {
+    id: 19,
+    title: "Comprendre Gitflow : structurer efficacement son workflow Git",
+    desc: "Tutoriel clair et pratique pour comprendre Gitflow, son fonctionnement, ses branches principales et comment l’utiliser efficacement dans un projet solo ou en équipe.",
+    img: "/gitflow.png",
+    date: "",
+    category: categories[3].name,
+    //link: "/blog/gitflow",
+    link : "",
+    technologies: [],
+  },
+  {
+    id: 20,
+    title: "GitButler : une nouvelle façon moderne de travailler avec Git",
+    desc: "Découvre GitButler, un outil innovant qui simplifie Git grâce aux virtual branches et améliore ton workflow de développement au quotidien.",
+    img: "/gitbutler.png",
+    date: "",
+    category: categories[3].name,
+    //link: "/blog/gitbutler",
+    link : "",
+    technologies: [],
+  },
+  {
+    id: 21,
+    title: "Gitflow vs GitButler : quel workflow Git choisir en 2026 ?",
+    desc: "Analyse complète et comparaison entre Gitflow et GitButler pour t’aider à choisir le workflow Git le plus adapté à ton équipe et à tes projets.",
+    img: "/gitflow-vs-gitbutler.png",
+    date: "",
+    category: categories[3].name,
+    //link: "/blog/gitflow-vs-gitbutler",
+    link : "",
+    technologies: [],
+  }
+
+
+
 ];
 
 export const emailtutorialsItems = [
@@ -568,8 +604,8 @@ export const cicdtutorialsItems = [
     date: "",
     category: categories[3].name,
     technologies: [""],
-    link: "",
-    //link: "/blog/ci-cd/jenkins",
+    //link: "",
+    link: "/blog/ci-cd/jenkins",
   },
   {
     id: 5,

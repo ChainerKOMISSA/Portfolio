@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import {IoIosArrowDown, IoIosArrowRoundBack} from "react-icons/io";
+import { BsGearFill } from "react-icons/bs";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
 import Image from "next/image";
 
@@ -39,123 +40,98 @@ export default function BlogPage() {
                                     </h2>
 
                                     <p className="text-gray-300">
-                                        Jenkins est l’un des outils historiques et les plus populaires du monde
-                                        <strong> CI/CD</strong>. Contrairement à GitLab ou Github, Jenkins est une
-                                        application indépendante que l’on installe et configure soi-même.
+                                        Jenkins est l’un des outils les plus populaires pour mettre en place des pipelines de
+                                        <strong> CI/CD</strong>. Contrairement à des plateformes comme GitHub Actions ou GitLab CI,
+                                        Jenkins est une application que l’on installe et configure soi-même.
                                     </p>
 
                                     <p className="text-gray-300 mt-3">
-                                        Il permet d’automatiser toutes les étapes du cycle de vie d’un projet :
-                                        <strong> build</strong>, <strong>tests</strong> et <strong>déploiement</strong>,
-                                        via des pipelines décrits sous forme de code.
+                                        Il permet d’automatiser les principales étapes du cycle de vie d’une application :
+                                        <strong> build</strong>, <strong> tests</strong> et <strong> déploiement</strong>, à l’aide de pipelines définis sous forme de code.
                                     </p>
 
-                                    <p className="text-gray-300 mt-4 font-semibold">
-                                        Dans ce tutoriel, nous allons apprendre à :
+                                    <p className="text-gray-300 mt-4">
+                                        <strong>Objectif de ce tutoriel :</strong> mettre en place un pipeline Jenkins fonctionnel capable d’automatiser ces différentes étapes.
                                     </p>
-
-                                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                        <li>Créer un pipeline Jenkins simple</li>
-                                        <li>Structurer un pipeline avec plusieurs stages</li>
-                                        <li>Gérer des variables et des secrets</li>
-                                        <li>Comprendre l’interface Jenkins</li>
-                                    </ul>
                                 </section>
 
                                 <section id="prerequis">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        2. Prérequis et installation
+                                        2. Prérequis et environnement de travail
                                     </h2>
 
-                                    <p className="text-gray-300 mb-3">
-                                        Avant de créer un pipeline Jenkins, quelques prérequis sont nécessaires.
+                                    <p className="text-gray-300 mb-4">
+                                        Avant de créer notre premier pipeline CI/CD, assurons-nous de disposer de tout le nécessaire.
                                     </p>
 
-                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                        <li>
-                                            <strong>Java 11 ou supérieur</strong> installé sur votre machine ou sur le serveur
-                                            Jenkins (Jenkins est une application Java).
-                                        </li>
-                                        <li>
-                                            Un dépôt Git hébergé sur{" "}
-                                            <a
-                                                href="https://github.com"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-400"
-                                            >
-                                                GitHub
-                                            </a>{" "}
-                                            ou{" "}
-                                            <a
-                                                href="https://gitlab.com"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-400"
-                                            >
-                                                GitLab
-                                            </a>.
-                                        </li>
-                                        <li>
-                                            Un projet simple à automatiser (par exemple une application HTML/CSS/JS ou
-                                            un petit projet Node.js).
-                                        </li>
-                                    </ul>
-                                    <p className="text-gray-300 mt-4">
-                                        Jenkins peut être installé de plusieurs façons, selon votre environnement
-                                        et votre objectif (apprentissage, projet personnel ou usage professionnel).
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h3 className="text-lg font-semibold text-white mb-3">
+                                            Prérequis techniques
+                                        </h3>
+
+                                        <ul className="list-disc list-inside space-y-2 text-gray-300">
+                                            <li>
+                                                <strong>Java 11 ou supérieur</strong> installé sur ta machine ou sur le serveur
+                                                Jenkins (Jenkins est une application Java).
+                                            </li>
+                                            <li>
+                                                <strong>Un compte GitHub ou GitLab</strong> avec un dépôt accessible
+                                            </li>
+                                            <li>
+                                                <strong>Un projet simple</strong> à automatiser (ex : app HTML, Node.js, Angular, etc.)
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Jenkins peut être installé de différentes manières selon le contexte. Voici les principales approches.
                                     </p>
 
-                                    <ul className="list-disc list-inside text-gray-300 space-y-3">
-                                        <li>
-                                            <strong>Installation locale</strong><br />
-                                            Jenkins est installé directement sur votre machine (Windows, macOS ou Linux).
-                                            <br />
-                                            👉 Cette option est adaptée pour découvrir Jenkins rapidement ou faire des
-                                            tests ponctuels, mais elle dépend fortement de la configuration de votre
-                                            poste (Java, ports, permissions).
-                                        </li>
+                                    <details className="mt-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>🔧 Installations de Jenkins</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <div className="bg-neutral-900 rounded-lg p-4">
+                                                <p className="text-white font-semibold mb-2">Installation locale</p>
+                                                <p className="text-gray-300 text-sm">
+                                                    Jenkins est installé directement sur la machine.
+                                                    Cette solution est pratique pour tester rapidement, mais dépend fortement de l’environnement local .
+                                                </p>
+                                            </div>
+                                            <div className="bg-neutral-900 rounded-lg p-4">
+                                                <p className="text-white font-semibold mb-2">Installation via Docker (recommandée)</p>
+                                                <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                                    <li>Aucune installation complexe</li>
+                                                    <li>Environnement isolé et reproductible</li>
+                                                    <li>Démarrage rapide</li>
+                                                    <li>Très proche des conditions réelles en entreprise</li>
+                                                </ul>
+                                            </div>
+                                            <div className="bg-neutral-900 rounded-lg p-4">
+                                                <p className="text-white font-semibold mb-2">Installation sur serveur</p>
+                                                <p className="text-gray-300 text-sm">
+                                                    Jenkins est déployé sur un serveur dédié ou cloud.
+                                                    Cette approche est surtout utilisée en production pour des équipes et des pipelines continus.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </details>
 
-                                        <li>
-                                            <strong>Installation via Docker (recommandée)</strong><br />
-                                            Jenkins est exécuté dans un conteneur Docker prêt à l’emploi.
-                                            <br />
-                                            👉 C’est la solution <strong>la plus simple et la plus fiable</strong> pour
-                                            apprendre et travailler proprement :
-                                            <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
-                                                <li>Aucune installation complexe sur la machine hôte</li>
-                                                <li>Environnement isolé et reproductible</li>
-                                                <li>Démarrage et arrêt rapides</li>
-                                            </ul>
-                                        </li>
-
-                                        <li>
-                                            <strong>Installation sur un serveur distant</strong><br />
-                                            Jenkins est installé sur un serveur dédié (VPS, machine cloud, serveur
-                                            d’entreprise).
-                                            <br />
-                                            👉 Cette approche est principalement utilisée en <strong>production</strong>,
-                                            lorsque plusieurs développeurs partagent la même instance Jenkins et que
-                                            les pipelines doivent tourner en continu.
-                                        </li>
-                                    </ul>
-
-                                    <p className="text-gray-300 mt-4 italic">
-                                        Dans la suite de ce tutoriel, nous utiliserons <strong>Jenkins avec Docker</strong>,
-                                        afin de garantir une configuration simple, reproductible et accessible à tous.
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        Dans ce tutoriel, nous utiliserons <strong>Jenkins avec Docker</strong> afin de garantir une configuration
+                                        simple, propre et reproductible. Si Jenkins n’est pas encore installé, tu peux suivre ce guide détaillé :
+                                        <a
+                                            href="/blog/docker"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-400 font-semibold ml-1"
+                                        >
+                                            Installer Jenkins sur Docker
+                                        </a>
                                     </p>
-
-                                    <p className="text-gray-300 mt-4">
-                                        Pour installer Jenkins sur Docker, vous pouvez utiliser le tutoriel disponible ici {""}
-                                        <a href="/blog/docker" target="_blank"
-                                           rel="noopener noreferrer"
-                                           className="text-blue-400">
-                                            <strong>Installer Jenkins sur Docker</strong></a>
-                                    </p>
-
-
-
-                                    {/* 📸 Screenshot : écran d’accueil Jenkins après installation */}
                                 </section>
 
                                 <section id="pipeline">
@@ -163,14 +139,20 @@ export default function BlogPage() {
                                         3. Premier pipeline Jenkins
                                     </h2>
 
-                                    <p className="text-gray-300 mb-3">
-                                        Commençons par un pipeline minimal afin de comprendre la structure
-                                        d’un <strong>Jenkinsfile</strong>.
+                                    <p className="text-gray-300 mb-4">
+                                        Avant de construire un pipeline CI/CD, nous allons commencer par un pipeline très simple.
+                                        L’objectif est de comprendre ce qu’est un <strong>job Jenkins</strong> et comment fonctionne un <strong>Jenkinsfile</strong>.
+                                        <br/>
+                                        Jenkins s’appuie sur un fichier appelé <code className="text-blue-400">Jenkinsfile</code>, placé à la racine du projet.
+                                        Il décrit le pipeline sous forme de code.
                                     </p>
 
+                                    <h3 className="text-xl font-semibold text-white mb-3">
+                                        Étape 1 : Créer un job Jenkins minimal
+                                    </h3>
+
                                     <p className="text-gray-300 mb-3">
-                                        Jenkins utilise un fichier nommé{" "}
-                                        <code className="text-blue-400">Jenkinsfile</code> à la racine du projet.
+                                        Crée un fichier <code className="text-blue-400">Jenkinsfile</code> à la racine de ton projet et ajoute le contenu suivant :
                                     </p>
 
                                     <CodeBlock
@@ -179,9 +161,9 @@ export default function BlogPage() {
   agent any
 
   stages {
-    stage('Hello') {
+    stage('Mon premier job') {
       steps {
-        echo 'Hello Jenkins!'
+        echo 'Jenkins est correctement configuré !'
       }
     }
   }
@@ -189,16 +171,51 @@ export default function BlogPage() {
                                     />
 
                                     <p className="text-gray-300 mt-3">
-                                        Ce pipeline :
+                                        Ce pipeline définit un <strong>job Jenkins</strong> contenant une seule étape qui affiche un message dans les logs.
+                                        C’est l’équivalent d’un “Hello World” en CI/CD.
                                     </p>
 
-                                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                        <li>Utilise n’importe quel agent disponible</li>
-                                        <li>Contient un seul stage</li>
-                                        <li>Affiche un message dans les logs</li>
-                                    </ul>
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mt-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">Comparaison rapide</p>
+                                        <p className="text-gray-300 text-sm">
+                                            - Dans <strong>GitHub Actions</strong>, ce job serait défini dans un fichier YAML dans <code>.github/workflows</code><br/>
+                                            - Dans <strong>GitLab CI</strong>, il serait écrit dans <code>.gitlab-ci.yml</code><br/>
+                                            - Avec <strong>Jenkins</strong>, le pipeline est centralisé dans un Jenkinsfile et exécuté par un serveur que tu héberges toi-même.
+                                        </p>
+                                    </div>
 
-                                    {/* 📸 Screenshot : pipeline Jenkins réussi (pastille verte) */}
+                                    <h3 className="text-xl font-semibold text-white mb-3">
+                                        Étape 2 : Comprendre la structure du pipeline
+                                    </h3>
+
+                                    <div className="mb-4">
+                                        <ul className="space-y-3 text-gray-300">
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">pipeline {`{ ... }`}</code>
+                                                <span>: bloc principal du pipeline. Équivalent du fichier de workflow dans GitHub Actions ou GitLab CI</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">agent any</code>
+                                                <span>: indique où le job s’exécute. Jenkins choisit un agent disponible. Contrairement à GitHub Actions, tu contrôles entièrement tes machines d’exécution.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">stages</code>
+                                                <span>: Contient les différentes étapes du pipeline. Pour l’instant, nous n’en avons qu’une.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">stage(&quot;Mon premier job&quot;)</code>
+                                                <span> : représente un <strong>job Jenkins</strong>. C’est une unité logique du pipeline.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">steps</code>
+                                                <span> : contient les actions exécutées par Jenkins : commandes, scripts, tests, builds, etc.</span>
+                                            </li>
+                                            <li className="flex items-start gap-3">
+                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">echo</code>
+                                                <span> : affiche un message dans les logs Jenkins. Utile pour vérifier que le pipeline fonctionne.</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </section>
 
                                 <section id="advanced">
@@ -221,31 +238,151 @@ export default function BlogPage() {
                                     <CodeBlock
                                         language="groovy"
                                         code={`pipeline {
-  agent any
-
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Build du projet'
-      }
+    agent any
+    
+    environment {
+        PROJECT_NAME = 'demo-app'
+        BUILD_DIR = 'build'
     }
-
-    stage('Test') {
-      steps {
-        echo 'Exécution des tests'
-      }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Récupération du code source...'
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Construction du projet...'
+                sh '''
+                    mkdir -p ${`BUILD_DIR`}
+                    cp -r index.html css ${`BUILD_DIR`}/
+                '''
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Exécution des tests...'
+                sh '''
+                    # Vérification de la présence des fichiers
+                    test -f ${`BUILD_DIR`}/index.html
+                    test -f ${`BUILD_DIR`}/css/style.css
+                    echo "Tests réussis!"
+                '''
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Déploiement de l'application...'
+                sh '''
+                    # Exemple de déploiement
+                    echo "Déploiement vers l'environnement cible"
+                    # cp -r ${`BUILD_DIR`}/* /var/www/html/
+                '''
+            }
+        }
     }
-
-    stage('Deploy') {
-      steps {
-        echo 'Déploiement de l’application'
-      }
+    
+    post {
+        success {
+            echo 'Pipeline exécuté avec succès!'
+        }
+        failure {
+            echo 'Le pipeline a échoué.'
+        }
+        always {
+            cleanWs()
+        }
     }
-  }
 }`}
                                     />
 
-                                    {/* 📸 Screenshot : vue stages Jenkins */}
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-4">
+                                        Exécuter et vérifier le pipeline depuis Jenkins
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        ⚠️ Pour que Jenkins puisse accéder à ton Jenkinsfile, il devrait être disponible sur Github ou Gitlab. Fais donc
+                                        un push pour mettre à jour ton repository. <br/><br/>
+                                        Maintenant que ton <code className="text-blue-400">Jenkinsfile</code> est prêt dans ton dépôt GitHub, il est temps de voir ton pipeline s’exécuter dans Jenkins.
+                                        Comme nous avons installé Jenkins via Docker, tu peux y accéder dans ton navigateur à l’adresse :{""}
+                                        <code className="text-blue-400">http://localhost:8080</code>.
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <p className="text-gray-300 mb-3 font-semibold">Configuration du pipeline dans Jenkins</p>
+                                        <ul className="list-disc list-inside space-y-2 text-gray-300">
+                                            <li>Ouvre Jenkins dans ton navigateur et connecte-toi avec ton mot de passe administrateur initial.</li>
+                                            <li>Dans le menu principal, clique sur <strong>New Item</strong> (ou <strong>Nouvel Item</strong>).</li>
+                                            <li>Donne un nom à ton projet et sélectionne <strong>Pipeline</strong>, puis clique sur <strong>OK</strong>.</li>
+                                            <li>Tu arrives sur la page de configuration avec plusieurs sections :</li>
+                                            <ul className="list-disc list-inside ml-5 space-y-1">
+                                                <li><strong>General :</strong> tu peux laisser les options par défaut et ajouter une description si tu veux.</li>
+                                                <li><strong>Triggers :</strong> pour l’instant, ne coche rien. Le pipeline sera lancé manuellement via “Build Now”.</li>
+                                                <p>
+                                                    Plus tard, tu pourras activer : <strong>GitHub hook trigger for GITScm polling</strong>. Cette option déclenche le pipeline automatiquement quand tu pushes sur GitHub.
+                                                </p>
+                                                <li><strong>Pipeline :</strong></li>
+                                                <ul className="list-disc list-inside ml-5 space-y-1">
+                                                    <li><strong>Definition :</strong> choisis <code className="text-blue-400">Pipeline script from SCM</code> pour utiliser le Jenkinsfile depuis Git.</li>
+                                                    <li><strong>SCM :</strong> sélectionne <code className="text-blue-400">Git</code>.</li>
+                                                    <li><strong>Repository URL :</strong> mets l’URL de ton dépôt GitHub.</li>
+                                                    <li><strong>Credentials :</strong> si ton dépôt est privé, ajoute tes identifiants GitHub. Si non, laisse vide.</li>
+                                                    <li><strong>Branches to build :</strong> laisse par défaut <code className="text-blue-400">*/main</code> (ou <code>*/master</code>).</li>
+                                                    <li><strong>Script Path :</strong> mets <code className="text-blue-400">Jenkinsfile</code> (le nom du fichier à la racine du projet).</li>
+                                                </ul>
+                                                <li><strong>Advanced :</strong> laisse par défaut pour le moment.</li>
+                                            </ul>
+                                            <li>Clique sur <strong>Save</strong> pour sauvegarder la configuration.</li>
+                                            <li>Dans le tableau du projet, clique sur <strong>Build Now</strong> (ou <strong>Construire maintenant</strong>) pour lancer ton pipeline.</li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Après quelques secondes, un nouveau build apparaît dans la colonne de gauche.
+                                        Si tout est correct, ton job s’exécute et Jenkins affiche un statut <strong className="text-green-400">SUCCESS</strong>.
+                                    </p>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">Astuce</p>
+                                        <p className="text-gray-300 text-sm">
+                                            🔹 Les logs Jenkins affichent toutes les étapes exécutées dans le pipeline.<br/>
+                                            🔹 En cas d’erreur, consulte les logs pour identifier la cause et corriger ton Jenkinsfile ou la configuration du pipeline.
+                                        </p>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Ton pipeline est maintenant opérationnel ! Tu peux l’utiliser comme base pour créer des pipelines plus avancés, avec plusieurs stages pour le build, les tests et le déploiement.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Exemple de pipeline réussi
+                                    </p>
+                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                        <Image
+                                            src="/reussi.png"
+                                            alt="Exemple de pipeline réussi"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                    <p className="text-gray-300 mb-3">
+                                        Exemple de pipeline échoué
+                                    </p>
+                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                        <Image
+                                            src="/echoue.png"
+                                            alt="Exemple de pipeline échoué"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+
+
                                 </section>
 
                                 <section id="variables">
@@ -254,26 +391,47 @@ export default function BlogPage() {
                                     </h2>
 
                                     <p className="text-gray-300 mb-3">
-                                        Comme pour GitLab CI/CD, il est fortement déconseillé de stocker des secrets
-                                        directement dans le code.
+                                        Comme pour GitLab CI/CD ou GitHub Actions, il est fortement déconseillé de stocker des informations sensibles (API keys, tokens, mots de passe) directement dans le code.
                                     </p>
 
                                     <p className="text-gray-300 mb-3">
-                                        Jenkins permet de stocker des secrets via{" "}
-                                        <strong>Manage Jenkins → Credentials</strong>.
+                                        Jenkins permet de gérer ces secrets de manière sécurisée via : <strong>Manage Jenkins</strong> (l&apos;icône ⚙️ en haut à gauche) → <strong>Credentials</strong>.
+                                        <br/>
+                                        Cliques ensuite sur <strong>System</strong> puis <strong>Global credentials</strong> pour ajouter des variables secrètes.
+                                        Chaque secret peut être assigné à un identifiant unique que tu pourras utiliser dans ton pipeline.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Exemple : pour utiliser un token API stocké dans Jenkins, tu peux déclarer une variable d’environnement dans ton Jenkinsfile :
                                     </p>
 
                                     <CodeBlock
                                         language="groovy"
-                                        code={`environment {
-  API_TOKEN = credentials('my-api-token')
+                                        code={`pipeline {
+  agent any
+
+  environment {
+    API_TOKEN = credentials('my-api-token')
+  }
+
+  stages {
+    stage('Print Token') {
+      steps {
+        echo "Le token est sécurisé et peut être utilisé ici"
+      }
+    }
+  }
 }`}
                                     />
+
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        ⚠️ Cette variable ne sera pas affichée en clair dans les logs. Jenkins remplace automatiquement la valeur réelle par des astérisques si tu essaies de l’afficher.
+                                    </p>
 
                                     {/* 📸 Screenshot : Jenkins Credentials */}
                                 </section>
 
-                                <section id="debug">
+                                <section id="debug1">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         6. Dépannage et bonnes pratiques
                                     </h2>
@@ -287,6 +445,45 @@ export default function BlogPage() {
 
                                     {/* 📸 Screenshot : logs Jenkins */}
                                 </section>
+                                <section id="debug">
+                                    <h2 className="text-2xl font-bold mb-4 text-white">
+                                        6. Dépannage et bonnes pratiques
+                                    </h2>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Pour maintenir tes pipelines Jenkins efficaces et fiables, voici quelques recommandations essentielles :
+                                    </p>
+
+                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                                        <li>
+                                            <strong>Consulter les logs de build :</strong> Clique sur un build puis <em>Console Output</em> pour voir les étapes exécutées et détecter les erreurs.
+                                        </li>
+                                        <li>
+                                            <strong>Tester les étapes une par une :</strong> Commence par des pipelines simples et ajoute les stages progressivement.
+                                        </li>
+                                        <li>
+                                            <strong>Utiliser des pipelines lisibles :</strong> Nommer clairement les stages et commenter les étapes importantes.
+                                        </li>
+                                        <li>
+                                            <strong>Versionner systématiquement le Jenkinsfile :</strong> Le Jenkinsfile doit rester dans ton dépôt Git pour garder un historique et faciliter la collaboration.
+                                        </li>
+                                        <li>
+                                            <strong>Gérer les secrets via Jenkins Credentials :</strong> Ne jamais stocker d’API keys ou mots de passe en clair.
+                                        </li>
+                                    </ul>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mt-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">Astuce :</p>
+                                        <p className="text-gray-300 text-sm">
+                                            🔹 Si un pipeline échoue, commence par vérifier le <em>stage</em> concerné.<br/>
+                                            🔹 Les erreurs les plus courantes incluent des problèmes de chemin, des dépendances manquantes, ou des permissions Docker.<br/>
+                                            🔹 Utilise Docker logs pour déboguer ton conteneur Jenkins si nécessaire.
+                                        </p>
+                                    </div>
+
+                                    {/* 📸 Screenshot : logs Jenkins */}
+                                </section>
+
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
