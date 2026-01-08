@@ -200,7 +200,7 @@ export default function BlogPage() {
                                             </li>
                                             <li className="flex items-start gap-3">
                                                 <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">stages</code>
-                                                <span>: Contient les différentes étapes du pipeline. Pour l’instant, nous n’en avons qu’une.</span>
+                                                <span>: contient les différentes étapes du pipeline. Pour l’instant, nous n’en avons qu’une.</span>
                                             </li>
                                             <li className="flex items-start gap-3">
                                                 <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">stage(&quot;Mon premier job&quot;)</code>
@@ -431,20 +431,6 @@ export default function BlogPage() {
                                     {/* 📸 Screenshot : Jenkins Credentials */}
                                 </section>
 
-                                <section id="debug1">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">
-                                        6. Dépannage et bonnes pratiques
-                                    </h2>
-
-                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                        <li>Consulter les logs de build</li>
-                                        <li>Tester les étapes une par une</li>
-                                        <li>Utiliser des pipelines simples et lisibles</li>
-                                        <li>Versionner systématiquement le Jenkinsfile</li>
-                                    </ul>
-
-                                    {/* 📸 Screenshot : logs Jenkins */}
-                                </section>
                                 <section id="debug">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         6. Dépannage et bonnes pratiques
@@ -456,48 +442,44 @@ export default function BlogPage() {
 
                                     <ul className="list-disc list-inside text-gray-300 space-y-2">
                                         <li>
-                                            <strong>Consulter les logs de build :</strong> Clique sur un build puis <em>Console Output</em> pour voir les étapes exécutées et détecter les erreurs.
+                                            <strong>Consulter les logs de build :</strong> clique sur un build puis <em>Console Output</em> pour voir les étapes exécutées et détecter les erreurs.
                                         </li>
                                         <li>
-                                            <strong>Tester les étapes une par une :</strong> Commence par des pipelines simples et ajoute les stages progressivement.
+                                            <strong>Tester les étapes une par une :</strong> commence par des pipelines simples et ajoute les stages progressivement.
                                         </li>
                                         <li>
-                                            <strong>Utiliser des pipelines lisibles :</strong> Nommer clairement les stages et commenter les étapes importantes.
+                                            <strong>Utiliser des pipelines lisibles :</strong> nomme clairement les stages et commente les étapes importantes.
                                         </li>
                                         <li>
-                                            <strong>Versionner systématiquement le Jenkinsfile :</strong> Le Jenkinsfile doit rester dans ton dépôt Git pour garder un historique et faciliter la collaboration.
+                                            <strong>Versionner systématiquement le Jenkinsfile :</strong> le Jenkinsfile doit rester dans ton dépôt Git pour garder un historique et faciliter la collaboration.
                                         </li>
                                         <li>
-                                            <strong>Gérer les secrets via Jenkins Credentials :</strong> Ne jamais stocker d’API keys ou mots de passe en clair.
+                                            <strong>Gérer les secrets via Jenkins Credentials :</strong> ne jamais stocker d’API keys ou mots de passe en clair.
                                         </li>
                                     </ul>
-
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mt-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">Astuce :</p>
-                                        <p className="text-gray-300 text-sm">
-                                            🔹 Si un pipeline échoue, commence par vérifier le <em>stage</em> concerné.<br/>
-                                            🔹 Les erreurs les plus courantes incluent des problèmes de chemin, des dépendances manquantes, ou des permissions Docker.<br/>
-                                            🔹 Utilise Docker logs pour déboguer ton conteneur Jenkins si nécessaire.
-                                        </p>
-                                    </div>
-
-                                    {/* 📸 Screenshot : logs Jenkins */}
                                 </section>
-
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         7. Conclusion
                                     </h2>
 
-                                    <p className="text-gray-300">
-                                        Jenkins reste une solution extrêmement puissante pour mettre en place
-                                        des pipelines CI/CD sur mesure.
+                                    <p className="text-gray-300 mb-3">
+                                        Jenkins reste une solution extrêmement puissante pour mettre en place des pipelines CI/CD sur mesure.
+                                        Son principal avantage est la flexibilité, c&apos;est-à-dire que tu contrôles entièrement ton serveur, tes agents et tes pipelines.
                                     </p>
 
-                                    <p className="text-gray-300 mt-3">
-                                        Après GitLab CI/CD et Jenkins, vous disposez désormais d’une vision claire
-                                        des deux grandes approches du CI/CD moderne.
+                                    <p className="text-gray-300 mb-3">
+                                        Après avoir exploré Github Actions,  GitLab CI/CD et Jenkins, tu disposes désormais d’une vision claire des approches du CI/CD :
+                                    </p>
+
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 mb-3">
+                                        <li><strong>Github Actions et GitLab CI/CD :</strong> intégrés, faciles à configurer dans le dépôt, idéaux pour démarrer rapidement.</li>
+                                        <li><strong>Jenkins :</strong> indépendant, extrêmement flexible et personnalisable, parfait pour les projets complexes ou multi-environnements.</li>
+                                    </ul>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Tu peux maintenant expérimenter avec des pipelines multi-stage, gérer des secrets et automatiser des déploiements réels. Chaque projet te permettra de te familiariser avec la puissance de Jenkins.
                                     </p>
 
                                     <div className="flex gap-3 mt-5">
@@ -518,6 +500,7 @@ export default function BlogPage() {
                                 </section>
 
 
+
                             </div>
                         </div>
                     </div>
@@ -533,16 +516,16 @@ export default function BlogPage() {
                                 2. Prérequis
                             </Link>
                             <Link href="#pipeline" className="hover:text-white">
-                                3. Pipeline minimal
+                                3. Premier pipeline
                             </Link>
                             <Link href="#advanced" className="hover:text-white">
-                                4. Pipeline avancé
+                                4. Pipeline multi-stages
                             </Link>
                             <Link href="#variables" className="hover:text-white">
-                                5. Variables & Secrets
+                                5. Variables et secrets
                             </Link>
                             <Link href="#debug" className="hover:text-white">
-                                6. Dépannage & Astuces
+                                6. Dépannage
                             </Link>
                             <Link href="#conclusion" className="hover:text-white">
                                 7. Conclusion

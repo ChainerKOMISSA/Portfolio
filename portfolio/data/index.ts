@@ -601,7 +601,7 @@ export const cicdtutorialsItems = [
     title: "Utiliser Jenkins pour un pipeline local ou sur serveur",
     desc: "Installe et configure Jenkins pour automatiser tes builds et déploiements en toute flexibilité.",
     img: "/jenkins.png",
-    date: "",
+    date: "2026-01-08",
     category: categories[3].name,
     technologies: [""],
     //link: "",
