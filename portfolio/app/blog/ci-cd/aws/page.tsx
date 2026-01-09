@@ -71,7 +71,7 @@ export default function BlogPage() {
                                         </p>
                                         <ul className="list-none space-y-2 text-gray-300 text-sm ml-4">
                                             <li>• <strong>Zéro maintenance</strong> : contrairement à Jenkins, pas de serveur à gérer</li>
-                                            <li>• <strong>Intégration native</strong> : connexion fluide avec tous les services AWS (S3, Lambda, ECS...)</li>
+                                            <li>• <strong>Intégration native</strong> : connexion fluide avec tous les services AWS</li>
                                             <li>• <strong>Scalabilité automatique</strong> : ton pipeline s&apos;adapte à la charge sans configuration</li>
                                             <li>• <strong>Pay-as-you-go</strong> : tu ne paies que pour ce que tu utilises réellement</li>
                                         </ul>
@@ -99,8 +99,8 @@ export default function BlogPage() {
                                                 ici
                                             </a>. Tu peux utiliser la version gratuite pendant 6 mois.
                                         </li>
-                                        <li>Un compte GitHub avec un repository contenant ton application</li>
                                         <li>Une application simple (par exemple un projet HTML/CSS/JS ou Node.js)</li>
+                                        <li>Un compte GitHub avec un repository contenant ton application</li>
                                         <li>Connaissance basique de Git et des commandes de push</li>
                                     </ul>
 
@@ -121,12 +121,10 @@ export default function BlogPage() {
                                             </li>
                                         </ul>
 
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4">
-                                        <p className="text-gray-300 text-sm">
-                                            Contrairement à Jenkins, AWS gère l’infrastructure sous-jacente. Tu n’as pas besoin de serveur ou d’agent à maintenir.
-                                            Tu bénéficies d’une solution scalable, sécurisée et directement intégrée à l’écosystème AWS.
-                                        </p>
-                                    </div>
+                                    <p className="text-gray-300 mt-4">
+                                        Contrairement à Jenkins, AWS gère l’infrastructure. Tu n’as pas besoin de serveur ou d’agent à maintenir.
+                                        Tu bénéficies d’une solution scalable, sécurisée et directement intégrée à l’écosystème AWS.
+                                    </p>
                                 </section>
 
                                 <section id="codebuild">
@@ -179,14 +177,14 @@ export default function BlogPage() {
                                                 <li>
                                                     <strong className="text-white font-semibold">Project name :</strong>{" "}
                                                     <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">my-app-build</code>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Choisis un nom descriptif pour identifier facilement ton projet.
                                                         Exemple : <code className="text-blue-300">mon-site-web-build</code> ou <code className="text-blue-300">api-backend-build</code>
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Description</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Tu peux ajouter une description si tu veux. Elle est optionnelle.
                                                     </p>
                                                 </li>
@@ -198,13 +196,13 @@ export default function BlogPage() {
                                             <ul className="list-none space-y-3 text-gray-300">
                                                 <li>
                                                     <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         C&apos;est ici que se trouve ton code source. CodeBuild ira chercher ton code directement depuis GitHub.
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Repository :</strong> Clique sur <strong className="text-blue-400">Connect to GitHub</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         AWS va te demander d&apos;autoriser l&apos;accès à ton compte GitHub. C&apos;est normal et sécurisé !
                                                         Une fois connecté, sélectionne ton repository dans la liste.
                                                     </p>
@@ -212,7 +210,7 @@ export default function BlogPage() {
                                                 <li>
                                                     <strong className="text-white font-semibold">Branch :</strong> <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">main</code>
                                                     (ou <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">master</code>)
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Choisis la branche à surveiller. En général, c&apos;est la branche principale de ton projet.
                                                     </p>
                                                 </li>
@@ -224,31 +222,31 @@ export default function BlogPage() {
                                             <ul className="list-none space-y-3 text-gray-300">
                                                 <li>
                                                     <strong className="text-white font-semibold">Environment image :</strong> Sélectionne <strong className="text-blue-400">Managed image</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         AWS te fournit des images préconfigurées. C&apos;est plus simple que de créer ta propre image Docker.
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Operating system :</strong> <strong className="text-blue-400">Ubuntu</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Ubuntu est un système Linux stable donc compatible avec la plupart des projets.
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Runtime(s) :</strong> <strong className="text-blue-400">Standard</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Standard inclut les outils les plus courants (Node.js, Python, Java, etc.)
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Image :</strong> Sélectionne la <strong className="text-blue-400">dernière version</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Prends toujours la version la plus récente pour avoir les dernières mises à jour de sécurité.
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Service role :</strong> Laisse <strong className="text-blue-400">New service role</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         AWS va créer automatiquement un rôle avec les permissions nécessaires pour faire fonctionner CodeBuild.
                                                     </p>
                                                 </li>
@@ -260,14 +258,14 @@ export default function BlogPage() {
                                             <ul className="list-none space-y-3 text-gray-300">
                                                 <li>
                                                     <strong className="text-white font-semibold">Build specifications :</strong> Sélectionne <strong className="text-blue-400">Use a buildspec file</strong>
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Cela indique à CodeBuild qu&apos;il doit chercher un fichier <code className="text-blue-400">buildspec.yml</code> à
                                                         la racine de ton projet. On va créer ce fichier juste après !
                                                     </p>
                                                 </li>
                                                 <li>
                                                     <strong className="text-white font-semibold">Buildspec name :</strong> Laisse vide
-                                                    <p className="text-white text-sm mt-1 ml-4">
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         Le nom par défaut <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">buildspec.yml</code> est utilisé
                                                     </p>
                                                 </li>
@@ -406,7 +404,7 @@ artifacts:
                                     </ol>
 
                                     <p className="text-gray-300 mt-3">
-                                        Si ton build est passé au vert (<strong className="text-green-400">SUCCEEDED</strong>), félicitations !
+                                        Si ton build est passé au vert, félicitations !
                                         Ton projet CodeBuild est correctement configuré et prêt à être intégré dans un pipeline complet.
                                         Dans la section suivante, on va automatiser tout ça avec CodePipeline.
                                     </p>
@@ -415,16 +413,16 @@ artifacts:
                                         <p className="text-gray-300 mb-2">
                                             Pas de panique ! Voici les erreurs les plus courantes :
                                         </p>
-                                        <ul className="list-none space-y-2 text-gray-300 text-sm ml-4">
+                                        <ul className="list-none space-y-2 text-gray-300 ml-4">
                                             <li>
-                                                <strong className="text-red-200">npm: command not found</strong> → Vérifie que tu as bien sélectionné un runtime avec Node.js
+                                                <strong>npm: command not found</strong> : vérifie que tu as bien sélectionné un runtime avec Node.js
                                             </li>
                                             <li>
-                                                <strong className="text-red-200">buildspec.yml not found</strong> → Le fichier doit être à la racine de ton repo et s&apos;appeler exactement <code className="text-blue-300">buildspec.yml</code>
+                                                <strong>buildspec.yml not found</strong> : le fichier doit être à la racine de ton repo et s&apos;appeler exactement <code className="text-blue-400">buildspec.yml</code>
                                             </li>
                                             <li>
-                                                <strong className="text-red-200">npm ERR! missing script: build</strong> → Ton <code className="text-blue-300">package.json</code> n&apos;a pas de script &quot;build&quot;.
-                                                Ajoute-le ou change la commande dans le buildspec
+                                                <strong>npm ERR! missing script: build</strong> : ton <code className="text-blue-400">package.json</code> n&apos;a pas de script &quot;build&quot;.
+                                                Ajoute-le ou change la commande dans le buildspec.
                                             </li>
                                         </ul>
                                         <p className="text-gray-300 mt-3">
@@ -461,17 +459,17 @@ artifacts:
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
                                         <h4 className="text-white font-bold mb-3">Informations de base</h4>
-                                        <ul className="list-none space-y-3 text-white">
+                                        <ul className="list-none space-y-3 text-gray-300">
                                             <li>
                                                 <strong className="text-white font-semibold">Pipeline name :</strong>{" "}
                                                 <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">my-app-pipeline</code>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Donne un nom clair à ton pipeline.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Service role :</strong> Sélectionne <strong className="text-blue-400">New service role</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     AWS va automatiquement créer un rôle IAM avec les permissions nécessaires pour que CodePipeline
                                                     puisse accéder à CodeBuild, GitHub, et aux autres services AWS. Le nom sera généré automatiquement.
                                                 </p>
@@ -484,17 +482,17 @@ artifacts:
                                         <p className="text-white text-sm mb-3">
                                             Tu peux laisser les paramètres par défaut, mais voici ce qu&apos;ils signifient :
                                         </p>
-                                        <ul className="list-none space-y-2 text-white">
+                                        <ul className="list-none space-y-2 text-gray-300">
                                             <li>
                                                 <strong className="text-white font-semibold">Artifact store :</strong> <strong className="text-blue-400">Default location</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     AWS va créer automatiquement un bucket S3 pour stocker les artefacts (fichiers générés pendant le build).
                                                     Tu n&apos;as pas besoin de le créer manuellement.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Encryption key :</strong> <strong className="text-blue-400">Default AWS Managed Key</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Les artefacts seront chiffrés automatiquement avec une clé gérée par AWS. C&apos;est sécurisé et gratuit.
                                                 </p>
                                             </li>
@@ -514,20 +512,20 @@ artifacts:
                                     </p>
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <ul className="list-none space-y-4 text-white">
+                                        <ul className="list-none space-y-4 text-gray-300">
                                             <li>
                                                 <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub (Version 2)</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     ⚠️ <strong>Important :</strong> Choisis bien &quot;GitHub (Version 2)&quot; et non &quot;GitHub (Version 1)&quot;.
                                                     La Version 2 utilise AWS Connector for GitHub qui est plus moderne, plus sécurisé et recommandé par AWS.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Connection :</strong> Clique sur <strong className="text-blue-400">Connect to GitHub</strong>
-                                                <p className="text-white text-sm mt-1 ml-4 mb-2">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4 mb-2">
                                                     Une popup va s&apos;ouvrir pour autoriser AWS à accéder à ton compte GitHub. Voici le processus :
                                                 </p>
-                                                <ol className="list-decimal list-inside text-white text-sm ml-8 space-y-1">
+                                                <ol className="list-decimal list-inside text-gray-300 text-sm ml-8 space-y-1">
                                                     <li>Donne un nom à la connexion</li>
                                                     <li>Clique sur <strong className="text-blue-400">Connect to GitHub</strong></li>
                                                     <li>Tu seras redirigé vers GitHub puis clique sur <strong className="text-blue-400">Authorize AWS Connector for GitHub</strong></li>
@@ -538,20 +536,20 @@ artifacts:
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Repository name :</strong> Sélectionne ton repository
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Une liste déroulante apparaît avec tous tes repositories GitHub. Sélectionne celui qui contient
                                                     ton application.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Branch name :</strong> <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">main</code>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Sélectionne la branche à surveiller.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Output artifact format :</strong> Laisse <strong className="text-blue-400">CodePipeline default</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     C&apos;est le format utilisé pour passer le code source à l&apos;étape suivante (CodeBuild).
                                                 </p>
                                             </li>
