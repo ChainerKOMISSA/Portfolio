@@ -852,18 +852,18 @@ artifacts:
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Maintenant que ton bucket est créé, il faut le configurer pour qu'il puisse servir des pages web.
+                                        Maintenant que ton bucket est créé, il faut le configurer pour qu&apos;il puisse servir des pages web.
                                     </p>
 
-                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 mb-6">
                                         <li>
-                                            Clique sur le nom de ton bucket dans la liste (ex: <code className="text-blue-300">my-app-bucket-2025</code>)
+                                            Clique sur le nom de ton bucket dans la liste
                                         </li>
                                         <li>
-                                            Va dans l'onglet <strong className="text-blue-400">Properties</strong> (en haut)
+                                            Va dans l&apos;onglet <strong className="text-blue-400">Properties</strong> (en haut)
                                         </li>
                                         <li>
-                                            Descends tout en bas jusqu'à la section <strong className="text-blue-400">Static website hosting</strong>
+                                            Descends tout en bas jusqu&apos;à la section <strong className="text-blue-400">Static website hosting</strong>
                                         </li>
                                         <li>
                                             Clique sur <strong>Edit</strong>
@@ -871,27 +871,27 @@ artifacts:
                                     </ol>
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <h4 className="text-white font-semibold mb-3">Configuration de l'hébergement web</h4>
-                                        <ul className="list-none space-y-3 text-gray-300 text-sm">
+                                        <h4 className="text-white font-bold mb-3">Configuration de l&apos;hébergement web</h4>
+                                        <ul className="list-none space-y-3 text-gray-300">
                                             <li>
-                                                <strong className="text-blue-400">Static website hosting :</strong> Sélectionne <strong>Enable</strong>
+                                                <strong className="text-white font-semibold">Static website hosting :</strong> Sélectionne <strong className="text-blue-400">Enable</strong>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Hosting type :</strong> <strong>Host a static website</strong>
+                                                <strong className="text-white font-semibold">Hosting type :</strong> <strong className="text-blue-400">Host a static website</strong>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Index document :</strong>{" "}
-                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">index.html</code>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    C'est la page qui s'affichera par défaut quand quelqu'un visite ton site (comme la homepage).
+                                                <strong className="text-white font-semibold">Index document :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">index.html</code>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    C&apos;est la page qui s&apos;affichera par défaut quand quelqu&apos;un visite ton site.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Error document :</strong>{" "}
-                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">index.html</code> (ou <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">error.html</code>)
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    La page qui s'affichera en cas d'erreur 404 (page non trouvée).
-                                                    Pour les Single Page Applications (React, Vue...), utilise aussi <code className="text-blue-300">index.html</code>
+                                                <strong className="text-white font-semibold">Error document :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">index.html</code>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    La page qui s&apos;affichera en cas d&apos;erreur 404 (page non trouvée).
+                                                    Pour les Single Page Applications (React ou Vue), utilise aussi <code className="text-blue-400">index.html</code> {""}
                                                     pour que le routing côté client fonctionne correctement.
                                                 </p>
                                             </li>
@@ -902,13 +902,13 @@ artifacts:
                                         Clique sur <span className="text-blue-400 font-semibold">Save changes</span>.
                                     </p>
 
-                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-green-200 font-semibold mb-2">🌐 URL de ton site</p>
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-white font-semibold mb-2">URL de ton site</p>
                                         <p className="text-gray-300 text-sm">
                                             Une fois sauvegardé, AWS génère automatiquement une URL publique pour ton site.
-                                            Tu peux la trouver dans la section "Static website hosting" : elle ressemble à
-                                            <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300 mx-1">
-                                                http://my-app-bucket-2025.s3-website-eu-west-1.amazonaws.com
+                                            Tu peux la trouver dans la section &quot;Static website hosting&quot; : elle ressemble à
+                                            <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-400 mx-1">
+                                                http://my-app-bucket.s3-website-eu-west-1.amazonaws.com
                                             </code>
                                         </p>
                                         <p className="text-gray-300 text-sm mt-2">
@@ -917,7 +917,7 @@ artifacts:
                                     </div>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 3 : Configurer les permissions d'accès public
+                                        Étape 3 : Configurer les permissions d&apos;accès public
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
