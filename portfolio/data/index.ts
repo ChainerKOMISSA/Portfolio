@@ -614,8 +614,8 @@ export const cicdtutorialsItems = [
     date: "",
     category: categories[3].name,
     technologies: [""],
-    //link: "",
-    link: "/blog/ci-cd/aws",
+    link: "",
+    //link: "/blog/ci-cd/aws",
   },
   {
     id: 6,

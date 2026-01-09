@@ -921,7 +921,7 @@ artifacts:
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Pour que les visiteurs puissent accéder à ton site, il faut ajouter une <strong>bucket policy</strong>
+                                        Pour que les visiteurs puissent accéder à ton site, il faut ajouter une <strong>bucket policy</strong> {""}
                                         qui autorise la lecture publique de tous les fichiers.
                                     </p>
 
