@@ -155,7 +155,7 @@ export default function BlogPage() {
                                         </p>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codebuild1">
                                         Étape 1 : Accéder à CodeBuild
                                     </h3>
 
@@ -164,7 +164,7 @@ export default function BlogPage() {
                                         Une fois sur la page CodeBuild, clique sur le bouton orange <span className="text-blue-400 font-semibold">Create project</span>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codebuild2">
                                         Étape 2 : Configuration du projet
                                     </h3>
 
@@ -296,7 +296,7 @@ export default function BlogPage() {
                                         en bas de la page.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-8">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-8" id="codebuild3">
                                         Étape 3 : Créer le fichier buildspec.yml
                                     </h3>
 
@@ -382,7 +382,7 @@ artifacts:
                                         Une fois le fichier créé, <strong>commit et push-le sur GitHub</strong>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-8">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-8" id="codebuild4">
                                         Étape 4 : Tester ton build
                                     </h3>
 
@@ -446,7 +446,7 @@ artifacts:
                                         lancer CodeBuild → déployer l&apos;application. Le tout sans intervention manuelle !
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline1">
                                         Étape 1 : Accéder à CodePipeline
                                     </h3>
 
@@ -455,7 +455,7 @@ artifacts:
                                         puis clique sur le service. Clique ensuite sur le bouton orange <span className="text-blue-400 font-semibold">Create pipeline</span>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline2">
                                         Étape 2 : Configuration générale (Pipeline settings)
                                     </h3>
 
@@ -505,7 +505,7 @@ artifacts:
                                         Une fois rempli, clique sur <span className="text-blue-400 font-semibold">Next</span>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline3">
                                         Étape 3 : Configurer la source du code (Add source stage)
                                     </h3>
 
@@ -562,7 +562,7 @@ artifacts:
                                         Clique sur <span className="text-blue-400 font-semibold">Next</span> pour passer à l&apos;étape suivante.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline4">
                                         Étape 4 : Configurer le build (Add build stage)
                                     </h3>
 
@@ -606,7 +606,7 @@ artifacts:
                                         Clique sur <span className="text-blue-400 font-semibold">Next</span> pour passer au déploiement.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline5">
                                         Étape 5 : Ajouter le déploiement (Add deploy stage )
                                     </h3>
 
@@ -620,7 +620,7 @@ artifacts:
                                         une popup de confirmation apparaît → clique sur <strong>Skip</strong>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline6">
                                         Étape 6 : Vérification finale (Review)
                                     </h3>
 
@@ -765,7 +765,7 @@ artifacts:
                                         </div>
                                     </details>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="deploy1">
                                         Étape 1 : Créer un bucket S3
                                     </h3>
 
@@ -847,7 +847,7 @@ artifacts:
                                         Clique sur <span className="text-blue-400 font-semibold">Create bucket</span> en bas de la page.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="deploy2">
                                         Étape 2 : Activer l&apos;hébergement de site web statique
                                     </h3>
 
@@ -916,7 +916,7 @@ artifacts:
                                         </p>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="deploy3">
                                         Étape 3 : Configurer les permissions d&apos;accès public
                                     </h3>
 
@@ -957,7 +957,7 @@ artifacts:
 }`}
                                     />
 
-                                        <h4 className="text-white font-semibold mb-3">Décryptage de la bucket policy</h4>
+                                        <h4 className="text-white font-semibold mb-3 mt-3">Décryptage de la bucket policy</h4>
                                         <ul className="list-none space-y-2 text-gray-300">
                                             <li>
                                                 <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Effect&quot;: &quot;Allow&quot;</code>
@@ -982,7 +982,7 @@ artifacts:
                                         Un avertissement de sécurité apparaîtra, confirme en cliquant à nouveau sur <strong className="text-blue-400">Save</strong>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="deploy4">
                                         Étape 4 : Ajouter l&apos;étape de déploiement dans CodePipeline
                                     </h3>
 
@@ -1162,309 +1162,147 @@ artifacts:
                                     </details>
                                 </section>
 
-
                                 <section id="test-pipeline">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         6. Tester le pipeline CI/CD complet
                                     </h2>
 
                                     <p className="text-gray-300 mb-4">
-                                        Maintenant que tout est en place, il est temps de tester le <strong>pipeline complet de bout en bout</strong>
+                                        Maintenant que tout est en place, il est temps de tester le <strong>pipeline complet de bout en bout</strong>{""}
                                         pour vérifier que chaque modification de code se déploie automatiquement en production !
                                     </p>
 
                                     <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">🎯 Ce que nous allons vérifier</p>
+                                        <p className="text-white font-semibold mb-2">Ce que nous allons vérifier</p>
                                         <p className="text-gray-300 text-sm mb-2">
                                             Un pipeline CI/CD complet doit :
                                         </p>
                                         <ol className="list-decimal list-inside space-y-1 text-gray-300 text-sm ml-4">
-                                            <li>Se déclencher <strong>automatiquement</strong> dès qu'on push du code sur GitHub</li>
+                                            <li>Se déclencher <strong>automatiquement</strong> dès qu&apos;on push du code sur GitHub</li>
                                             <li>Récupérer le code <strong>sans intervention manuelle</strong></li>
-                                            <li>Builder et tester l'application <strong>dans un environnement propre</strong></li>
+                                            <li>Builder et tester l&apos;application <strong>dans un environnement propre</strong></li>
                                             <li>Déployer la nouvelle version <strong>directement en production</strong></li>
                                             <li>Tout cela en <strong>quelques minutes</strong> seulement</li>
                                         </ol>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="test-pipeline1">
                                         Étape 1 : Faire une modification dans ton code
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Pour tester le pipeline, nous allons faire une modification visible dans l'application.
-                                        Choisis l'une de ces options selon ton projet :
+                                        Pour tester le pipeline, tu peux faire une modification visible dans l&apos;application.
+                                        Une fois ta modification faite, fais un commit et push sur Github.
                                     </p>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <h4 className="text-white font-semibold mb-3">Options de modification</h4>
-
-                                        <div className="space-y-4">
-                                            <div>
-                                                <p className="text-blue-400 font-semibold mb-2">Option 1 : Modification simple (HTML)</p>
-                                                <p className="text-gray-300 text-sm mb-2">
-                                                    Ouvre ton fichier <code className="text-blue-300">index.html</code> et modifie le titre :
-                                                </p>
-                                                <CodeBlock
-                                                    language="html"
-                                                    code={`<!-- Avant -->
-<h1>Mon Application</h1>
-
-<!-- Après -->
-<h1>Mon Application - CI/CD Actif ! 🚀</h1>`}
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <p className="text-blue-400 font-semibold mb-2">Option 2 : Application React</p>
-                                                <p className="text-gray-300 text-sm mb-2">
-                                                    Ouvre <code className="text-blue-300">src/App.js</code> et change le texte :
-                                                </p>
-                                                <CodeBlock
-                                                    language="jsx"
-                                                    code={`// Avant
-<h1>Welcome to React</h1>
-
-// Après
-<h1>Welcome to React - Déployé automatiquement ! ✨</h1>`}
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <p className="text-blue-400 font-semibold mb-2">Option 3 : Modification du README</p>
-                                                <p className="text-gray-300 text-sm mb-2">
-                                                    Si tu veux juste tester sans toucher à l'interface, modifie le <code className="text-blue-300">README.md</code> :
-                                                </p>
-                                                <CodeBlock
-                                                    language="markdown"
-                                                    code={`# Mon Projet
-
-✅ Pipeline CI/CD configuré avec AWS CodePipeline et CodeBuild
-Dernière mise à jour : ${new Date().toLocaleString('fr-FR')}`}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 2 : Commit et push sur GitHub
-                                    </h3>
-
-                                    <p className="text-gray-300 mb-3">
-                                        Une fois ta modification faite, sauvegarde le fichier et exécute ces commandes dans ton terminal :
-                                    </p>
-
-                                    <CodeBlock
-                                        language="bash"
-                                        code={`# Ajoute tous les fichiers modifiés
-git add .
-
-# Crée un commit avec un message descriptif
-git commit -m "test: vérification du pipeline CI/CD automatique"
-
-# Envoie les modifications sur GitHub
-git push origin main`}
-                                    />
-
-                                    <div className="bg-neutral-900 rounded-lg p-4 mt-4 mb-6">
-                                        <p className="text-gray-400 text-sm mb-2">
-                                            💡 <strong>Astuce :</strong> Utilise des messages de commit clairs et descriptifs.
-                                            Exemples de bonnes pratiques :
-                                        </p>
-                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
-                                            <li>• <code className="text-blue-300">feat: ajout du bouton de connexion</code></li>
-                                            <li>• <code className="text-blue-300">fix: correction du bug d'affichage mobile</code></li>
-                                            <li>• <code className="text-blue-300">docs: mise à jour du README</code></li>
-                                            <li>• <code className="text-blue-300">style: amélioration du design de la navbar</code></li>
-                                        </ul>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 3 : Observer le pipeline en action
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="test-pipeline2">
+                                        Étape 2 : Observer le pipeline en action
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
                                         Dès que tu as push ton code, le pipeline se déclenche automatiquement ! Voici comment le suivre en temps réel :
                                     </p>
 
-                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300  mb-6">
                                         <li>
                                             Va sur la console AWS et ouvre <strong>CodePipeline</strong>
                                         </li>
                                         <li>
-                                            Clique sur ton pipeline (<code className="text-blue-300">my-app-pipeline</code>)
+                                            Clique sur ton pipeline
                                         </li>
                                         <li>
-                                            Tu devrais voir une nouvelle exécution qui vient de démarrer (en haut de la page, un bandeau indique "Execution in progress")
+                                            Tu devrais voir une nouvelle exécution qui vient de démarrer : en haut de la page, un bandeau indique &quot;Execution in progress&quot;
                                         </li>
                                         <li>
-                                            Observe les 3 étapes s'exécuter l'une après l'autre :
+                                            Observe les 3 étapes s&apos;exécuter l&apos;une après l&apos;autre :
                                             <ul className="list-none ml-6 mt-2 space-y-2">
                                                 <li>
-                                                    <strong className="text-blue-400">Source</strong> : CodePipeline détecte le nouveau commit et récupère le code depuis GitHub
-                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 10-30 secondes</p>
+                                                    <strong className="text-gray-300">Source</strong> : CodePipeline détecte le nouveau commit et récupère le code depuis GitHub
                                                 </li>
                                                 <li>
-                                                    <strong className="text-blue-400">Build</strong> : CodeBuild compile ton application et lance les tests
-                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 1-3 minutes (selon la taille du projet)</p>
+                                                    <strong className="text-gray-300">Build</strong> : CodeBuild compile ton application et lance les tests
                                                 </li>
                                                 <li>
-                                                    <strong className="text-blue-400">Deploy</strong> : Les fichiers sont uploadés sur S3
-                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 20-60 secondes</p>
+                                                    <strong className="text-gray-300">Deploy</strong> : Les fichiers sont uploadés sur S3
                                                 </li>
                                             </ul>
                                         </li>
                                     </ol>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <h4 className="text-white font-semibold mb-3">🔍 Comprendre les statuts du pipeline</h4>
-                                        <ul className="list-none space-y-2 text-gray-300 text-sm">
-                                            <li>
-                                                <span className="inline-block w-24 text-gray-400">⏳ In progress</span> : L'étape est en cours d'exécution
-                                            </li>
-                                            <li>
-                                                <span className="inline-block w-24 text-green-400">✅ Succeeded</span> : L'étape s'est terminée avec succès
-                                            </li>
-                                            <li>
-                                                <span className="inline-block w-24 text-red-400">❌ Failed</span> : Une erreur s'est produite (clique sur "Details" pour voir les logs)
-                                            </li>
-                                            <li>
-                                                <span className="inline-block w-24 text-yellow-400">⚠️ Stopped</span> : L'exécution a été arrêtée manuellement
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">💡 Voir les logs détaillés</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Pour voir exactement ce qui se passe pendant le build, clique sur <strong>Details</strong>
-                                            dans l'étape Build. Tu seras redirigé vers CodeBuild où tu pourras voir :
-                                        </p>
-                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4 mt-2">
-                                            <li>• Les commandes exécutées en temps réel</li>
-                                            <li>• Les dépendances installées</li>
-                                            <li>• Les éventuelles erreurs ou warnings</li>
-                                            <li>• La durée de chaque phase (install, build, post_build...)</li>
-                                        </ul>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 4 : Vérifier le déploiement
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="test-pipeline3">
+                                        Étape 3 : Vérifier le déploiement
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Une fois que toutes les étapes sont passées au vert (✅), ton application est déployée !
+                                        Une fois que toutes les étapes sont passées au vert, ton application est déployée !
                                         Vérifions que tout fonctionne :
                                     </p>
 
-                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 mb-6">
                                         <li>
-                                            <strong>Récupère l'URL de ton site S3</strong>
-                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
-                                                <li>• Va dans S3 → ouvre ton bucket</li>
-                                                <li>• Onglet "Properties" → section "Static website hosting"</li>
-                                                <li>• Copie l'URL "Bucket website endpoint"</li>
+                                            <strong>Récupère l&apos;URL de ton site S3</strong>
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-sm text-gray-300">
+                                                <li>• Va dans S3 et ouvre ton bucket</li>
+                                                <li>• Onglet &quot;Properties&quot; puis section &quot;Static website hosting&quot;</li>
+                                                <li>• Copie l&apos;URL &quot;Bucket website endpoint&quot;</li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <strong>Ouvre l'URL dans ton navigateur</strong>
-                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                            <strong>Ouvre l&apos;URL dans ton navigateur</strong>
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-sm text-gray-300">
                                                 <li>• Force le rafraîchissement avec <kbd className="bg-neutral-800 px-2 py-0.5 rounded">Ctrl+F5</kbd> (Windows)
-                                                    ou <kbd className="bg-neutral-800 px-2 py-0.5 rounded">Cmd+Shift+R</kbd> (Mac) pour bypasser le cache</li>
+                                                    ou <kbd className="bg-neutral-800 px-2 py-0.5 rounded">Cmd+Shift+R</kbd> (Mac) pour bypasser le cache si tu l&apos;avais mis plus haut</li>
                                             </ul>
                                         </li>
                                         <li>
                                             <strong>Vérifie que ta modification est visible</strong>
-                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-sm text-gray-300">
                                                 <li>• Le nouveau titre doit apparaître</li>
-                                                <li>• Si tu ne vois pas la modification, attends 30 secondes et rafraîchis à nouveau (propagation DNS)</li>
+                                                <li>• Si tu ne vois pas la modification, attends 30 secondes et rafraîchis à nouveau</li>
                                             </ul>
                                         </li>
                                     </ol>
-
-                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-green-200 font-semibold mb-2">🎉 Félicitations, ton CI/CD fonctionne parfaitement !</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Si tu vois ta modification en ligne, c'est que le pipeline complet fonctionne de bout en bout.
-                                            À partir de maintenant, <strong>chaque commit sur la branche main sera automatiquement déployé en production</strong>
-                                            sans que tu aies à faire quoi que ce soit manuellement !
-                                        </p>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        📊 Mesurer les performances du pipeline
-                                    </h3>
-
-                                    <p className="text-gray-300 mb-4">
-                                        Sur la page de ton pipeline dans CodePipeline, tu peux voir des statistiques intéressantes :
+                                    <p className="text-gray-300 my-3">
+                                        Si tu vois ta modification en ligne, c&apos;est que le pipeline complet fonctionne de bout en bout.
+                                        À partir de maintenant, <strong>chaque commit sur la branche main sera automatiquement déployé en production</strong>{""}
+                                        sans que tu aies à faire quoi que ce soit manuellement !
                                     </p>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <ul className="list-none space-y-2 text-gray-300 text-sm">
-                                            <li>
-                                                <strong className="text-blue-400">Durée totale</strong> : De combien de temps tu as besoin du commit au déploiement ?
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    Un bon pipeline devrait prendre entre 3 et 7 minutes pour un projet simple
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-blue-400">Taux de succès</strong> : Quel pourcentage de tes déploiements réussit ?
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    Vise un taux supérieur à 95%. Si tu es en-dessous, c'est peut-être que tes tests ne sont pas assez robustes
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-blue-400">Historique des exécutions</strong> : Tu peux cliquer sur chaque exécution passée
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    Pratique pour voir quel commit a introduit un bug ou pour revenir en arrière si nécessaire
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <details className="mt-6 mb-6 rounded bg-red-950/30 border border-red-900/50 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>Le pipeline a échoué ?</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                        </summary>
 
-                                    <div className="bg-red-950/30 border border-red-900/50 rounded-lg p-4">
-                                        <p className="text-red-200 font-semibold mb-2">❌ Le pipeline a échoué ?</p>
-                                        <p className="text-gray-300 text-sm mb-3">
-                                            Pas de panique ! Voici comment débugger :
-                                        </p>
-                                        <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm">
-                                            <li>
-                                                <strong>Identifie quelle étape a échoué</strong> (Source, Build ou Deploy)
-                                            </li>
-                                            <li>
-                                                <strong>Clique sur "Details"</strong> pour voir les logs complets
-                                            </li>
-                                            <li>
-                                                <strong>Lis le message d'erreur</strong> en partant de la fin (le dernier message est souvent le plus informatif)
-                                            </li>
-                                            <li>
-                                                <strong>Erreurs courantes :</strong>
-                                                <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
-                                                    <li>• <strong>Build failed :</strong> Erreur de syntaxe dans ton code ou tests qui échouent</li>
-                                                    <li>• <strong>npm ERR! :</strong> Problème avec une dépendance (essaie de mettre à jour ton package.json)</li>
-                                                    <li>• <strong>Access Denied :</strong> Problème de permissions IAM ou bucket policy</li>
-                                                    <li>• <strong>Timeout :</strong> Le build prend trop de temps (augmente le timeout dans les settings CodeBuild)</li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <strong>Corrige l'erreur</strong> localement, puis recommit et push
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </section>
-
-                                <section id="best-practices1">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">
-                                        7. Bonnes pratiques CI/CD sur AWS
-                                    </h2>
-
-                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                        <li>Utilise des <span className="text-blue-400">rôles IAM</span> avec le minimum de permissions.</li>
-                                        <li>Stocke les secrets avec <span className="text-blue-400">AWS Secrets Manager</span>.</li>
-                                        <li>Ajoute une phase <span className="text-blue-400">test</span> dans le buildspec.yml.</li>
-                                        <li>Surveille les logs via <span className="text-blue-400">CloudWatch</span>.</li>
-                                        <li>Versionne ton pipeline comme ton code.</li>
-                                    </ul>
+                                        <div className="px-4 pb-6 space-y-6">
+                                            <p className="text-gray-300 mb-3">
+                                                En cas d&apos;échec, voici comment tu peux débugger :
+                                            </p>
+                                            <ol className="list-decimal list-inside space-y-2 text-gray-300">
+                                                <li>
+                                                    <strong>Identifie quelle étape a échoué</strong> (Source, Build ou Deploy)
+                                                </li>
+                                                <li>
+                                                    <strong>Clique sur &quot;Details&quot;</strong> pour voir les logs complets
+                                                </li>
+                                                <li>
+                                                    <strong>Lis le message d&apos;erreur</strong> en partant de la fin (le dernier message est souvent le plus informatif)
+                                                </li>
+                                                <li>
+                                                    <strong>Erreurs courantes :</strong>
+                                                    <ul className="list-none ml-6 mt-2 space-y-1 text-sm text-gray-300">
+                                                        <li>• <strong>Build failed :</strong> erreur de syntaxe dans ton code ou tests qui échouent</li>
+                                                        <li>• <strong>npm ERR! :</strong> problème avec une dépendance. Essaie de mettre à jour ton package.json</li>
+                                                        <li>• <strong>Access Denied :</strong> problème de permissions IAM ou bucket policy</li>
+                                                        <li>• <strong>Timeout :</strong> le build prend trop de temps. Tu peux augmenter le timeout dans les paramètres de CodeBuild</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>Corrige l&apos;erreur</strong> localement, puis recommit et push
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </details>
                                 </section>
 
                                 <section id="best-practices">
@@ -1473,25 +1311,24 @@ git push origin main`}
                                     </h2>
 
                                     <p className="text-gray-300 mb-6">
-                                        Maintenant que ton pipeline fonctionne, voici les <strong>bonnes pratiques essentielles</strong>
+                                        Maintenant que ton pipeline fonctionne, voici les <strong>bonnes pratiques essentielles</strong> {""}
                                         pour sécuriser, optimiser et professionnaliser ton CI/CD en production.
                                     </p>
 
                                     <div className="space-y-6">
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">🔐</span>
-                                                Sécurité : Principe du moindre privilège
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Les rôles IAM créés automatiquement par AWS ont parfois trop de permissions.
-                                                Applique le <strong>principe du moindre privilège</strong> : chaque service ne doit avoir
-                                                que les permissions strictement nécessaires.
-                                            </p>
+                                        <details className="mt-6 mb-6 rounded bg-neutral-900 border group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span> Sécurité : Principe du moindre privilège</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                            </summary>
 
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Ce qu'il faut faire :</p>
-                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                            <div className="px-4 pb-6 space-y-6">
+                                                <p className="text-gray-300 mb-3">
+                                                    Les rôles IAM créés automatiquement par AWS ont parfois trop de permissions.
+                                                    Applique le <strong>principe du moindre privilège</strong>, c&apos,est-à-dire que chaque service ne doit avoir
+                                                    que les permissions strictement nécessaires.
+                                                </p>
+                                                <ul className="list-none space-y-2 text-gray-300 ml-4">
                                                     <li>
                                                         • <strong>CodeBuild</strong> doit pouvoir lire S3 (pour les artefacts) et écrire dans CloudWatch (pour les logs)
                                                     </li>
@@ -1499,45 +1336,34 @@ git push origin main`}
                                                         • <strong>CodePipeline</strong> doit pouvoir déclencher CodeBuild et écrire dans S3
                                                     </li>
                                                     <li>
-                                                        • Évite les permissions <code className="text-red-300">*:*</code> (accès complet à tout)
+                                                        • Évite les permissions <code className="text-blue-400">*:*</code> (accès complet à tout)
                                                     </li>
                                                 </ul>
-                                            </div>
-
-                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
-                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Audit régulier</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    Utilise <strong>IAM Access Analyzer</strong> pour identifier les permissions non utilisées
+                                                <p className="text-gray-300 my-3">
+                                                    Tu peux utiliser <strong>IAM Access Analyzer</strong> pour identifier les permissions non utilisées
                                                     et les supprimer progressivement.
                                                 </p>
                                             </div>
-                                        </div>
+                                        </details>
 
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">🔑</span>
-                                                Gestion des secrets avec AWS Secrets Manager
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                <strong>Ne jamais</strong> mettre de clés API, mots de passe ou tokens directement dans ton code
-                                                ou dans les variables d'environnement en clair !
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Utilise AWS Secrets Manager :</p>
-                                                <ol className="list-decimal list-inside space-y-2 text-gray-300 text-xs ml-4">
-                                                    <li>
-                                                        Stocke tes secrets dans <strong>Secrets Manager</strong> ou <strong>Systems Manager Parameter Store</strong>
-                                                    </li>
-                                                    <li>
-                                                        Dans ton buildspec.yml, récupère les secrets dynamiquement :
-                                                    </li>
-                                                </ol>
-                                            </div>
-
-                                            <CodeBlock
-                                                language="yaml"
-                                                code={`version: 0.2
+                                        <details className="mt-6 mb-6 rounded bg-neutral-900 border group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span> Gestion des secrets avec AWS Secrets Manager</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                            </summary>
+                                            <div className="px-4 pb-6 space-y-6">
+                                                <p className="text-gray-300 mb-3">
+                                                    <strong>Ne mets jamais</strong> de clés API, mots de passe ou tokens directement dans ton code
+                                                    ou dans les variables d&apos;environnement en clair ! <br/>
+                                                    A la place, tu peux utiliser <strong>AWS Secrets Manager</strong>. Il te permet de stocker tes
+                                                    variables secrètes dans <strong>Secrets Manager</strong> ou <strong>Systems Manager Parameter Store</strong>
+                                                </p>
+                                                <p className="text-gray-300 mb-3">
+                                                    Tu peux ensuite récupérer dynamiquement ces variables dans ton fichier buildspec.yml :
+                                                </p>
+                                                <CodeBlock
+                                                    language="yaml"
+                                                    code={`version: 0.2
 
 env:
   secrets-manager:
@@ -1549,34 +1375,24 @@ phases:
     commands:
       - echo "Building with secure credentials..."
       - npm run build`}
-                                            />
+                                                />
+                                            </div>
+                                        </details>
 
-                                            <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3 mt-3">
-                                                <p className="text-yellow-200 text-xs font-semibold mb-1">⚠️ Attention</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    N'affiche jamais les secrets dans les logs avec <code className="text-blue-300">echo $SECRET</code> !
-                                                    Les logs CodeBuild sont visibles par tous ceux qui ont accès au projet.
+                                        <details className="mt-6 mb-6 rounded bg-neutral-900 border group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span> Ajouter des tests automatiques</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                            </summary>
+                                            <div className="px-4 pb-6 space-y-6">
+                                                <p className="text-gray-300 mb-3">
+                                                    Il est conseillé d&apos;ajouter une phase de tests dans ton pipeline pour éviter de
+                                                    déployer du code cassé en production.<br/>
+                                                    Voici un exemple de buildspec avec tests :
                                                 </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">🧪</span>
-                                                Ajouter des tests automatiques
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Un pipeline sans tests, c'est comme conduire sans freins : ça finira mal !
-                                                Ajoute une phase de tests pour <strong>éviter de déployer du code cassé en production</strong>.
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Exemple de buildspec avec tests :</p>
-                                            </div>
-
-                                            <CodeBlock
-                                                language="yaml"
-                                                code={`version: 0.2
+                                                <CodeBlock
+                                                    language="yaml"
+                                                    code={`version: 0.2
 
 phases:
   install:
@@ -1604,159 +1420,67 @@ artifacts:
   files:
     - '**/*'
   base-directory: build`}
-                                            />
+                                                />
+                                            </div>
+                                        </details>
 
-                                            <div className="bg-green-950/30 border border-green-900/50 rounded p-3 mt-3">
-                                                <p className="text-green-200 text-xs font-semibold mb-1">✨ Aller plus loin</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    Ajoute des tests de performance (Lighthouse CI), des tests de sécurité (npm audit),
-                                                    ou des tests end-to-end (Playwright, Cypress) pour un pipeline encore plus robuste !
+                                        <details className="mt-6 mb-6 rounded bg-neutral-900 border group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span> Surveillance avec CloudWatch</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                            </summary>
+                                            <div className="px-4 pb-6 space-y-6">
+                                                <p className="text-gray-300 mb-3">
+                                                    Tu peux activer les logs CloudWatch pour surveiller tes builds et être alerté en cas de problème.
+                                                    Voici la configuration recommandée :
+                                                </p>
+                                                <ul className="list-none space-y-2 text-gray-300 ml-4">
+                                                        <li>
+                                                            • <strong>CloudWatch Logs</strong> : active les logs pour chaque exécution de CodeBuild
+                                                        </li>
+                                                        <li>
+                                                            • <strong>CloudWatch Metrics</strong> : surveille la durée des builds, le taux d&apos;échec, etc.
+                                                        </li>
+                                                        <li>
+                                                            • <strong>CloudWatch Alarms</strong> : te permet de recevoir une notification si un build échoue
+                                                        </li>
+                                                </ul>
+
+                                                <p className="text-gray-300">
+                                                    Tu peux aussi créer un dashboard CloudWatch pour visualiser en un coup d&apos;oeil ton pipeline,
+                                                    le nombre de déploiements par jour, et le temps moyen de build.
                                                 </p>
                                             </div>
-                                        </div>
+                                        </details>
 
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">📊</span>
-                                                Surveillance avec CloudWatch
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Active les logs CloudWatch pour surveiller tes builds et être alerté en cas de problème.
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Configuration recommandée :</p>
-                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
-                                                    <li>
-                                                        • <strong>CloudWatch Logs</strong> : Active les logs pour chaque exécution de CodeBuild
-                                                    </li>
-                                                    <li>
-                                                        • <strong>CloudWatch Metrics</strong> : Surveille la durée des builds, le taux d'échec, etc.
-                                                    </li>
-                                                    <li>
-                                                        • <strong>CloudWatch Alarms</strong> : Reçois une notification (email/SMS) si un build échoue
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
-                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Dashboard personnalisé</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    Crée un dashboard CloudWatch pour visualiser en un coup d'œil :
-                                                    la santé de ton pipeline, le nombre de déploiements par jour, et le temps moyen de build.
+                                        <details className="mt-6 mb-6 rounded bg-neutral-900 border group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>  Optimiser les coûts</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                            </summary>
+                                            <div className="px-4 pb-6 space-y-6">
+                                                <p className="text-gray-300 mb-3">
+                                                    CodePipeline et CodeBuild sont payants au-delà du Free Tier. Voici comment réduire les coûts :
                                                 </p>
+
+                                                    <ul className="list-none space-y-2 text-gray-300 ml-4">
+                                                        <li>
+                                                            • <strong>Cache les dépendances</strong> : tu peux utiliser le cache S3 de CodeBuild pour éviter de retélécharger npm packages à chaque build
+                                                        </li>
+                                                        <li>
+                                                            • <strong>Ajuste la taille de l&apos;instance</strong> : par défaut CodeBuild utilise &quot;small&quot; (3 GB RAM), mais &quot;large&quot; coûte 4x plus cher
+                                                        </li>
+                                                        <li>
+                                                            • <strong>Limite les builds inutiles</strong> : tu peux configurer des filtres Git pour ne builder que sur certains chemins. Tu peux par exemple ignorer les modifications du README.
+                                                        </li>
+                                                        <li>
+                                                            • <strong>Nettoie les anciens artefacts</strong> : tu peux configurer une lifecycle policy sur ton bucket S3 pour supprimer les vieux builds après 30 jours ou plus.
+                                                        </li>
+                                                    </ul>
                                             </div>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">📝</span>
-                                                Versionner ton infrastructure as Code
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Ton pipeline lui-même devrait être versionné et déployé comme du code !
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Utilise CloudFormation ou Terraform :</p>
-                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
-                                                    <li>
-                                                        • Définis ton pipeline CodePipeline en YAML/Terraform au lieu de le créer manuellement
-                                                    </li>
-                                                    <li>
-                                                        • Stocke cette configuration dans Git avec le reste de ton code
-                                                    </li>
-                                                    <li>
-                                                        • Avantages : reproductibilité, historique des changements, rollback facile
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3">
-                                                <p className="text-yellow-200 text-xs font-semibold mb-1">📚 Ressource utile</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    AWS propose <strong>AWS CDK</strong> (Cloud Development Kit) qui permet de définir
-                                                    l'infrastructure en TypeScript/Python au lieu de YAML. Plus moderne et plus maintenable !
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">🌍</span>
-                                                Environnements multiples (Dev, Staging, Prod)
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                Ne déploie jamais directement en production ! Utilise plusieurs environnements.
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4 mb-3">
-                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Architecture recommandée :</p>
-                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
-                                                    <li>
-                                                        • <strong>Branche dev</strong> → déploie automatiquement sur environnement de développement
-                                                    </li>
-                                                    <li>
-                                                        • <strong>Branche staging</strong> → déploie sur un environnement de test (copie de prod)
-                                                    </li>
-                                                    <li>
-                                                        • <strong>Branche main</strong> → déploie en production <strong>avec une approbation manuelle</strong>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
-                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Approbation manuelle</p>
-                                                <p className="text-gray-300 text-xs">
-                                                    Dans CodePipeline, tu peux ajouter une étape <strong>Manual Approval</strong> avant le déploiement prod.
-                                                    Le pipeline attend qu'un humain vérifie et approuve avant de continuer.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-5">
-                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
-                                                <span className="text-2xl mr-2">💰</span>
-                                                Optimiser les coûts
-                                            </h3>
-                                            <p className="text-gray-300 text-sm mb-3">
-                                                CodePipeline et CodeBuild sont payants au-delà du Free Tier. Voici comment réduire les coûts :
-                                            </p>
-
-                                            <div className="bg-neutral-800 rounded p-4">
-                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
-                                                    <li>
-                                                        • <strong>Cache les dépendances</strong> : Utilise le cache S3 de CodeBuild pour éviter de retélécharger npm packages à chaque build
-                                                    </li>
-                                                    <li>
-                                                        • <strong>Ajuste la taille de l'instance</strong> : Par défaut CodeBuild utilise "small" (3 GB RAM), mais "large" coûte 4x plus cher
-                                                    </li>
-                                                    <li>
-                                                        • <strong>Limite les builds inutiles</strong> : Configure des filtres Git pour ne builder que sur certains chemins (ex: ignorer les modifications du README)
-                                                    </li>
-                                                    <li>
-                                                        • <strong>Nettoie les anciens artefacts</strong> : Configure une lifecycle policy sur ton bucket S3 pour supprimer les vieux builds après 30 jours
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mt-6">
-                                        <p className="text-green-200 font-semibold mb-2">🎓 Récapitulatif des bonnes pratiques</p>
-                                        <ul className="list-none space-y-1 text-gray-300 text-sm">
-                                            <li>✅ Principe du moindre privilège pour les rôles IAM</li>
-                                            <li>✅ Secrets stockés dans AWS Secrets Manager</li>
-                                            <li>✅ Tests automatiques à chaque build (unit, integration, e2e)</li>
-                                            <li>✅ Logs et monitoring avec CloudWatch</li>
-                                            <li>✅ Infrastructure as Code (CloudFormation/Terraform/CDK)</li>
-                                            <li>✅ Environnements multiples (dev, staging, prod)</li>
-                                            <li>✅ Approbation manuelle avant déploiement en production</li>
-                                            <li>✅ Optimisation des coûts (cache, sizing, lifecycle policies)</li>
-                                        </ul>
+                                        </details>
                                     </div>
                                 </section>
-
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
@@ -1769,10 +1493,9 @@ artifacts:
                                         et déployée.
                                     </p>
 
-                                    <p className="text-gray-300 mt-4">
+                                    <p className="text-gray-300 mt-4 mb-6">
                                         Ce workflow est une base solide utilisée en entreprise. Tu peux maintenant l’enrichir
-                                        avec des tests avancés, des environnements (dev/staging/prod) ou des déploiements sur
-                                        ECS, EC2 ou Elastic Beanstalk.
+                                        avec des tests avancés, des environnements de déploiement différents ou des déploiements de backend sur ECS ou EC2.
                                     </p>
                                     <Link
                                         href="/blog"
@@ -1798,14 +1521,74 @@ artifacts:
                             <Link href="#intro" className="hover:text-white">
                                 1. Introduction
                             </Link>
-                            <Link href="#setup" className="hover:text-white">
-                                2. Configuration
+                            <Link href="#prerequisites" className="hover:text-white">
+                                2. Prérequis et configuration
                             </Link>
-                            <Link href="#composant" className="hover:text-white">
-                                3. Créer un bouton PayPal
+                            <Link href="#codebuild" className="hover:text-white">
+                                3. Création du projet AWS CodeBuild
                             </Link>
-                            <Link href="#exemple" className="hover:text-white">
-                                4. Exemple d&apos;utilisation
+                                <Link href="#codebuild1" className="hover:text-white ml-2">
+                                    3.1. Accéder à CodeBuild
+                                </Link>
+                                <Link href="#codebuild2" className="hover:text-white ml-2">
+                                    3.2. Configuration du projet
+                                </Link>
+                                <Link href="#codebuild3" className="hover:text-white ml-2">
+                                    3.3. Créer le fichier buildspec.yml
+                                </Link>
+                                <Link href="#codebuild4" className="hover:text-white ml-2">
+                                    3.4. Tester ton build
+                                </Link>
+                            <Link href="#codepipeline" className="hover:text-white">
+                                4. Création du pipeline avec AWS CodePipeline
+                            </Link>
+                                <Link href="#codepipeline1" className="hover:text-white ml-2">
+                                4.1. Accéder à CodePipeline
+                                </Link>
+                                <Link href="#codepipeline2" className="hover:text-white ml-2">
+                                    4.2. Configuration générale
+                                </Link>
+                                <Link href="#codepipeline3" className="hover:text-white ml-2">
+                                    4.3. Configurer la source du code
+                                </Link>
+                                <Link href="#codepipeline4" className="hover:text-white ml-2">
+                                    4.4. Configurer le build
+                                </Link>
+                                <Link href="#codepipeline5" className="hover:text-white ml-2">
+                                    4.5. Ajouter le déploiement
+                                </Link>
+                                <Link href="#codepipeline6" className="hover:text-white ml-2">
+                                    4.6. Vérification finale
+                                </Link>
+                            <Link href="#deploy" className="hover:text-white">
+                                5. Déploiement automatique de l&apos;application
+                            </Link>
+                                <Link href="#deploy1" className="hover:text-white ml-2">
+                                    5.1. Créer un bucket S3
+                                </Link>
+                                <Link href="#deploy2" className="hover:text-white ml-2">
+                                    5.2.  Activer l&apos;hébergement de site web statique
+                                </Link>
+                                <Link href="#deploy3" className="hover:text-white ml-2">
+                                    5.3. Configurer les permissions
+                                </Link>
+                                <Link href="#deploy4" className="hover:text-white ml-2">
+                                    5.4. Ajouter le déploiement dans CodePipeline
+                                </Link>
+                            <Link href="#test-pipeline" className="hover:text-white">
+                                6. Tester le pipeline CI/CD complet
+                            </Link>
+                                <Link href="#test-pipeline1" className="hover:text-white ml-2">
+                                6.1. Modifie ton code
+                            </Link>
+                                <Link href="#test-pipeline2" className="hover:text-white ml-2">
+                                6.2. Observe le pipeline en action
+                            </Link>
+                                <Link href="#test-pipeline3" className="hover:text-white ml-2">
+                                6.3. Vérifie le déploiement
+                            </Link>
+                            <Link href="#best-practices" className="hover:text-white">
+                                7. Bonnes pratiques CI/CD sur AWS
                             </Link>
                             <Link href="#conclusion" className="hover:text-white">
                                 Conclusion
