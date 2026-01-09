@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import {IoIosArrowDown, IoIosArrowRoundBack} from "react-icons/io";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
 
 export default function BlogPage() {
@@ -432,44 +432,13 @@ artifacts:
                                         </p>
                                 </section>
 
-                                <section id="codepipeline1">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">
-                                        4. Création du pipeline avec AWS CodePipeline
-                                    </h2>
-
-                                    <p className="text-gray-300">
-                                        Maintenant que notre projet <span className="text-blue-400">CodeBuild</span> est prêt,
-                                        nous allons créer le pipeline CI/CD avec <span className="text-blue-400">AWS CodePipeline</span>.
-                                        CodePipeline va orchestrer toutes les étapes : récupération du code, build et déploiement.
-                                    </p>
-
-                                    <p className="text-gray-300 mt-4">
-                                        Dans la console AWS, va dans <span className="text-blue-400">CodePipeline → Create pipeline</span>.
-                                    </p>
-
-                                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                        <li><strong className="text-white">Pipeline name :</strong> my-app-pipeline</li>
-                                        <li><strong className="text-white">Source provider :</strong> GitHub (version 2)</li>
-                                        <li><strong className="text-white">Repository :</strong> ton repository</li>
-                                        <li><strong className="text-white">Branch :</strong> main</li>
-                                        <li><strong className="text-white">Build provider :</strong> AWS CodeBuild</li>
-                                        <li><strong className="text-white">Project :</strong> my-app-build</li>
-                                    </ul>
-
-                                    <p className="text-gray-300 mt-4">
-                                        À ce stade, ton pipeline récupère automatiquement le code et lance le build à chaque push.
-                                        Nous allons maintenant ajouter l’étape de déploiement.
-                                    </p>
-                                </section>
-
                                 <section id="codepipeline">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         4. Création du pipeline avec AWS CodePipeline
                                     </h2>
 
                                     <p className="text-gray-300 mb-4">
-                                        Maintenant que notre projet <span className="text-blue-400">CodeBuild</span> est configuré et testé,
-                                        nous allons créer le <strong>pipeline CI/CD complet</strong> avec <span className="text-blue-400">AWS CodePipeline</span>.
+                                        Maintenant que notre projet CodeBuild est configuré et testé, nous allons créer le <strong>pipeline CI/CD </strong> avec AWS CodePipeline.
                                     </p>
 
                                     <p className="text-gray-300 mt-2">
@@ -492,7 +461,7 @@ artifacts:
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
                                         <h4 className="text-white font-bold mb-3">Informations de base</h4>
-                                        <ul className="list-none space-y-3 text-gray-300">
+                                        <ul className="list-none space-y-3 text-white">
                                             <li>
                                                 <strong className="text-white font-semibold">Pipeline name :</strong>{" "}
                                                 <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">my-app-pipeline</code>
@@ -515,7 +484,7 @@ artifacts:
                                         <p className="text-white text-sm mb-3">
                                             Tu peux laisser les paramètres par défaut, mais voici ce qu&apos;ils signifient :
                                         </p>
-                                        <ul className="list-none space-y-2 text-gray-300">
+                                        <ul className="list-none space-y-2 text-white">
                                             <li>
                                                 <strong className="text-white font-semibold">Artifact store :</strong> <strong className="text-blue-400">Default location</strong>
                                                 <p className="text-white text-sm mt-1 ml-4">
@@ -545,7 +514,7 @@ artifacts:
                                     </p>
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <ul className="list-none space-y-4 text-gray-300">
+                                        <ul className="list-none space-y-4 text-white">
                                             <li>
                                                 <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub (Version 2)</strong>
                                                 <p className="text-white text-sm mt-1 ml-4">
@@ -571,19 +540,17 @@ artifacts:
                                                 <strong className="text-white font-semibold">Repository name :</strong> Sélectionne ton repository
                                                 <p className="text-white text-sm mt-1 ml-4">
                                                     Une liste déroulante apparaît avec tous tes repositories GitHub. Sélectionne celui qui contient
-                                                    ton application (celui où tu as créé le fichier <code className="text-blue-300">buildspec.yml</code>).
+                                                    ton application.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Branch name :</strong> <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">main</code>
                                                 <p className="text-white text-sm mt-1 ml-4">
-                                                    Sélectionne la branche à surveiller. En général, c&apos;est <code className="text-blue-300">main</code> ou
-                                                    <code className="text-blue-300">master</code>. Chaque fois que tu feras un push sur cette branche,
-                                                    le pipeline se déclenchera automatiquement.
+                                                    Sélectionne la branche à surveiller.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-white font-semibold">Output artifact format :</strong> Laisse <strong>CodePipeline default</strong>
+                                                <strong className="text-white font-semibold">Output artifact format :</strong> Laisse <strong className="text-blue-400">CodePipeline default</strong>
                                                 <p className="text-white text-sm mt-1 ml-4">
                                                     C&apos;est le format utilisé pour passer le code source à l&apos;étape suivante (CodeBuild).
                                                 </p>
@@ -591,74 +558,48 @@ artifacts:
                                         </ul>
                                     </div>
 
-                                    <div className="bg-yellow-950/30 border border-yellow-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-yellow-200 font-semibold mb-2">🔐 Sécurité et permissions</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Quand tu autorises AWS à accéder à GitHub, tu crées une connexion sécurisée et chiffrée.
-                                            AWS ne stocke <strong>jamais</strong> ton mot de passe GitHub. La connexion utilise OAuth,
-                                            un protocole standard et sûr. Tu peux révoquer cet accès à tout moment depuis les paramètres
-                                            de ton compte GitHub → Settings → Applications → AWS Connector for GitHub.
-                                        </p>
-                                    </div>
-
                                     <p className="text-gray-300 mb-4">
-                                        Clique sur <span className="text-blue-400 font-semibold">Next</span> pour passer à l'étape suivante.
+                                        Clique sur <span className="text-blue-400 font-semibold">Next</span> pour passer à l&apos;étape suivante.
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 4 : Add build stage (Configurer le build)
+                                        Étape 4 : Configurer le build (Add build stage)
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Cette étape va <strong>lier ton projet CodeBuild au pipeline</strong>. C'est ici que le code sera compilé et testé.
+                                        Cette étape va <strong>lier ton projet CodeBuild au pipeline</strong>. C&apos;est ici que le code sera compilé et testé.
                                     </p>
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <h4 className="text-white font-semibold mb-3">Configuration du build</h4>
-                                        <ul className="list-none space-y-3 text-gray-300 text-sm">
+                                        <h4 className="text-white font-bold mb-3">Configuration du build</h4>
+                                        <ul className="list-none space-y-3 text-white">
                                             <li>
-                                                <strong className="text-blue-400">Build provider :</strong> Sélectionne <strong>AWS CodeBuild</strong>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    C'est le seul choix possible si tu utilises les services natifs AWS.
-                                                    (Tu pourrais aussi utiliser Jenkins si tu avais un serveur Jenkins configuré, mais ce n'est pas notre cas ici).
+                                                <strong className="text-white font-semibold">Build provider :</strong> Sélectionne <strong className="text-blue-400">AWS CodeBuild</strong>
+                                                <p className="text-white text-sm mt-1 ml-4">
+                                                    C&apos;est le seul choix possible si tu utilises les services natifs AWS.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Region :</strong> Laisse la région actuelle (ex: <code className="text-blue-300">eu-west-1</code>)
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    La région AWS où se trouve ton projet CodeBuild. Par défaut, c'est la même région que ton pipeline.
+                                                <strong className="text-white font-semibold">Region :</strong> Laisse la région actuelle
+                                                <p className="text-white text-sm mt-1 ml-4">
+                                                    La région AWS où se trouve ton projet CodeBuild. Par défaut, c&apos;est la même région que ton pipeline.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Project name :</strong> Sélectionne <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">my-app-build</code>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    C'est le projet CodeBuild que tu as créé dans la section précédente.
+                                                <strong className="text-white font-semibold">Project name :</strong> Sélectionne le nom de ton projet CodeBuild.
+                                                <p className="text-white text-sm mt-1 ml-4">
+                                                    C&apos;est le projet CodeBuild que tu as créé dans la section précédente.
                                                     Tu devrais le voir apparaître dans la liste déroulante.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Build type :</strong> Laisse <strong>Single build</strong>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    "Single build" signifie qu'un seul build s'exécute à la fois.
-                                                    Tu pourrais aussi choisir "Batch build" pour exécuter plusieurs builds en parallèle (utile pour tester sur plusieurs environnements),
-                                                    mais ce n'est pas nécessaire pour commencer.
+                                                <strong className="text-white font-semibold">Build type :</strong> Laisse <strong className="text-blue-400">Single build</strong>
+                                                <p className="text-white text-sm mt-1 ml-4">
+                                                    &quot;Single build&quot; signifie qu&apos;un seul build s&apos;exécute à la fois.
+                                                    Tu pourrais aussi choisir &quot;Batch build&quot; pour exécuter plusieurs builds en parallèle mais ce n&apos;est pas nécessaire pour commencer.
                                                 </p>
                                             </li>
                                         </ul>
-                                    </div>
-
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">💡 Que se passe-t-il à cette étape ?</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Quand le pipeline arrive à cette étape, il va :
-                                        </p>
-                                        <ol className="list-decimal list-inside text-gray-300 text-sm mt-2 space-y-1 ml-4">
-                                            <li>Prendre le code source récupéré depuis GitHub (étape précédente)</li>
-                                            <li>Le transmettre à CodeBuild</li>
-                                            <li>CodeBuild exécute les commandes définies dans ton <code className="text-blue-300">buildspec.yml</code></li>
-                                            <li>Si le build réussit, les artefacts générés (le dossier <code className="text-blue-300">build/</code>) sont sauvegardés</li>
-                                            <li>Ces artefacts sont transmis à l'étape suivante (le déploiement)</li>
-                                        </ol>
                                     </div>
 
                                     <p className="text-gray-300 mb-4">
@@ -666,128 +607,112 @@ artifacts:
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 5 : Add deploy stage (À configurer plus tard)
+                                        Étape 5 : Ajouter le déploiement (Add deploy stage )
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
-                                        Pour l'instant, nous allons <strong>sauter l'étape de déploiement</strong>.
-                                        Nous la configurerons dans la section suivante du tutoriel.
+                                        Pour l&apos;instant, nous allons <strong>sauter l&apos;étape de déploiement</strong>.
+                                        Nous la configurerons dans la section suivante.
                                     </p>
 
-                                    <div className="bg-neutral-900 rounded-lg p-4 mb-6">
-                                        <p className="text-gray-300 text-sm">
-                                            Clique sur <span className="text-blue-400 font-semibold">Skip deploy stage</span> →
-                                            une popup de confirmation apparaît → clique sur <strong>Skip</strong>.
-                                        </p>
-                                    </div>
-
-                                    <div className="bg-yellow-950/30 border border-yellow-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-yellow-200 font-semibold mb-2">⚠️ Pourquoi sauter le déploiement ?</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Avant de déployer, il faut d'abord choisir <strong>où</strong> déployer ton application :
-                                            sur S3 (pour un site statique), sur EC2 (une machine virtuelle), sur ECS (conteneurs),
-                                            ou sur Elastic Beanstalk (plateforme managée). Chacune de ces options nécessite une configuration
-                                            spécifique. Nous verrons ça dans la prochaine section !
-                                        </p>
-                                    </div>
+                                    <p className="text-gray-300 mt-2 mb-3">
+                                        Clique sur <span className="text-blue-400 font-semibold">Skip deploy stage</span> →
+                                        une popup de confirmation apparaît → clique sur <strong>Skip</strong>.
+                                    </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 6 : Review (Vérification finale)
+                                        Étape 6 : Vérification finale (Review)
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
                                         AWS te montre un récapitulatif de toute la configuration de ton pipeline. Vérifie que :
                                     </p>
 
-                                    <ul className="list-none space-y-2 text-gray-300 text-sm ml-4">
+                                    <ul className="list-none space-y-2 text-gray-300 ml-4">
                                         <li>✓ Le nom du pipeline est correct</li>
                                         <li>✓ La source est bien ton repository GitHub sur la bonne branche</li>
                                         <li>✓ Le build provider est bien AWS CodeBuild avec le bon projet</li>
-                                        <li>✓ Le deploy stage est marqué comme "Skipped" (normal pour l'instant)</li>
+                                        <li>✓ Le deploy stage est marqué comme &quot;Skipped&quot;</li>
                                     </ul>
 
                                     <p className="text-gray-300 mt-4 mb-4">
                                         Si tout est bon, clique sur <span className="text-blue-400 font-semibold">Create pipeline</span>.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        🎉 Premier déclenchement automatique
-                                    </h3>
+                                    <details className="mt-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span> Premier déclenchement automatique</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <p className="text-gray-300 mb-4">
+                                                Dès que tu cliques sur &quot;Create pipeline&quot;, AWS va <strong>automatiquement lancer le pipeline pour la première fois</strong> !
+                                                Tu vas voir en temps réel :
+                                            </p>
 
-                                    <p className="text-gray-300 mb-4">
-                                        Dès que tu cliques sur "Create pipeline", AWS va <strong>automatiquement lancer le pipeline pour la première fois</strong> !
-                                        Tu vas voir en temps réel :
-                                    </p>
+                                            <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                                <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm">
+                                                    <li>
+                                                        <strong>Source</strong> : CodePipeline récupère ton code depuis GitHub
+                                                        <p className="text-gray-400 text-xs mt-1 ml-6">
+                                                            Statut : <span className="text-blue-400">In progress</span> → <span className="text-green-400">Succeeded</span>
+                                                        </p>
+                                                    </li>
+                                                    <li>
+                                                        <strong>Build</strong> : CodeBuild exécute ton <code className="text-blue-300">buildspec.yml</code>
+                                                        <p className="text-gray-400 text-xs mt-1 ml-6">
+                                                            Tu peux cliquer sur <strong>Details</strong> pour voir les logs en temps réel
+                                                        </p>
+                                                    </li>
+                                                </ol>
+                                            </div>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm">
-                                            <li>
-                                                <strong>Source</strong> : CodePipeline récupère ton code depuis GitHub
-                                                <p className="text-gray-400 text-xs mt-1 ml-6">
-                                                    Statut : <span className="text-blue-400">In progress</span> → <span className="text-green-400">Succeeded</span>
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong>Build</strong> : CodeBuild exécute ton <code className="text-blue-300">buildspec.yml</code>
-                                                <p className="text-gray-400 text-xs mt-1 ml-6">
-                                                    Tu peux cliquer sur <strong>Details</strong> pour voir les logs en temps réel
-                                                </p>
-                                            </li>
-                                        </ol>
-                                    </div>
+                                            <p className="text-white font-semibold mb-2 mt-4">Pipeline créé avec succès !</p>
+                                            <p className="text-white">
+                                                Si les deux étapes (Source et Build) sont passées au vert, félicitations !
+                                                Ton pipeline CI/CD est maintenant fonctionnel. À partir de maintenant, chaque fois que tu feras un
+                                                <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-400 mx-1">git push</code> sur la branche
+                                                <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-400 mx-1">main</code>,
+                                                le pipeline se déclenchera automatiquement pour builder ton code.
+                                            </p>
+                                        </div>
+                                    </details>
 
-                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-green-200 font-semibold mb-2">✅ Pipeline créé avec succès !</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Si les deux étapes (Source et Build) sont passées au vert, <strong>félicitations</strong> !
-                                            Ton pipeline CI/CD est maintenant fonctionnel. À partir de maintenant, chaque fois que tu feras un
-                                            <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300 mx-1">git push</code> sur la branche
-                                            <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300 mx-1">main</code>,
-                                            le pipeline se déclenchera automatiquement pour builder ton code.
-                                        </p>
-                                    </div>
+                                    <details className="mt-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span> Tester le déclenchement automatique</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <p className="text-gray-300 mb-3">
+                                                Pour vérifier que tout fonctionne bien, fais une petite modification dans ton code et push-la sur GitHub :
+                                            </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        🧪 Tester le déclenchement automatique
-                                    </h3>
-
-                                    <p className="text-gray-300 mb-3">
-                                        Pour vérifier que tout fonctionne bien, fais une petite modification dans ton code et push-la sur GitHub :
-                                    </p>
-
-                                    <CodeBlock
-                                        language="bash"
-                                        code={`# Modifie un fichier (par exemple README.md)
-echo "Test pipeline" >> README.md
-
-# Commit et push
-git add README.md
-git commit -m "Test automatic pipeline trigger"
-git push origin main`}
-                                    />
-
-                                    <p className="text-gray-300 mt-4 mb-4">
-                                        Retourne sur la page de ton pipeline dans AWS. En quelques secondes, tu devrais voir
-                                        un nouveau déclenchement apparaître automatiquement ! 🚀
-                                    </p>
-
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4">
-                                        <p className="text-blue-200 font-semibold mb-2">📊 Suivre l'historique de tes builds</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Sur la page de ton pipeline, tu peux voir l'historique complet de toutes les exécutions :
+                                            <p className="text-gray-300 mt-4 mb-4">
+                                                Retourne sur la page de ton pipeline dans AWS. En quelques secondes, tu devrais voir
+                                                un nouveau déclenchement apparaître automatiquement !
+                                            </p>
+                                        </div>
+                                    </details>
+                                        <p className="text-gray-300 mt-4 mb-3">
+                                            Sur la page de ton pipeline, tu peux voir l&apos;historique complet de toutes les exécutions :
                                             quand elles ont eu lieu, combien de temps elles ont pris, et si elles ont réussi ou échoué.
-                                            C'est très utile pour comprendre quand un bug a été introduit ou pour auditer les déploiements.
+                                            C&apos;est très utile pour comprendre quand un bug a été introduit ou pour auditer les déploiements.
                                         </p>
-                                    </div>
+                                    <p className="text-gray-300 mt-4 mb-3">
+                                        Nous sommes ainsi arrivés à la fin de l&apos;intégration continue.
+                                        Nous allons maintenant passer au déploiement de l&apos;application.
+                                    </p>
+
                                 </section>
 
-                                <section id="deploy">
+                                <section id="deploy1">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        5. Déploiement automatique de l’application
+                                        5. Déploiement automatique de l&apos;application
                                     </h2>
 
                                     <p className="text-gray-300">
-                                        Pour le déploiement, nous allons utiliser un <span className="text-blue-400">bucket S3</span>
+                                        Pour le déploiement, nous allons utiliser un <span className="text-blue-400">bucket S3</span> {""}
                                         afin d’héberger notre application front-end en mode statique.
                                     </p>
 

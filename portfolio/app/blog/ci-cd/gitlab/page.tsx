@@ -125,8 +125,6 @@ export default function BlogPage() {
                   </pre>
                 </section>
 
-                {/* 3. PIPELINE DE BASE */}
-
                 <section id="pipeline">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     3. Pipeline minimal : déployer avec un seul job <code>pages</code>
@@ -356,7 +354,6 @@ deploy-prod:
 
                 </section>
 
-                {/* 4. EXEMPLE AVANCÉ MULTI-STAGE */}
                 <section id="advanced">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     5. Pipeline avancé : build, test et déploiement avec GitLab Pages
@@ -455,8 +452,6 @@ pages:
                   </div>
                 </section>
 
-
-                {/* 6. VARIABLES CI ET SECRETS */}
                 <section id="variables">
                   <h2 className="text-2xl font-bold mb-4 text-white">
                     6. Variables CI et gestion sécurisée des secrets
