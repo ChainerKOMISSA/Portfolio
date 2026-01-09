@@ -741,7 +741,530 @@ artifacts:
                                     </p>
                                 </section>
 
-                                <section id="test-pipeline">
+                                <section id="deploy">
+                                    <h2 className="text-2xl font-bold mb-4 text-white">
+                                        5. Déploiement automatique de l&apos;application
+                                    </h2>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Maintenant que ton pipeline récupère le code et le build automatiquement, il ne reste plus qu'à
+                                        <strong> déployer l'application</strong> pour la rendre accessible sur Internet !
+                                    </p>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">🌐 Pourquoi utiliser S3 pour héberger une application ?</p>
+                                        <p className="text-gray-300 text-sm mb-2">
+                                            Amazon S3 (Simple Storage Service) n'est pas seulement un espace de stockage. Il peut aussi
+                                            <strong> héberger des sites web statiques</strong> (HTML, CSS, JavaScript, React, Vue, Angular...).
+                                        </p>
+                                        <p className="text-gray-300 text-sm">
+                                            Les avantages : <strong>ultra-rapide</strong>, <strong>très peu cher</strong> (quelques centimes par mois),
+                                            <strong>hautement disponible</strong> (99.99% uptime garanti), et <strong>scalable automatiquement</strong>
+                                            (ton site peut supporter des millions de visiteurs sans configuration supplémentaire).
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-yellow-950/30 border border-yellow-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-yellow-200 font-semibold mb-2">📌 Important : Quel type d'application peut être déployé sur S3 ?</p>
+                                        <p className="text-gray-300 text-sm mb-2">
+                                            S3 héberge uniquement des <strong>sites statiques</strong>, c'est-à-dire :
+                                        </p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
+                                            <li>✅ Sites HTML/CSS/JavaScript</li>
+                                            <li>✅ Applications React, Vue, Angular (après build)</li>
+                                            <li>✅ Sites générés par Gatsby, Next.js (en mode export statique)</li>
+                                            <li>❌ Applications backend (Node.js/Express, Python/Django, PHP...)</li>
+                                            <li>❌ Applications nécessitant une base de données côté serveur</li>
+                                        </ul>
+                                        <p className="text-gray-300 text-sm mt-2">
+                                            Pour du backend, il faudrait utiliser <strong>EC2</strong>, <strong>ECS</strong>, ou <strong>Lambda</strong>
+                                            (qu'on pourra voir dans un autre tutoriel !).
+                                        </p>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 1 : Créer un bucket S3
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Dans la console AWS, utilise la barre de recherche et tape <strong>"S3"</strong>, puis clique sur le service.
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-4 mb-4">
+                                        <p className="text-gray-400 text-sm">
+                                            💡 <strong>Accès direct :</strong>{" "}
+                                            <a href="https://s3.console.aws.amazon.com/s3/buckets" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+                                                S3 Console
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Clique sur le bouton orange <span className="text-blue-400 font-semibold">Create bucket</span>.
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">Configuration du bucket</h4>
+                                        <ul className="list-none space-y-4 text-gray-300 text-sm">
+                                            <li>
+                                                <strong className="text-blue-400">Bucket name :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">my-app-bucket-2025</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    ⚠️ <strong>Attention :</strong> Le nom doit être <strong>unique dans tout AWS</strong> (pas seulement dans ton compte !).
+                                                    Si "my-app-bucket" est déjà pris, ajoute ton nom ou une date, par exemple :
+                                                    <code className="text-blue-300 mx-1">my-app-john-2025</code> ou
+                                                    <code className="text-blue-300 mx-1">frontend-react-app-prod</code>
+                                                </p>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Le nom doit contenir uniquement des lettres minuscules, des chiffres et des tirets (-).
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">AWS Region :</strong> Choisis une région proche de tes utilisateurs
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Par exemple : <strong>eu-west-1</strong> (Irlande) pour l'Europe,
+                                                    <strong> us-east-1</strong> (Virginie) pour l'Amérique du Nord.
+                                                    Plus la région est proche de tes visiteurs, plus ton site sera rapide !
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Object Ownership :</strong> Laisse <strong>ACLs disabled (recommended)</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    C'est le paramètre recommandé par AWS pour simplifier la gestion des permissions.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Block Public Access settings :</strong>
+                                                <strong className="text-red-400"> DÉCOCHER toutes les cases</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4 mb-2">
+                                                    Par défaut, AWS bloque tout accès public pour des raisons de sécurité.
+                                                    Mais comme on veut héberger un site web accessible à tous, il faut autoriser l'accès public.
+                                                </p>
+                                                <div className="bg-red-950/30 border border-red-900/50 rounded p-3 ml-4">
+                                                    <p className="text-red-200 text-xs font-semibold mb-1">⚠️ Décocher ces 4 options :</p>
+                                                    <ul className="list-none space-y-1 text-gray-300 text-xs ml-2">
+                                                        <li>☐ Block all public access</li>
+                                                        <li>☐ Block public access to buckets and objects granted through new access control lists (ACLs)</li>
+                                                        <li>☐ Block public access to buckets and objects granted through any access control lists (ACLs)</li>
+                                                        <li>☐ Block public access to buckets and objects granted through new public bucket or access point policies</li>
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3 ml-4 mt-2">
+                                                    <p className="text-yellow-200 text-xs">
+                                                        Une case de confirmation apparaîtra : coche la case <strong>"I acknowledge that the current settings might result in this bucket and the objects within becoming public"</strong>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Bucket Versioning :</strong> <strong>Disable</strong> (pour commencer)
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Le versioning garde un historique de toutes les modifications de tes fichiers.
+                                                    Pas nécessaire pour débuter, mais utile en production pour pouvoir revenir en arrière.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Tags :</strong> (optionnel)
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Tu peux ajouter des tags pour organiser tes ressources, par exemple :
+                                                    <code className="text-blue-300 mx-1">Environment: Production</code> ou
+                                                    <code className="text-blue-300 mx-1">Project: MyApp</code>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Default encryption :</strong> Laisse <strong>Server-side encryption with Amazon S3 managed keys (SSE-S3)</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Tes fichiers seront automatiquement chiffrés au repos. C'est gratuit et recommandé.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-6">
+                                        Clique sur <span className="text-blue-400 font-semibold">Create bucket</span> en bas de la page.
+                                    </p>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 2 : Activer l'hébergement de site web statique
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Maintenant que ton bucket est créé, il faut le configurer pour qu'il puisse servir des pages web.
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                        <li>
+                                            Clique sur le nom de ton bucket dans la liste (ex: <code className="text-blue-300">my-app-bucket-2025</code>)
+                                        </li>
+                                        <li>
+                                            Va dans l'onglet <strong className="text-blue-400">Properties</strong> (en haut)
+                                        </li>
+                                        <li>
+                                            Descends tout en bas jusqu'à la section <strong className="text-blue-400">Static website hosting</strong>
+                                        </li>
+                                        <li>
+                                            Clique sur <strong>Edit</strong>
+                                        </li>
+                                    </ol>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">Configuration de l'hébergement web</h4>
+                                        <ul className="list-none space-y-3 text-gray-300 text-sm">
+                                            <li>
+                                                <strong className="text-blue-400">Static website hosting :</strong> Sélectionne <strong>Enable</strong>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Hosting type :</strong> <strong>Host a static website</strong>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Index document :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">index.html</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    C'est la page qui s'affichera par défaut quand quelqu'un visite ton site (comme la homepage).
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Error document :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">index.html</code> (ou <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">error.html</code>)
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    La page qui s'affichera en cas d'erreur 404 (page non trouvée).
+                                                    Pour les Single Page Applications (React, Vue...), utilise aussi <code className="text-blue-300">index.html</code>
+                                                    pour que le routing côté client fonctionne correctement.
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Clique sur <span className="text-blue-400 font-semibold">Save changes</span>.
+                                    </p>
+
+                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-green-200 font-semibold mb-2">🌐 URL de ton site</p>
+                                        <p className="text-gray-300 text-sm">
+                                            Une fois sauvegardé, AWS génère automatiquement une URL publique pour ton site.
+                                            Tu peux la trouver dans la section "Static website hosting" : elle ressemble à
+                                            <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300 mx-1">
+                                                http://my-app-bucket-2025.s3-website-eu-west-1.amazonaws.com
+                                            </code>
+                                        </p>
+                                        <p className="text-gray-300 text-sm mt-2">
+                                            Note cette URL, on en aura besoin pour tester le déploiement !
+                                        </p>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 3 : Configurer les permissions d'accès public
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Pour que les visiteurs puissent accéder à ton site, il faut ajouter une <strong>bucket policy</strong>
+                                        qui autorise la lecture publique de tous les fichiers.
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-4">
+                                        <li>
+                                            Toujours dans ton bucket, va dans l'onglet <strong className="text-blue-400">Permissions</strong>
+                                        </li>
+                                        <li>
+                                            Descends jusqu'à la section <strong className="text-blue-400">Bucket policy</strong>
+                                        </li>
+                                        <li>
+                                            Clique sur <strong>Edit</strong>
+                                        </li>
+                                    </ol>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Copie-colle cette policy dans l'éditeur (en remplaçant <code className="text-blue-400">my-app-bucket-2025</code> par le nom de TON bucket) :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="json"
+                                        code={`{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::my-app-bucket-2025/*"
+    }
+  ]
+}`}
+                                    />
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mt-4 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">📖 Décryptage de la bucket policy</h4>
+                                        <ul className="list-none space-y-2 text-gray-300 text-sm">
+                                            <li>
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">"Effect": "Allow"</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    On autorise l'action (par opposition à "Deny" qui bloquerait)
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">"Principal": "*"</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    L'astérisque (*) signifie "tout le monde", c'est-à-dire n'importe qui sur Internet
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">"Action": "s3:GetObject"</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    On autorise uniquement la lecture (GET) des fichiers, pas la modification ou la suppression
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">"Resource": "arn:aws:s3:::my-app-bucket-2025/*"</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Cette règle s'applique à tous les fichiers (/*) dans le bucket spécifié.
+                                                    Le <code className="text-blue-300">/*</code> à la fin est TRÈS important, ne l'oublie pas !
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="bg-yellow-950/30 border border-yellow-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-yellow-200 font-semibold mb-2">⚠️ N'oublie pas de modifier le nom du bucket !</p>
+                                        <p className="text-gray-300 text-sm">
+                                            Dans la policy, remplace <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300">my-app-bucket-2025</code>
+                                            par le nom exact de TON bucket. Si tu oublies, la policy ne fonctionnera pas !
+                                        </p>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-6">
+                                        Clique sur <span className="text-blue-400 font-semibold">Save changes</span>.
+                                        Un avertissement de sécurité apparaîtra (c'est normal), confirme en cliquant à nouveau sur <strong>Save</strong>.
+                                    </p>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 4 : Ajouter l'étape de déploiement dans CodePipeline
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Retourne maintenant sur <strong>CodePipeline</strong> pour ajouter l'étape de déploiement qui manquait.
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                        <li>
+                                            Va sur la console CodePipeline et clique sur le nom de ton pipeline (<code className="text-blue-300">my-app-pipeline</code>)
+                                        </li>
+                                        <li>
+                                            Clique sur le bouton <strong className="text-blue-400">Edit</strong> en haut à droite
+                                        </li>
+                                        <li>
+                                            En bas du pipeline (après l'étape "Build"), clique sur <strong className="text-blue-400">+ Add stage</strong>
+                                        </li>
+                                        <li>
+                                            Donne un nom à cette étape : <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">Deploy</code>
+                                        </li>
+                                        <li>
+                                            Clique sur <strong>Add stage</strong>
+                                        </li>
+                                        <li>
+                                            Dans cette nouvelle étape, clique sur <strong className="text-blue-400">+ Add action group</strong>
+                                        </li>
+                                    </ol>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">Configuration de l'action de déploiement</h4>
+                                        <ul className="list-none space-y-3 text-gray-300 text-sm">
+                                            <li>
+                                                <strong className="text-blue-400">Action name :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">Deploy-to-S3</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Choisis un nom descriptif pour identifier facilement cette action
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Action provider :</strong> Sélectionne <strong>Amazon S3</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    C'est le service qui va recevoir les fichiers de ton application
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Region :</strong> Laisse la région actuelle
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Normalement, c'est la même région que ton bucket S3
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Input artifacts :</strong> <strong>BuildArtifact</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Ce sont les fichiers générés par CodeBuild (le dossier <code className="text-blue-300">build/</code> de ton application).
+                                                    CodePipeline les a automatiquement sauvegardés et les transmet maintenant au déploiement.
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Bucket :</strong> Sélectionne ton bucket (ex: <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">my-app-bucket-2025</code>)
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Tu devrais voir ton bucket apparaître dans la liste déroulante
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">S3 object key :</strong> Laisse <strong>vide</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    En laissant vide, les fichiers seront déployés à la racine du bucket
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Extract file before deploy :</strong> <strong className="text-green-400">✓ Cocher cette case !</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    <strong>TRÈS IMPORTANT :</strong> Cette option décompresse l'archive ZIP créée par CodeBuild
+                                                    et déploie les fichiers individuellement (index.html, style.css, app.js...).
+                                                    Si tu ne coches pas cette case, S3 recevra juste un fichier ZIP et ton site ne fonctionnera pas !
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Deployment path :</strong> Laisse vide (optionnel)
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Tu pourrais spécifier un sous-dossier si tu voulais déployer dans <code className="text-blue-300">bucket/v2/</code> par exemple
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">CannedACL :</strong> Sélectionne <strong>public-read</strong>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Cela rend automatiquement tous les fichiers uploadés accessibles publiquement
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Cache control :</strong> (optionnel) Tu peux mettre{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">max-age=3600</code>
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Cela indique aux navigateurs de garder les fichiers en cache pendant 1 heure (3600 secondes),
+                                                    ce qui améliore les performances
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Clique sur <strong>Done</strong>, puis sur <span className="text-blue-400 font-semibold">Save</span> en haut de la page.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-6">
+                                        Une popup de confirmation apparaît → clique sur <strong>Save</strong> pour confirmer les modifications du pipeline.
+                                    </p>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        🎉 Premier déploiement automatique
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Dès que tu sauvegardes, CodePipeline va <strong>automatiquement relancer le pipeline complet</strong> avec
+                                        la nouvelle étape de déploiement ! Tu vas voir :
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm mb-6">
+                                        <li><strong>Source</strong> : Récupération du code depuis GitHub ✅</li>
+                                        <li><strong>Build</strong> : Compilation de l'application avec CodeBuild ✅</li>
+                                        <li><strong>Deploy</strong> : Déploiement des fichiers sur S3 🚀</li>
+                                    </ol>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Attends que les trois étapes passent au vert. Cela peut prendre 2-5 minutes selon la taille de ton projet.
+                                    </p>
+
+                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-green-200 font-semibold mb-2">✅ Vérifier que le déploiement a fonctionné</p>
+                                        <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                            <li>
+                                                Retourne sur S3 et ouvre ton bucket
+                                            </li>
+                                            <li>
+                                                Tu devrais voir tous les fichiers de ton application (index.html, CSS, JS, images...)
+                                            </li>
+                                            <li>
+                                                Copie l'URL de ton site (dans Properties → Static website hosting → Bucket website endpoint)
+                                            </li>
+                                            <li>
+                                                Ouvre cette URL dans ton navigateur
+                                            </li>
+                                            <li>
+                                                <strong>🎊 Ton application est en ligne !</strong>
+                                            </li>
+                                        </ol>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        🧪 Tester le pipeline complet
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Pour vérifier que tout le pipeline fonctionne de bout en bout, fais une modification dans ton code :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`# Modifie un fichier de ton application
+# Par exemple, change le titre dans index.html ou App.js
+
+git add .
+git commit -m "Test automatic deployment"
+git push origin main`}
+                                    />
+
+                                    <p className="text-gray-300 mt-4 mb-4">
+                                        Observe le pipeline dans CodePipeline : les 3 étapes vont s'exécuter automatiquement !
+                                        Quelques minutes plus tard, rafraîchis ton site sur S3, et tu verras tes modifications en ligne. 🚀
+                                    </p>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">💡 Optimisation : Utiliser CloudFront (optionnel)</p>
+                                        <p className="text-gray-300 text-sm mb-2">
+                                            L'URL S3 fonctionne, mais elle n'est pas idéale pour la production car :
+                                        </p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
+                                            <li>• Elle n'utilise pas HTTPS par défaut</li>
+                                            <li>• Elle est longue et peu mémorable</li>
+                                            <li>• Elle n'est pas optimisée pour la vitesse mondiale</li>
+                                        </ul>
+                                        <p className="text-gray-300 text-sm mt-2">
+                                            Pour aller plus loin, tu peux ajouter <strong>CloudFront</strong> devant ton bucket S3 pour avoir :
+                                        </p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
+                                            <li>✅ HTTPS automatique</li>
+                                            <li>✅ CDN mondial (ton site sera ultra-rapide partout dans le monde)</li>
+                                            <li>✅ Possibilité d'utiliser ton propre nom de domaine (exemple.com)</li>
+                                        </ul>
+                                        <p className="text-gray-300 text-sm mt-2">
+                                            On pourra voir ça dans un prochain tutoriel si ça t'intéresse !
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-red-950/30 border border-red-900/50 rounded-lg p-4">
+                                        <p className="text-red-200 font-semibold mb-2">❌ Déploiement en échec ?</p>
+                                        <p className="text-gray-300 text-sm mb-2">
+                                            Voici les erreurs les plus fréquentes et leurs solutions :
+                                        </p>
+                                        <ul className="list-none space-y-2 text-gray-300 text-sm ml-4">
+                                            <li>
+                                                <strong>Access Denied</strong> → Vérifie que :
+                                                <ul className="list-none ml-4 mt-1 space-y-1 text-xs text-gray-400">
+                                                    <li>• Le bucket policy est correctement configuré</li>
+                                                    <li>• Le nom du bucket dans la policy correspond exactement au nom réel</li>
+                                                    <li>• Tu n'as pas oublié le《/*》 à la fin de l'ARN dans la policy</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>Le site affiche un fichier ZIP au lieu de l'application</strong> →
+                                                Tu as oublié de cocher "Extract file before deploy" dans la config de déploiement
+                                            </li>
+                                            <li>
+                                                <strong>404 sur les sous-pages (React/Vue Router)</strong> →
+                                                Dans la config Static website hosting, mets <code className="text-blue-300">index.html</code>
+                                                comme Error document
+                                            </li>
+                                            <li>
+                                                <strong>Le pipeline ne se déclenche pas automatiquement</strong> →
+                                                Vérifie la connexion GitHub dans CodePipeline (Source stage)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </section>
+
+
+                                <section id="test-pipeline1">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         6. Tester le pipeline CI/CD
                                     </h2>
@@ -769,7 +1292,297 @@ git push origin main`}
                                     </p>
                                 </section>
 
-                                <section id="best-practices">
+                                <section id="test-pipeline">
+                                    <h2 className="text-2xl font-bold mb-4 text-white">
+                                        6. Tester le pipeline CI/CD complet
+                                    </h2>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Maintenant que tout est en place, il est temps de tester le <strong>pipeline complet de bout en bout</strong>
+                                        pour vérifier que chaque modification de code se déploie automatiquement en production !
+                                    </p>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">🎯 Ce que nous allons vérifier</p>
+                                        <p className="text-gray-300 text-sm mb-2">
+                                            Un pipeline CI/CD complet doit :
+                                        </p>
+                                        <ol className="list-decimal list-inside space-y-1 text-gray-300 text-sm ml-4">
+                                            <li>Se déclencher <strong>automatiquement</strong> dès qu'on push du code sur GitHub</li>
+                                            <li>Récupérer le code <strong>sans intervention manuelle</strong></li>
+                                            <li>Builder et tester l'application <strong>dans un environnement propre</strong></li>
+                                            <li>Déployer la nouvelle version <strong>directement en production</strong></li>
+                                            <li>Tout cela en <strong>quelques minutes</strong> seulement</li>
+                                        </ol>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 1 : Faire une modification dans ton code
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Pour tester le pipeline, nous allons faire une modification visible dans l'application.
+                                        Choisis l'une de ces options selon ton projet :
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">Options de modification</h4>
+
+                                        <div className="space-y-4">
+                                            <div>
+                                                <p className="text-blue-400 font-semibold mb-2">Option 1 : Modification simple (HTML)</p>
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Ouvre ton fichier <code className="text-blue-300">index.html</code> et modifie le titre :
+                                                </p>
+                                                <CodeBlock
+                                                    language="html"
+                                                    code={`<!-- Avant -->
+<h1>Mon Application</h1>
+
+<!-- Après -->
+<h1>Mon Application - CI/CD Actif ! 🚀</h1>`}
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <p className="text-blue-400 font-semibold mb-2">Option 2 : Application React</p>
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Ouvre <code className="text-blue-300">src/App.js</code> et change le texte :
+                                                </p>
+                                                <CodeBlock
+                                                    language="jsx"
+                                                    code={`// Avant
+<h1>Welcome to React</h1>
+
+// Après
+<h1>Welcome to React - Déployé automatiquement ! ✨</h1>`}
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <p className="text-blue-400 font-semibold mb-2">Option 3 : Modification du README</p>
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Si tu veux juste tester sans toucher à l'interface, modifie le <code className="text-blue-300">README.md</code> :
+                                                </p>
+                                                <CodeBlock
+                                                    language="markdown"
+                                                    code={`# Mon Projet
+
+✅ Pipeline CI/CD configuré avec AWS CodePipeline et CodeBuild
+Dernière mise à jour : ${new Date().toLocaleString('fr-FR')}`}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 2 : Commit et push sur GitHub
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Une fois ta modification faite, sauvegarde le fichier et exécute ces commandes dans ton terminal :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`# Ajoute tous les fichiers modifiés
+git add .
+
+# Crée un commit avec un message descriptif
+git commit -m "test: vérification du pipeline CI/CD automatique"
+
+# Envoie les modifications sur GitHub
+git push origin main`}
+                                    />
+
+                                    <div className="bg-neutral-900 rounded-lg p-4 mt-4 mb-6">
+                                        <p className="text-gray-400 text-sm mb-2">
+                                            💡 <strong>Astuce :</strong> Utilise des messages de commit clairs et descriptifs.
+                                            Exemples de bonnes pratiques :
+                                        </p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
+                                            <li>• <code className="text-blue-300">feat: ajout du bouton de connexion</code></li>
+                                            <li>• <code className="text-blue-300">fix: correction du bug d'affichage mobile</code></li>
+                                            <li>• <code className="text-blue-300">docs: mise à jour du README</code></li>
+                                            <li>• <code className="text-blue-300">style: amélioration du design de la navbar</code></li>
+                                        </ul>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 3 : Observer le pipeline en action
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Dès que tu as push ton code, le pipeline se déclenche automatiquement ! Voici comment le suivre en temps réel :
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                        <li>
+                                            Va sur la console AWS et ouvre <strong>CodePipeline</strong>
+                                        </li>
+                                        <li>
+                                            Clique sur ton pipeline (<code className="text-blue-300">my-app-pipeline</code>)
+                                        </li>
+                                        <li>
+                                            Tu devrais voir une nouvelle exécution qui vient de démarrer (en haut de la page, un bandeau indique "Execution in progress")
+                                        </li>
+                                        <li>
+                                            Observe les 3 étapes s'exécuter l'une après l'autre :
+                                            <ul className="list-none ml-6 mt-2 space-y-2">
+                                                <li>
+                                                    <strong className="text-blue-400">Source</strong> : CodePipeline détecte le nouveau commit et récupère le code depuis GitHub
+                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 10-30 secondes</p>
+                                                </li>
+                                                <li>
+                                                    <strong className="text-blue-400">Build</strong> : CodeBuild compile ton application et lance les tests
+                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 1-3 minutes (selon la taille du projet)</p>
+                                                </li>
+                                                <li>
+                                                    <strong className="text-blue-400">Deploy</strong> : Les fichiers sont uploadés sur S3
+                                                    <p className="text-gray-400 text-xs mt-1">⏱️ Durée moyenne : 20-60 secondes</p>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-semibold mb-3">🔍 Comprendre les statuts du pipeline</h4>
+                                        <ul className="list-none space-y-2 text-gray-300 text-sm">
+                                            <li>
+                                                <span className="inline-block w-24 text-gray-400">⏳ In progress</span> : L'étape est en cours d'exécution
+                                            </li>
+                                            <li>
+                                                <span className="inline-block w-24 text-green-400">✅ Succeeded</span> : L'étape s'est terminée avec succès
+                                            </li>
+                                            <li>
+                                                <span className="inline-block w-24 text-red-400">❌ Failed</span> : Une erreur s'est produite (clique sur "Details" pour voir les logs)
+                                            </li>
+                                            <li>
+                                                <span className="inline-block w-24 text-yellow-400">⚠️ Stopped</span> : L'exécution a été arrêtée manuellement
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">💡 Voir les logs détaillés</p>
+                                        <p className="text-gray-300 text-sm">
+                                            Pour voir exactement ce qui se passe pendant le build, clique sur <strong>Details</strong>
+                                            dans l'étape Build. Tu seras redirigé vers CodeBuild où tu pourras voir :
+                                        </p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4 mt-2">
+                                            <li>• Les commandes exécutées en temps réel</li>
+                                            <li>• Les dépendances installées</li>
+                                            <li>• Les éventuelles erreurs ou warnings</li>
+                                            <li>• La durée de chaque phase (install, build, post_build...)</li>
+                                        </ul>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 4 : Vérifier le déploiement
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Une fois que toutes les étapes sont passées au vert (✅), ton application est déployée !
+                                        Vérifions que tout fonctionne :
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm mb-6">
+                                        <li>
+                                            <strong>Récupère l'URL de ton site S3</strong>
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                                <li>• Va dans S3 → ouvre ton bucket</li>
+                                                <li>• Onglet "Properties" → section "Static website hosting"</li>
+                                                <li>• Copie l'URL "Bucket website endpoint"</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Ouvre l'URL dans ton navigateur</strong>
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                                <li>• Force le rafraîchissement avec <kbd className="bg-neutral-800 px-2 py-0.5 rounded">Ctrl+F5</kbd> (Windows)
+                                                    ou <kbd className="bg-neutral-800 px-2 py-0.5 rounded">Cmd+Shift+R</kbd> (Mac) pour bypasser le cache</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <strong>Vérifie que ta modification est visible</strong>
+                                            <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                                <li>• Le nouveau titre doit apparaître</li>
+                                                <li>• Si tu ne vois pas la modification, attends 30 secondes et rafraîchis à nouveau (propagation DNS)</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+
+                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-green-200 font-semibold mb-2">🎉 Félicitations, ton CI/CD fonctionne parfaitement !</p>
+                                        <p className="text-gray-300 text-sm">
+                                            Si tu vois ta modification en ligne, c'est que le pipeline complet fonctionne de bout en bout.
+                                            À partir de maintenant, <strong>chaque commit sur la branche main sera automatiquement déployé en production</strong>
+                                            sans que tu aies à faire quoi que ce soit manuellement !
+                                        </p>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        📊 Mesurer les performances du pipeline
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Sur la page de ton pipeline dans CodePipeline, tu peux voir des statistiques intéressantes :
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <ul className="list-none space-y-2 text-gray-300 text-sm">
+                                            <li>
+                                                <strong className="text-blue-400">Durée totale</strong> : De combien de temps tu as besoin du commit au déploiement ?
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Un bon pipeline devrait prendre entre 3 et 7 minutes pour un projet simple
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Taux de succès</strong> : Quel pourcentage de tes déploiements réussit ?
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Vise un taux supérieur à 95%. Si tu es en-dessous, c'est peut-être que tes tests ne sont pas assez robustes
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <strong className="text-blue-400">Historique des exécutions</strong> : Tu peux cliquer sur chaque exécution passée
+                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                    Pratique pour voir quel commit a introduit un bug ou pour revenir en arrière si nécessaire
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="bg-red-950/30 border border-red-900/50 rounded-lg p-4">
+                                        <p className="text-red-200 font-semibold mb-2">❌ Le pipeline a échoué ?</p>
+                                        <p className="text-gray-300 text-sm mb-3">
+                                            Pas de panique ! Voici comment débugger :
+                                        </p>
+                                        <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+                                            <li>
+                                                <strong>Identifie quelle étape a échoué</strong> (Source, Build ou Deploy)
+                                            </li>
+                                            <li>
+                                                <strong>Clique sur "Details"</strong> pour voir les logs complets
+                                            </li>
+                                            <li>
+                                                <strong>Lis le message d'erreur</strong> en partant de la fin (le dernier message est souvent le plus informatif)
+                                            </li>
+                                            <li>
+                                                <strong>Erreurs courantes :</strong>
+                                                <ul className="list-none ml-6 mt-2 space-y-1 text-xs text-gray-400">
+                                                    <li>• <strong>Build failed :</strong> Erreur de syntaxe dans ton code ou tests qui échouent</li>
+                                                    <li>• <strong>npm ERR! :</strong> Problème avec une dépendance (essaie de mettre à jour ton package.json)</li>
+                                                    <li>• <strong>Access Denied :</strong> Problème de permissions IAM ou bucket policy</li>
+                                                    <li>• <strong>Timeout :</strong> Le build prend trop de temps (augmente le timeout dans les settings CodeBuild)</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <strong>Corrige l'erreur</strong> localement, puis recommit et push
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </section>
+
+                                <section id="best-practices1">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         7. Bonnes pratiques CI/CD sur AWS
                                     </h2>
@@ -782,6 +1595,297 @@ git push origin main`}
                                         <li>Versionne ton pipeline comme ton code.</li>
                                     </ul>
                                 </section>
+
+                                <section id="best-practices">
+                                    <h2 className="text-2xl font-bold mb-4 text-white">
+                                        7. Bonnes pratiques CI/CD sur AWS
+                                    </h2>
+
+                                    <p className="text-gray-300 mb-6">
+                                        Maintenant que ton pipeline fonctionne, voici les <strong>bonnes pratiques essentielles</strong>
+                                        pour sécuriser, optimiser et professionnaliser ton CI/CD en production.
+                                    </p>
+
+                                    <div className="space-y-6">
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">🔐</span>
+                                                Sécurité : Principe du moindre privilège
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                Les rôles IAM créés automatiquement par AWS ont parfois trop de permissions.
+                                                Applique le <strong>principe du moindre privilège</strong> : chaque service ne doit avoir
+                                                que les permissions strictement nécessaires.
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Ce qu'il faut faire :</p>
+                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        • <strong>CodeBuild</strong> doit pouvoir lire S3 (pour les artefacts) et écrire dans CloudWatch (pour les logs)
+                                                    </li>
+                                                    <li>
+                                                        • <strong>CodePipeline</strong> doit pouvoir déclencher CodeBuild et écrire dans S3
+                                                    </li>
+                                                    <li>
+                                                        • Évite les permissions <code className="text-red-300">*:*</code> (accès complet à tout)
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
+                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Audit régulier</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    Utilise <strong>IAM Access Analyzer</strong> pour identifier les permissions non utilisées
+                                                    et les supprimer progressivement.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">🔑</span>
+                                                Gestion des secrets avec AWS Secrets Manager
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                <strong>Ne jamais</strong> mettre de clés API, mots de passe ou tokens directement dans ton code
+                                                ou dans les variables d'environnement en clair !
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Utilise AWS Secrets Manager :</p>
+                                                <ol className="list-decimal list-inside space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        Stocke tes secrets dans <strong>Secrets Manager</strong> ou <strong>Systems Manager Parameter Store</strong>
+                                                    </li>
+                                                    <li>
+                                                        Dans ton buildspec.yml, récupère les secrets dynamiquement :
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <CodeBlock
+                                                language="yaml"
+                                                code={`version: 0.2
+
+env:
+  secrets-manager:
+    DATABASE_PASSWORD: prod/myapp/db:password
+    API_KEY: prod/myapp/api:key
+
+phases:
+  build:
+    commands:
+      - echo "Building with secure credentials..."
+      - npm run build`}
+                                            />
+
+                                            <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3 mt-3">
+                                                <p className="text-yellow-200 text-xs font-semibold mb-1">⚠️ Attention</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    N'affiche jamais les secrets dans les logs avec <code className="text-blue-300">echo $SECRET</code> !
+                                                    Les logs CodeBuild sont visibles par tous ceux qui ont accès au projet.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">🧪</span>
+                                                Ajouter des tests automatiques
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                Un pipeline sans tests, c'est comme conduire sans freins : ça finira mal !
+                                                Ajoute une phase de tests pour <strong>éviter de déployer du code cassé en production</strong>.
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Exemple de buildspec avec tests :</p>
+                                            </div>
+
+                                            <CodeBlock
+                                                language="yaml"
+                                                code={`version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install
+  
+  pre_build:
+    commands:
+      - echo "Running linter..."
+      - npm run lint
+      - echo "Running unit tests..."
+      - npm test -- --coverage
+  
+  build:
+    commands:
+      - echo "Building application..."
+      - npm run build
+  
+  post_build:
+    commands:
+      - echo "Running integration tests..."
+      - npm run test:integration
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: build`}
+                                            />
+
+                                            <div className="bg-green-950/30 border border-green-900/50 rounded p-3 mt-3">
+                                                <p className="text-green-200 text-xs font-semibold mb-1">✨ Aller plus loin</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    Ajoute des tests de performance (Lighthouse CI), des tests de sécurité (npm audit),
+                                                    ou des tests end-to-end (Playwright, Cypress) pour un pipeline encore plus robuste !
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">📊</span>
+                                                Surveillance avec CloudWatch
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                Active les logs CloudWatch pour surveiller tes builds et être alerté en cas de problème.
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Configuration recommandée :</p>
+                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        • <strong>CloudWatch Logs</strong> : Active les logs pour chaque exécution de CodeBuild
+                                                    </li>
+                                                    <li>
+                                                        • <strong>CloudWatch Metrics</strong> : Surveille la durée des builds, le taux d'échec, etc.
+                                                    </li>
+                                                    <li>
+                                                        • <strong>CloudWatch Alarms</strong> : Reçois une notification (email/SMS) si un build échoue
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
+                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Dashboard personnalisé</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    Crée un dashboard CloudWatch pour visualiser en un coup d'œil :
+                                                    la santé de ton pipeline, le nombre de déploiements par jour, et le temps moyen de build.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">📝</span>
+                                                Versionner ton infrastructure as Code
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                Ton pipeline lui-même devrait être versionné et déployé comme du code !
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Utilise CloudFormation ou Terraform :</p>
+                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        • Définis ton pipeline CodePipeline en YAML/Terraform au lieu de le créer manuellement
+                                                    </li>
+                                                    <li>
+                                                        • Stocke cette configuration dans Git avec le reste de ton code
+                                                    </li>
+                                                    <li>
+                                                        • Avantages : reproductibilité, historique des changements, rollback facile
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3">
+                                                <p className="text-yellow-200 text-xs font-semibold mb-1">📚 Ressource utile</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    AWS propose <strong>AWS CDK</strong> (Cloud Development Kit) qui permet de définir
+                                                    l'infrastructure en TypeScript/Python au lieu de YAML. Plus moderne et plus maintenable !
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">🌍</span>
+                                                Environnements multiples (Dev, Staging, Prod)
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                Ne déploie jamais directement en production ! Utilise plusieurs environnements.
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4 mb-3">
+                                                <p className="text-blue-400 font-semibold text-sm mb-2">✅ Architecture recommandée :</p>
+                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        • <strong>Branche dev</strong> → déploie automatiquement sur environnement de développement
+                                                    </li>
+                                                    <li>
+                                                        • <strong>Branche staging</strong> → déploie sur un environnement de test (copie de prod)
+                                                    </li>
+                                                    <li>
+                                                        • <strong>Branche main</strong> → déploie en production <strong>avec une approbation manuelle</strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded p-3">
+                                                <p className="text-blue-200 text-xs font-semibold mb-1">💡 Approbation manuelle</p>
+                                                <p className="text-gray-300 text-xs">
+                                                    Dans CodePipeline, tu peux ajouter une étape <strong>Manual Approval</strong> avant le déploiement prod.
+                                                    Le pipeline attend qu'un humain vérifie et approuve avant de continuer.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h3 className="text-xl font-semibold text-white mb-3 flex items-center">
+                                                <span className="text-2xl mr-2">💰</span>
+                                                Optimiser les coûts
+                                            </h3>
+                                            <p className="text-gray-300 text-sm mb-3">
+                                                CodePipeline et CodeBuild sont payants au-delà du Free Tier. Voici comment réduire les coûts :
+                                            </p>
+
+                                            <div className="bg-neutral-800 rounded p-4">
+                                                <ul className="list-none space-y-2 text-gray-300 text-xs ml-4">
+                                                    <li>
+                                                        • <strong>Cache les dépendances</strong> : Utilise le cache S3 de CodeBuild pour éviter de retélécharger npm packages à chaque build
+                                                    </li>
+                                                    <li>
+                                                        • <strong>Ajuste la taille de l'instance</strong> : Par défaut CodeBuild utilise "small" (3 GB RAM), mais "large" coûte 4x plus cher
+                                                    </li>
+                                                    <li>
+                                                        • <strong>Limite les builds inutiles</strong> : Configure des filtres Git pour ne builder que sur certains chemins (ex: ignorer les modifications du README)
+                                                    </li>
+                                                    <li>
+                                                        • <strong>Nettoie les anciens artefacts</strong> : Configure une lifecycle policy sur ton bucket S3 pour supprimer les vieux builds après 30 jours
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-green-950/30 border border-green-900/50 rounded-lg p-4 mt-6">
+                                        <p className="text-green-200 font-semibold mb-2">🎓 Récapitulatif des bonnes pratiques</p>
+                                        <ul className="list-none space-y-1 text-gray-300 text-sm">
+                                            <li>✅ Principe du moindre privilège pour les rôles IAM</li>
+                                            <li>✅ Secrets stockés dans AWS Secrets Manager</li>
+                                            <li>✅ Tests automatiques à chaque build (unit, integration, e2e)</li>
+                                            <li>✅ Logs et monitoring avec CloudWatch</li>
+                                            <li>✅ Infrastructure as Code (CloudFormation/Terraform/CDK)</li>
+                                            <li>✅ Environnements multiples (dev, staging, prod)</li>
+                                            <li>✅ Approbation manuelle avant déploiement en production</li>
+                                            <li>✅ Optimisation des coûts (cache, sizing, lifecycle policies)</li>
+                                        </ul>
+                                    </div>
+                                </section>
+
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
