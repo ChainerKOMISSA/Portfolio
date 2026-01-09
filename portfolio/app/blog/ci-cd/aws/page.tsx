@@ -572,29 +572,29 @@ artifacts:
 
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
                                         <h4 className="text-white font-bold mb-3">Configuration du build</h4>
-                                        <ul className="list-none space-y-3 text-white">
+                                        <ul className="list-none space-y-3 text-gray-300">
                                             <li>
                                                 <strong className="text-white font-semibold">Build provider :</strong> Sélectionne <strong className="text-blue-400">AWS CodeBuild</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     C&apos;est le seul choix possible si tu utilises les services natifs AWS.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Region :</strong> Laisse la région actuelle
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     La région AWS où se trouve ton projet CodeBuild. Par défaut, c&apos;est la même région que ton pipeline.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Project name :</strong> Sélectionne le nom de ton projet CodeBuild.
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     C&apos;est le projet CodeBuild que tu as créé dans la section précédente.
                                                     Tu devrais le voir apparaître dans la liste déroulante.
                                                 </p>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Build type :</strong> Laisse <strong className="text-blue-400">Single build</strong>
-                                                <p className="text-white text-sm mt-1 ml-4">
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     &quot;Single build&quot; signifie qu&apos;un seul build s&apos;exécute à la fois.
                                                     Tu pourrais aussi choisir &quot;Batch build&quot; pour exécuter plusieurs builds en parallèle mais ce n&apos;est pas nécessaire pour commencer.
                                                 </p>
@@ -706,174 +706,138 @@ artifacts:
 
                                 </section>
 
-                                <section id="deploy1">
-                                    <h2 className="text-2xl font-bold mb-4 text-white">
-                                        5. Déploiement automatique de l&apos;application
-                                    </h2>
-
-                                    <p className="text-gray-300">
-                                        Pour le déploiement, nous allons utiliser un <span className="text-blue-400">bucket S3</span> {""}
-                                        afin d’héberger notre application front-end en mode statique.
-                                    </p>
-
-                                    <p className="text-gray-300 mt-4">
-                                        Crée un bucket S3, puis active :
-                                    </p>
-
-                                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                        <li>Static website hosting</li>
-                                        <li>Les permissions publiques (ou CloudFront si tu veux aller plus loin)</li>
-                                    </ul>
-
-                                    <p className="text-gray-300 mt-4">
-                                        Dans CodePipeline, ajoute une étape <span className="text-blue-400">Deploy</span>
-                                        et sélectionne :
-                                    </p>
-
-                                    <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1">
-                                        <li><strong className="text-white">Deploy provider :</strong> Amazon S3</li>
-                                        <li><strong className="text-white">Bucket :</strong> my-app-bucket</li>
-                                        <li><strong className="text-white">Extract file :</strong> true</li>
-                                    </ul>
-
-                                    <p className="text-gray-300 mt-4">
-                                        À chaque push sur GitHub, ton application sera automatiquement déployée.
-                                    </p>
-                                </section>
-
                                 <section id="deploy">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         5. Déploiement automatique de l&apos;application
                                     </h2>
 
                                     <p className="text-gray-300 mb-4">
-                                        Maintenant que ton pipeline récupère le code et le build automatiquement, il ne reste plus qu'à
-                                        <strong> déployer l'application</strong> pour la rendre accessible sur Internet !
+                                        Maintenant que ton pipeline récupère le code et le build automatiquement, il ne reste plus qu&apos;à
+                                       déployer l&apos;application pour la rendre accessible sur Internet ! Pour cela nous allons utiliser
+                                        le service Amazon S3.
                                     </p>
 
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">🌐 Pourquoi utiliser S3 pour héberger une application ?</p>
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            Amazon S3 (Simple Storage Service) n'est pas seulement un espace de stockage. Il peut aussi
-                                            <strong> héberger des sites web statiques</strong> (HTML, CSS, JavaScript, React, Vue, Angular...).
-                                        </p>
-                                        <p className="text-gray-300 text-sm">
-                                            Les avantages : <strong>ultra-rapide</strong>, <strong>très peu cher</strong> (quelques centimes par mois),
-                                            <strong>hautement disponible</strong> (99.99% uptime garanti), et <strong>scalable automatiquement</strong>
-                                            (ton site peut supporter des millions de visiteurs sans configuration supplémentaire).
-                                        </p>
-                                    </div>
+                                    <details className="mt-6 mb-6 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>Amazon S3</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown /></span>
+                                        </summary>
 
-                                    <div className="bg-yellow-950/30 border border-yellow-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-yellow-200 font-semibold mb-2">📌 Important : Quel type d'application peut être déployé sur S3 ?</p>
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            S3 héberge uniquement des <strong>sites statiques</strong>, c'est-à-dire :
-                                        </p>
-                                        <ul className="list-none space-y-1 text-gray-300 text-sm ml-4">
-                                            <li>✅ Sites HTML/CSS/JavaScript</li>
-                                            <li>✅ Applications React, Vue, Angular (après build)</li>
-                                            <li>✅ Sites générés par Gatsby, Next.js (en mode export statique)</li>
-                                            <li>❌ Applications backend (Node.js/Express, Python/Django, PHP...)</li>
-                                            <li>❌ Applications nécessitant une base de données côté serveur</li>
-                                        </ul>
-                                        <p className="text-gray-300 text-sm mt-2">
-                                            Pour du backend, il faudrait utiliser <strong>EC2</strong>, <strong>ECS</strong>, ou <strong>Lambda</strong>
-                                            (qu'on pourra voir dans un autre tutoriel !).
-                                        </p>
-                                    </div>
+                                        <div className="px-4 pb-6 space-y-6">
+                                            <div>
+                                                <p className="text-white font-semibold mb-2">Qu&apos;est-ce qu’Amazon S3 ?</p>
+                                                <p className="text-gray-300 text-sm">
+                                                    Amazon S3 (Simple Storage Service) est un service de stockage cloud d&apos;AWS.
+                                                    En plus de stocker des fichiers, il permet aussi d&apos;héberger des sites web statiques.
+                                                </p>
+                                            </div>
+                                            <hr className="border-blue-900/50" />
+                                            <div>
+                                                <p className="text-white font-semibold mb-2">À quoi sert S3 dans un projet web ?</p>
+                                                <p className="text-gray-300 text-sm">
+                                                    S3 permet de :
+                                                </p>
+                                                <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm ml-4">
+                                                    <li>Héberger un site vitrine ou un portfolio</li>
+                                                    <li>Déployer une application front-end </li>
+                                                    <li>Stocker des images, vidéos et documents</li>
+                                                    <li>Servir de base à un CDN</li>
+                                                </ul>
+                                            </div>
+                                            <hr className="border-blue-900/50" />
+                                            <div>
+                                                <p className="text-white font-semibold mb-2">Pourquoi c&apos;est souvent un excellent choix</p>
+                                                <p className="text-gray-300 text-sm">
+                                                    S3 est très rapide, très peu cher, hautement disponible et
+                                                   scalable automatiquement : ton site peut supporter beaucoup de visiteurs sans configuration.
+                                                </p>
+                                            </div>
+                                            <hr className="border-blue-900/50" />
+                                            <div>
+                                                <p className="text-white font-semibold mb-2">Ce que S3 peut et ne peut pas faire</p>
+
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    S3 héberge uniquement des sites statiques en HTML/CSS, React ou Angular mais ne peut pas
+                                                    être utilisé pour héberger des applications avec logique serveur comme des backend Node.js, Django ou PHP.
+                                                    Pour un backend, on utilisera plutôt <strong>EC2</strong>, <strong>ECS</strong> ou <strong>Lambda</strong>.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </details>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
                                         Étape 1 : Créer un bucket S3
                                     </h3>
 
                                     <p className="text-gray-300 mb-3">
-                                        Dans la console AWS, utilise la barre de recherche et tape <strong>"S3"</strong>, puis clique sur le service.
+                                        Dans la console AWS, utilise la barre de recherche et tape <strong>&quot;S3&quot;</strong>, puis clique sur le service.
+                                        Une fois le service sélectionné, clique sur le bouton orange <span className="text-blue-400 font-semibold">Create bucket</span>.
                                     </p>
-
-                                    <div className="bg-neutral-900 rounded-lg p-4 mb-4">
-                                        <p className="text-gray-400 text-sm">
-                                            💡 <strong>Accès direct :</strong>{" "}
-                                            <a href="https://s3.console.aws.amazon.com/s3/buckets" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
-                                                S3 Console
-                                            </a>
-                                        </p>
-                                    </div>
-
-                                    <p className="text-gray-300 mb-4">
-                                        Clique sur le bouton orange <span className="text-blue-400 font-semibold">Create bucket</span>.
-                                    </p>
-
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <h4 className="text-white font-semibold mb-3">Configuration du bucket</h4>
-                                        <ul className="list-none space-y-4 text-gray-300 text-sm">
+                                        <h4 className="text-white font-bold mb-3">Configuration du bucket</h4>
+                                        <ul className="list-none space-y-4 text-gray-300">
                                             <li>
-                                                <strong className="text-blue-400">Bucket name :</strong>{" "}
-                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-300">my-app-bucket-2025</code>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    ⚠️ <strong>Attention :</strong> Le nom doit être <strong>unique dans tout AWS</strong> (pas seulement dans ton compte !).
-                                                    Si "my-app-bucket" est déjà pris, ajoute ton nom ou une date, par exemple :
-                                                    <code className="text-blue-300 mx-1">my-app-john-2025</code> ou
-                                                    <code className="text-blue-300 mx-1">frontend-react-app-prod</code>
-                                                </p>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                <strong className="text-white font-semibold">Bucket name :</strong>{" "}
+                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">my-app-bucket</code>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    ⚠️Le nom doit être <strong>unique dans tout AWS</strong> (pas seulement dans ton compte !).
+                                                    Si &quot;my-app-bucket&quot; est déjà pris, ajoute ton nom ou une date, par exemple :
+                                                    <code className="text-blue-400 mx-1">my-app-essi-2025</code> ou
+                                                    <code className="text-blue-400 mx-1">frontend-react-app-prod</code>.
                                                     Le nom doit contenir uniquement des lettres minuscules, des chiffres et des tirets (-).
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">AWS Region :</strong> Choisis une région proche de tes utilisateurs
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    Par exemple : <strong>eu-west-1</strong> (Irlande) pour l'Europe,
-                                                    <strong> us-east-1</strong> (Virginie) pour l'Amérique du Nord.
-                                                    Plus la région est proche de tes visiteurs, plus ton site sera rapide !
+                                                <strong className="text-white font-semibold">AWS Region :</strong> Choisis une région proche de tes utilisateurs
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    Par exemple : <strong>eu-west-1</strong> pour l&apos;Europe, <strong> us-east-1</strong>pour l&apos;Amérique du Nord.
+                                                    Plus la région est proche de tes visiteurs, plus ton site sera rapide ! Dans mon cas, je vais utiliser ma région
+                                                    puisqu&apos;il s&apos;agit ici d&apos;un projet d&apos;apprentissage.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Object Ownership :</strong> Laisse <strong>ACLs disabled (recommended)</strong>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    C'est le paramètre recommandé par AWS pour simplifier la gestion des permissions.
+                                                <strong className="text-white font-semibold">Object Ownership :</strong> Laisse l&apos;option <strong className="text-blue-400">ACLs disabled (recommended)</strong>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    C&apos;est le paramètre recommandé par AWS pour simplifier la gestion des permissions.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Block Public Access settings :</strong>
-                                                <strong className="text-red-400"> DÉCOCHER toutes les cases</strong>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4 mb-2">
+                                                <strong className="text-white font-semibold">Block Public Access settings :</strong>
+                                                <strong className="text-blue-400"> Décoche toutes les cases</strong>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4 mb-2">
                                                     Par défaut, AWS bloque tout accès public pour des raisons de sécurité.
-                                                    Mais comme on veut héberger un site web accessible à tous, il faut autoriser l'accès public.
+                                                    Mais comme on veut héberger un site web accessible à tous, il faut autoriser l&apos;accès public.
                                                 </p>
-                                                <div className="bg-red-950/30 border border-red-900/50 rounded p-3 ml-4">
-                                                    <p className="text-red-200 text-xs font-semibold mb-1">⚠️ Décocher ces 4 options :</p>
-                                                    <ul className="list-none space-y-1 text-gray-300 text-xs ml-2">
+                                                    <p className="text-white text-sm font-semibold mb-1">⚠️ Décoche ces 4 options :</p>
+                                                    <ul className="list-none space-y-1 text-gray-300 text-sm ml-2">
                                                         <li>☐ Block all public access</li>
                                                         <li>☐ Block public access to buckets and objects granted through new access control lists (ACLs)</li>
                                                         <li>☐ Block public access to buckets and objects granted through any access control lists (ACLs)</li>
                                                         <li>☐ Block public access to buckets and objects granted through new public bucket or access point policies</li>
                                                     </ul>
-                                                </div>
-                                                <div className="bg-yellow-950/30 border border-yellow-900/50 rounded p-3 ml-4 mt-2">
-                                                    <p className="text-yellow-200 text-xs">
-                                                        Une case de confirmation apparaîtra : coche la case <strong>"I acknowledge that the current settings might result in this bucket and the objects within becoming public"</strong>
-                                                    </p>
-                                                </div>
+                                                <p className="text-gray-300 text-sm mt-1">
+                                                    Une case de confirmation apparaîtra : coche la case <strong>&quot;I acknowledge that the current settings might result in this bucket and the objects within becoming public&quot;</strong>
+                                                </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Bucket Versioning :</strong> <strong>Disable</strong> (pour commencer)
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                <strong className="text-white font-semibold">Bucket Versioning :</strong> <strong className="text-blue-400">Disable</strong> (pour commencer)
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Le versioning garde un historique de toutes les modifications de tes fichiers.
                                                     Pas nécessaire pour débuter, mais utile en production pour pouvoir revenir en arrière.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Tags :</strong> (optionnel)
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
+                                                <strong className="text-white font-semibold">Tags :</strong> (optionnel)
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     Tu peux ajouter des tags pour organiser tes ressources, par exemple :
-                                                    <code className="text-blue-300 mx-1">Environment: Production</code> ou
-                                                    <code className="text-blue-300 mx-1">Project: MyApp</code>
+                                                    <code className="text-blue-400 mx-1">Environment: Production</code> ou
+                                                    <code className="text-blue-400 mx-1">Project: MyApp</code>
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-blue-400">Default encryption :</strong> Laisse <strong>Server-side encryption with Amazon S3 managed keys (SSE-S3)</strong>
-                                                <p className="text-gray-400 text-xs mt-1 ml-4">
-                                                    Tes fichiers seront automatiquement chiffrés au repos. C'est gratuit et recommandé.
+                                                <strong className="text-white font-semibold">Default encryption :</strong> Laisse <strong className="text-blue-400">Server-side encryption with Amazon S3 managed keys (SSE-S3)</strong>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    Tes fichiers seront automatiquement chiffrés au repos. C&apos;est gratuit et recommandé.
                                                 </p>
                                             </li>
                                         </ul>
@@ -884,7 +848,7 @@ artifacts:
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 2 : Activer l'hébergement de site web statique
+                                        Étape 2 : Activer l&apos;hébergement de site web statique
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
