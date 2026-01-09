@@ -427,8 +427,6 @@ export default function BlogPage() {
                                     <p className="text-gray-300 mb-3 mt-4">
                                         ⚠️ Cette variable ne sera pas affichée en clair dans les logs. Jenkins remplace automatiquement la valeur réelle par des astérisques si tu essaies de l’afficher.
                                     </p>
-
-                                    {/* 📸 Screenshot : Jenkins Credentials */}
                                 </section>
 
                                 <section id="debug">
@@ -498,8 +496,6 @@ export default function BlogPage() {
                                         </Link>
                                     </div>
                                 </section>
-
-
 
                             </div>
                         </div>
