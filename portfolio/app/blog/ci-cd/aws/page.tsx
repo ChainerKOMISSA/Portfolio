@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {IoIosArrowDown, IoIosArrowRoundBack} from "react-icons/io";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
+import Image from "next/image";
 
 export default function BlogPage() {
     return (
@@ -189,6 +190,9 @@ export default function BlogPage() {
                                                     </p>
                                                 </li>
                                             </ul>
+                                            <p className="text-gray-300 mt-3">
+                                                Tu peux laisser tous les autres champs dans <strong>Additional configuration</strong>
+                                            </p>
                                         </div>
 
                                         <div className="bg-neutral-900 rounded-lg p-5">
@@ -198,20 +202,25 @@ export default function BlogPage() {
                                                     <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub</strong>
                                                     <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         C&apos;est ici que se trouve ton code source. CodeBuild ira chercher ton code directement depuis GitHub.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <strong className="text-white font-semibold">Repository :</strong> Clique sur <strong className="text-blue-400">Connect to GitHub</strong>
-                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         AWS va te demander d&apos;autoriser l&apos;accès à ton compte GitHub. C&apos;est normal et sécurisé !
-                                                        Une fois connecté, sélectionne ton repository dans la liste.
                                                     </p>
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4 mb-2">
+                                                        Tu cliques sur <strong>Manage credentials</strong> pour autoriser AWS à accéder à ton compte GitHub. Voici le processus :
+                                                    </p>
+                                                    <ol className="list-decimal list-inside text-gray-300 text-sm ml-8 space-y-1">
+                                                        <li>Donne un nom à la connexion</li>
+                                                        <li>Clique sur <strong className="text-blue-400">Connect to GitHub</strong></li>
+                                                        <li>Tu seras redirigé vers GitHub puis clique sur <strong className="text-blue-400">Authorize AWS Connector for GitHub</strong></li>
+                                                        <li>Choisis si tu veux autoriser l&apos;accès à <strong>tous tes repositories</strong> ou seulement à <strong>certains repositories spécifiques</strong> (recommandé pour la sécurité)</li>
+                                                        <li>Clique sur <strong className="text-blue-400">Install new app</strong></li>
+                                                        <li>Tu reviens automatiquement sur AWS et tu cliques sur <strong className="text-blue-400">Connect</strong> puis <strong className="text-blue-400">Save</strong></li>
+                                                    </ol>
+
                                                 </li>
                                                 <li>
-                                                    <strong className="text-white font-semibold">Branch :</strong> <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">main</code>
-                                                    (ou <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">master</code>)
+                                                    <strong className="text-white font-semibold">Repository :</strong> Clique sur <strong className="text-blue-400">Repository in my GitHub account</strong>
                                                     <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                        Choisis la branche à surveiller. En général, c&apos;est la branche principale de ton projet.
+                                                        Une fois connecté, sélectionne ton repository dans la liste.
                                                     </p>
                                                 </li>
                                             </ul>
@@ -224,6 +233,12 @@ export default function BlogPage() {
                                                     <strong className="text-white font-semibold">Environment image :</strong> Sélectionne <strong className="text-blue-400">Managed image</strong>
                                                     <p className="text-gray-300 text-sm mt-1 ml-4">
                                                         AWS te fournit des images préconfigurées. C&apos;est plus simple que de créer ta propre image Docker.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <strong className="text-white font-semibold">Running mode :</strong> Sélectionne <strong className="text-blue-400">Container</strong>
+                                                    <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                        Correspond à l&apos;option &quot;Managed image&quot; puisque AWS va lancer l&apos;op&ration sur un container Docker.
                                                     </p>
                                                 </li>
                                                 <li>
@@ -247,7 +262,7 @@ export default function BlogPage() {
                                                 <li>
                                                     <strong className="text-white font-semibold">Service role :</strong> Laisse <strong className="text-blue-400">New service role</strong>
                                                     <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                        AWS va créer automatiquement un rôle avec les permissions nécessaires pour faire fonctionner CodeBuild.
+                                                        AWS va créer automatiquement un rôle nommé avec les permissions nécessaires pour faire fonctionner CodeBuild.
                                                     </p>
                                                 </li>
                                             </ul>
@@ -273,6 +288,14 @@ export default function BlogPage() {
                                         </div>
 
                                         <div className="bg-neutral-900 rounded-lg p-5">
+                                            <h4 className="text-white font-bold mb-2">Batch configuration</h4>
+                                            <p className="text-gray-300 text-sm">
+                                                Cette partie permet de lancer plusieurs builds à la fois. Dans notre cas nous n&apos;en
+                                                avons pas besoin donc tu peux laisser.
+                                            </p>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-5">
                                             <h4 className="text-white font-bold mb-2">Artifacts (optionnel pour l&apos;instant)</h4>
                                             <p className="text-gray-300 text-sm">
                                                 Tu peux laisser <strong>No artifacts</strong> pour le moment. Les artifacts sont les fichiers
@@ -291,7 +314,7 @@ export default function BlogPage() {
 
                                     <p className="text-gray-300 mt-6 mb-4">
                                         Une fois tous les champs remplis, clique sur <span className="text-blue-400 font-semibold">Create build project</span> {""}
-                                        en bas de la page.
+                                        en bas de la page. Nous allons maintenant créer le fichier buildspec.yml.
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-8" id="codebuild3">
@@ -371,7 +394,29 @@ artifacts:
                                                 <strong>Java/Maven :</strong> Utilise <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-300">mvn clean install</code>
                                             </li>
                                             <li>
-                                                <strong>HTML/CSS statique :</strong> Tu peux sauter la phase de build puisque tu n&apos;as pas de compilation.
+                                                <strong>HTML/CSS statique :</strong> Tu peux sauter la phase de build puisque tu n&apos;as pas de compilation. Voici un exemple
+                                                de fichier buildspec.yml pour un projet html :<br/>
+                                                <CodeBlock
+                                                    language="yaml"
+                                                    code={`version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+  
+  build:
+    commands:
+      - echo "Build started on \`date\`"
+  
+  post_build:
+    commands:
+      - echo "Build completed on \`date\`"
+
+artifacts:
+  files:
+    - '**/*'`}
+                                                />
                                             </li>
                                         </ul>
                                     </div>
@@ -396,9 +441,6 @@ artifacts:
                                             Clique sur le bouton <span className="text-blue-400 font-semibold">Start build</span> en haut à droite
                                         </li>
                                         <li>
-                                            Dans la popup, laisse les paramètres par défaut et clique sur <span className="text-blue-400 font-semibold">Start build</span>
-                                        </li>
-                                        <li>
                                             Observe le build en temps réel ! Tu verras chaque commande s&apos;exécuter étape par étape
                                         </li>
                                     </ol>
@@ -406,8 +448,15 @@ artifacts:
                                     <p className="text-gray-300 mt-3">
                                         Si ton build est passé au vert, félicitations !
                                         Ton projet CodeBuild est correctement configuré et prêt à être intégré dans un pipeline complet.
-                                        Dans la section suivante, on va automatiser tout ça avec CodePipeline.
                                     </p>
+                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                        <Image
+                                            src="/buildreussi.png"
+                                            alt="Exemple de build réussi"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
 
                                         <p className="text-white font-semibold mb-2 mt-3">⚠️ Build en échec ?</p>
                                         <p className="text-gray-300 mb-2">
@@ -428,6 +477,9 @@ artifacts:
                                         <p className="text-gray-300 mt-3">
                                             Pour débugger, clique sur ton build et lis attentivement les logs. L&apos;erreur est généralement bien indiquée !
                                         </p>
+                                    <p className="text-gray-300 mt-3">
+                                        Dans la section suivante, on va automatiser tout ça avec CodePipeline.
+                                    </p>
                                 </section>
 
                                 <section id="codepipeline">
@@ -451,6 +503,11 @@ artifacts:
                                     <p className="text-gray-300 mb-3">
                                         Dans la console AWS, utilise la barre de recherche en haut et tape <strong>&quot;CodePipeline&quot;</strong>,
                                         puis clique sur le service. Clique ensuite sur le bouton orange <span className="text-blue-400 font-semibold">Create pipeline</span>.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        AWS te propose plusieurs types de pipelines. Dans notre cas, nous allons choisir l&apos;option{" "}
+                                        <strong className="text-blue-400">&quot;Build custom pipeline&quot;</strong> puis cliquer sur <strong>Next</strong>.
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="codepipeline2">
@@ -514,25 +571,19 @@ artifacts:
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
                                         <ul className="list-none space-y-4 text-gray-300">
                                             <li>
-                                                <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub (Version 2)</strong>
+                                                <strong className="text-white font-semibold">Source provider :</strong> Sélectionne <strong className="text-blue-400">GitHub (via GitHub App)</strong>
                                                 <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                    ⚠️ <strong>Important :</strong> Choisis bien &quot;GitHub (Version 2)&quot; et non &quot;GitHub (Version 1)&quot;.
-                                                    La Version 2 utilise AWS Connector for GitHub qui est plus moderne, plus sécurisé et recommandé par AWS.
+                                                    &quot;GitHub (via GitHub App)&quot; est la méthode recommandée par AWS. Elle offre une sécurité renforcée avec des permissions granulaires,
+                                                    permet de réutiliser la connexion pour d&apos;autres pipelines, et utilise les GitHub Apps pour une meilleure gestion de l&apos;authentification.
+                                                    L&apos;option OAuth app est désormais obsolète.
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-white font-semibold">Connection :</strong> Clique sur <strong className="text-blue-400">Connect to GitHub</strong>
-                                                <p className="text-gray-300 text-sm mt-1 ml-4 mb-2">
-                                                    Une popup va s&apos;ouvrir pour autoriser AWS à accéder à ton compte GitHub. Voici le processus :
+                                                <strong className="text-white font-semibold">Connection :</strong> Sélectionne ta connexion GitHub existante dans le menu déroulant
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    Nous avions déjà créé une connexion GitHub pour CodeBuild, tu peux la réutiliser ici.
+                                                    Cela évite de créer des connexions multiples et simplifie la gestion des autorisations GitHub.
                                                 </p>
-                                                <ol className="list-decimal list-inside text-gray-300 text-sm ml-8 space-y-1">
-                                                    <li>Donne un nom à la connexion</li>
-                                                    <li>Clique sur <strong className="text-blue-400">Connect to GitHub</strong></li>
-                                                    <li>Tu seras redirigé vers GitHub puis clique sur <strong className="text-blue-400">Authorize AWS Connector for GitHub</strong></li>
-                                                    <li>Choisis si tu veux autoriser l&apos;accès à <strong>tous tes repositories</strong> ou seulement à <strong>certains repositories spécifiques</strong> (recommandé pour la sécurité)</li>
-                                                    <li>Clique sur <strong className="text-blue-400">Install</strong></li>
-                                                    <li>Tu reviens automatiquement sur AWS et tu cliques sur <strong className="text-blue-400">Connect</strong></li>
-                                                </ol>
                                             </li>
                                             <li>
                                                 <strong className="text-white font-semibold">Repository name :</strong> Sélectionne ton repository
@@ -572,15 +623,9 @@ artifacts:
                                         <h4 className="text-white font-bold mb-3">Configuration du build</h4>
                                         <ul className="list-none space-y-3 text-gray-300">
                                             <li>
-                                                <strong className="text-white font-semibold">Build provider :</strong> Sélectionne <strong className="text-blue-400">AWS CodeBuild</strong>
+                                                <strong className="text-white font-semibold">Build provider :</strong> Sélectionne <strong>Other build providers</strong> puis <strong className="text-blue-400">AWS CodeBuild</strong>
                                                 <p className="text-gray-300 text-sm mt-1 ml-4">
                                                     C&apos;est le seul choix possible si tu utilises les services natifs AWS.
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-white font-semibold">Region :</strong> Laisse la région actuelle
-                                                <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                    La région AWS où se trouve ton projet CodeBuild. Par défaut, c&apos;est la même région que ton pipeline.
                                                 </p>
                                             </li>
                                             <li>
@@ -597,7 +642,24 @@ artifacts:
                                                     Tu pourrais aussi choisir &quot;Batch build&quot; pour exécuter plusieurs builds en parallèle mais ce n&apos;est pas nécessaire pour commencer.
                                                 </p>
                                             </li>
+                                            <li>
+                                                <strong className="text-white font-semibold">Region :</strong> Laisse la région actuelle
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                    La région AWS où se trouve ton projet CodeBuild. Par défaut, c&apos;est la même région que ton pipeline.
+                                                </p>
+                                            </li>
                                         </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Clique sur <span className="text-blue-400 font-semibold">Next</span>.
+                                    </p>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <h4 className="text-white font-bold mb-3">Test (optionel)</h4>
+                                        <p className="text-gray-300 text-sm mt-1 ml-4">
+                                            Cette section est optionnelle mais elle te permet de définir la source de tes tests si tu en as.
+                                        </p>
                                     </div>
 
                                     <p className="text-gray-300 mb-4">
@@ -647,24 +709,17 @@ artifacts:
                                                 Dès que tu cliques sur &quot;Create pipeline&quot;, AWS va <strong>automatiquement lancer le pipeline pour la première fois</strong> !
                                                 Tu vas voir en temps réel :
                                             </p>
-
-                                            <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                                <ol className="list-decimal list-inside space-y-3 text-gray-300 text-sm">
+                                             <ol className="list-decimal list-inside space-y-3 text-gray-300">
                                                     <li>
                                                         <strong>Source</strong> : CodePipeline récupère ton code depuis GitHub
-                                                        <p className="text-gray-400 text-xs mt-1 ml-6">
-                                                            Statut : <span className="text-blue-400">In progress</span> → <span className="text-green-400">Succeeded</span>
-                                                        </p>
                                                     </li>
                                                     <li>
                                                         <strong>Build</strong> : CodeBuild exécute ton <code className="text-blue-300">buildspec.yml</code>
-                                                        <p className="text-gray-400 text-xs mt-1 ml-6">
+                                                        <p className="text-gray-300 text-sm mt-1 ml-6">
                                                             Tu peux cliquer sur <strong>Details</strong> pour voir les logs en temps réel
                                                         </p>
                                                     </li>
                                                 </ol>
-                                            </div>
-
                                             <p className="text-white font-semibold mb-2 mt-4">Pipeline créé avec succès !</p>
                                             <p className="text-white">
                                                 Si les deux étapes (Source et Build) sont passées au vert, félicitations !
@@ -673,6 +728,16 @@ artifacts:
                                                 <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-400 mx-1">main</code>,
                                                 le pipeline se déclenchera automatiquement pour builder ton code.
                                             </p>
+
+                                            <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                                <Image
+                                                    src="/pipelinereussi.png"
+                                                    alt="Exemple de pipeline réussi"
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
+
                                         </div>
                                     </details>
 
@@ -775,6 +840,12 @@ artifacts:
                                         <h4 className="text-white font-bold mb-3">Configuration du bucket</h4>
                                         <ul className="list-none space-y-4 text-gray-300">
                                             <li>
+                                                <strong className="text-white font-semibold">AWS Region</strong>
+                                                <p className="text-gray-300 text-sm mt-1 ml-4">
+                                                   La région correspondant à tes projets CodfeBuild et CodePipeline est mise par défaut.
+                                                </p>
+                                            </li>
+                                            <li>
                                                 <strong className="text-white font-semibold">Bucket name :</strong>{" "}
                                                 <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">my-app-bucket</code>
                                                 <p className="text-gray-300 text-sm mt-1 ml-4">
@@ -783,14 +854,6 @@ artifacts:
                                                     <code className="text-blue-400 mx-1">my-app-essi-2025</code> ou
                                                     <code className="text-blue-400 mx-1">frontend-react-app-prod</code>.
                                                     Le nom doit contenir uniquement des lettres minuscules, des chiffres et des tirets (-).
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-white font-semibold">AWS Region :</strong> Choisis une région proche de tes utilisateurs
-                                                <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                    Par exemple : <strong>eu-west-1</strong> pour l&apos;Europe, <strong> us-east-1</strong>pour l&apos;Amérique du Nord.
-                                                    Plus la région est proche de tes visiteurs, plus ton site sera rapide ! Dans mon cas, je vais utiliser ma région
-                                                    puisqu&apos;il s&apos;agit ici d&apos;un projet d&apos;apprentissage.
                                                 </p>
                                             </li>
                                             <li>
@@ -813,8 +876,8 @@ artifacts:
                                                         <li>☐ Block public access to buckets and objects granted through any access control lists (ACLs)</li>
                                                         <li>☐ Block public access to buckets and objects granted through new public bucket or access point policies</li>
                                                     </ul>
-                                                <p className="text-gray-300 text-sm mt-1">
-                                                    Une case de confirmation apparaîtra : coche la case <strong>&quot;I acknowledge that the current settings might result in this bucket and the objects within becoming public&quot;</strong>
+                                                <p className="text-gray-300 text-sm mt-3">
+                                                    ⚠️ Une case de confirmation apparaîtra : coche la case <strong>&quot;I acknowledge that the current settings might result in this bucket and the objects within becoming public&quot;</strong>
                                                 </p>
                                             </li>
                                             <li>
@@ -885,10 +948,9 @@ artifacts:
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-white font-semibold">Error document :</strong>{" "}
-                                                <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">index.html</code>
+                                                <strong className="text-white font-semibold">Error document</strong> (optionnel)
                                                 <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                    La page qui s&apos;affichera en cas d&apos;erreur 404 (page non trouvée).
+                                                    Tu peux mettre la page qui s&apos;affichera en cas d&apos;erreur 404 (page non trouvée).
                                                     Pour les Single Page Applications (React ou Vue), utilise aussi <code className="text-blue-400">index.html</code> {""}
                                                     pour que le routing côté client fonctionne correctement.
                                                 </p>
@@ -904,7 +966,8 @@ artifacts:
                                         <p className="text-white font-semibold mb-2">URL de ton site</p>
                                         <p className="text-gray-300 text-sm">
                                             Une fois sauvegardé, AWS génère automatiquement une URL publique pour ton site.
-                                            Tu peux la trouver dans la section &quot;Static website hosting&quot; : elle ressemble à
+                                            Tu peux la trouver dans la section &quot;Static website hosting&quot; sous le
+                                            titre : <strong>Bucket website endpoint</strong>. Elle ressemble à
                                             <code className="bg-neutral-800 px-1 py-0.5 rounded text-blue-400 mx-1">
                                                 http://my-app-bucket.s3-website-eu-west-1.amazonaws.com
                                             </code>
@@ -955,30 +1018,125 @@ artifacts:
 }`}
                                     />
 
-                                        <h4 className="text-white font-semibold mb-3 mt-3">Décryptage de la bucket policy</h4>
-                                        <ul className="list-none space-y-2 text-gray-300">
-                                            <li>
-                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Effect&quot;: &quot;Allow&quot;</code>
-                                                <span> : on autorise l&apos;action par opposition à &quot;Deny&quot; qui bloquerait l&apos;action</span>
-                                            </li>
-                                            <li>
-                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Principal&quot;: &quot;*&quot;</code>
-                                                <span> : l&apos;astérisque (*) signifie &quot;tout le monde&quot;, donc n&apos;importe qui sur Internet</span>
-                                            </li>
-                                            <li>
-                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Action&quot;: &quot;s3:GetObject&quot;</code>
-                                                <span> : on autorise uniquement la lecture des fichiers, pas la modification ou la suppression</span>
-                                            </li>
-                                            <li>
-                                                <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Resource&quot;: &quot;arn:aws:s3:::my-app-bucket/*&quot;</code>
-                                                <span > : cette règle s&apos;applique à tous les fichiers (/*) dans le bucket spécifié.</span>
-                                            </li>
-                                        </ul>
+                                    <h4 className="text-white font-semibold mb-3 mt-3">Décryptage de la bucket policy</h4>
+                                    <ul className="list-none space-y-2 text-gray-300">
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Effect&quot;: &quot;Allow&quot;</code>
+                                            <span> : on autorise l&apos;action par opposition à &quot;Deny&quot; qui bloquerait l&apos;action</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Principal&quot;: &quot;*&quot;</code>
+                                            <span> : l&apos;astérisque (*) signifie &quot;tout le monde&quot;, donc n&apos;importe qui sur Internet</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Action&quot;: &quot;s3:GetObject&quot;</code>
+                                            <span> : on autorise uniquement la lecture des fichiers, pas la modification ou la suppression</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Resource&quot;: &quot;arn:aws:s3:::my-app-bucket/*&quot;</code>
+                                            <span > : cette règle s&apos;applique à tous les fichiers (/*) dans le bucket spécifié.</span>
+                                        </li>
+                                    </ul>
 
-                                    <p className="text-gray-300 mb-6 mt-3">
+                                    <p className="text-gray-300 mb-6 mt-6">
                                         Après avoir copié et collé la policy, clique sur <span className="text-blue-400 font-semibold">Save changes</span>.
-                                        Un avertissement de sécurité apparaîtra, confirme en cliquant à nouveau sur <strong className="text-blue-400">Save</strong>.
                                     </p>
+
+                                    <h4 className="text-xl font-semibold text-white mb-3 mt-8">
+                                        Configurer les permissions IAM pour CodePipeline
+                                    </h4>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Pour que CodePipeline puisse déployer automatiquement sur ton bucket S3, il faut lui donner les permissions nécessaires.
+                                    </p>
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 mb-4">
+                                        <li>
+                                            Dans la console AWS, va dans le service <strong className="text-blue-400">IAM</strong>
+                                        </li>
+                                        <li>
+                                            Dans le menu de gauche, clique sur <strong className="text-blue-400">Roles</strong>
+                                        </li>
+                                        <li>
+                                            Cherche et clique sur le rôlecorrespondant à ton pipeline. Il sera sous la forme : <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">AWSCodePipelineServiceRole-[région]-[nom-pipeline]</code>
+                                        </li>
+                                        <li>
+                                            Dans l&apos;onglet <strong className="text-blue-400">Permissions</strong>, clique sur <strong className="text-blue-400">Add permissions</strong> → <strong className="text-blue-400">Create inline policy</strong>
+                                        </li>
+                                        <li>
+                                            Passe en mode <strong className="text-blue-400">JSON</strong>
+                                        </li>
+                                        <li>
+                                            Colle cette politique en remplaçant <code className="text-blue-400">my-app-bucket</code> par le nom de ton bucket :
+                                        </li>
+                                    </ol>
+
+                                    <CodeBlock
+                                        language="json"
+                                        code={`{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:PutObjectVersionAcl",
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-app-bucket/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::my-app-bucket"
+            ]
+        }
+    ]
+}`}
+                                    />
+
+                                    <ol className="list-decimal list-inside space-y-3 text-gray-300 mb-6 mt-4" start={7}>
+                                        <li>
+                                            Clique sur <strong className="text-blue-400">Review policy</strong>
+                                        </li>
+                                        <li>
+                                            Donne un nom : <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">S3DeploymentPolicy</code>
+                                        </li>
+                                        <li>
+                                            Clique sur <strong className="text-blue-400">Create policy</strong>
+                                        </li>
+                                    </ol>
+
+                                    <h4 className="text-white font-semibold mb-3 mt-3">Décryptage de la policy IAM</h4>
+                                    <ul className="list-none space-y-2 text-gray-300">
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;s3:PutObject&quot;</code>
+                                            <span> : permet d&apos;uploader des fichiers dans le bucket</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;s3:GetObject&quot;</code>
+                                            <span> : permet de lire les fichiers existants</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;s3:ListBucket&quot;</code>
+                                            <span> : permet de lister le contenu du bucket</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Resource&quot; avec /*</code>
+                                            <span> : les actions s&apos;appliquent aux objets dans le bucket</span>
+                                        </li>
+                                        <li>
+                                            <code className="bg-[#0f172a] px-2 py-1 rounded text-blue-400 text-sm shrink-0">&quot;Resource&quot; sans /*</code>
+                                            <span> : l&apos;action s&apos;applique au bucket lui-même</span>
+                                        </li>
+                                    </ul>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="deploy4">
                                         Étape 4 : Ajouter l&apos;étape de déploiement dans CodePipeline
@@ -993,16 +1151,13 @@ artifacts:
                                             Va sur la console CodePipeline et clique sur le nom de ton pipeline
                                         </li>
                                         <li>
-                                            Clique sur le bouton <strong className="text-blue-400">Edit</strong> en haut à droite
+                                            Clique sur le bouton <strong className="text-blue-400">Edit</strong>
                                         </li>
                                         <li>
                                             En bas du pipeline (après l&apos;étape &quot;Build&quot;), clique sur <strong className="text-blue-400">+ Add stage</strong>
                                         </li>
                                         <li>
                                             Donne un nom à cette étape : <code className="bg-neutral-800 px-2 py-0.5 rounded text-blue-400">Deploy</code>
-                                        </li>
-                                        <li>
-                                            Clique sur <strong>Add stage</strong>
                                         </li>
                                         <li>
                                             Dans cette nouvelle étape, clique sur <strong className="text-blue-400">+ Add action group</strong>
@@ -1063,9 +1218,11 @@ artifacts:
                                                 </p>
                                             </li>
                                             <li>
-                                                <strong className="text-white font-semibold">CannedACL :</strong> Sélectionne <strong className="text-blue-400">public-read</strong>
+                                                <strong className="text-white font-semibold">CannedACL :</strong> Laisse vide
                                                 <p className="text-gray-300 text-sm mt-1 ml-4">
-                                                    Cela rend automatiquement tous les fichiers uploadés accessibles publiquement
+                                                    Les buckets S3 modernes ont les ACLs désactivées par défaut pour des raisons de sécurité.
+                                                    Pour rendre ton site public, tu configureras les permissions directement via la politique du bucket (Bucket Policy)
+                                                    ou CloudFront après le déploiement.
                                                 </p>
                                             </li>
                                             <li>
@@ -1101,10 +1258,6 @@ artifacts:
                                                 <li><strong>Build</strong> : Compilation de l&aposz;application avec CodeBuild</li>
                                                 <li><strong>Deploy</strong> : Déploiement des fichiers sur S3</li>
                                             </ol>
-
-                                            <p className="text-gray-300 mb-4">
-                                                Attends que les trois étapes passent au vert. Cela peut prendre 2-5 minutes selon la taille de ton projet.
-                                            </p>
 
                                             <h4 className="text-lg font-semibold text-white mb-3 mt-6">
                                                 Vérifier que le déploiement a fonctionné
@@ -1226,6 +1379,15 @@ artifacts:
                                             </ul>
                                         </li>
                                     </ol>
+
+                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
+                                        <Image
+                                            src="/deployreussi.png"
+                                            alt="Exemple de déploiement réussi"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6" id="test-pipeline3">
                                         Étape 3 : Vérifier le déploiement
@@ -1487,7 +1649,7 @@ artifacts:
 
                                     <p className="text-gray-300">
                                         Tu as maintenant mis en place un pipeline CI/CD complet sur AWS avec CodePipeline
-                                        et CodeBuild. À chaque push sur GitHub, ton application est automatiquement buildée
+                                        et CodeBuild. À chaque push de ton code, ton application est automatiquement buildée
                                         et déployée.
                                     </p>
 
