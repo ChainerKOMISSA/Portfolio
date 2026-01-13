@@ -407,83 +407,20 @@ export default function BlogPage() {
                                     </h3>
 
                                     <p className="text-gray-300 mb-3">
-                                        ⚠️ Pour que Jenkins puisse accéder à ton Jenkinsfile, il devrait être disponible sur Github ou Gitlab. Fais donc
-                                        un push pour mettre à jour ton repository. <br/><br/>
-                                        Maintenant que ton <code className="text-blue-400">Jenkinsfile</code> est prêt dans ton dépôt GitHub, il est temps de voir ton pipeline s’exécuter dans Jenkins.
-                                        Comme nous avons installé Jenkins via Docker, tu peux y accéder dans ton navigateur à l’adresse :{""}
-                                        <code className="text-blue-400">http://localhost:8080</code>.
+                                        À la racine de ton projet, crée un fichier nommé Dockerfile.
+                                        Copies et colles le code suivant :
                                     </p>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <p className="text-gray-300 mb-3 font-semibold">Configuration du pipeline dans Jenkins</p>
-                                        <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>Ouvre Jenkins dans ton navigateur et connecte-toi avec ton mot de passe administrateur initial.</li>
-                                            <li>Dans le menu principal, clique sur <strong>New Item</strong> (ou <strong>Nouvel Item</strong>).</li>
-                                            <li>Donne un nom à ton projet et sélectionne <strong>Pipeline</strong>, puis clique sur <strong>OK</strong>.</li>
-                                            <li>Tu arrives sur la page de configuration avec plusieurs sections :</li>
-                                            <ul className="list-disc list-inside ml-5 space-y-1">
-                                                <li><strong>General :</strong> tu peux laisser les options par défaut et ajouter une description si tu veux.</li>
-                                                <li><strong>Triggers :</strong> pour l’instant, ne coche rien. Le pipeline sera lancé manuellement via “Build Now”.</li>
-                                                <p>
-                                                    Plus tard, tu pourras activer : <strong>GitHub hook trigger for GITScm polling</strong>. Cette option déclenche le pipeline automatiquement quand tu pushes sur GitHub.
-                                                </p>
-                                                <li><strong>Pipeline :</strong></li>
-                                                <ul className="list-disc list-inside ml-5 space-y-1">
-                                                    <li><strong>Definition :</strong> choisis <code className="text-blue-400">Pipeline script from SCM</code> pour utiliser le Jenkinsfile depuis Git.</li>
-                                                    <li><strong>SCM :</strong> sélectionne <code className="text-blue-400">Git</code>.</li>
-                                                    <li><strong>Repository URL :</strong> mets l’URL de ton dépôt GitHub.</li>
-                                                    <li><strong>Credentials :</strong> si ton dépôt est privé, ajoute tes identifiants GitHub. Si non, laisse vide.</li>
-                                                    <li><strong>Branches to build :</strong> laisse par défaut <code className="text-blue-400">*/main</code> (ou <code>*/master</code>).</li>
-                                                    <li><strong>Script Path :</strong> mets <code className="text-blue-400">Jenkinsfile</code> (le nom du fichier à la racine du projet).</li>
-                                                </ul>
-                                                <li><strong>Advanced :</strong> laisse par défaut pour le moment.</li>
-                                            </ul>
-                                            <li>Clique sur <strong>Save</strong> pour sauvegarder la configuration.</li>
-                                            <li>Dans le tableau du projet, clique sur <strong>Build Now</strong> (ou <strong>Construire maintenant</strong>) pour lancer ton pipeline.</li>
-                                        </ul>
-                                    </div>
+                                    <CodeBlock
+                                        language="groovy"
+                                        code={`
+                                        FROM nginx:alpine
 
-                                    <p className="text-gray-300 mb-3">
-                                        Après quelques secondes, un nouveau build apparaît dans la colonne de gauche.
-                                        Si tout est correct, ton job s’exécute et Jenkins affiche un statut <strong className="text-green-400">SUCCESS</strong>.
-                                    </p>
+COPY build/ /usr/share/nginx/html
 
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">Astuce</p>
-                                        <p className="text-gray-300 text-sm">
-                                            🔹 Les logs Jenkins affichent toutes les étapes exécutées dans le pipeline.<br/>
-                                            🔹 En cas d’erreur, consulte les logs pour identifier la cause et corriger ton Jenkinsfile ou la configuration du pipeline.
-                                        </p>
-                                    </div>
-
-                                    <p className="text-gray-300 mb-3">
-                                        Ton pipeline est maintenant opérationnel ! Tu peux l’utiliser comme base pour créer des pipelines plus avancés, avec plusieurs stages pour le build, les tests et le déploiement.
-                                    </p>
-
-                                    <p className="text-gray-300 mb-3">
-                                        Exemple de pipeline réussi
-                                    </p>
-                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
-                                        <Image
-                                            src="/reussi.png"
-                                            alt="Exemple de pipeline réussi"
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                    <p className="text-gray-300 mb-3">
-                                        Exemple de pipeline échoué
-                                    </p>
-                                    <div className="relative w-full h-96 mt-3 rounded-lg overflow-hidden">
-                                        <Image
-                                            src="/echoue.png"
-                                            alt="Exemple de pipeline échoué"
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-
-
+EXPOSE 80
+`}
+                                    />
                                 </section>
 
                                 <section id="variables">
