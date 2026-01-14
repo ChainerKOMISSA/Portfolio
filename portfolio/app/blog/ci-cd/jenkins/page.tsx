@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {IoIosArrowDown, IoIosArrowRoundBack} from "react-icons/io";
-import { BsGearFill } from "react-icons/bs";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
 import Image from "next/image";
 
@@ -395,32 +394,465 @@ export default function BlogPage() {
                                         Nous allons maintenant ajouter une étape de CD (Continuous Deployment), c&apos;est-à-dire un déploiement automatique de l&apos;application après le succès du pipeline.
                                     </p>
 
-                                    <p className="text-gray-300 mb-3">
-                                        J&apos;ai choisi d&apos;illustrer le déploiement avec Docker, car c’est une solution
+                                    <p className="text-gray-300 mb-4">
+                                        J&apos;ai choisi d&apos;illustrer le déploiement avec Docker, car c&apos;est une solution
                                         très utilisée en entreprise et parfaitement adaptée à Jenkins.
                                         Cependant, un déploiement continu peut aussi se faire vers d&apos;autres plateformes comme Vercel,
                                         Netlify, Render, Railway, un VPS ou un cloud provider.
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-4">
-                                        Etape 1 : Créer un Dockerfile
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Configuration préalable : Docker dans Jenkins
+                                    </h3>
+
+                                    <div className="bg-neutral-900 rounded-lg p-4 mb-6">
+                                        <p className="text-gray-300 mb-3">
+                                            Pour que Jenkins puisse exécuter des commandes Docker depuis son conteneur, deux conditions doivent être remplies :
+                                        </p>
+                                        <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mb-3">
+                                            <li>Le socket Docker doit être monté dans le conteneur Jenkins (ce qui est déjà fait si tu as suivi le tuto d&apos;installation de Jenkins dans Docker)</li>
+                                            <li>Docker CLI doit être installé à l&apos;intérieur du conteneur Jenkins</li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        Maintenant, installe Docker CLI dans le conteneur Jenkins en exécutant cette commande dans ton terminal :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`docker exec -u root jenkins bash -c "apt-get update && apt-get install -y docker.io"`}
+                                    />
+
+                                        <p className="text-white font-semibold mb-2 mt-3">Vérification</p>
+                                        <p className="text-gray-300 mb-2">
+                                            Pour confirmer que Docker fonctionne correctement dans Jenkins, tu peux créer un petit pipeline de test avec ce stage :
+                                        </p>
+                                        <CodeBlock
+                                            language="groovy"
+                                            code={`stage('Test Docker') {
+    steps {
+        sh 'docker --version'
+    }
+}`}
+                                        />
+                                        <p className="text-gray-300 mt-2">
+                                            Si cette commande s&apos;exécute sans erreur et affiche la version de Docker dans les logs Jenkins, tu es prêt à continuer !
+                                        </p>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 1 : Créer un Dockerfile
                                     </h3>
 
                                     <p className="text-gray-300 mb-3">
-                                        À la racine de ton projet, crée un fichier nommé Dockerfile.
-                                        Copies et colles le code suivant :
+                                        À la racine de ton projet, crée un fichier nommé <code className="text-blue-400">Dockerfile</code>.
+                                        Ce fichier définit comment ton application sera empaquetée dans une image Docker.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Copie et colle le code suivant :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="dockerfile"
+                                        code={`FROM nginx:alpine
+
+COPY build/ /usr/share/nginx/html
+
+EXPOSE 80`}
+                                    />
+
+                                    <p className="text-white font-semibold mb-2 mt-4">Explication du Dockerfile :</p>
+                                    <ul className="none text-gray-300 space-y-1">
+                                            <li><code className="text-blue-400">FROM nginx:alpine</code> : on utilise une image Nginx légère basée sur Alpine Linux</li>
+                                            <li><code className="text-blue-400">COPY build/ /usr/share/nginx/html</code> : on copie le contenu du dossier build (généré par le pipeline) vers le répertoire par défaut de Nginx</li>
+                                            <li><code className="text-blue-400">EXPOSE 80</code> : on expose le port 80 pour accéder à l&apos;application</li>
+                                        </ul>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 2 : Configurer les credentials Docker dans Jenkins
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">Nous allons maintenant configurer Jenkins pour qu&apos;il puisse se connecter à Docker Hub et pousser automatiquement les images après chaque build réussi.</p>
+
+                                    <p className="text-gray-300 mb-4">Avant de continuer, assure-toi d&apos;avoir :</p>
+
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 mb-4">
+                                        <li>Un compte Docker Hub. Tu peux le créer sur le site :  <a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">hub.docker.com</a></li>
+                                        <li>Un repository Docker pour ton image</li>
+                                    </ul>
+
+                                    <details className="mt-4 mb-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>Différence entre Docker Desktop et Docker Hub</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <p className="text-white font-semibold mb-2">Docker Desktop</p>
+                                            <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2">
+                                                <li><strong>Application locale</strong> installée sur ta machine
+                                                qui permet de <strong>créer et gérer des conteneurs</strong> localement</li>
+                                                <li>Interface graphique pour voir tes images et conteneurs</li>
+                                                <li>Nous l&apos;utilisons déjà pour faire tourner Jenkins</li>
+                                            </ul>
+                                            <p className="text-white font-semibold mb-2">Docker Hub</p>
+                                            <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2 mb-6">
+                                                <li><strong>Registre en ligne</strong> qui permet de <strong>stocker et partager</strong> tes images
+                                                    Docker. C&apos;est comme GitHub mais pour les images Docker</li>
+                                                <li>Accessible à l&apos;adresse : <a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">hub.docker.com</a>{" "}
+                                                    et <strong>gratuit</strong> pour les dépôts publics</li>
+                                            </ul>
+                                                <p className="text-white font-semibold mb-2 mt-6">Pourquoi utiliser Docker Hub dans ce pipeline ?</p>
+                                                <p className="text-gray-300 mb-2">
+                                                    Dans un workflow CI/CD professionnel, les images Docker sont généralement poussées vers un registre distant (Docker Hub, AWS ECR, Google Container Registry, etc.).
+                                                    Cela permet de :
+                                                </p>
+                                                <ul className="list-disc list-inside text-gray-300 space-y-1">
+                                                    <li>Sauvegarder les images en ligne</li>
+                                                    <li>Les déployer sur différentes machines ou serveurs</li>
+                                                    <li>Versionner les images</li>
+                                                    <li>Simuler un vrai environnement de production</li>
+                                                </ul>
+                                            <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                                <p className="text-white font-semibold mb-2">Rappel : Deux repositories différents</p>
+                                                <div className="text-gray-300 text-sm space-y-2">
+                                                    <p>
+                                                        <strong>GitHub ou GitLab</strong> : stocke ton <strong>code source</strong>
+                                                    </p>
+                                                    <p>
+                                                        <strong>Docker Hub</strong> : stocke tes <strong>images Docker</strong>
+                                                    </p>
+                                                    <p className="mt-2">
+                                                        Le pipeline récupèrera le code depuis GitHub, le transforme en image Docker, puis pousse cette image vers Docker Hub.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="bg-blue-950/30 border border-blue-900/50  rounded-lg p-4 mt-6">
+                                                <p className="text-gray-300 text-sm">
+                                                    Si tu préfères rester 100% local sans utiliser Docker Hub, tu peux sauter l&apos;étape <code className="text-blue-400">Docker Push</code> et
+                                                    utiliser directement l&apos;image locale dans le stage Deploy. Cependant, pour comprendre le workflow CI/CD complet tel qu&apos;utilisé en entreprise,
+                                                    je te recommande de créer un compte Docker Hub gratuit.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </details>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <p className="text-gray-300 mb-3 font-semibold">Ajouter les credentials dans Jenkins :</p>
+                                        <ul className="list-decimal list-inside space-y-2 text-gray-300">
+                                            <li>Dans Jenkins, clique sur <strong>Manage Jenkins</strong> (l&apos;icône ⚙️ en haut à gauche)</li>
+                                            <li>Sélectionne <strong>Credentials</strong></li>
+                                            <li>Clique sur <strong>System</strong> → <strong>Global credentials</strong> → <strong>Add credentials</strong></li>
+                                            <li>Remplis le formulaire comme suit :</li>
+                                            <ul className="list-disc list-inside ml-5 space-y-1">
+                                                <li><strong>Kind</strong> : <code className="text-blue-400">Username with password</code></li>
+                                                <li><strong>Username</strong> : ton nom d&apos;utilisateur Docker Hub</li>
+                                                <li><strong>Password</strong> : ton mot de passe Docker Hub ou un access token pour plus de sécurité</li>
+                                                <li><strong>ID</strong> : <code className="text-blue-400">docker-credentials</code>. Cet ID est important car on l&apos;utilisera dans le Jenkinsfile.</li>
+                                                <li><strong>Description</strong> : elle est optionnelle</li>
+                                            </ul>
+                                            <li>Clique sur <strong>Create</strong></li>
+                                        </ul>
+                                    </div>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">💡 Astuce sécurité</p>
+                                        <p className="text-gray-300 text-sm">
+                                            Plutôt que d&apos;utiliser ton mot de passe principal, crée un <strong>Access Token</strong> depuis Docker Hub
+                                            (Account Settings → Security → New Access Token).
+                                        </p>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 3 : Mettre à jour le Jenkinsfile complet
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Nous allons maintenant créer un pipeline CI/CD complet qui inclut : build, tests, création de l&apos;image Docker,
+                                        push vers Docker Hub et déploiement automatique.
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Voici le <strong>Jenkinsfile complet</strong> à utiliser :
                                     </p>
 
                                     <CodeBlock
                                         language="groovy"
-                                        code={`
-                                        FROM nginx:alpine
-
-COPY build/ /usr/share/nginx/html
-
-EXPOSE 80
-`}
+                                        code={`pipeline {
+    agent any
+    
+    environment {
+        PROJECT_NAME = 'demo-app'
+        BUILD_DIR = 'build'
+        IMAGE_NAME = 'ton-dockerhub-username/demo-app'  // ⚠️ Remplace par ton username Docker
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Récupération du code source...'
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Construction du projet...'
+                sh '''
+                    mkdir -p \${BUILD_DIR}
+                    cp -r index.html css \${BUILD_DIR}/
+                '''
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Exécution des tests...'
+                sh '''
+                    test -f \${BUILD_DIR}/index.html
+                    test -f \${BUILD_DIR}/css/style.css
+                    echo "Tests réussis!"
+                '''
+            }
+        }
+        
+        stage('Docker Build') {
+            steps {
+                echo "Construction de l'image Docker..."
+                sh 'docker build -t $IMAGE_NAME .'
+            }
+        }
+        
+        stage('Docker Push') {
+            steps {
+                echo "Envoi de l'image vers Docker Hub..."
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker push $IMAGE_NAME
+                    '''
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo "Déploiement automatique de l'application..."
+                sh '''
+                    docker rm -f demo-app || true
+                    docker run -d -p 8081:80 --name demo-app $IMAGE_NAME
+                '''
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline exécuté avec succès!'
+        }
+        failure {
+            echo 'Le pipeline a échoué.'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}`}
                                     />
+
+                                    <div className="bg-red-950/30 border border-red-900/50 rounded-lg p-4 mt-4 mb-6">
+                                        <p className="text-red-200 font-semibold mb-2">⚠️ Important</p>
+                                        <p className="text-gray-300 text-sm">
+                                            N&apos;oublie pas de remplacer <code className="text-blue-400">ton-dockerhub-username</code> par ton vrai nom d&apos;utilisateur Docker Hub dans la variable <code className="text-blue-400">IMAGE_NAME</code> !
+                                        </p>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 4 : Comprendre le pipeline CD
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-4">
+                                        Analysons les nouveaux stages ajoutés pour le déploiement continu :
+                                    </p>
+
+                                    <div className="space-y-4 mb-6">
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-white font-semibold mb-2">Stage &apos;Docker Build&apos;</p>
+                                            <CodeBlock
+                                                language="groovy"
+                                                code={`sh 'docker build -t $IMAGE_NAME .'`}
+                                            />
+                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
+                                                <li>Transforme ton application en une image Docker</li>
+                                                <li><code className="text-blue-400">-t $IMAGE_NAME</code> : donne un nom à l&apos;image (ex: ton-username/demo-app)</li>
+                                                <li><code className="text-blue-400">.</code> : indique que le Dockerfile est dans le répertoire courant</li>
+                                            </ul>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-white font-semibold mb-2">Stage &apos;Docker Push&apos;</p>
+                                            <CodeBlock
+                                                language="groovy"
+                                                code={`withCredentials([...]) {
+    sh '''
+        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+        docker push $IMAGE_NAME
+    '''
+}`}
+                                            />
+                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
+                                                <li><code className="text-blue-400">withCredentials</code> : récupère les identifiants Docker de manière sécurisée</li>
+                                                <li><code className="text-blue-400">docker login</code> : se connecte à Docker Hub</li>
+                                                <li><code className="text-blue-400">docker push</code> : envoie l&apos;image vers Docker Hub</li>
+                                            </ul>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-white font-semibold mb-2">Stage &apos;Deploy&apos;</p>
+                                            <CodeBlock
+                                                language="groovy"
+                                                code={`sh '''
+    docker rm -f demo-app || true
+    docker run -d -p 8081:80 --name demo-app $IMAGE_NAME
+'''`}
+                                            />
+                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
+                                                <li><code className="text-blue-400">docker rm -f demo-app || true</code> : supprime le conteneur existant s&apos;il existe (le || true évite une erreur si le conteneur n&apos;existe pas)</li>
+                                                <li><code className="text-blue-400">docker run -d</code> : lance le conteneur en arrière-plan</li>
+                                                <li><code className="text-blue-400">-p 8081:80</code> : mappe le port 80 du conteneur (Nginx) vers le port 8081 de ta machine</li>
+                                                <li><code className="text-blue-400">--name demo-app</code> : donne un nom au conteneur pour le retrouver facilement</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Étape 5 : Exécuter le pipeline et vérifier le déploiement
+                                    </h3>
+
+                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
+                                        <ul className="list-decimal list-inside space-y-2 text-gray-300">
+                                            <li><strong>Commit et push tes modifications</strong> (Dockerfile + Jenkinsfile) vers GitHub/GitLab</li>
+                                            <li><strong>Lance le pipeline</strong> depuis Jenkins (Build Now)</li>
+                                            <li><strong>Observe les logs</strong> pour chaque stage</li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Si tout se passe bien, tu devrais voir :
+                                    </p>
+
+                                    <ul className="list-none space-y-1 text-gray-300 mb-6">
+                                        <li>✅ L&apos;image Docker construite avec succès</li>
+                                        <li>✅ L&apos;image envoyée vers Docker Hub</li>
+                                        <li>✅ Le conteneur démarré automatiquement</li>
+                                    </ul>
+
+                                    <div className="space-y-4 mb-6">
+                                        <div>
+                                            <p className="text-gray-300 font-semibold mb-2">Vérifier que l&apos;image est sur Docker Hub :</p>
+                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                                <li>Connecte-toi sur <a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">hub.docker.com</a></li>
+                                                <li>Va dans <strong>Repositories</strong></li>
+                                                <li>Tu devrais voir ton image <code className="text-blue-400">demo-app</code> avec un tag <code className="text-blue-400">latest</code></li>
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <p className="text-gray-300 font-semibold mb-2">Vérifier que le conteneur tourne :</p>
+                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                                <li>Ouvre Docker Desktop</li>
+                                                <li>Va dans l&apos;onglet <strong>Containers</strong></li>
+                                                <li>Tu devrais voir <code className="text-blue-400">demo-app</code> avec le statut <strong className="text-green-400">Running</strong></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Accéder à ton application :
+                                    </p>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Ton application est maintenant accessible dans ton navigateur à l&apos;adresse :
+                                    </p>
+
+                                    <div className="bg-neutral-900 inline-block px-4 py-2 rounded mb-6">
+                                        <code className="text-blue-400">http://localhost:8081</code>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Résultat final
+                                    </h3>
+
+                                    <p className="text-gray-300 mb-3">
+                                        Félicitations ! Tu as maintenant un <strong>pipeline CI/CD complet et automatisé</strong> :
+                                    </p>
+
+                                    <ul className="list-none space-y-1 text-gray-300 mb-4">
+                                        <li>1. ✅ <strong>Build</strong> : construction du projet</li>
+                                        <li>2. ✅ <strong>Test</strong> : vérification des fichiers</li>
+                                        <li>3. ✅ <strong>Docker Build</strong> : création de l&apos;image</li>
+                                        <li>4. ✅ <strong>Docker Push</strong> : envoi vers Docker Hub</li>
+                                        <li>5. ✅ <strong>Deploy</strong> : déploiement automatique du conteneur</li>
+                                    </ul>
+
+                                    <div className="bg-neutral-900 rounded-lg p-4 mb-6">
+                                        <p className="text-white font-semibold mb-2">À chaque modification de code :</p>
+                                        <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                            <li>Tu push vers Git</li>
+                                            <li>Jenkins détecte le changement (si tu as activé les webhooks)</li>
+                                            <li>Le pipeline s&apos;exécute automatiquement</li>
+                                            <li>Une nouvelle version de ton app est déployée</li>
+                                        </ul>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Troubleshooting : Erreurs Docker courantes
+                                    </h3>
+
+                                    <div className="space-y-3 mb-6">
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>docker: command not found</code></p>
+                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Docker CLI n&apos;est pas installé dans Jenkins</p>
+                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins bash -c &quot;apt-get update && apt-get install -y docker.io&quot;</code></p>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>Cannot connect to the Docker daemon</code></p>
+                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le socket Docker n&apos;est pas monté</p>
+                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Vérifie que Jenkins a été lancé avec <code className="text-blue-400">-v /var/run/docker.sock:/var/run/docker.sock</code></p>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>permission denied while trying to connect to the Docker daemon</code></p>
+                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Jenkins n&apos;a pas les permissions sur le socket Docker</p>
+                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins chmod 666 /var/run/docker.sock</code></p>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>port is already allocated</code></p>
+                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le port 8081 est déjà utilisé par un autre conteneur</p>
+                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Change le port dans le Jenkinsfile (<code className="text-blue-400">-p 8082:80</code> par exemple) ou arrête le conteneur qui utilise déjà ce port</p>
+                                        </div>
+
+                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                            <p className="text-red-400 font-semibold mb-2">Le conteneur <code>demo-app</code> ne démarre pas</p>
+                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Consulte les logs avec <code className="text-blue-400">docker logs demo-app</code></p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 font-semibold mb-2">À retenir</p>
+                                        <p className="text-gray-300 text-sm">
+                                            🔹 Docker est un <strong>choix personnel</strong> pour illustrer le CD dans ce tutoriel<br/>
+                                            🔹 Le même pipeline pourrait déployer vers <strong>Vercel, Netlify, un serveur cloud, ou Kubernetes</strong><br/>
+                                            🔹 Tu as maintenant un <strong>vrai pipeline CI/CD professionnel</strong> : build → test → image → push → deploy<br/>
+                                            🔹 Cette approche est exactement celle utilisée dans de nombreuses entreprises pour automatiser leurs déploiements
+                                        </p>
+                                    </div>
                                 </section>
 
                                 <section id="variables">
