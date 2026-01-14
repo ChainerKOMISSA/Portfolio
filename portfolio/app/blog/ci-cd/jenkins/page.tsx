@@ -661,7 +661,7 @@ EXPOSE 80`}
     environment {
         PROJECT_NAME = 'demo-app'
         BUILD_DIR = 'build'
-        IMAGE_NAME = 'ton-dockerhub-username/demo-app'  // ⚠️ Remplace par ton username Docker
+        IMAGE_NAME = 'ton-dockerhub-username/demo-app'
     }
     
     stages {
