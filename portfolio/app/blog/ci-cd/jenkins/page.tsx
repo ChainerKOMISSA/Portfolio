@@ -410,18 +410,54 @@ export default function BlogPage() {
                                             Pour que Jenkins puisse exécuter des commandes Docker depuis son conteneur, deux conditions doivent être remplies :
                                         </p>
                                         <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mb-3">
-                                            <li>Le socket Docker doit être monté dans le conteneur Jenkins (ce qui est déjà fait si tu as suivi le tuto d&apos;installation de Jenkins dans Docker)</li>
+                                            <li>Le socket Docker doit être monté dans le conteneur Jenkins</li>
                                             <li>Docker CLI doit être installé à l&apos;intérieur du conteneur Jenkins</li>
                                         </ul>
                                     </div>
 
                                     <p className="text-gray-300 mb-3 mt-4">
-                                        Maintenant, installe Docker CLI dans le conteneur Jenkins en exécutant cette commande dans ton terminal :
+                                        Nous allons d&apos;abord supprimer le conteneur Jenkins qui existait déjà dans Docker avec
+                                        cette commande :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`docker rm -f jenkins`}
+                                    />
+
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        Tu peux remplacer <code className="text-blue-400">jenkins</code> par le nom que tu as donné à ton conteneur dans Docker Desktop.<br/>
+                                        Maintenant, nous allons relancer Jenkins avec le socket Docker monté terminal :
+
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`docker run -d \`
+  -p 8080:8080 -p 50000:50000 \`
+  -v jenkins_home:/var/jenkins_home \`
+  -v /var/run/docker.sock:/var/run/docker.sock \`
+  --name jenkins \`
+  jenkins/jenkins:lts`}
+                                    />
+
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        La ligne <code className="text-blue-400">-v /var/run/docker.sock:/var/run/docker.sock</code> permet à Jenkins d&apos;utiliser le Docker de ta machine.
+                                        <br/>Maintenant, installe Docker CLI dans le conteneur Jenkins en exécutant cette commande dans ton terminal :
                                     </p>
 
                                     <CodeBlock
                                         language="bash"
                                         code={`docker exec -u root jenkins bash -c "apt-get update && apt-get install -y docker.io"`}
+                                    />
+
+                                    <p className="text-gray-300 mb-3 mt-4">
+                                        Puis donnes les permissions :
+                                    </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`docker exec -u root jenkins chmod 666 /var/run/docker.sock`}
                                     />
 
                                         <p className="text-white font-semibold mb-2 mt-3">Vérification</p>
@@ -473,7 +509,19 @@ EXPOSE 80`}
                                         Étape 2 : Configurer les credentials Docker dans Jenkins
                                     </h3>
 
-                                    <p className="text-gray-300 mb-3">Nous allons maintenant configurer Jenkins pour qu&apos;il puisse se connecter à Docker Hub et pousser automatiquement les images après chaque build réussi.</p>
+                                    <p className="text-gray-300 mb-3">En essayant de te connecter à Jenkins, tu dois remettre ton met de passe
+                                    administrateur. Si tu ne l&apos;avais pas sauvegardé, tu peux le retrouver avec cette commande : </p>
+
+                                    <CodeBlock
+                                        language="bash"
+                                        code={`docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword`}
+                                    />
+
+                                    <p className="text-gray-300 mb-3 mt-3">
+                                        Ensuite, tu continueras la configuration en te servant de ce tutoriel : <a href="/blog/docker" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">Installer Jenkins dans Docker</a>.
+                                        <br/>
+                                        Tu dois également recréer ton pipeline, pour cela, tu dois retourner à <a href="#advanced" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">l&apos;étape 4</a> de ce tutoriel.<br/><br/>
+                                        Nous allons maintenant configurer Jenkins pour qu&apos;il puisse se connecter à Docker Hub et pousser automatiquement les images après chaque build réussi.</p>
 
                                     <p className="text-gray-300 mb-4">Avant de continuer, assure-toi d&apos;avoir :</p>
 
@@ -540,7 +588,7 @@ EXPOSE 80`}
                                     <div className="bg-neutral-900 rounded-lg p-5 mb-6">
                                         <p className="text-gray-300 mb-3 font-semibold">Ajouter les credentials dans Jenkins :</p>
                                         <ul className="list-decimal list-inside space-y-2 text-gray-300">
-                                            <li>Dans Jenkins, clique sur <strong>Manage Jenkins</strong> (l&apos;icône ⚙️ en haut à gauche)</li>
+                                            <li>Dans Jenkins, clique sur <strong>Manage Jenkins</strong></li>
                                             <li>Sélectionne <strong>Credentials</strong></li>
                                             <li>Clique sur <strong>System</strong> → <strong>Global credentials</strong> → <strong>Add credentials</strong></li>
                                             <li>Remplis le formulaire comme suit :</li>
@@ -555,13 +603,42 @@ EXPOSE 80`}
                                         </ul>
                                     </div>
 
-                                    <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">💡 Astuce sécurité</p>
-                                        <p className="text-gray-300 text-sm">
-                                            Plutôt que d&apos;utiliser ton mot de passe principal, crée un <strong>Access Token</strong> depuis Docker Hub
-                                            (Account Settings → Security → New Access Token).
-                                        </p>
-                                    </div>
+                                    <details className="mt-4 mb-4 rounded bg-[#0b1220] border border-blue-900 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>Générer un Access Token Docker Hub</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
+
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <p className="text-gray-300 mb-3">
+                                                Pour des raisons de sécurité, il est fortement recommandé d&apos;utiliser un <strong>Access Token</strong> plutôt que ton mot de passe principal.
+                                            </p>
+                                            <ul className="list-decimal list-inside space-y-2 text-gray-300 ">
+                                                <li>Connecte-toi sur <a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">hub.docker.com</a></li>
+                                                <li>Clique sur ton <strong>nom d&apos;utilisateur</strong> en haut à droite</li>
+                                                <li>Sélectionne <strong>Account Settings</strong></li>
+                                                <li>Dans le menu latéral, clique sur <strong>Personal access tokens</strong></li>
+                                                <li>Clique sur <strong>Generate New Token</strong></li>
+                                                <li>Remplis le formulaire :
+                                                    <ul className="list-disc list-inside ml-5 space-y-1 mt-2">
+                                                        <li><strong>Token description</strong> : <code className="text-blue-400">jenkins-pipeline</code> ou un nom de ton choix</li>
+                                                        <li><strong>Access permissions</strong> : Sélectionne <strong>Read & Write</strong>. Cette option est suffisante pour push des images</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Clique sur <strong>Generate</strong></li>
+                                                <li className="text-white">
+                                                    ⚠️ Copie immédiatement le token affiché !
+                                                    Il ne s&apos;affichera qu&apos;une seule fois. Si tu fermes la page sans le copier, tu devras en créer un nouveau.
+                                                </li>
+                                            </ul>
+                                            <div className="bg-blue-950/30 border border-blue-800 rounded-lg p-3 mt-4">
+                                                <p className="text-blue-200 text-sm">
+                                                    Tu peux sauvegarder temporairement ton token dans un fichier texte ou directement dans Jenkins.
+                                                    Tu peux supprimer le fichier après avoir configuré Jenkins.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </details>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
                                         Étape 3 : Mettre à jour le Jenkinsfile complet
@@ -663,16 +740,13 @@ EXPOSE 80`}
     }
 }`}
                                     />
-
-                                    <div className="bg-red-950/30 border border-red-900/50 rounded-lg p-4 mt-4 mb-6">
-                                        <p className="text-red-200 font-semibold mb-2">⚠️ Important</p>
-                                        <p className="text-gray-300 text-sm">
-                                            N&apos;oublie pas de remplacer <code className="text-blue-400">ton-dockerhub-username</code> par ton vrai nom d&apos;utilisateur Docker Hub dans la variable <code className="text-blue-400">IMAGE_NAME</code> !
-                                        </p>
-                                    </div>
+                                    <p className="text-gray-300 mt-4">
+                                        ⚠️ N&apos;oublie pas de remplacer <code className="text-blue-400">ton-dockerhub-username</code> par ton vrai nom d&apos;utilisateur Docker Hub
+                                        et <code className="text-blue-400">demo-app</code> par le nom de ton repository dans la variable <code className="text-blue-400">IMAGE_NAME</code> !
+                                    </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 4 : Comprendre le pipeline CD
+                                        Comprendre le pipeline CD
                                     </h3>
 
                                     <p className="text-gray-300 mb-4">
@@ -680,81 +754,77 @@ EXPOSE 80`}
                                     </p>
 
                                     <div className="space-y-4 mb-6">
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-white font-semibold mb-2">Stage &apos;Docker Build&apos;</p>
-                                            <CodeBlock
-                                                language="groovy"
-                                                code={`sh 'docker build -t $IMAGE_NAME .'`}
-                                            />
-                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
-                                                <li>Transforme ton application en une image Docker</li>
-                                                <li><code className="text-blue-400">-t $IMAGE_NAME</code> : donne un nom à l&apos;image (ex: ton-username/demo-app)</li>
-                                                <li><code className="text-blue-400">.</code> : indique que le Dockerfile est dans le répertoire courant</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
+                                        <p className="text-white font-semibold mb-2">Stage &apos;Docker Build&apos;</p>
+                                        <pre className="bg-neutral-900 text-blue-300 p-4 rounded-md overflow-auto text-sm mb-4">
+                                            <code>
+                                                {`sh 'docker build -t $IMAGE_NAME .'`}
+                                            </code>
+                                        </pre>
+                                        <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
+                                            <li>Cette étape transforme ton application en une image Docker</li>
+                                            <li><code className="text-blue-400">-t $IMAGE_NAME</code> : donne un nom à l&apos;image. Dans ce cas, le nom de ton repository sur Docker Hub</li>
+                                            <li><code className="text-blue-400">.</code> : indique que le Dockerfile est dans le répertoire courant</li>
+                                        </ul>
                                             <p className="text-white font-semibold mb-2">Stage &apos;Docker Push&apos;</p>
-                                            <CodeBlock
-                                                language="groovy"
-                                                code={`withCredentials([...]) {
+                                            <pre className="bg-neutral-900 text-blue-300 p-4 rounded-md overflow-auto text-sm mb-4">
+                                            <code>
+                                                {`withCredentials([...]) {
     sh '''
         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
         docker push $IMAGE_NAME
     '''
 }`}
-                                            />
+                                            </code>
+                                            </pre>
                                             <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
                                                 <li><code className="text-blue-400">withCredentials</code> : récupère les identifiants Docker de manière sécurisée</li>
                                                 <li><code className="text-blue-400">docker login</code> : se connecte à Docker Hub</li>
                                                 <li><code className="text-blue-400">docker push</code> : envoie l&apos;image vers Docker Hub</li>
                                             </ul>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
                                             <p className="text-white font-semibold mb-2">Stage &apos;Deploy&apos;</p>
-                                            <CodeBlock
-                                                language="groovy"
-                                                code={`sh '''
+                                            <pre className="bg-neutral-900 text-blue-300 p-4 rounded-md overflow-auto text-sm mb-4">
+                                            <code>
+                                                {`sh '''
     docker rm -f demo-app || true
     docker run -d -p 8081:80 --name demo-app $IMAGE_NAME
 '''`}
-                                            />
+                                            </code>
+                                            </pre>
                                             <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 mt-2">
                                                 <li><code className="text-blue-400">docker rm -f demo-app || true</code> : supprime le conteneur existant s&apos;il existe (le || true évite une erreur si le conteneur n&apos;existe pas)</li>
                                                 <li><code className="text-blue-400">docker run -d</code> : lance le conteneur en arrière-plan</li>
                                                 <li><code className="text-blue-400">-p 8081:80</code> : mappe le port 80 du conteneur (Nginx) vers le port 8081 de ta machine</li>
                                                 <li><code className="text-blue-400">--name demo-app</code> : donne un nom au conteneur pour le retrouver facilement</li>
                                             </ul>
-                                        </div>
                                     </div>
 
                                     <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Étape 5 : Exécuter le pipeline et vérifier le déploiement
+                                        Étape 4 : Exécuter le pipeline et vérifier le déploiement
                                     </h3>
+                                    <p className="text-gray-300 mb-4">
+                                        Pour vérifier que le déploiement fonctionne :
+                                    </p>
 
-                                    <div className="bg-neutral-900 rounded-lg p-5 mb-6">
-                                        <ul className="list-decimal list-inside space-y-2 text-gray-300">
-                                            <li><strong>Commit et push tes modifications</strong> (Dockerfile + Jenkinsfile) vers GitHub/GitLab</li>
-                                            <li><strong>Lance le pipeline</strong> depuis Jenkins (Build Now)</li>
-                                            <li><strong>Observe les logs</strong> pour chaque stage</li>
-                                        </ul>
-                                    </div>
+                                    <ul className="list-decimal list-inside space-y-2 text-gray-300">
+                                        <li><strong>Fais un commit et push tes modifications</strong> contenant le Dockerfile et le Jenkinsfile vers GitHub ou GitLab</li>
+                                        <li><strong>Lance le pipeline</strong> depuis Jenkins en cliquant sur <strong className="text-blue-400">&quot;Build Now&quot;</strong></li>
+                                        <li><strong>Observe les logs</strong> pour chaque stage</li>
+                                    </ul>
 
-                                    <p className="text-gray-300 mb-3">
+                                    <p className="text-gray-300 mb-3 mt-4">
                                         Si tout se passe bien, tu devrais voir :
                                     </p>
 
-                                    <ul className="list-none space-y-1 text-gray-300 mb-6">
-                                        <li>✅ L&apos;image Docker construite avec succès</li>
-                                        <li>✅ L&apos;image envoyée vers Docker Hub</li>
-                                        <li>✅ Le conteneur démarré automatiquement</li>
+                                    <ul className="list-disc space-y-1 text-gray-300 mb-6 ml-3">
+                                        <li>L&apos;image Docker construite avec succès</li>
+                                        <li>L&apos;image envoyée vers Docker Hub</li>
+                                        <li>Le conteneur démarré automatiquement</li>
                                     </ul>
 
                                     <div className="space-y-4 mb-6">
                                         <div>
                                             <p className="text-gray-300 font-semibold mb-2">Vérifier que l&apos;image est sur Docker Hub :</p>
-                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                            <ul className="list-disc list-inside text-gray-300 space-y-1">
                                                 <li>Connecte-toi sur <a href="https://hub.docker.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">hub.docker.com</a></li>
                                                 <li>Va dans <strong>Repositories</strong></li>
                                                 <li>Tu devrais voir ton image <code className="text-blue-400">demo-app</code> avec un tag <code className="text-blue-400">latest</code></li>
@@ -763,7 +833,7 @@ EXPOSE 80`}
 
                                         <div>
                                             <p className="text-gray-300 font-semibold mb-2">Vérifier que le conteneur tourne :</p>
-                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                            <ul className="list-disc list-inside text-gray-300 space-y-1">
                                                 <li>Ouvre Docker Desktop</li>
                                                 <li>Va dans l&apos;onglet <strong>Containers</strong></li>
                                                 <li>Tu devrais voir <code className="text-blue-400">demo-app</code> avec le statut <strong className="text-green-400">Running</strong></li>
@@ -783,69 +853,69 @@ EXPOSE 80`}
                                         <code className="text-blue-400">http://localhost:8081</code>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Résultat final
-                                    </h3>
 
                                     <p className="text-gray-300 mb-3">
-                                        Félicitations ! Tu as maintenant un <strong>pipeline CI/CD complet et automatisé</strong> :
+                                       Tu as maintenant un <strong>pipeline CI/CD complet et automatisé</strong> qui fait :
                                     </p>
 
                                     <ul className="list-none space-y-1 text-gray-300 mb-4">
-                                        <li>1. ✅ <strong>Build</strong> : construction du projet</li>
-                                        <li>2. ✅ <strong>Test</strong> : vérification des fichiers</li>
-                                        <li>3. ✅ <strong>Docker Build</strong> : création de l&apos;image</li>
-                                        <li>4. ✅ <strong>Docker Push</strong> : envoi vers Docker Hub</li>
-                                        <li>5. ✅ <strong>Deploy</strong> : déploiement automatique du conteneur</li>
+                                        <li>1.<strong>Build</strong> : construction du projet</li>
+                                        <li>2.<strong>Test</strong> : vérification des fichiers</li>
+                                        <li>3.<strong>Docker Build</strong> : création de l&apos;image</li>
+                                        <li>4.<strong>Docker Push</strong> : envoi vers Docker Hub</li>
+                                        <li>5.<strong>Deploy</strong> : déploiement automatique du conteneur</li>
                                     </ul>
 
                                     <div className="bg-neutral-900 rounded-lg p-4 mb-6">
                                         <p className="text-white font-semibold mb-2">À chaque modification de code :</p>
-                                        <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                                        <ul className="list-disc list-inside text-gray-300 space-y-1">
                                             <li>Tu push vers Git</li>
-                                            <li>Jenkins détecte le changement (si tu as activé les webhooks)</li>
+                                            <li>Jenkins détecte le changement</li>
                                             <li>Le pipeline s&apos;exécute automatiquement</li>
                                             <li>Une nouvelle version de ton app est déployée</li>
                                         </ul>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
-                                        Troubleshooting : Erreurs Docker courantes
-                                    </h3>
+                                    <details className="mt-4 mb-4 rounded bg-neutral-900 border border-red-900/50 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>Erreurs Docker courantes</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
 
-                                    <div className="space-y-3 mb-6">
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>docker: command not found</code></p>
-                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Docker CLI n&apos;est pas installé dans Jenkins</p>
-                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins bash -c &quot;apt-get update && apt-get install -y docker.io&quot;</code></p>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <div className="space-y-3 mb-6">
+                                                <div className="bg-neutral-900 rounded-lg p-4">
+                                                    <p className="text-red-400 font-semibold mb-2">Erreur : <code>docker: command not found</code></p>
+                                                    <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Docker CLI n&apos;est pas installé dans Jenkins</p>
+                                                    <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins bash -c &quot;apt-get update && apt-get install -y docker.io&quot;</code></p>
+                                                </div>
+
+                                                <div className="bg-neutral-900 rounded-lg p-4">
+                                                    <p className="text-red-400 font-semibold mb-2">Erreur : <code>Cannot connect to the Docker daemon</code></p>
+                                                    <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le socket Docker n&apos;est pas monté</p>
+                                                    <p className="text-gray-300 text-sm"><strong>Solution :</strong> Vérifie que Jenkins a été lancé avec <code className="text-blue-400">-v /var/run/docker.sock:/var/run/docker.sock</code></p>
+                                                </div>
+
+                                                <div className="bg-neutral-900 rounded-lg p-4">
+                                                    <p className="text-red-400 font-semibold mb-2">Erreur : <code>permission denied while trying to connect to the Docker daemon</code></p>
+                                                    <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Jenkins n&apos;a pas les permissions sur le socket Docker</p>
+                                                    <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins chmod 666 /var/run/docker.sock</code></p>
+                                                </div>
+
+                                                <div className="bg-neutral-900 rounded-lg p-4">
+                                                    <p className="text-red-400 font-semibold mb-2">Erreur : <code>port is already allocated</code></p>
+                                                    <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le port 8081 est déjà utilisé par un autre conteneur</p>
+                                                    <p className="text-gray-300 text-sm"><strong>Solution :</strong> Change le port dans le Jenkinsfile (<code className="text-blue-400">-p 8082:80</code> par exemple) ou arrête le conteneur qui utilise déjà ce port</p>
+                                                </div>
+
+                                                <div className="bg-neutral-900 rounded-lg p-4">
+                                                    <p className="text-red-400 font-semibold mb-2">Le conteneur <code>demo-app</code> ne démarre pas</p>
+                                                    <p className="text-gray-300 text-sm"><strong>Solution :</strong> Consulte les logs avec <code className="text-blue-400">docker logs demo-app</code></p>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>Cannot connect to the Docker daemon</code></p>
-                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le socket Docker n&apos;est pas monté</p>
-                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Vérifie que Jenkins a été lancé avec <code className="text-blue-400">-v /var/run/docker.sock:/var/run/docker.sock</code></p>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>permission denied while trying to connect to the Docker daemon</code></p>
-                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Jenkins n&apos;a pas les permissions sur le socket Docker</p>
-                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Exécute <code className="text-blue-400">docker exec -u root jenkins chmod 666 /var/run/docker.sock</code></p>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-red-400 font-semibold mb-2">Erreur : <code>port is already allocated</code></p>
-                                            <p className="text-gray-300 text-sm mb-1"><strong>Cause :</strong> Le port 8081 est déjà utilisé par un autre conteneur</p>
-                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Change le port dans le Jenkinsfile (<code className="text-blue-400">-p 8082:80</code> par exemple) ou arrête le conteneur qui utilise déjà ce port</p>
-                                        </div>
-
-                                        <div className="bg-neutral-900 rounded-lg p-4">
-                                            <p className="text-red-400 font-semibold mb-2">Le conteneur <code>demo-app</code> ne démarre pas</p>
-                                            <p className="text-gray-300 text-sm"><strong>Solution :</strong> Consulte les logs avec <code className="text-blue-400">docker logs demo-app</code></p>
-                                        </div>
-                                    </div>
-
+                                    </details>
                                     <div className="bg-blue-950/30 border border-blue-900/50 rounded-lg p-4 mb-6">
-                                        <p className="text-blue-200 font-semibold mb-2">À retenir</p>
                                         <p className="text-gray-300 text-sm">
                                             🔹 Docker est un <strong>choix personnel</strong> pour illustrer le CD dans ce tutoriel<br/>
                                             🔹 Le même pipeline pourrait déployer vers <strong>Vercel, Netlify, un serveur cloud, ou Kubernetes</strong><br/>
@@ -857,7 +927,7 @@ EXPOSE 80`}
 
                                 <section id="variables">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        5. Variables et secrets Jenkins
+                                        6. Variables et secrets Jenkins
                                     </h2>
 
                                     <p className="text-gray-300 mb-3">
@@ -901,7 +971,7 @@ EXPOSE 80`}
 
                                 <section id="debug">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        6. Dépannage et bonnes pratiques
+                                        7. Dépannage et bonnes pratiques
                                     </h2>
 
                                     <p className="text-gray-300 mb-3">
@@ -929,7 +999,7 @@ EXPOSE 80`}
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        7. Conclusion
+                                        8. Conclusion
                                     </h2>
 
                                     <p className="text-gray-300 mb-3">
@@ -987,14 +1057,17 @@ EXPOSE 80`}
                             <Link href="#advanced" className="hover:text-white">
                                 4. Pipeline multi-stages
                             </Link>
+                            <Link href="#deploy" className="hover:text-white">
+                                5. Déploiement continu avec Docker
+                            </Link>
                             <Link href="#variables" className="hover:text-white">
-                                5. Variables et secrets
+                                6. Variables et secrets
                             </Link>
                             <Link href="#debug" className="hover:text-white">
-                                6. Dépannage
+                                7. Dépannage
                             </Link>
                             <Link href="#conclusion" className="hover:text-white">
-                                7. Conclusion
+                                8. Conclusion
                             </Link>
                         </nav>
                     </aside>
