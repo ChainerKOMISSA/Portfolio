@@ -31,8 +31,6 @@ export default function BlogPage() {
                         </div>
                         <div className="px-4 py-10 md:py-20 w-full">
                             <div className="w-full space-y-16">
-
-                                {/* INTRO */}
                                 <section id="intro">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         1. Introduction
@@ -79,14 +77,13 @@ export default function BlogPage() {
                                     </ul>
                                 </section>
 
-                                {/* SETUP */}
                                 <section id="setup">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         2. Configuration et installation
                                     </h2>
 
                                     <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        a. Créer un compte Stripe
+                                        Créer un compte Stripe
                                     </h3>
                                     <p className="text-gray-300 mb-4">
                                         Pour commencer, nous allons créer un compte sur <a
@@ -126,153 +123,108 @@ export default function BlogPage() {
                                             <li>Connecte-toi à votre Dashboard Stripe</li>
                                             <li>Active le &quot;Mode Test&quot; en haut à droite </li>
                                             <li>Vas dans <strong>Développeurs</strong> puis <strong>Clés API</strong></li>
-                                            <li>Copiez votre &quot;Clé publique&quot; et votre &quot;Clé secrète&quot;</li>
+                                            <li>Copie la &quot;Clé publique&quot; et la &quot;Clé secrète&quot;</li>
                                         </ol>
-                                        <p className="text-gray-300 text-sm mt-3">
-                                            En mode test, il est possible de simuler des paiements sans débiter de vraies cartes.
-                                        </p>
                                     </div>
 
                                     <h3 className="text-xl font-semibold text-white mt-8 mb-3">
-                                        b. Installer les librairies Stripe
+                                        Installer les librairies Stripe
                                     </h3>
                                     <p className="text-gray-300 mb-4">
                                         Nous allons installer deux packages npm essentiels :
                                     </p>
-
-                                    <div className="bg-black-100/50 rounded-lg p-4 mb-4">
-                                        <ul className="space-y-3 text-sm text-gray-300">
-                                            <li>
-                                                <code className="text-blue-400 font-semibold">@stripe/stripe-js</code> →
-                                                Librairie côté client pour charger Stripe.js et rediriger vers le checkout
-                                            </li>
-                                            <li>
-                                                <code className="text-blue-400 font-semibold">stripe</code> →
-                                                SDK Node.js pour interagir avec l'API Stripe côté serveur (créer des sessions, webhooks, etc.)
-                                            </li>
-                                        </ul>
-                                    </div>
-
                                     <p className="text-gray-300 mb-2">
-                                        Dans votre terminal, à la racine de votre projet Next.js/React, exécutez :
+                                        Dans le terminal, à la racine de ton projet Next.js/React, exécute :
                                     </p>
                                     <CodeBlock
                                         language="bash"
                                         code={`npm install @stripe/stripe-js stripe`}
                                     />
-
-                                    <p className="text-gray-400 text-sm mt-2">
-                                        💡 Si vous utilisez Yarn : <code>yarn add @stripe/stripe-js stripe</code>
-                                    </p>
-
                                     <h3 className="text-xl font-semibold text-white mt-8 mb-3">
-                                        c. Configurer les variables d'environnement
+                                        Configurer les variables d&apos;environnement
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        Pour sécuriser vos clés API, nous allons les stocker dans un fichier <code className="text-blue-400">.env.local</code>.
-                                        Ce fichier ne sera jamais committé dans Git (ajoutez-le au <code>.gitignore</code>).
+                                        Nous allons maintenant stocker nos deux clés d&apos;API dans un fichier
+                                        <code className="text-blue-400">.env</code>. À la racine de ton projet,
+                                        crée un fichier <code className="text-blue-400">.env</code> et copies-y le code suivant
+                                        en y mettant les valeurs de tes clés :
                                     </p>
-
-                                    <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-4 mb-4">
-                                        <p className="text-yellow-200 text-sm">
-                                            ⚠️ <strong>Important :</strong> Dans Next.js, les variables préfixées par <code className="text-yellow-300">NEXT_PUBLIC_</code>
-                                            sont accessibles côté client. Les autres sont exclusivement côté serveur.
-                                        </p>
-                                    </div>
-
-                                    <p className="text-gray-300 mb-2">
-                                        À la racine de votre projet (même niveau que <code>package.json</code>), créez un fichier <code className="text-blue-400">.env.local</code> :
-                                    </p>
-                                    <CodeBlock
-                                        language="bash"
-                                        code={`# Clé publique Stripe (accessible côté client)
+                                    <pre className="bg-neutral-900 text-green-400 p-4 rounded">
+                                        <code>
+                                            {`# Clé publique
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxx
 
-# Clé secrète Stripe (uniquement côté serveur - NE JAMAIS exposer)
+# Clé secrète
 STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxx`}
-                                    />
-
-                                    <div className="bg-gray-800 rounded-lg p-4 mt-4">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            📝 <strong>Bonnes pratiques :</strong>
-                                        </p>
-                                        <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                            <li>Remplacez <code>xxxxx</code> par vos vraies clés copiées depuis Stripe Dashboard</li>
-                                            <li>Vérifiez que <code>.env.local</code> est bien dans votre <code>.gitignore</code></li>
-                                            <li>Redémarrez votre serveur Next.js après avoir modifié le fichier .env</li>
-                                            <li>En production, configurez ces variables sur votre plateforme d'hébergement (Vercel, Netlify, etc.)</li>
-                                        </ul>
-                                    </div>
+                                        </code>
+                                    </pre>
                                 </section>
 
-                                {/* API ROUTE */}
                                 <section id="api">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         3. Créer une API Route pour Stripe Checkout
                                     </h2>
                                     <p className="text-gray-300 mb-4">
                                         Maintenant que notre environnement est configuré, nous allons créer une <strong>API route</strong> côté serveur
-                                        qui génère une session de paiement Stripe. Cette étape est cruciale car elle permet de garder votre clé secrète
-                                        en sécurité côté serveur.
+                                        qui génère une session de paiement Stripe.
+                                        <br/>
+                                        Le flux de paiement ci-dessous va t(aider à comprendre les enchaînements
+                                        depuis le clic de l&apos;utilisateur sur le bouton &quot;Payer&quot; jusqu&apos;à l&apos;enregistrement du
+                                        paiement.
                                     </p>
 
                                     <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mb-6">
-                                        <h4 className="text-white font-semibold mb-2">🧠 Comprendre le flux de paiement :</h4>
+                                        <h4 className="text-white font-semibold mb-2">Flux de paiement :</h4>
                                         <ol className="list-decimal list-inside text-gray-300 text-sm space-y-2 ml-2">
-                                            <li>L'utilisateur clique sur "Payer" dans votre interface React</li>
-                                            <li>Votre frontend appelle cette API route avec les détails du produit</li>
-                                            <li>L'API crée une <strong>session Checkout</strong> sur Stripe (côté serveur sécurisé)</li>
+                                            <li>L&apos;utilisateur clique sur &quot;Payer&quot; dans l&apos;interface React</li>
+                                            <li>Le frontend appelle cette API route avec les détails du produit</li>
+                                            <li>L&apos;API crée une <strong>session Checkout</strong> sur Stripe </li>
                                             <li>Stripe retourne un <code>session.id</code> unique</li>
-                                            <li>Votre frontend redirige l'utilisateur vers la page Checkout Stripe</li>
-                                            <li>L'utilisateur paie sur la page Stripe (hébergée et sécurisée)</li>
-                                            <li>Stripe redirige l'utilisateur vers votre <code>success_url</code> ou <code>cancel_url</code></li>
+                                            <li>Le frontend redirige l&apos;utilisateur vers la page Checkout Stripe</li>
+                                            <li>L&apos;utilisateur paie sur la page Stripe</li>
+                                            <li>Stripe redirige l&apos;utilisateur vers un <code>success_url</code> si le paiement passe et un <code>cancel_url</code> si l&apos;utilisateur annule le paiement.</li>
                                         </ol>
                                     </div>
 
                                     <h3 className="text-xl font-semibold text-white mb-3">
-                                        📁 Structure du fichier
+                                        Structure du fichier
                                     </h3>
                                     <p className="text-gray-300 mb-2">
-                                        Dans Next.js 13+ (App Router), créez le fichier suivant :
+                                        Dans ton projet, crée la route suivante :
                                     </p>
                                     <div className="bg-gray-800 rounded-lg p-3 mb-4">
-                                        <code className="text-blue-400">app/api/checkout/route.js</code>
+                                        <code className="text-blue-400">app/api/stripe/checkout/route.ts</code>
                                     </div>
-
-                                    <p className="text-gray-400 text-sm mb-4">
-                                        💡 Si vous utilisez le Pages Router (Next.js 12 et antérieur), créez plutôt : <code>pages/api/checkout.js</code>
+                                    <p className="text-gray-300 mb-2">
+                                       Mets-y le code suivant :
                                     </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        💻 Code de l'API Route
-                                    </h3>
                                     <CodeBlock
                                         language="javascript"
                                         code={`import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// Initialisation de Stripe avec votre clé secrète
+// Initialisation de Stripe avec la clé secrète
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function POST() {
   try {
     // Création d'une session Checkout
     const session = await stripe.checkout.sessions.create({
-      // Méthodes de paiement acceptées
       payment_method_types: ["card"],
       
-      // Mode de paiement : "payment" (paiement unique) ou "subscription" (abonnement)
+      // Ce mode de paiement peut être "subscription" dans le cas d'un abonnement
       mode: "payment",
       
-      // Produits à acheter
       line_items: [
         {
           price_data: {
-            currency: "usd", // Devise (usd, eur, gbp, etc.)
+            currency: "eur",
             product_data: { 
-              name: "Produit Test", // Nom du produit
+              name: "Produit",
+              description: "Page de paiement",
             },
-            unit_amount: 2000, // Prix en CENTIMES (2000 = 20.00 USD)
+            unit_amount: 2000, // Prix en centimes
           },
           quantity: 1, // Quantité
         },
@@ -294,208 +246,38 @@ export async function POST() {
   }
 }`}
                                     />
-
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🔍 Explication détaillée du code
-                                    </h3>
-
-                                    <div className="space-y-4">
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                1. Imports et initialisation
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`import Stripe from "stripe";
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                On importe le SDK Stripe et on l'initialise avec notre clé secrète stockée dans les variables d'environnement.
-                                            </p>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                2. payment_method_types
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`payment_method_types: ["card"]`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Définit les méthodes de paiement acceptées. Options courantes :
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li><code>"card"</code> → Cartes bancaires classiques</li>
-                                                <li><code>"apple_pay"</code> → Apple Pay</li>
-                                                <li><code>"google_pay"</code> → Google Pay</li>
-                                                <li><code>"klarna"</code> → Paiement différé Klarna</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                3. mode
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`mode: "payment"`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Deux valeurs possibles :
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li><code>"payment"</code> → Paiement unique (e-commerce, achat simple)</li>
-                                                <li><code>"subscription"</code> → Abonnement récurrent (mensuel, annuel...)</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                4. line_items (articles)
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`line_items: [
-  {
-    price_data: {
-      currency: "usd",
-      product_data: { name: "Produit Test" },
-      unit_amount: 2000, // 20.00 USD en centimes
-    },
-    quantity: 1,
-  },
-]`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Liste des produits à vendre. Points importants :
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li><code>currency</code> → Code ISO de la devise (eur, usd, gbp...)</li>
-                                                <li><code>unit_amount</code> → Prix en <strong>centimes</strong> (2000 = 20.00 €)</li>
-                                                <li><code>quantity</code> → Nombre d'unités</li>
-                                            </ul>
-                                            <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-3 mt-3">
-                                                <p className="text-yellow-200 text-xs">
-                                                    ⚠️ <strong>Piège courant :</strong> Le montant doit TOUJOURS être en centimes !
-                                                    Pour 50€, mettez <code>5000</code>, pas <code>50</code>.
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                5. URLs de redirection
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`success_url: "http://localhost:3000/success",
-cancel_url: "http://localhost:3000/cancel"`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Après le paiement, Stripe redirige automatiquement l'utilisateur :
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li><code>success_url</code> → Si le paiement réussit</li>
-                                                <li><code>cancel_url</code> → Si l'utilisateur annule</li>
-                                            </ul>
-                                            <p className="text-yellow-200 text-xs mt-3">
-                                                💡 En production, remplacez <code>http://localhost:3000</code> par votre vraie URL (ex: <code>https://monsite.com</code>)
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        📝 Exemple avec plusieurs produits
-                                    </h3>
-                                    <p className="text-gray-300 mb-2">
-                                        Si vous voulez vendre plusieurs articles dans le même panier :
-                                    </p>
-                                    <CodeBlock
-                                        language="javascript"
-                                        code={`line_items: [
-  {
-    price_data: {
-      currency: "eur",
-      product_data: { 
-        name: "Formation React Avancé",
-        description: "Cours complet avec certificat"
-      },
-      unit_amount: 9900, // 99.00 EUR
-    },
-    quantity: 1,
-  },
-  {
-    price_data: {
-      currency: "eur",
-      product_data: { 
-        name: "Ebook JavaScript",
-      },
-      unit_amount: 1500, // 15.00 EUR
-    },
-    quantity: 2, // Achète 2 exemplaires
-  },
-]`}
-                                    />
-
-                                    <div className="bg-gray-800 rounded-lg p-4 mt-6">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            ✅ <strong>Checkpoint :</strong> À ce stade, vous devriez avoir :
-                                        </p>
-                                        <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                            <li>Un fichier <code>app/api/checkout/route.js</code> créé</li>
-                                            <li>Vos clés Stripe configurées dans <code>.env.local</code></li>
-                                            <li>Une compréhension du flux de création de session</li>
-                                        </ul>
-                                    </div>
                                 </section>
 
-                                {/* BOUTON */}
                                 <section id="composant">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         4. Créer un composant React pour déclencher le paiement
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Maintenant que notre API est prête, créons un composant React qui permet à l'utilisateur
-                                        de lancer le processus de paiement. Ce composant va appeler notre API, récupérer l'ID de session,
-                                        puis rediriger l'utilisateur vers la page Stripe Checkout.
+                                        Maintenant que notre API est prête, créons un composant React qui permet à l&apos;utilisateur
+                                        de lancer le processus de paiement. Ce composant va appeler notre API, récupérer l&apos;ID de session,
+                                        puis rediriger l&apos;utilisateur vers la page Stripe Checkout.
                                     </p>
 
-                                    <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mb-6">
-                                        <h4 className="text-white font-semibold mb-2">🔄 Flux du composant :</h4>
-                                        <ol className="list-decimal list-inside text-gray-300 text-sm space-y-2 ml-2">
-                                            <li>L'utilisateur clique sur le bouton "Payer"</li>
-                                            <li>Le composant appelle <code>POST /api/checkout</code></li>
-                                            <li>L'API retourne un <code>session.id</code></li>
-                                            <li>Stripe.js redirige vers la page de paiement avec cet ID</li>
-                                            <li>L'utilisateur complète le paiement sur Stripe</li>
-                                        </ol>
-                                    </div>
-
                                     <h3 className="text-xl font-semibold text-white mb-3">
-                                        📁 Créer le fichier du composant
+                                        Créer le fichier du composant
                                     </h3>
                                     <p className="text-gray-300 mb-2">
-                                        Créez un nouveau fichier pour votre composant :
+                                        Crée un nouveau fichier pour le composant :
                                     </p>
                                     <div className="bg-gray-800 rounded-lg p-3 mb-4">
                                         <code className="text-blue-400">components/StripeButton.js</code>
                                     </div>
-                                    <p className="text-gray-400 text-sm mb-4">
-                                        💡 Vous pouvez aussi le placer dans <code>app/components/</code> selon votre structure de projet.
+                                    <p className="text-gray-300 mb-2">
+                                        Mets-y le code suivant :
                                     </p>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        💻 Code du composant
-                                    </h3>
                                     <CodeBlock
                                         language="jsx"
-                                        code={`"use client"; // Directive Next.js pour composant client
+                                        code={`"use client";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
 
-// Chargement de Stripe avec la clé publique
+
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
@@ -507,7 +289,6 @@ export default function StripeButton() {
     setLoading(true);
     
     try {
-      // Appel de notre API pour créer la session
       const res = await fetch("/api/checkout", { 
         method: "POST",
         headers: {
@@ -517,18 +298,15 @@ export default function StripeButton() {
 
       const data = await res.json();
 
-      // Vérification des erreurs
       if (data.error) {
         console.error("Erreur:", data.error);
         alert("Erreur lors de la création du paiement");
         setLoading(false);
         return;
       }
-
-      // Récupération de l'instance Stripe
+      
       const stripe = await stripePromise;
-
-      // Redirection vers Stripe Checkout
+      
       const { error } = await stripe.redirectToCheckout({ 
         sessionId: data.id 
       });
@@ -557,192 +335,19 @@ export default function StripeButton() {
   );
 }`}
                                     />
-
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🔍 Explication ligne par ligne
-                                    </h3>
-
-                                    <div className="space-y-4">
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                1. Directive "use client"
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`"use client";`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Dans Next.js 13+ (App Router), cette directive indique que ce composant s'exécute côté client
-                                                (navigateur). C'est nécessaire car on utilise des hooks React (<code>useState</code>) et des
-                                                événements utilisateur (<code>onClick</code>).
-                                            </p>
-                                            <p className="text-gray-400 text-xs mt-2">
-                                                ℹ️ Si vous utilisez le Pages Router, vous n'avez pas besoin de cette ligne.
-                                            </p>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                2. Chargement de Stripe.js
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-);`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                <code>loadStripe()</code> charge la librairie Stripe.js de manière asynchrone. On utilise
-                                                notre clé <strong>publique</strong> (préfixée <code>NEXT_PUBLIC_</code> pour être accessible côté client).
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li>La Promise est créée <strong>une seule fois</strong> au chargement du module</li>
-                                                <li>Stripe.js est ensuite mis en cache par le navigateur</li>
-                                                <li>Cela optimise les performances</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                3. État de chargement
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`const [loading, setLoading] = useState(false);`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                Un état React pour suivre si le paiement est en cours. Cela permet de :
-                                            </p>
-                                            <ul className="list-disc list-inside text-gray-400 text-sm ml-4 mt-2">
-                                                <li>Désactiver le bouton pendant le traitement</li>
-                                                <li>Afficher un texte "Chargement..." pour informer l'utilisateur</li>
-                                                <li>Éviter les clics multiples accidentels</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                4. Appel de l'API
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`const res = await fetch("/api/checkout", { 
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-});
-const data = await res.json();`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                On appelle notre API route créée précédemment avec <code>fetch()</code>. L'API nous retourne
-                                                un objet JSON contenant <code>&#123; id: "session_xxx..." &#125;</code>.
-                                            </p>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                5. Redirection vers Stripe Checkout
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`const stripe = await stripePromise;
-const { error } = await stripe.redirectToCheckout({ 
-  sessionId: data.id 
-});`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                C'est la magie ! <code>redirectToCheckout()</code> redirige automatiquement l'utilisateur
-                                                vers la page de paiement Stripe hébergée. L'utilisateur quitte temporairement votre site
-                                                pour aller sur <code>checkout.stripe.com</code>.
-                                            </p>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                6. Gestion des erreurs
-                                            </h4>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`try {
-  // ... code
-} catch (err) {
-  console.error("Erreur:", err);
-  alert("Une erreur est survenue");
-} finally {
-  setLoading(false); // Toujours réinitialiser le loading
-}`}
-                                            />
-                                            <p className="text-gray-300 text-sm mt-2">
-                                                On entoure tout dans un <code>try/catch</code> pour gérer les erreurs potentielles
-                                                (réseau, Stripe, etc.). Le <code>finally</code> garantit que le bouton redevient cliquable
-                                                même en cas d'erreur.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🎨 Personnalisation du bouton
-                                    </h3>
-                                    <p className="text-gray-300 mb-2">
-                                        Voici quelques variantes de design pour votre bouton :
-                                    </p>
-                                    <CodeBlock
-                                        language="jsx"
-                                        code={`// Version avec icône et loader animé
-import { CreditCard } from "lucide-react";
-
-<button
-  onClick={handleClick}
-  disabled={loading}
-  className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 
-             text-white px-8 py-4 rounded-xl font-semibold shadow-lg
-             hover:from-indigo-700 hover:to-purple-700 
-             disabled:opacity-50 disabled:cursor-not-allowed 
-             transition-all duration-300"
->
-  <span className="flex items-center gap-2">
-    {loading ? (
-      <>
-        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" 
-                  stroke="currentColor" strokeWidth="4" fill="none" />
-          <path className="opacity-75" fill="currentColor" 
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-        </svg>
-        Traitement en cours...
-      </>
-    ) : (
-      <>
-        <CreditCard className="w-5 h-5" />
-        Payer maintenant
-      </>
-    )}
-  </span>
-</button>`}
-                                    />
-
-                                    <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-4 mt-6">
-                                        <p className="text-yellow-200 text-sm">
-                                            💡 <strong>Astuce UX :</strong> Pendant le chargement, évitez que le bouton change de taille.
-                                            Utilisez une largeur fixe ou <code>min-w-[200px]</code> pour maintenir la stabilité visuelle.
-                                        </p>
-                                    </div>
                                 </section>
 
-                                {/* EXEMPLE */}
                                 <section id="exemple">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        5. Utiliser le composant dans votre application
+                                        5. Utiliser le composant dans l&apos;application
                                     </h2>
                                     <p className="text-gray-300 mb-4">
                                         Maintenant que notre composant est prêt, intégrons-le dans une page de notre application.
-                                        Voici un exemple complet d'une page de checkout.
+                                        Voici un exemple d&apos;une page de checkout.
                                     </p>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        📄 Exemple : Page de paiement simple
-                                    </h3>
                                     <p className="text-gray-300 mb-2">
-                                        Créez un fichier <code className="text-blue-400">app/checkout/page.js</code> :
+                                        Crée un fichier <code className="text-blue-400">app/checkout/page.js</code> {""}
+                                        et mets-y le code suivant:
                                     </p>
                                     <CodeBlock
                                         language="jsx"
@@ -751,7 +356,6 @@ import { CreditCard } from "lucide-react";
 export default function CheckoutPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-6">
-      {/* En-tête */}
       <div className="max-w-md w-full bg-gray-800 rounded-2xl shadow-2xl p-8">
         <h1 className="text-3xl font-bold mb-2 text-center">
           Finaliser votre achat
@@ -760,10 +364,9 @@ export default function CheckoutPage() {
           Paiement sécurisé via Stripe
         </p>
 
-        {/* Récapitulatif produit */}
         <div className="bg-gray-700 rounded-lg p-6 mb-6">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-lg font-semibold">Produit Test</span>
+            <span className="text-lg font-semibold">Produit</span>
             <span className="text-2xl font-bold text-green-400">20,00 €</span>
           </div>
           <p className="text-gray-400 text-sm">
@@ -771,7 +374,6 @@ export default function CheckoutPage() {
           </p>
         </div>
 
-        {/* Informations de sécurité */}
         <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
           <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -779,10 +381,8 @@ export default function CheckoutPage() {
           <span>Paiement 100% sécurisé par Stripe</span>
         </div>
 
-        {/* Bouton de paiement */}
         <StripeButton />
 
-        {/* Mentions légales */}
         <p className="text-xs text-gray-500 text-center mt-6">
           En poursuivant, vous acceptez nos conditions générales de vente.
         </p>
@@ -793,7 +393,7 @@ export default function CheckoutPage() {
                                     />
 
                                     <h3 className="text-xl font-semibold text-white mt-8 mb-3">
-                                        🛒 Exemple avancé : Page de panier e-commerce
+                                        Exemple avancé : Page de panier e-commerce
                                     </h3>
                                     <p className="text-gray-300 mb-2">
                                         Pour un cas plus réaliste avec plusieurs produits :
@@ -820,7 +420,6 @@ export default function CartPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Votre panier</h1>
 
-        {/* Liste des produits */}
         <div className="bg-gray-800 rounded-lg p-6 mb-6">
           {cartItems.map((item) => (
             <div key={item.id} className="flex justify-between items-center py-4 border-b border-gray-700 last:border-0">
@@ -841,7 +440,6 @@ export default function CartPage() {
           </div>
         </div>
 
-        {/* Bouton de paiement */}
         <StripeButton />
       </div>
     </div>
@@ -850,10 +448,10 @@ export default function CartPage() {
                                     />
 
                                     <h3 className="text-xl font-semibold text-white mt-8 mb-3">
-                                        ✅ Créer les pages de succès et d'annulation
+                                        Les pages de succès et d&apos;annulation
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        N'oubliez pas de créer les pages vers lesquelles Stripe redirige après le paiement !
+                                        N&apos;oublie pas de créer les pages vers lesquelles Stripe redirige après le paiement !
                                     </p>
 
                                     <h4 className="text-lg font-semibold text-white mb-2">
@@ -963,7 +561,6 @@ export default function CancelPage() {
                                     </div>
                                 </section>
 
-                                {/* TESTS ET PRODUCTION */}
                                 <section id="tests">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         6. Tester votre intégration
@@ -1074,7 +671,6 @@ export default function CancelPage() {
                                     </div>
                                 </section>
 
-                                {/* PRODUCTION */}
                                 <section id="production">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         7. Passer en production
@@ -1255,7 +851,6 @@ cancel_url: \`\${process.env.NEXT_PUBLIC_BASE_URL}/cancel\`,`}
                                     </div>
                                 </section>
 
-                                {/* WEBHOOKS */}
                                 <section id="webhooks">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         8. Aller plus loin : Webhooks (Optionnel)
@@ -1371,7 +966,6 @@ export async function POST(req) {
                                     </div>
                                 </section>
 
-                                {/* CONSEILS */}
                                 <section id="conseils">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
                                         9. Bonnes pratiques et astuces
