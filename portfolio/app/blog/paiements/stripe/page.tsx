@@ -16,9 +16,6 @@ export default function BlogPage() {
                     <h1 className="text-5xl font-bold text-slate-500 text-center">
                         Intégration Stripe Checkout avec React/Next.js
                     </h1>
-                    <p className="text-center text-gray-400 mt-4 text-lg">
-                        Guide complet pour accepter des paiements en ligne
-                    </p>
                 </header>
 
                 <div className="flex flex-col md:flex-row justify-between">
@@ -41,77 +38,45 @@ export default function BlogPage() {
                                         1. Introduction
                                     </h2>
                                     <p className="text-gray-300 mb-4">
+                                        Stripe est une plateforme de paiement en ligne qui permet aux entreprises et aux particuliers
+                                        d&apos;accepter et de gérer des paiements sur internet. On peut le voir un peu comme un
+                                        intermédiaire sécurisé entre un client qui paye et l&apos;entreprise qui reçoit l&apos;argent.
                                         Dans ce tutoriel, nous allons apprendre à intégrer{" "}
                                         <span className="text-blue-400 font-semibold">Stripe Checkout</span> dans
                                         une application React/Next.js pour accepter des paiements en ligne de manière sécurisée.
                                     </p>
 
-                                    <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-6 my-6">
-                                        <h3 className="text-xl font-semibold text-white mb-3">
-                                            🎯 Les deux approches d'intégration Stripe
-                                        </h3>
-                                        <p className="text-gray-300 mb-4">
-                                            Stripe propose deux méthodes principales pour intégrer les paiements :
-                                        </p>
+                                    <p className="text-gray-300 mb-4">
+                                        Stripe propose deux méthodes principales pour intégrer les paiements :
+                                    </p>
 
-                                        <div className="space-y-4">
-                                            <div className="bg-black-100/50 rounded-lg p-4">
-                                                <h4 className="text-blue-400 font-semibold mb-2">
-                                                    ✅ 1. Stripe Checkout (notre choix)
-                                                </h4>
-                                                <p className="text-gray-300 text-sm mb-2">
-                                                    Une page de paiement hébergée par Stripe, prête à l'emploi.
-                                                </p>
-                                                <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                                    <li>✨ Configuration ultra rapide (quelques lignes de code)</li>
-                                                    <li>🔒 Sécurité gérée entièrement par Stripe</li>
-                                                    <li>🌍 Interface multilingue et responsive automatique</li>
-                                                    <li>💳 Supporte cartes, Apple Pay, Google Pay, etc.</li>
-                                                    <li>⚡ Parfait pour démarrer rapidement</li>
-                                                </ul>
-                                            </div>
-
-                                            <div className="bg-black-100/50 rounded-lg p-4">
-                                                <h4 className="text-gray-400 font-semibold mb-2">
-                                                    2. Stripe Elements / Payment Element
-                                                </h4>
-                                                <p className="text-gray-300 text-sm mb-2">
-                                                    Composants UI personnalisables intégrés directement dans votre site.
-                                                </p>
-                                                <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                                    <li>🎨 Personnalisation totale de l'interface</li>
-                                                    <li>🔧 Plus de contrôle sur l'expérience utilisateur</li>
-                                                    <li>📱 Utilisateur reste sur votre site</li>
-                                                    <li>⚙️ Plus complexe à implémenter</li>
-                                                    <li>🚀 Recommandé pour des besoins avancés</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <p className="text-gray-300 mt-4 text-sm">
-                                            💡 <strong>Dans ce tutoriel</strong>, nous utilisons <span className="text-blue-400">Stripe Checkout</span> car
-                                            c'est la solution la plus simple et la plus rapide pour commencer. Elle est parfaite pour
-                                            la plupart des cas d'usage (e-commerce, abonnements, donations, etc.).
-                                        </p>
-                                    </div>
-
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🎓 Ce que vous allez apprendre
-                                    </h3>
-                                    <ul className="list-disc list-inside text-gray-300 space-y-2">
-                                        <li>Configurer un compte Stripe et récupérer vos clés API</li>
-                                        <li>Installer et configurer les librairies Stripe dans React</li>
-                                        <li>Créer une API route sécurisée pour générer une session de paiement</li>
-                                        <li>Créer un composant React pour déclencher le paiement</li>
-                                        <li>Gérer les redirections après succès ou annulation</li>
+                                    <h4 className="text-white font-semibold mb-2">
+                                        1. Stripe Checkout
+                                    </h4>
+                                    <p className="text-gray-300 mb-2">
+                                        Il s&apos;agit d&apos;une page de paiement hébergée par Stripe et prête à l&apos;emploi. Ses caractéristiques :
+                                    </p>
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2">
+                                        <li>Configuration rapide avec juste quelques lignes de code</li>
+                                        <li>Sécurité gérée entièrement par Stripe</li>
+                                        <li>Interface multilingue et responsive automatique</li>
+                                        <li>Supporte cartes bancaires, Apple Pay, Google Pay, etc.</li>
+                                        <li>Parfait pour démarrer rapidement</li>
                                     </ul>
 
-                                    <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-4 mt-6">
-                                        <p className="text-yellow-200 text-sm">
-                                            ⚠️ <strong>Prérequis :</strong> Ce tutoriel suppose que vous avez des bases en React et Next.js.
-                                            Vous devez avoir Node.js installé sur votre machine.
-                                        </p>
-                                    </div>
+                                    <h4 className="text-white font-semibold mb-2 mt-4">
+                                        2. Stripe Elements / Payment Element
+                                    </h4>
+                                    <p className="text-gray-300 mb-2">
+                                        C&apos;est un ensemble de composants UI personnalisables intégrés dans ton site. Ses caractéristiques :
+                                    </p>
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2">
+                                        <li>Personnalisation totale de l&apos;interface</li>
+                                        <li>Plus de contrôle sur l&apos;expérience utilisateur</li>
+                                        <li>Utilisateur reste sur ton site</li>
+                                        <li>Plus complexe à implémenter</li>
+                                        <li>Recommandé pour des besoins avancés</li>
+                                    </ul>
                                 </section>
 
                                 {/* SETUP */}
@@ -1652,10 +1617,29 @@ const currency = getUserCurrency(req.geo?.country || "US");`}
                                             <li>here</li></ul>
         </div>
                                 </section>
-
                             </div>
                         </div>
                     </div>
+                    <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
+                        <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
+                        <nav className="flex flex-col gap-2 text-sm text-gray-400">
+                            <Link href="#intro" className="hover:text-white">
+                                1. Introduction
+                            </Link>
+                            <Link href="#setup" className="hover:text-white">
+                                2. Configuration
+                            </Link>
+                            <Link href="#composant" className="hover:text-white">
+                                3. Créer un bouton PayPal
+                            </Link>
+                            <Link href="#exemple" className="hover:text-white">
+                                4. Exemple d&apos;utilisation
+                            </Link>
+                            <Link href="#conclusion" className="hover:text-white">
+                                Conclusion
+                            </Link>
+                        </nav>
+                    </aside>
                 </div>
             </div>
         </main>
