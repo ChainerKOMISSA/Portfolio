@@ -89,74 +89,47 @@ export default function BlogPage() {
                                         a. Créer un compte Stripe
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        Stripe est une plateforme de paiement qui facilite l'acceptation de paiements en ligne.
-                                        Pour commencer, vous devez créer un compte gratuit.
+                                        Pour commencer, nous allons créer un compte sur <a
+                                        href="https://dashboard.stripe.com/register"
+                                        target="_blank"
+                                        className="underline text-blue-400 hover:text-blue-300"
+                                    >
+                                        Stripe Dashboard
+                                    </a>.
                                     </p>
-
-                                    <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mb-4">
-                                        <h4 className="text-white font-semibold mb-2">📝 Étapes d'inscription :</h4>
-                                        <ol className="list-decimal list-inside text-gray-300 space-y-2">
-                                            <li>
-                                                Rendez-vous sur{" "}
-                                                <a
-                                                    href="https://dashboard.stripe.com/register"
-                                                    target="_blank"
-                                                    className="underline text-blue-400 hover:text-blue-300"
-                                                >
-                                                    Stripe Dashboard
-                                                </a>
-                                            </li>
-                                            <li>Créez votre compte avec votre email professionnel</li>
-                                            <li>Vérifiez votre email</li>
-                                            <li>Complétez les informations de votre entreprise (vous pouvez utiliser le mode test sans finaliser)</li>
-                                        </ol>
-                                    </div>
-
                                     <h4 className="text-lg font-semibold text-white mt-6 mb-3">
-                                        🔑 Récupérer vos clés API
+                                        Récupérer les clés API
                                     </h4>
                                     <p className="text-gray-300 mb-4">
                                         Stripe utilise deux types de clés pour sécuriser les transactions :
                                     </p>
 
-                                    <div className="space-y-4 mb-6">
-                                        <div className="bg-black-100/50 rounded-lg p-4 border-l-4 border-blue-500">
-                                            <h5 className="text-blue-400 font-semibold mb-2">
-                                                🌐 Clé Publique (Publishable Key)
-                                            </h5>
-                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 ml-2">
-                                                <li>Commence par <code className="text-blue-400">pk_test_</code> (mode test) ou <code className="text-blue-400">pk_live_</code> (production)</li>
-                                                <li>Utilisée côté <strong>client</strong> (navigateur)</li>
-                                                <li>Peut être exposée publiquement (sans danger)</li>
-                                                <li>Permet d'initialiser Stripe.js dans votre application</li>
-                                            </ul>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4 border-l-4 border-red-500">
-                                            <h5 className="text-red-400 font-semibold mb-2">
-                                                🔒 Clé Secrète (Secret Key)
-                                            </h5>
-                                            <ul className="list-disc list-inside text-gray-300 text-sm space-y-1 ml-2">
-                                                <li>Commence par <code className="text-red-400">sk_test_</code> (mode test) ou <code className="text-red-400">sk_live_</code> (production)</li>
-                                                <li>Utilisée côté <strong>serveur</strong> uniquement</li>
-                                                <li>⚠️ <strong>NE JAMAIS</strong> l'exposer côté client</li>
-                                                <li>Permet de créer des sessions de paiement et d'effectuer des opérations sensibles</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-gray-800 rounded-lg p-4 mb-6">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            📍 <strong>Pour récupérer vos clés :</strong>
+                                    <h5 className="text-gray-300 font-semibold mb-2">
+                                        La clé publique (Publishable Key)
+                                    </h5>
+                                    <p className="text-gray-300 mb-4">
+                                        Elle commence par <code className="text-blue-400">pk_test_</code> en mode test ou <code className="text-blue-400">pk_live_</code> en production
+                                        et est utilisée côté <strong>client</strong>. Elle va nous permettre d&apos;initialiser Stripe.js dans notre application.
+                                    </p>
+                                    <h5 className="text-gray-300 font-semibold mb-2 mt-6">
+                                        La clé secrète (Secret Key)
+                                    </h5>
+                                    <p className="text-gray-300 mb-4">
+                                        Elle commence par <code className="text-blue-400">sk_test_</code> en mode test ou <code className="text-blue-400">sk_live_</code> en production
+                                        et est utilisée côté <strong>serveur</strong>. Eelle va nous permettre de créer des sessions de paiement et d&apos;effectuer des opérations sensibles.
+                                    </p>
+                                    <div className="bg-neutral-900 rounded-lg p-4 mb-6">
+                                        <p className="text-gray-300 mb-2">
+                                            <strong>Pour récupérer les clés :</strong>
                                         </p>
-                                        <ol className="list-decimal list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                            <li>Connectez-vous à votre Dashboard Stripe</li>
-                                            <li>Activez le "Mode Test" en haut à droite (bouton toggle)</li>
-                                            <li>Allez dans <strong>Développeurs</strong> → <strong>Clés API</strong></li>
-                                            <li>Copiez votre "Clé publique" et votre "Clé secrète"</li>
+                                        <ol className="list-decimal list-inside text-gray-300  space-y-1 ml-2">
+                                            <li>Connecte-toi à votre Dashboard Stripe</li>
+                                            <li>Active le &quot;Mode Test&quot; en haut à droite </li>
+                                            <li>Vas dans <strong>Développeurs</strong> puis <strong>Clés API</strong></li>
+                                            <li>Copiez votre &quot;Clé publique&quot; et votre &quot;Clé secrète&quot;</li>
                                         </ol>
-                                        <p className="text-yellow-200 text-xs mt-3">
-                                            💡 En mode test, vous pouvez simuler des paiements sans débiter de vraies cartes.
+                                        <p className="text-gray-300 text-sm mt-3">
+                                            En mode test, il est possible de simuler des paiements sans débiter de vraies cartes.
                                         </p>
                                     </div>
 
