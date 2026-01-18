@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IoIosArrowRoundBack } from "react-icons/io";
+import {IoIosArrowDown, IoIosArrowRoundBack} from "react-icons/io";
 import CodeBlock from "@/app/blog/ui/CodeBlock";
 
 export default function BlogPage() {
@@ -496,112 +496,80 @@ export default function SuccessPage() {
 
                                 <section id="tests">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        6. Tester votre intégration
+                                        6. Tester notre intégration
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Avant de passer en production, testons notre intégration avec les cartes de test Stripe.
+                                        Avant de passer en production, testons notre intégration avec les cartes de test factices de Stripe
+                                        pour simuler différents scénarios :
                                     </p>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        💳 Cartes bancaires de test
-                                    </h3>
-                                    <p className="text-gray-300 mb-4">
-                                        En mode test, Stripe fournit des numéros de cartes factices pour simuler différents scénarios :
-                                    </p>
-
                                     <div className="bg-gray-800 rounded-lg p-4 mb-4">
                                         <table className="w-full text-sm">
                                             <thead>
                                             <tr className="border-b border-gray-700">
-                                                <th className="text-left py-2 text-blue-400">Numéro de carte</th>
-                                                <th className="text-left py-2 text-blue-400">Scénario</th>
+                                                <th className="text-left py-2 text-gray-300">Numéro de carte</th>
+                                                <th className="text-left py-2 text-gray-300">Scénario</th>
                                             </tr>
                                             </thead>
                                             <tbody className="text-gray-300">
                                             <tr className="border-b border-gray-700">
                                                 <td className="py-2"><code>4242 4242 4242 4242</code></td>
-                                                <td className="py-2">✅ Paiement réussi</td>
+                                                <td className="py-2">Paiement réussi</td>
                                             </tr>
                                             <tr className="border-b border-gray-700">
                                                 <td className="py-2"><code>4000 0025 0000 3155</code></td>
-                                                <td className="py-2">🔐 Authentification 3D Secure requise</td>
+                                                <td className="py-2">Authentification 3D Secure requise</td>
                                             </tr>
                                             <tr className="border-b border-gray-700">
                                                 <td className="py-2"><code>4000 0000 0000 9995</code></td>
-                                                <td className="py-2">❌ Carte insuffisamment provisionnée</td>
+                                                <td className="py-2">Carte insuffisamment provisionnée</td>
                                             </tr>
                                             <tr>
                                                 <td className="py-2"><code>4000 0000 0000 0002</code></td>
-                                                <td className="py-2">❌ Carte refusée</td>
+                                                <td className="py-2">Carte refusée</td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
-
                                     <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mb-6">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            💡 <strong>Informations à utiliser avec les cartes de test :</strong>
+                                        <p className="text-gray-300 mb-2">
+                                            <strong>Informations à utiliser avec les cartes de test :</strong>
                                         </p>
-                                        <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                            <li><strong>Date d'expiration :</strong> N'importe quelle date future (ex: 12/25)</li>
-                                            <li><strong>CVC :</strong> N'importe quel code à 3 chiffres (ex: 123)</li>
-                                            <li><strong>Code postal :</strong> N'importe quel code postal valide</li>
+                                        <ul className="list-disc list-inside text-gray-400 space-y-1 ml-2">
+                                            <li><strong>Date d&apos;expiration :</strong> N&apos;importe quelle date future</li>
+                                            <li><strong>CVC :</strong> N&apos;importe quel code à 3 chiffres</li>
+                                            <li><strong>Code postal :</strong> N&apos;importe quel code postal valide</li>
                                         </ul>
                                     </div>
 
-                                    <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🧪 Processus de test complet
-                                    </h3>
-                                    <ol className="list-decimal list-inside text-gray-300 space-y-3">
-                                        <li>
-                                            <strong>Démarrez votre serveur de développement :</strong>
-                                            <CodeBlock language="bash" code={`npm run dev`} />
-                                        </li>
-                                        <li>
-                                            <strong>Accédez à votre page de checkout :</strong>
-                                            <div className="bg-gray-700 rounded p-2 mt-2">
-                                                <code className="text-blue-400">http://localhost:3000/checkout</code>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <strong>Cliquez sur le bouton "Payer"</strong> et observez la redirection vers Stripe
-                                        </li>
-                                        <li>
-                                            <strong>Remplissez le formulaire</strong> avec une carte de test (ex: 4242 4242 4242 4242)
-                                        </li>
-                                        <li>
-                                            <strong>Validez le paiement</strong> et vérifiez la redirection vers <code>/success</code>
-                                        </li>
-                                        <li>
-                                            <strong>Vérifiez dans le Dashboard Stripe</strong> (section "Paiements") que la transaction apparaît
-                                        </li>
-                                    </ol>
+                                    <details className="mt-4 mb-4 rounded bg-neutral-900 border border-red-900/50 group">
+                                        <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                            <span>En cas d&apos;erreur</span>
+                                            <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                        </summary>
 
-                                    <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-4 mt-6">
-                                        <p className="text-yellow-200 text-sm mb-2">
-                                            🐛 <strong>Problèmes courants et solutions :</strong>
-                                        </p>
-                                        <ul className="space-y-3 text-sm">
-                                            <li>
-                                                <strong className="text-yellow-300">❌ Erreur "Invalid API Key" :</strong>
-                                                <p className="text-gray-300 ml-4 mt-1">
-                                                    Vérifiez que vos clés dans <code>.env.local</code> sont correctes et que vous avez redémarré le serveur.
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-yellow-300">❌ Le bouton ne redirige pas :</strong>
-                                                <p className="text-gray-300 ml-4 mt-1">
-                                                    Ouvrez la console du navigateur (F12) pour voir les erreurs. Vérifiez que <code>NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</code> est bien défini.
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <strong className="text-yellow-300">❌ Erreur 500 sur /api/checkout :</strong>
-                                                <p className="text-gray-300 ml-4 mt-1">
-                                                    Vérifiez les logs du serveur. Assurez-vous que <code>STRIPE_SECRET_KEY</code> est correcte et que le package <code>stripe</code> est installé.
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                        <div className="px-4 space-y-4 mb-6">
+                                            <ul className="space-y-3 m-2">
+                                                <li>
+                                                    <strong className="text-red-400">Erreur &quot;Invalid API Key&quot; :</strong>
+                                                    <p className="text-gray-300 ml-4 mt-1">
+                                                        Vérifie que tes clés dans <code>.env</code> sont correctes et que tu as redémarré le serveur.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <strong className="text-red-400">Le bouton ne redirige pas :</strong>
+                                                    <p className="text-gray-300 ml-4 mt-1">
+                                                        Ouvre la console du navigateur pour voir les erreurs. Vérifie que <code>NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</code> est bien défini.
+                                                    </p>
+                                                </li>
+                                                <li>
+                                                    <strong className="text-red-400">Erreur 500 sur /api/checkout :</strong>
+                                                    <p className="text-gray-300 ml-4 mt-1">
+                                                        Vérifie les logs du serveur. Assure-toi que <code>STRIPE_SECRET_KEY</code> est correcte et que le package <code>stripe</code> est installé.
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </details>
                                 </section>
 
                                 <section id="production">
