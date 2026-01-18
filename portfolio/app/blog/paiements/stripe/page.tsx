@@ -458,7 +458,7 @@ export default function CartPage() {
                                     </p>
 
                                     <h4 className="text-lg font-semibold text-white mb-2">
-                                        Page de succès (<code>app/success/page.js</code>)
+                                        Page de succès
                                     </h4>
                                     <CodeBlock
                                         language="jsx"
@@ -577,179 +577,91 @@ export default function SuccessPage() {
                                         7. Passer en production
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Une fois vos tests validés, voici comment déployer votre intégration Stripe en production.
+                                        Une fois les tests validés, voici comment déployer l&apos;intégration Stripe en production.
                                     </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3">
-                                        🔐 Étape 1 : Activer votre compte Stripe
+                                        Étape 1 : Active ton compte Stripe
                                     </h3>
-                                    <div className="bg-gray-800 rounded-lg p-4 mb-6">
-                                        <ol className="list-decimal list-inside text-gray-300 text-sm space-y-2">
-                                            <li>Connectez-vous au <strong>Stripe Dashboard</strong></li>
-                                            <li>Cliquez sur "Activer votre compte" en haut</li>
-                                            <li>Complétez les informations requises :
-                                                <ul className="list-disc list-inside ml-6 mt-2 text-gray-400">
-                                                    <li>Informations sur votre entreprise (SIRET, adresse...)</li>
-                                                    <li>Informations bancaires pour recevoir les paiements</li>
-                                                    <li>Documents légaux si demandés (KYC)</li>
-                                                </ul>
-                                            </li>
-                                            <li>Attendez la validation de Stripe (généralement 24-48h)</li>
-                                        </ol>
-                                    </div>
+                                    <ol className="list-decimal list-inside text-gray-300 space-y-2 mb-6">
+                                        <li>Connecte-toi au <strong>Stripe Dashboard</strong></li>
+                                        <li>Clique sur <strong className="text-blue-400">&quot;Activer votre compte&quot;</strong> en haut</li>
+                                        <li>Complète les informations requises :
+                                            <ul className="list-disc list-inside ml-6 mt-2 text-gray-300">
+                                                <li>Informations sur ton entreprise</li>
+                                                <li>Informations bancaires pour recevoir les paiements</li>
+                                                <li>Documents légaux si demandés </li>
+                                            </ul>
+                                        </li>
+                                        <li>Attend la validation de Stripe. Elle prend généralement 24 à 48h</li>
+                                    </ol>
 
                                     <h3 className="text-xl font-semibold text-white mb-3">
-                                        🔑 Étape 2 : Récupérer vos clés de production
+                                        Étape 2 : Récupère les clés de production
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        Une fois votre compte activé, récupérez vos clés <strong>Live</strong> (production) :
+                                        Une fois ton compte activé, récupère les clés <strong>Live</strong> :
                                     </p>
-                                    <div className="bg-gray-800 rounded-lg p-4 mb-4">
-                                        <ol className="list-decimal list-inside text-gray-300 text-sm space-y-2">
-                                            <li>Dans le Dashboard, <strong>désactivez le mode Test</strong> (bouton toggle en haut à droite)</li>
-                                            <li>Allez dans <strong>Développeurs → Clés API</strong></li>
-                                            <li>Copiez vos clés Live :
-                                                <ul className="list-disc list-inside ml-6 mt-2 text-gray-400">
-                                                    <li><code className="text-blue-400">pk_live_...</code> → Clé publique</li>
-                                                    <li><code className="text-red-400">sk_live_...</code> → Clé secrète</li>
-                                                </ul>
-                                            </li>
-                                        </ol>
-                                    </div>
+                                    <ol className="list-decimal list-inside text-gray-300 space-y-2">
+                                        <li>Dans le Dashboard, <strong>désactive le mode Test</strong></li>
+                                        <li>Vas dans <strong>Développeurs puis Clés API</strong></li>
+                                        <li>Copie tes clés Live</li>
+                                    </ol>
 
-                                    <div className="bg-red-900/30 border border-red-700 rounded-lg p-4 mb-6">
-                                        <p className="text-red-200 text-sm">
-                                            ⚠️ <strong>ATTENTION :</strong> Les clés Live permettent de traiter de vrais paiements avec de vraies cartes.
-                                            Ne les exposez JAMAIS publiquement et ne les committez JAMAIS dans Git !
-                                        </p>
-                                    </div>
+                                    <p className="text-gray-300 text-sm my-4">
+                                        ⚠️ Les clés Live permettent de traiter de vrais paiements avec de vraies cartes.
+                                    </p>
 
                                     <h3 className="text-xl font-semibold text-white mb-3">
-                                        🚀 Étape 3 : Configurer les variables d'environnement en production
+                                        Étape 3 : Configurer les variables d&apos;environnement en production
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        Selon votre plateforme d'hébergement, voici comment configurer vos variables :
+                                        Selon ta plateforme d&apos;hébergement, voici configure tes variables d&apos;environnement.
                                     </p>
-
-                                    <div className="space-y-4">
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2 flex items-center gap-2">
-                                                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                                                </svg>
-                                                Vercel
-                                            </h4>
-                                            <ol className="list-decimal list-inside text-gray-300 text-sm space-y-1 ml-2">
-                                                <li>Allez dans votre projet → <strong>Settings → Environment Variables</strong></li>
-                                                <li>Ajoutez vos variables :
-                                                    <CodeBlock
-                                                        language="bash"
-                                                        code={`NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxxxx
-STRIPE_SECRET_KEY=sk_live_xxxxx`}
-                                                    />
-                                                </li>
-                                                <li>Redéployez votre application</li>
-                                            </ol>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                🌐 Netlify
-                                            </h4>
-                                            <ol className="list-decimal list-inside text-gray-300 text-sm space-y-1 ml-2">
-                                                <li>Site settings → <strong>Build & deploy → Environment</strong></li>
-                                                <li>Cliquez sur "Add variable"</li>
-                                                <li>Ajoutez vos clés Stripe Live</li>
-                                                <li>Redéployez</li>
-                                            </ol>
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                🐳 Docker / VPS
-                                            </h4>
-                                            <p className="text-gray-300 text-sm mb-2">
-                                                Créez un fichier <code>.env</code> sur votre serveur ou passez les variables au démarrage :
-                                            </p>
-                                            <CodeBlock
-                                                language="bash"
-                                                code={`docker run -e NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxx \\
-           -e STRIPE_SECRET_KEY=sk_live_xxx \\
-           votre-image`}
-                                            />
-                                        </div>
-                                    </div>
 
                                     <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🔗 Étape 4 : Mettre à jour les URLs de redirection
+                                        Étape 4 : Mettre à jour les URLs de redirection
                                     </h3>
                                     <p className="text-gray-300 mb-2">
-                                        Dans votre API route, remplacez les URLs localhost par vos vraies URLs :
+                                        Dans ton API route, remplace les URLs localhost par tes vraies URLs :
                                     </p>
-                                    <CodeBlock
-                                        language="javascript"
-                                        code={`// Avant (développement)
+                                    <pre className="bg-neutral-900 text-green-400 p-4">
+                                        <code>
+                                            {`// Avant (développement)
 success_url: "http://localhost:3000/success",
 cancel_url: "http://localhost:3000/cancel",
 
 // Après (production)
-success_url: "https://votresite.com/success",
-cancel_url: "https://votresite.com/cancel",`}
-                                    />
-
-                                    <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mt-4">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            💡 <strong>Astuce :</strong> Utilisez une variable d'environnement pour l'URL de base :
-                                        </p>
-                                        <CodeBlock
-                                            language="javascript"
-                                            code={`// .env.local
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
-
-// .env.production (ou variables Vercel/Netlify)
-NEXT_PUBLIC_BASE_URL=https://votresite.com
-
-// Dans votre API route
-success_url: \`\${process.env.NEXT_PUBLIC_BASE_URL}/success\`,
-cancel_url: \`\${process.env.NEXT_PUBLIC_BASE_URL}/cancel\`,`}
-                                        />
-                                    </div>
+success_url: "https://tonsite.com/success",
+cancel_url: "https://tonsite.com/cancel",`}
+                                        </code>
+                                    </pre>
 
                                     <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        ✅ Checklist avant le lancement
+                                        Checklist avant le lancement
                                     </h3>
-                                    <div className="bg-gray-800 rounded-lg p-4">
-                                        <ul className="space-y-2 text-sm">
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Compte Stripe activé et vérifié</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Clés Live configurées dans les variables d'environnement</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">URLs de redirection mises à jour avec votre domaine</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Test effectué avec une vraie carte en production</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Mentions légales et CGV à jour sur votre site</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Webhooks configurés (optionnel, voir section suivante)</span>
-                                            </li>
-                                            <li className="flex items-start gap-2">
-                                                <span className="text-green-400 mt-1">☐</span>
-                                                <span className="text-gray-300">Plan de gestion des litiges et remboursements en place</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul className="space-y-2">
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-green-400 mt-1">☐</span>
+                                            <span className="text-gray-300">Compte Stripe activé et vérifié</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-green-400 mt-1">☐</span>
+                                            <span className="text-gray-300">Clés Live configurées dans les variables d&apos;environnement</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-green-400 mt-1">☐</span>
+                                            <span className="text-gray-300">URLs de redirection mises à jour avec ton domaine</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-green-400 mt-1">☐</span>
+                                            <span className="text-gray-300">Test effectué avec une vraie carte en production</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-green-400 mt-1">☐</span>
+                                            <span className="text-gray-300">Webhooks configurés (optionnel, section suivante)</span>
+                                        </li>
+                                    </ul>
                                 </section>
 
                                 <section id="webhooks">
