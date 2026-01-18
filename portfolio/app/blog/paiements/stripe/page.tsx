@@ -451,7 +451,10 @@ export default function CartPage() {
                                         Les pages de succès et d&apos;annulation
                                     </h3>
                                     <p className="text-gray-300 mb-4">
-                                        N&apos;oublie pas de créer les pages vers lesquelles Stripe redirige après le paiement !
+                                        N&apos;oublie pas de créer les pages vers lesquelles Stripe redirige après le paiement. Pour la redirection
+                                        après annulation du paiement, tu peux mettre le lien d&apos;origine.
+                                        <br/>
+                                        Voici un exemple de page de après succès du paiement :
                                     </p>
 
                                     <h4 className="text-lg font-semibold text-white mb-2">
@@ -465,7 +468,6 @@ export default function SuccessPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
       <div className="max-w-md w-full bg-gray-800 rounded-2xl shadow-2xl p-8 text-center">
-        {/* Icône de succès */}
         <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
           <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -490,75 +492,6 @@ export default function SuccessPage() {
   );
 }`}
                                     />
-
-                                    <h4 className="text-lg font-semibold text-white mt-6 mb-2">
-                                        Page d'annulation (<code>app/cancel/page.js</code>)
-                                    </h4>
-                                    <CodeBlock
-                                        language="jsx"
-                                        code={`import Link from "next/link";
-
-export default function CancelPage() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
-      <div className="max-w-md w-full bg-gray-800 rounded-2xl shadow-2xl p-8 text-center">
-        {/* Icône d'annulation */}
-        <div className="w-20 h-20 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </div>
-
-        <h1 className="text-3xl font-bold mb-4 text-orange-400">
-          Paiement annulé
-        </h1>
-        <p className="text-gray-300 mb-8">
-          Votre paiement a été annulé. Aucun montant n'a été débité.
-        </p>
-
-        <div className="flex gap-4 justify-center">
-          <Link 
-            href="/checkout"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition"
-          >
-            Réessayer
-          </Link>
-          <Link 
-            href="/"
-            className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition"
-          >
-            Retour à l'accueil
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}`}
-                                    />
-
-                                    <div className="bg-gray-800 rounded-lg p-4 mt-6">
-                                        <p className="text-gray-300 text-sm mb-2">
-                                            📁 <strong>Structure complète de votre projet :</strong>
-                                        </p>
-                                        <CodeBlock
-                                            language="plaintext"
-                                            code={`mon-projet/
-├── app/
-│   ├── api/
-│   │   └── checkout/
-│   │       └── route.js         ← API pour créer la session
-│   ├── checkout/
-│   │   └── page.js              ← Page de paiement
-│   ├── success/
-│   │   └── page.js              ← Page de succès
-│   └── cancel/
-│       └── page.js              ← Page d'annulation
-├── components/
-│   └── StripeButton.js          ← Composant bouton
-├── .env.local                    ← Vos clés Stripe
-└── package.json`}
-                                        />
-                                    </div>
                                 </section>
 
                                 <section id="tests">
