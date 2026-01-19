@@ -779,17 +779,18 @@ export async function POST(req) {
                                     </h2>
 
                                     <div className="space-y-4">
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                💰 Gestion des prix dynamiques
-                                            </h4>
-                                            <p className="text-gray-300 text-sm mb-2">
-                                                Au lieu de coder les prix en dur, passez-les en paramètre :
-                                            </p>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`// Dans votre API route
-export async function POST(req) {
+                                        <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
+                                                <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                    <span>Gestion des prix dynamiques</span>
+                                                    <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                                </summary>
+                                                <div className="px-4 space-y-4 mb-6">
+                                                    <p className="text-gray-300 text-sm mb-2">
+                                                        Au lieu de coder les prix en dur, tu peux les passer en paramètre :
+                                                    </p>
+                                                    <CodeBlock
+                                                        language="javascript"
+                                                        code={`export async function POST(req) {
   const { items } = await req.json(); // Récupère les produits depuis le client
   
   const line_items = items.map(item => ({
@@ -811,20 +812,22 @@ export async function POST(req) {
 
   return NextResponse.json({ id: session.id });
 }`}
-                                            />
-                                        </div>
+                                                    />
+                                                </div>
+                                        </details>
 
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                🎟️ Récupérer l'ID de session après paiement
-                                            </h4>
-                                            <p className="text-gray-300 text-sm mb-2">
-                                                Stripe ajoute automatiquement <code>?session_id=xxx</code> à votre success_url.
-                                                Vous pouvez le récupérer :
-                                            </p>
-                                            <CodeBlock
-                                                language="jsx"
-                                                code={`"use client";
+                                        <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>Récupérer l&apos;ID de session après paiement</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                            </summary>
+                                            <div className="px-4 space-y-4 mb-6">
+                                                <p className="text-gray-300 text-sm mb-2">Stripe ajoute automatiquement <code>?session_id=xxx</code> à ton success_url.
+                                                    Tu peux le récupérer pour d&apos;autres utilisations :
+                                                </p>
+                                                <CodeBlock
+                                                    language="jsx"
+                                                    code={`"use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -835,7 +838,6 @@ export default function SuccessPage() {
 
   useEffect(() => {
     if (sessionId) {
-      // Appeler votre API pour récupérer les détails
       fetch(\`/api/order-details?session_id=\${sessionId}\`)
         .then(res => res.json())
         .then(data => setOrderDetails(data));
@@ -851,28 +853,29 @@ export default function SuccessPage() {
     </div>
   );
 }`}
-                                            />
-                                        </div>
-
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                🔒 Sécurité : Valider les montants côté serveur
-                                            </h4>
-                                            <div className="bg-red-900/30 border border-red-700 rounded-lg p-3 mb-3">
-                                                <p className="text-red-200 text-sm">
-                                                    ⚠️ <strong>CRITIQUE :</strong> Ne faites JAMAIS confiance aux données envoyées par le client.
-                                                    Un utilisateur malveillant pourrait modifier les prix dans le frontend.
-                                                </p>
+                                                />
                                             </div>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`// ❌ MAUVAIS : Prix vient du client
+                                        </details>
+
+                                        <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>Valider les montants côté serveur</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                            </summary>
+                                            <div className="px-4 space-y-4 mb-6">
+                                                <p className="text-gray-300 text-sm mb-2">Pour éviter de recevoir des données modifiées par un utilisateur
+                                                    malveillant depuis le frontend, il est nécéssaire de valider les données côté backend.
+                                                    Tu peux aussi éviter cela en mettant les prix en paramètres.
+                                                </p>
+                                                <CodeBlock
+                                                    language="javascript"
+                                                    code={`// Prix venant du client
 export async function POST(req) {
-  const { price } = await req.json(); // Dangereux !
+  const { price } = await req.json();
   // L'utilisateur peut envoyer price: 1 au lieu de price: 9900
 }
 
-// ✅ BON : Prix défini côté serveur
+// Prix défini côté serveur
 const PRODUCTS = {
   "formation-react": { name: "Formation React", price: 9900 },
   "ebook-js": { name: "Ebook JavaScript", price: 1500 },
@@ -886,53 +889,64 @@ export async function POST(req) {
     return NextResponse.json({ error: "Produit invalide" }, { status: 400 });
   }
   
-  // Utilise le prix du serveur, pas celui du client
   const session = await stripe.checkout.sessions.create({
     line_items: [{
       price_data: {
         currency: "eur",
         product_data: { name: product.name },
-        unit_amount: product.price, // Prix sécurisé
+        unit_amount: product.price,
       },
       quantity: 1,
     }],
     // ...
   });
 }`}
-                                            />
-                                        </div>
+                                                />
+                                            </div>
+                                        </details>
 
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                📧 Personnaliser les emails de Stripe
-                                            </h4>
-                                            <p className="text-gray-300 text-sm">
-                                                Dans le Dashboard Stripe : <strong>Paramètres → Emails</strong>, vous pouvez personnaliser
-                                                le logo, les couleurs et les messages des emails automatiques (confirmation, reçus...).
-                                            </p>
-                                        </div>
+                                        <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>Personnaliser les emails de Stripe</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                            </summary>
+                                            <div className="px-4 space-y-4 mb-6">
+                                                <p className="text-gray-300 text-sm">
+                                                    Dans le Dashboard Stripe : <strong>Paramètres puis Emails</strong>, tu peux personnaliser
+                                                    le logo, les couleurs et les messages des emails automatiques.
+                                                </p>
+                                            </div>
+                                        </details>
 
-                                        <div className="bg-black-100/50 rounded-lg p-4">
-                                            <h4 className="text-blue-400 font-semibold mb-2">
-                                                🌍 Support multi-devises
-                                            </h4>
-                                            <CodeBlock
-                                                language="javascript"
-                                                code={`// Détection automatique de la devise selon la localisation
-const getUserCurrency = (countryCode) => {
+                                        <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>Support multi-devises</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                            </summary>
+                                            <div className="px-4 space-y-4 mb-6">
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Tu peux ajouter la détection automatique de devises selon la localisation :
+                                                </p>
+                                                <CodeBlock
+                                                    language="javascript"
+                                                    code={`const getUserCurrency = (countryCode) => {
   const currencies = {
     FR: "eur",
     US: "usd",
     GB: "gbp",
     // ...
   };
-  return currencies[countryCode] || "usd";
+  return currencies[countryCode] || "eur";
 };
 
-// Dans votre API
-const currency = getUserCurrency(req.geo?.country || "US");`}
-                                            />
-                                        </div>
+// Dans ton API
+const currency = getUserCurrency(req.geo?.country || "FR");`}
+                                                />
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Dans ce code, la devise par défaut est l&apos;Euro. Tu la redéfinir selon tes besoins.
+                                                </p>
+                                            </div>
+                                        </details>
                                     </div>
                                 </section>
 
