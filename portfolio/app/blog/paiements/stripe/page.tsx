@@ -669,31 +669,30 @@ cancel_url: "https://tonsite.com/cancel",`}
                                         8. Aller plus loin : Webhooks (Optionnel)
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Les webhooks permettent à Stripe de notifier votre serveur en temps réel lorsqu'un événement se produit
-                                        (paiement réussi, échec, remboursement...). C'est essentiel pour synchroniser votre base de données.
+                                        Les webhooks permettent à Stripe de notifier votre serveur en temps réel lorsqu&apos;un événement se produit.
+                                        Il peut s&apos;agir d&apos;un paiement réussi, un paiement en échec ou un remboursement. C&apos;est essentiel pour synchroniser la base de données.
                                     </p>
 
-                                    <div className="bg-indigo-950/30 border border-indigo-900 rounded-lg p-4 mb-6">
-                                        <h4 className="text-white font-semibold mb-2">🤔 Pourquoi utiliser les webhooks ?</h4>
-                                        <p className="text-gray-300 text-sm mb-3">
-                                            Les redirections (<code>success_url</code>) ne sont pas fiables à 100% car l'utilisateur peut :
-                                        </p>
-                                        <ul className="list-disc list-inside text-gray-400 text-sm space-y-1 ml-2">
-                                            <li>Fermer son navigateur avant la redirection</li>
-                                            <li>Perdre sa connexion internet</li>
-                                            <li>Ne jamais revenir sur votre site</li>
-                                        </ul>
-                                        <p className="text-gray-300 text-sm mt-3">
-                                            Les webhooks garantissent que vous êtes <strong>toujours</strong> notifié du paiement,
-                                            même si l'utilisateur disparaît.
-                                        </p>
-                                    </div>
+                                    <h3 className="text-xl text-white font-semibold mb-2">Pourquoi utiliser les webhooks ?</h3>
+                                    <p className="text-gray-300 mb-3">
+                                        Les redirections avec <code>success_url</code> et <code>cancel_url</code> ne sont pas fiables à 100% car l&apos;utilisateur peut :
+                                    </p>
+                                    <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2">
+                                        <li>fermer son navigateur avant la redirection</li>
+                                        <li>perdre sa connexion internet</li>
+                                        <li>ou ne jamais revenir sur le site</li>
+                                    </ul>
+                                    <p className="text-gray-300 mt-3">
+                                        Les webhooks garantissent que tu es <strong>toujours</strong> notifié du paiement,
+                                        même si l&apos;utilisateur disparaît.
+                                    </p>
 
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        📡 Créer un endpoint webhook
+                                    <h3 className="text-xl font-semibold text-white mb-3 mt-6">
+                                        Créer un endpoint webhook
                                     </h3>
                                     <p className="text-gray-300 mb-2">
-                                        Créez un fichier <code className="text-blue-400">app/api/webhooks/route.js</code> :
+                                        Crée un fichier <code className="text-blue-400">app/api/stripe/webhook/route.ts</code> et, mets-y
+                                        le code suivant :
                                     </p>
                                     <CodeBlock
                                         language="javascript"
@@ -710,20 +709,18 @@ export async function POST(req) {
   let event;
 
   try {
-    // Vérification de la signature Stripe
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err) {
     console.error("Webhook signature verification failed:", err.message);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  // Traitement des événements
   switch (event.type) {
     case "checkout.session.completed":
       const session = event.data.object;
       console.log("Paiement réussi:", session.id);
       
-      // TODO: Enregistrer la commande dans votre base de données
+      // TODO: Enregistrer la commande dans ta base de données
       // TODO: Envoyer un email de confirmation
       // TODO: Débloquer l'accès au produit
       
@@ -746,35 +743,32 @@ export async function POST(req) {
                                     />
 
                                     <h3 className="text-xl font-semibold text-white mt-6 mb-3">
-                                        🔧 Configurer le webhook dans Stripe
+                                        Configurer le webhook dans Stripe
                                     </h3>
-                                    <div className="bg-gray-800 rounded-lg p-4 mb-4">
-                                        <ol className="list-decimal list-inside text-gray-300 text-sm space-y-2">
-                                            <li>Allez dans <strong>Développeurs → Webhooks</strong></li>
-                                            <li>Cliquez sur "Ajouter un endpoint"</li>
-                                            <li>URL de l'endpoint : <code className="text-blue-400">https://votresite.com/api/webhooks</code></li>
-                                            <li>Sélectionnez les événements à écouter :
-                                                <ul className="list-disc list-inside ml-6 mt-2 text-gray-400">
-                                                    <li><code>checkout.session.completed</code></li>
-                                                    <li><code>payment_intent.succeeded</code></li>
-                                                    <li><code>payment_intent.payment_failed</code></li>
-                                                </ul>
-                                            </li>
-                                            <li>Copiez le <strong>Signing secret</strong> généré</li>
-                                            <li>Ajoutez-le dans vos variables d'environnement :
-                                                <CodeBlock
-                                                    language="bash"
-                                                    code={`STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx`}
-                                                />
-                                            </li>
-                                        </ol>
-                                    </div>
+                                    <ol className="list-decimal list-inside text-gray-300 space-y-2 mb-3">
+                                        <li>Va dans <strong>Développeurs puis Webhooks</strong></li>
+                                        <li>Clique sur &quot;Ajouter un endpoint&quot;</li>
+                                        <li>URL de l&apos;endpoint : <code className="text-blue-400">https://tonsite.com/api/webhook</code></li>
+                                        <li>Sélectionne les événements à écouter :
+                                            <ul className="list-disc list-inside ml-6 mt-2 text-gray-300">
+                                                <li><code>checkout.session.completed</code></li>
+                                                <li><code>payment_intent.succeeded</code></li>
+                                                <li><code>payment_intent.payment_failed</code></li>
+                                            </ul>
+                                        </li>
+                                        <li>Copie le <strong>Signing secret</strong> généré</li>
+                                        <li>Ajoute-le dans les variables d&apos;environnement :
+                                            <pre className="text-green-400 bg-neutral-900 p-4 m-2">
+                                                <code>{`STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx`}</code>
+                                            </pre>
+                                        </li>
+                                    </ol>
 
-                                    <div className="bg-yellow-900/20 border border-yellow-700 rounded-lg p-4 mb-6">
-                                        <p className="text-yellow-200 text-sm">
-                                            💡 <strong>Développement local :</strong> Pour tester les webhooks en local, utilisez le
+                                    <div className="bg-blue-900/20 border border-blue-900 rounded-lg p-4 mb-6">
+                                        <p className="text-blue-200 text-sm">
+                                            <strong>Développement local :</strong> Pour tester les webhooks en local, utilise le
                                             <a href="https://stripe.com/docs/stripe-cli" target="_blank" className="underline ml-1">Stripe CLI</a>
-                                            qui crée un tunnel sécurisé vers votre localhost.
+                                            qui crée un tunnel sécurisé vers ton localhost.
                                         </p>
                                     </div>
                                 </section>
