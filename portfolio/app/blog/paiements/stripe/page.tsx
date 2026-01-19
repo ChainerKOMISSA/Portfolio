@@ -536,7 +536,7 @@ export default function SuccessPage() {
                                         <p className="text-gray-300 mb-2">
                                             <strong>Informations à utiliser avec les cartes de test :</strong>
                                         </p>
-                                        <ul className="list-disc list-inside text-gray-400 space-y-1 ml-2">
+                                        <ul className="list-disc list-inside text-gray-300 space-y-1 ml-2">
                                             <li><strong>Date d&apos;expiration :</strong> N&apos;importe quelle date future</li>
                                             <li><strong>CVC :</strong> N&apos;importe quel code à 3 chiffres</li>
                                             <li><strong>Code postal :</strong> N&apos;importe quel code postal valide</li>
@@ -957,7 +957,30 @@ const currency = getUserCurrency(req.geo?.country || "FR");`}
                                         Conclusion
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Félicitations ! Tu as maintenant une intégration Stripe Checkout complète et fonctionnelle.
+                                        Avec Stripe Checkout, tu disposes d&apos;une solution simple, rapide et sécurisée pour intégrer
+                                        le paiement en ligne dans tes applications sans avoir à gérer toute la complexité d’un système
+                                        de paiement from scratch. En quelques étapes, tu peux proposer à tes utilisateurs une expérience
+                                        fluide, professionnelle et conforme aux standards de sécurité.
+                                        <br/><br/>
+                                        Dans ce tutoriel, nous avons vu comment configurer Stripe, créer une session de paiement et rediriger
+                                        l&apos;utilisateur vers une page de checkout prête à l&apos;emploi. Cette base te permet déjà d&apos;accepter des
+                                        paiements et de valider un parcours client fonctionnel.
+                                        Pour aller plus loin, tu peux maintenant :
+                                        <ul className="list-disc list-inside text-gray-300 space-y-1 m-2">
+                                            <li>
+                                                gérer les webhooks pour automatiser les actions après le paiement comme la confirmation, la mise à jour en base de données ou l&apos;envoi d&apos;e-mails.
+                                            </li>
+                                            <li>
+                                                personnaliser davantage l&apos;expérience utilisateur
+                                            </li>
+                                            <li>
+                                                mettre en place des abonnements, paiements récurrents et factures.
+                                            </li>
+                                        </ul>
+                                        <p className="text-gray-300 mb-4 mt-3">
+                                            Stripe offre un écosystème très riche. A toi d&apos;exploiter ces fonctionnalités pour
+                                            construire des produits fiables et évolutifs.
+                                        </p>
                                     </p>
                                     <div className="flex gap-3 mt-5">
                                         <Link
