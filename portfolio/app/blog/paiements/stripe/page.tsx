@@ -952,58 +952,26 @@ const currency = getUserCurrency(req.geo?.country || "FR");`}
 
                                 <section id="conclusion">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        🎉 Conclusion
+                                        Conclusion
                                     </h2>
                                     <p className="text-gray-300 mb-4">
-                                        Félicitations ! Vous avez maintenant une intégration Stripe Checkout complète et fonctionnelle.
-                                        Voici un récapitulatif de ce que vous avez appris :
+                                        Félicitations ! Tu as maintenant une intégration Stripe Checkout complète et fonctionnelle.
                                     </p>
+                                    <div className="flex gap-3 mt-5">
+                                        <Link
+                                            href="/blog/paiements"
+                                            className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
+                                        >
+                                            ← Retour à la série
+                                        </Link>
 
-                                    <div className="bg-gradient-to-br from-indigo-950/50 to-purple-950/50 border border-indigo-800 rounded-lg p-6 mb-6">
-                                        <h3 className="text-xl font-semibold text-white mb-4">✅ Ce que vous maîtrisez maintenant :</h3>
-                                        <div className="grid md:grid-cols-2 gap-4 text-sm">
-                                            <div>
-                                                <h4 className="text-blue-400 font-semibold mb-2">Configuration</h4>
-                                                <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                                    <li>Créer un compte Stripe</li>
-                                                    <li>Gérer les clés API (test/production)</li>
-                                                    <li>Configurer les variables d'environnement</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-blue-400 font-semibold mb-2">Développement</h4>
-                                                <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                                    <li>Créer une API route sécurisée</li>
-                                                    <li>Implémenter un composant React</li>
-                                                    <li>Gérer les redirections</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-blue-400 font-semibold mb-2">Production</h4>
-                                                <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                                    <li>Tester avec des cartes factices</li>
-                                                    <li>Déployer en production</li>
-                                                    <li>Gérer les webhooks (optionnel)</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-blue-400 font-semibold mb-2">Sécurité</h4>
-                                                <ul className="list-disc list-inside text-gray-300 space-y-1">
-                                                    <li>Valider les données côté serveur</li>
-                                                    <li>Protéger les clés secrètes</li>
-                                                    <li>Vérifier les signatures webhook</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <Link
+                                            href="/blog"
+                                            className="inline-block bg-indigo-900 hover:bg-indigo-700 text-white text-sm px-4 py-2 rounded-md transition"
+                                        >
+                                            ← Retour au blog
+                                        </Link>
                                     </div>
-
-                                    <h3 className="text-xl font-semibold text-white mb-3">
-                                        🚀 Pour aller encore plus loin
-                                    </h3>
-                                    <div className="bg-gray-800 rounded-lg p-4 mb-6">
-                                        <ul className="space-y-2 text-sm text-gray-300">
-                                            <li>here</li></ul>
-        </div>
                                 </section>
                             </div>
                         </div>
