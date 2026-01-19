@@ -1040,8 +1040,6 @@ EXPOSE 80`}
                             </div>
                         </div>
                     </div>
-
-                    {/* SIDEBAR - MISE À JOUR DU SOMMAIRE */}
                     <aside className="hidden md:block w-64 ml-8 sticky top-20 h-fit">
                         <h3 className="text-lg font-semibold text-white mb-4">Sommaire</h3>
                         <nav className="flex flex-col gap-2 text-sm text-gray-400">

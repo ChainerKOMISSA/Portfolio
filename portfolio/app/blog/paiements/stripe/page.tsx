@@ -196,7 +196,7 @@ STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxx`}
                                         <code className="text-blue-400">app/api/stripe/checkout/route.ts</code>
                                     </div>
                                     <p className="text-gray-300 mb-2">
-                                       Mets-y le code suivant :
+                                        Mets-y le code suivant :
                                     </p>
 
                                     <CodeBlock
@@ -355,7 +355,8 @@ export default function StripeButton() {
 
 export default function CheckoutPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen 
+    bg-gradient-to-br from-gray-900 to-black text-white p-6">
       <div className="max-w-md w-full bg-gray-800 rounded-2xl shadow-2xl p-8">
         <h1 className="text-3xl font-bold mb-2 text-center">
           Finaliser votre achat
@@ -376,7 +377,8 @@ export default function CheckoutPage() {
 
         <div className="flex items-center gap-2 text-sm text-gray-400 mb-6">
           <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 
+            01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
           </svg>
           <span>Paiement 100% sécurisé par Stripe</span>
         </div>
@@ -666,7 +668,7 @@ cancel_url: "https://tonsite.com/cancel",`}
 
                                 <section id="webhooks">
                                     <h2 className="text-2xl font-bold mb-4 text-white">
-                                        8. Aller plus loin : Webhooks (Optionnel)
+                                        8. Webhooks (Optionnel mais efficace)
                                     </h2>
                                     <p className="text-gray-300 mb-4">
                                         Les webhooks permettent à Stripe de notifier votre serveur en temps réel lorsqu&apos;un événement se produit.
@@ -780,17 +782,17 @@ export async function POST(req) {
 
                                     <div className="space-y-4">
                                         <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
-                                                <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
-                                                    <span>Gestion des prix dynamiques</span>
-                                                    <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
-                                                </summary>
-                                                <div className="px-4 space-y-4 mb-6">
-                                                    <p className="text-gray-300 text-sm mb-2">
-                                                        Au lieu de coder les prix en dur, tu peux les passer en paramètre :
-                                                    </p>
-                                                    <CodeBlock
-                                                        language="javascript"
-                                                        code={`export async function POST(req) {
+                                            <summary className="cursor-pointer list-none p-4 text-lg font-semibold text-white flex items-center justify-between">
+                                                <span>Gestion des prix dynamiques</span>
+                                                <span className="transition-transform duration-300 group-open:rotate-180"><IoIosArrowDown/></span>
+                                            </summary>
+                                            <div className="px-4 space-y-4 mb-6">
+                                                <p className="text-gray-300 text-sm mb-2">
+                                                    Au lieu de coder les prix en dur, tu peux les passer en paramètre :
+                                                </p>
+                                                <CodeBlock
+                                                    language="javascript"
+                                                    code={`export async function POST(req) {
   const { items } = await req.json(); // Récupère les produits depuis le client
   
   const line_items = items.map(item => ({
@@ -812,8 +814,8 @@ export async function POST(req) {
 
   return NextResponse.json({ id: session.id });
 }`}
-                                                    />
-                                                </div>
+                                                />
+                                            </div>
                                         </details>
 
                                         <details className="mt-4 mb-4 rounded bg-neutral-900 border border-blue-900/50 group">
@@ -973,6 +975,7 @@ const currency = getUserCurrency(req.geo?.country || "FR");`}
                                         </Link>
                                     </div>
                                 </section>
+
                             </div>
                         </div>
                     </div>
@@ -983,13 +986,28 @@ const currency = getUserCurrency(req.geo?.country || "FR");`}
                                 1. Introduction
                             </Link>
                             <Link href="#setup" className="hover:text-white">
-                                2. Configuration
+                                2. Configuration et installation
+                            </Link>
+                            <Link href="#api" className="hover:text-white">
+                                3. Créer une API Route
                             </Link>
                             <Link href="#composant" className="hover:text-white">
-                                3. Créer un bouton PayPal
+                                4. Créer un composant React
                             </Link>
                             <Link href="#exemple" className="hover:text-white">
-                                4. Exemple d&apos;utilisation
+                                5. Utiliser le composant
+                            </Link>
+                            <Link href="#tests" className="hover:text-white">
+                                6. Tester notre intégration
+                            </Link>
+                            <Link href="#production" className="hover:text-white">
+                                7. Passer en production
+                            </Link>
+                            <Link href="#webhooks" className="hover:text-white">
+                                8. Webhooks
+                            </Link>
+                            <Link href="#conseils" className="hover:text-white">
+                                9. Bonnes pratiques
                             </Link>
                             <Link href="#conclusion" className="hover:text-white">
                                 Conclusion
