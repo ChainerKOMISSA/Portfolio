@@ -446,8 +446,8 @@ export const blogItems = [
     img: "/gitflow.png",
     date: "",
     category: categories[3].name,
-    //link: "/blog/gitflow",
     link : "",
+    //link: "/blog/gitflow",
     technologies: [],
   },
   {
