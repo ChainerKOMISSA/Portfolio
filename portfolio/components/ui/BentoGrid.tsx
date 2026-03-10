@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { FaGithub, FaWordpress, FaJira } from "react-icons/fa";
-import { SiPostman, SiBruno, SiSourcetree, SiJenkins, SiSonarqube } from "react-icons/si";
-import { BiLogoFigma } from "react-icons/bi";
-import { FaLocationArrow, FaGitlab} from "react-icons/fa6";
+import { SiReact, SiNextdotjs } from "react-icons/si";
+import { FaLocationArrow} from "react-icons/fa6";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import { AnimatedTooltip } from "./AnimatedTooltip";
+import {BiLogoAngular, BiLogoJavascript, BiLogoTypescript} from "react-icons/bi";
 
 export const BentoGrid = ({
   className,
@@ -72,57 +71,33 @@ export const BentoGridItem = ({
   const outils = [
     {
       id: 1,
-      name: "Github",
+      name: "React js",
       designation: "",
-      image: <FaGithub className="text-yellow-500 h-20 w-20" />,
-    },
-    {
-      id: 2,
-      name: "Gitlab",
-      designation: "",
-      image: <FaGitlab  className="text-orange-500 h-20 w-20" />
-    },
-    {
-      id: 3,
-      name: "Sourcetree",
-      designation: "",
-      image: <SiSourcetree className="text-blue-600 h-20 w-20" />
+      image: <SiReact className="text-blue-500 h-20 w-20" />,
     },
     {
       id: 4,
-      name: "Postman",
+      name: "Javascript",
       designation: "",
-      image: <SiPostman className="text-orange-500 h-20 w-20" />
-    },
-    {
-      id: 6,
-      name: "Bruno",
-      designation: "",
-      image: <SiBruno className="text-yellow-500 h-20 w-20" />,
-    },
-    {
-      id: 7,
-      name: "Wordpress",
-      designation: "",
-      image: <FaWordpress className="text-blue-600 h-20 w-20" />,
+      image: <BiLogoJavascript className="text-yellow-500 h-20 w-20" />
     },
     {
       id: 8,
-      name: "SonarQube",
+      name: "Angular",
       designation: "",
-      image: <SiSonarqube className="text-blue-300 h-20 w-20" />,
+      image: <BiLogoAngular className="text-red-500 h-20 w-20" />,
     },
     {
-      id: 9,
-      name: "Jenkins",
+      id: 3,
+      name: "Typescript",
       designation: "",
-      image: <SiJenkins className="text-red-500 h-20 w-20" />,
+      image: <BiLogoTypescript className="text-blue-400 h-20 w-20" />
     },
     {
-      id: 10,
-      name: "Jira",
+      id: 2,
+      name: "Next js",
       designation: "",
-      image: <FaJira className="text-blue-600 h-20 w-20" />,
+      image: <SiNextdotjs  className="text-white h-20 w-20" />
     }
   ];
 
@@ -209,14 +184,6 @@ export const BentoGridItem = ({
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
                 {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
               </div>
-
-              {/* <MagicButton
-                title={copied ? "Email copié" : "Envoyez moi un mail!"}
-                icon={<IoCopyOutline />}
-                position="left"
-                handleClick={handleCopy}
-                otherClasses="!bg-[#161A31]"
-              /> */}
               <a href="mailto:essikomissa@gmail.com" target="_blank">
                 <MagicButton
                   title="Envoyez moi un mail"

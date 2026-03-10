@@ -1,5 +1,5 @@
 import { FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaJava } from "react-icons/fa";
-import { SiMysql,SiFlask, SiTailwindcss, SiPrimeng  } from "react-icons/si";
+import { SiMysql,SiFlask, SiTailwindcss, SiPrimeng,  SiReact, SiNextdotjs } from "react-icons/si";
 import { BiLogoJavascript, BiLogoTypescript, BiLogoAngular, BiLogoPostgresql  } from "react-icons/bi";
 
 import { HoverEffect } from "./ui/CardHoverEffect";
@@ -26,10 +26,9 @@ export const projects = [
     title: "APPLIED",
     description:
       "Développement en cours.\nApplication de gestion des candidatures. Centralisation des offres, génération de CV et lettre de motivation adaptés à chaque offre, suivi des statuts, filtres et recherche rapide pour une organisation facile.",
-    //link: "https://applied-eight.vercel.app/home",
-    link: "",
+    link: "https://applied-eight.vercel.app",
     image: "/applied.png",
-    icons: [<BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>],
+    icons: [<SiNextdotjs className="text-white rounded-full" key="nextjs"/>, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <BiLogoJavascript className="rounded-full text-yellow-400" key="javascript"/>, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>],
   },
   {
     id:3,
