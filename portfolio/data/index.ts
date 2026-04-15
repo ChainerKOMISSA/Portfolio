@@ -780,3 +780,42 @@ export const links = [
       "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle.",
   },
 ];
+
+export const quizItems = [
+  {
+    id: 1,
+    title: "Comprendre le CI/CD",
+    description: "Teste tes connaissances sur les bases du CI/CD",
+    img: "/intro.png",
+    date: "2025-11-09",
+    category: "DevOps",
+    level: "beginner", // beginner | intermediate | advanced
+    technologies: ["CI/CD", "GitHub Actions"],
+    questions: [
+      {
+        id: 1,
+        question: "Que signifie CI ?",
+        options: [
+          "Continuous Integration",
+          "Code Injection",
+          "Central Interface",
+          "Continuous Improvement"
+        ],
+        correctAnswer: 0,
+        explanation: "CI signifie Continuous Integration."
+      },
+      {
+        id: 2,
+        question: "Quel est l'objectif principal du CI ?",
+        options: [
+          "Déployer en production",
+          "Tester automatiquement le code",
+          "Écrire du code plus vite",
+          "Gérer les utilisateurs"
+        ],
+        correctAnswer: 1,
+        explanation: "Le CI permet d'automatiser les tests."
+      }
+    ]
+  }
+]

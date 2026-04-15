@@ -1,6 +1,6 @@
 import { FaWordpress, FaReact, FaNodeJs, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaJava } from "react-icons/fa";
-import { SiMysql,SiFlask, SiTailwindcss, SiPrimeng,  SiReact, SiNextdotjs } from "react-icons/si";
-import { BiLogoJavascript, BiLogoTypescript, BiLogoAngular, BiLogoPostgresql  } from "react-icons/bi";
+import { SiMysql,SiFlask, SiTailwindcss,  SiReact, SiNextdotjs } from "react-icons/si";
+import { BiLogoJavascript, BiLogoTypescript, BiLogoAngular, BiLogoPostgresql, BiLogoFirebase  } from "react-icons/bi";
 
 import { HoverEffect } from "./ui/CardHoverEffect";
 
@@ -12,6 +12,15 @@ export function CardHoverEffectDemo() {
   );
 }
 export const projects = [
+  {
+    id:1,
+    title: "HESTIA",
+    description:
+        "Développement en cours.\nRefonte en cours de l'appli HOMEAID en React/Next js, Typescript, Firebase. Utilisation d'APIs externes Open-sources pour des suggestions. Intégration d'un chatbot IA vocal et intégration de ssugestions générées par IA",
+    link: "",
+    image: "/homeaid.png",
+    icons: [<SiReact className="text-blue-400 rounded-full" key="angular" />, <SiNextdotjs className="text-white rounded-full" key="nextjs"/>, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <BiLogoFirebase className="rounded-full text-orange-500" key="firebase"/>],
+  },
   {
     id:1,
     title: "HOMEAID",
