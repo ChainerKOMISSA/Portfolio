@@ -1,9 +1,5 @@
 'use client'
-import Link from "next/link";
 import React, {useState, useEffect, useRef} from "react";
-import { Input } from "./ui/Input";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { HiMagnifyingGlass } from "react-icons/hi2";
 import {categories, blogItems, links} from "@/data";
 import {CardDemo} from "./ui/Card";
 import {
@@ -23,9 +19,9 @@ import {IoLogoHtml5, IoGlobeOutline} from "react-icons/io5";
 import { RiPencilFill } from "react-icons/ri";
 import { PiBrainLight } from "react-icons/pi";
 import { FaGitAlt } from "react-icons/fa";
-import { FiFilter } from "react-icons/fi";
 import BlogSidebar from "@/components/layout/BlogSidebar";
 import BlogNavbar from "@/components/layout/BlogNavbar";
+import BlogHero from "@/components/layout/BlogHero";
 
 
 export default function BlogPage() {
@@ -125,6 +121,7 @@ export default function BlogPage() {
                 />
 
                 <main className="mt-16 min-h-screen p-10 flex flex-col overflow-hidden sm:px-10 px-5">
+                   <BlogHero/>
                     <div className="flex flex-col items-center justify-center px-2 mt-4">
                         <h1 className="text-5xl font-bold mb-4 text-center">
                             Bienvenue sur <span className="text-purple">mon blog</span>

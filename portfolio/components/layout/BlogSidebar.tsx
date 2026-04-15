@@ -22,7 +22,7 @@ export default function BlogSidebar({ collapsed, onToggle }: {
         ${collapsed ? "justify-center" : "justify-between"}`}
             >
                 {!collapsed && (
-                    <span className="text-white font-semibold text-sm tracking-wide truncate">
+                    <span className="text-black-100 font-semibold text-sm tracking-wide truncate">
             Mon Blog
           </span>
                 )}

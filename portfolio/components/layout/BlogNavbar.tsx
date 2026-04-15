@@ -2,6 +2,7 @@
 import { HiCode, HiBookOpen, HiCollection } from "react-icons/hi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import React from "react";
 
 
 const navItems = [
@@ -25,6 +26,9 @@ export default function BlogNavbar({ collapsed, search, onSearchChange, filterOp
         transition-all duration-300
         ${collapsed ? "left-16" : "left-56"}`}
         >
+            <h3 className="text-xl font-bold">
+                Bienvenue sur <span className="text-purple">mon blog</span>
+            </h3>
             {/* Nav links */}
             <nav className="flex items-center gap-1">
                 {navItems.map(({ label, icon: Icon, anchor }) => (
@@ -41,7 +45,7 @@ export default function BlogNavbar({ collapsed, search, onSearchChange, filterOp
 </nav>
 
     {/* Searchbar déplacée depuis BlogPage */}
-    <div className="ml-auto relative w-56">
+    <div className="ml-auto relative w-64">
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40">
           <HiMagnifyingGlass size={14} />
         </span>
