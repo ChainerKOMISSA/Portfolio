@@ -6,7 +6,7 @@ import React from "react";
 
 
 const navItems = [
-    { label: "Portfolio", icon: IoIosArrowRoundBack, anchor: "/" },
+    { label: "Retourner au portfolio", icon: IoIosArrowRoundBack, anchor: "/" },
 ];
 
 export default function BlogNavbar({ collapsed, search, onSearchChange, filterOpen, onFilterToggle, filterRef, selectedCategories, onToggleCategory }: {
@@ -20,15 +20,15 @@ export default function BlogNavbar({ collapsed, search, onSearchChange, filterOp
     onToggleCategory: (cat: string) => void;
 }) {
     return (
-        <header
-            className={`fixed top-0 right-0 z-30 h-16 flex items-center gap-6 px-6
-        bg-black-100/80 backdrop-blur-md border-b border-white/5
-        transition-all duration-300
-        ${collapsed ? "left-16" : "left-56"}`}
-        >
-            <h3 className="text-xl font-bold">
-                Bienvenue sur <span className="text-purple">mon blog</span>
-            </h3>
+            <header
+                className={"fixed top-0 right-0 z-30 h-16 py-2 flex items-center gap-6 px-6\n   " +
+                    "     bg-black-100/80 backdrop-blur-md border-b border-white/5\n    " +
+                    "    transition-all duration-300\n      " +
+                    "  left-16"}
+            >
+                {/*<h3 className="text-xl font-bold">
+                    Bienvenue sur <span className="text-purple">mon blog</span>
+                </h3>*/}
             {/* Nav links */}
             <nav className="flex items-center gap-1">
                 {navItems.map(({ label, icon: Icon, anchor }) => (
@@ -45,7 +45,7 @@ export default function BlogNavbar({ collapsed, search, onSearchChange, filterOp
 </nav>
 
     {/* Searchbar déplacée depuis BlogPage */}
-    <div className="ml-auto relative w-64">
+    <div className="ml-auto relative w-96">
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40">
           <HiMagnifyingGlass size={14} />
         </span>

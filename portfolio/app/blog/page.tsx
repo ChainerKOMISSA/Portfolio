@@ -106,9 +106,10 @@ export default function BlogPage() {
 
     return (
         <div className="flex min-h-screen bg-black-100">
-            <BlogSidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
+            {/*<BlogSidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)}/>*/}
 
-            <div className={`flex flex-col flex-1 transition-all duration-300 ${collapsed ? "ml-16" : "ml-56"}`}>
+            {/*<div className={`flex flex-col flex-1 transition-all duration-300 ${collapsed ? "ml-16" : "ml-56"}`}>*/}
+            <div className={"flex flex-col flex-1 transition-all duration-300 ml-16"}>
                 <BlogNavbar
                     collapsed={collapsed}
                     search={search}
@@ -122,16 +123,6 @@ export default function BlogPage() {
 
                 <main className="mt-16 min-h-screen p-10 flex flex-col overflow-hidden sm:px-10 px-5">
                    <BlogHero/>
-                    <div className="flex flex-col items-center justify-center px-2 mt-4">
-                        <h1 className="text-5xl font-bold mb-4 text-center">
-                            Bienvenue sur <span className="text-purple">mon blog</span>
-                        </h1>
-                        <p className="max-w-2xl text-center text-sm sm:text-base">
-                            Un espace pour les devs curieux : vous trouverez ici mes boilerplates, des tutoriels sur
-                            des outils que j&apos;ai testé et des liens vers des plateformes, des outils bref des
-                            ressources utiles que j&apos;ai découvert. Open source, bien sûr.
-                        </p>
-                    </div>
 
                     <div className="w-full mt-8 space-y-10">
                         {categories.map((category) => {
