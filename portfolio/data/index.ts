@@ -138,7 +138,7 @@ export const socialMedia = [
 export const categories = [
   {
     id: 1,
-    name: "Templates de code",
+    name: "Templates",
   },
   {
     id: 2,
@@ -154,7 +154,7 @@ export const categories = [
   },
   {
     id: 5,
-    name: "Série de tutoriels",
+    name: "Série",
   },
   {
     id: 6,
@@ -332,7 +332,7 @@ export const blogItems = [
     date: "2026-01-07",
     category: categories[3].name,
     link: "/blog/docker",
-    technologies: [],
+    technologies: ["docker"],
   },
   {
     id: 19,
