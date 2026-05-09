@@ -2,18 +2,55 @@
 import React from "react";
 import { StickyScroll } from "./ui/StickyScrollReaveal";
 import Image from "next/image";
-import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5, FaJava  } from "react-icons/fa";
+import { FaReact, FaLaravel, FaPhp, FaCss3Alt, FaPython, FaBootstrap, FaHtml5, FaJava, FaSalesforce } from "react-icons/fa";
 import { SiMysql, SiFlask, SiMongodb } from "react-icons/si";
-import { BiLogoJavascript, BiLogoAngular, BiLogoTypescript } from "react-icons/bi";
+import { BiLogoJavascript, BiLogoAngular, BiLogoTypescript, BiLogoTailwindCss, BiSolidFileJson   } from "react-icons/bi";
+import { BsFiletypeXml } from "react-icons/bs";
 
 
 const content = [
+    {
+        title: `Développeuse full stack Java/Angular <br>
+        <small>Avril 2026 - maintenant<span></small>`,
+        description: (
+            <div>
+                Développement d&apos;applications métiers en Java et Angular<br/>
+                Conception d&apos;APIs REST et SOAP<br/>
+                Résolution d&apos;incidents sur des applications en prod<br/>
+                Clean code, qualité logicielle et Domain Driven Design (DDD)<br/>
+                Participation aux cérémonies agiles<br /><br />
+                <small><em>Groupe Covéa (MMA) - Le Mans, France</em></small><br />
+                <BiLogoAngular  className="text-red-500 inline-block mx-1" />
+                <BiLogoTypescript className="text-blue-500 inline-block mx-1"/>
+                <FaJava  className="text-orange-500 inline-block mx-1" />
+                <BiLogoTailwindCss className="text-blue-500 inline-block mx-1" />
+                <FaHtml5 className="text-orange-600 inline-block mx-1" />
+                <BiSolidFileJson className="text-white inline-block mx-1"/>
+                <FaSalesforce className="text-blue-300 inline-block mx-1" />
+                <BsFiletypeXml className="text-white inline-block mx-1"/>
+
+            </div>
+        ),
+        content: (
+            <div className="h-full w-full bg-white flex items-center justify-center text-white">
+                <Image
+                    src="/Logo_MMA.jpg"
+                    width={300}
+                    height={300}
+                    className="h-full w-full object-contain"
+                    alt="Covea"
+                    onClick={() => window.open("https://www.vinci-energies.ma/que-faisons-nous/nos-marques/axians/", "_blank")}
+                    style={{ cursor: 'pointer' }}
+                />
+            </div>
+        ),
+    },
     {
         title: `Stagiaire développeuse full stack Java <br>
         <small>Février - Août 2025<span></small>`,
         description: (
             <div>
-                Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique : 
+                Stage de fin de formation pour l&apos;obtention du diplôme de Master en Entrepreneuriat Technologique :
                 développement d&apos;application avec gestion de projet informatique.<br/>
                 Découverte et utilisation de plusieurs outils tels que : Bitbucket, Sourcetree, Jenkins, Sonar, Bruno, etc.<br /><br />
                 <small><em>Groupe Covéa (MMA) - Le Mans, France</em></small><br />
@@ -31,7 +68,7 @@ const content = [
                     width={300}
                     height={300}
                     className="h-full w-full object-contain"
-                    alt="Axians"
+                    alt="Covea"
                     onClick={() => window.open("https://www.vinci-energies.ma/que-faisons-nous/nos-marques/axians/", "_blank")}
                     style={{ cursor: 'pointer' }}
                 />

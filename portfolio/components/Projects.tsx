@@ -16,19 +16,10 @@ export const projects = [
     id:1,
     title: "HESTIA",
     description:
-        "Développement en cours.\nRefonte en cours de l'appli HOMEAID en React/Next js, Typescript, Firebase. Utilisation d'APIs externes Open-sources pour des suggestions. Intégration d'un chatbot IA vocal et intégration de ssugestions générées par IA",
+        "Développement en cours.\nApplication web interactive qui permet aux membres d'une famille d'effectuer des actions directement depuis un écran partagé. Intégration d'APIs externes open-sources. Intégration d'un chatbot IA vocal et intégration de suggestions générées par IA.",
     link: "",
-    image: "/homeaid.png",
+    image: "/hestia.png",
     icons: [<SiReact className="text-blue-400 rounded-full" key="angular" />, <SiNextdotjs className="text-white rounded-full" key="nextjs"/>, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <BiLogoFirebase className="rounded-full text-orange-500" key="firebase"/>],
-  },
-  {
-    id:1,
-    title: "HOMEAID",
-    description:
-      "Développement en cours.\nApplication web interactive qui permet aux membres d'une famille de voter pour le dîner du jour directement depuis un écran partagé.",
-    link: "",
-    image: "/homeaid.png",
-    icons: [<BiLogoAngular className="text-red-500 rounded-full" key="angular" />, <BiLogoTypescript className="text-blue-500 rounded-full" key="typescript" />, <SiTailwindcss className="rounded-full text-white" key="tailwindcss"/>, <FaJava className="rounded-full text-orange-500" key="java"/>, <BiLogoPostgresql  className="rounded-full text-purple" key="postgresql"/>],
   },
   {
     id:2,
