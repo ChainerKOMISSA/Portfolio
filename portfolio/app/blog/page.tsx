@@ -21,6 +21,7 @@ import { FaGitAlt } from "react-icons/fa";
 import BlogNavbar from "@/components/layout/BlogNavbar";
 import BlogHero from "@/components/layout/BlogHero";
 import TemplatesSection from "@/components/layout/TemplatesSection";
+import QuizSection from "@/components/layout/QuizSection";
 
 
 export default function BlogPage() {
@@ -93,6 +94,7 @@ export default function BlogPage() {
                 <main className="mt-16 min-h-screen p-10 flex flex-col overflow-hidden sm:px-10 px-5">
                     <BlogHero/>
                     <TemplatesSection articles={blogItems}/>
+                    <QuizSection/>
 
                     <div id="ressources" className="mt-10 scroll-mt-20">
                         <h2 className="text-lg font-bold text-white mb-4">Liens utiles</h2>
