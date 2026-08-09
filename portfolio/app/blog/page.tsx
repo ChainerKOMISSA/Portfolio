@@ -94,8 +94,7 @@ export default function BlogPage() {
                 <main className="mt-16 min-h-screen p-10 flex flex-col overflow-hidden sm:px-10 px-5">
                     <BlogHero/>
                     <TemplatesSection articles={blogItems}/>
-                    {/* <QuizSection/> */}
-
+                    <QuizSection />
                     <div id="ressources" className="mt-10 scroll-mt-20">
                         <h2 className="text-lg font-bold text-white mb-4">Liens utiles</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">

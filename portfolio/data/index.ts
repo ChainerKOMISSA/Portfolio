@@ -1,5 +1,9 @@
 import { GridItem, Category, BlogItem, SocialMedia, Service } from "./types";
 import { CardDemo } from "@/app/blog/ui/Card";
+import { TbBinaryTree } from "react-icons/tb";
+import { MdDesktopWindows } from "react-icons/md";
+import { MdOutlineShield } from "react-icons/md";
+import { SiHiveBlockchain } from "react-icons/si";
 
 export const navItems = [
   { name: "A propos", link: "#about" },
@@ -9,6 +13,7 @@ export const navItems = [
   { name: "Contacts", link: "#contact" },
   { name: "Blog", link: "/blog" },
 ];
+
 export const gridItems = [
   {
     id: 1,
@@ -779,6 +784,90 @@ export const links = [
     description:
       "Outil de création d'applications basé sur navigateur et optimisé par l'intelligence artificielle.",
   },
+];
+
+export const quizCategories = [
+  {
+    label: "Programming",
+    count: 12,
+    icon: "code",
+    iconBg: "bg-violet-500/20",
+    href: "/blog/quiz/programming",
+  },
+  {
+    label: "Frontend",
+    count: 45,
+    icon: "react",
+    iconBg: "bg-cyan-500/20",
+    href: "/blog/quiz/frontend",
+  },
+  {
+    label: "DevSecOps",
+    count: 18,
+    icon: "",
+    iconBg: "bg-emerald-500/20",
+    href: "/blog/quiz/devsecops",
+  },
+  {
+    label: "System Design",
+    count: 32,
+    icon: "",
+    iconBg: "bg-rose-500/20",
+    href: "/blog/quiz/system-design",
+  },
+];
+
+export const quizCategories2 = [
+  {
+    slug: "javascript",
+    title: "Javascript",
+    description:
+        "Algorithmes, structures de données, langages et bonnes pratiques.",
+    count: 12,
+    icon: "javascript",
+    iconColor: "text-yellow-400",
+    iconBg: "bg-yellow-500/10",
+  },
+  {
+    slug: "react",
+    title: "React",
+    description:
+        "React, Vue, state management, et performances web modernes.",
+    count: 15,
+    icon: "react",
+    iconColor: "text-cyan-400",
+    iconBg: "bg-cyan-500/10",
+  },
+  {
+    slug: "java",
+    title: "Java",
+    description:
+        "Node.js, Go, Python, conception d'APIs robustes et architectures distribuées.",
+    count: 24,
+    icon: "java",
+    iconColor: "text-red-400",
+    iconBg: "bg-red-500/10",
+  },
+  {
+    slug: "ia",
+    title: "IA",
+    description:
+        "CI/CD, sécurité, conteneurisation, infrastructure et automatisation.",
+    count: 18,
+    icon: "ia",
+    iconColor: "text-white-100",
+    iconBg: "bg-white-100/10",
+  },
+  {
+    slug: "ci-cd",
+    title: "CI / CD",
+    description:
+        "CI/CD, sécurité, conteneurisation, infrastructure et automatisation.",
+    count: 18,
+    icon: "cicd",
+    iconColor: "text-emerald-400",
+    iconBg: "bg-emerald-500/10",
+  }
 ];
 
 export const quizItems = [

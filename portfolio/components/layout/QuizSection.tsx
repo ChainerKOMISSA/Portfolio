@@ -3,41 +3,12 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import Link from 'next/link';
-import { TbBinaryTree } from "react-icons/tb";
-import { MdDesktopWindows } from "react-icons/md";
-import { MdOutlineShield } from "react-icons/md";
-import { SiHiveBlockchain } from "react-icons/si";
+import { HiCodeBracket } from "react-icons/hi2";
+import { quizCategories } from '@/data';
 
-const quizCategories = [
-  {
-    label: "Algorithms",
-    count: 12,
-    icon: <TbBinaryTree className="w-6 h-6 text-violet-400" />,
-    iconBg: "bg-violet-500/20",
-    href: "/blog/quiz/algorithms",
-  },
-  {
-    label: "Frontend",
-    count: 45,
-    icon: <MdDesktopWindows className="w-6 h-6 text-cyan-400" />,
-    iconBg: "bg-cyan-500/20",
-    href: "/blog/quiz/frontend",
-  },
-  {
-    label: "DevSecOps",
-    count: 18,
-    icon: <MdOutlineShield className="w-6 h-6 text-emerald-400" />,
-    iconBg: "bg-emerald-500/20",
-    href: "/blog/quiz/devsecops",
-  },
-  {
-    label: "System Design",
-    count: 32,
-    icon: <SiHiveBlockchain className="w-6 h-6 text-rose-400" />,
-    iconBg: "bg-rose-500/20",
-    href: "/blog/quiz/system-design",
-  },
-];
+const icons: Record<string, JSX.Element> = {
+        code: <HiCodeBracket className="text-violet-400 w-5 h-5" />
+    };
 
 const QuizSection = () => {
   return (
@@ -107,14 +78,14 @@ const QuizSection = () => {
                   hover:scale-105 transition-all duration-200 group"
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${cat.iconBg}`}>
-                  {cat.icon}
+                  {icons[cat.icon]}
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">
                     {cat.label}
                   </p>
                   <p className="text-xs text-white/40 tracking-widest uppercase mt-0.5">
-                    {cat.count} quizzes
+                    {cat.count} questions
                   </p>
                 </div>
               </Link>
