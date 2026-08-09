@@ -99,7 +99,7 @@ export default function ReactPage() {
                                 </div>
 
                                 <Link
-                                    href="/quiz/react"
+                                    href="/blog/quiz/react/start"
                                     className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-purple/40 px-5 py-3 text-sm font-semibold text-purple transition hover:opacity-90"
                                 >
                                     Commencer le quiz

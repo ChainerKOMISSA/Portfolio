@@ -7,9 +7,6 @@ import { SiReact, SiJavascript, SiJenkins } from "react-icons/si";
 import { LuBrainCircuit } from "react-icons/lu";
 import { FaJava } from "react-icons/fa";
 
-
-
-
 const quizIcons: Record<string, JSX.Element> = {
     react: <SiReact className="w-5 h-5" />,
     javascript : <SiJavascript className="w-5 h-5" />,

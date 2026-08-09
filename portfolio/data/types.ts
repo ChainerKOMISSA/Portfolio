@@ -69,3 +69,22 @@ export interface Experience{
     date: string;
     technologies: string[];
 }
+
+export type QuizOption = {
+    id: "A" | "B" | "C" | "D";
+    label: string;
+};
+
+export type QuizQuestionData = {
+    id: string;
+    prompt: string;
+    code?: string; // snippet optionnel affiché au-dessus des options
+    options: QuizOption[];
+    correctOptionId: QuizOption["id"];
+};
+
+export type Quiz = {
+    slug: string;
+    title: string;
+    questions: QuizQuestionData[];
+};
