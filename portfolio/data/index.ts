@@ -786,40 +786,44 @@ export const links = [
   },
 ];
 
-export const quizCategories = [
+export const quizCategoriesFirst = [
   {
-    label: "Programming",
+    label: "React",
     count: 12,
-    icon: "code",
-    iconBg: "bg-violet-500/20",
-    href: "/blog/quiz/programming",
-  },
-  {
-    label: "Frontend",
-    count: 45,
     icon: "react",
     iconBg: "bg-cyan-500/20",
-    href: "/blog/quiz/frontend",
+    href: "/blog/quiz/react",
   },
   {
-    label: "DevSecOps",
+    label: "Javascript",
+    count: 45,
+    icon: "javascript",
+    iconBg: "bg-cyan-500/20",
+    //href: "/blog/quiz/javascript",
+    href : ""
+  },
+  {
+    label: "Java",
     count: 18,
-    icon: "",
+    icon: "java",
     iconBg: "bg-emerald-500/20",
-    href: "/blog/quiz/devsecops",
+    //href: "/blog/quiz/java",
+    href : ""
   },
   {
-    label: "System Design",
+    label: "CI/CD",
     count: 32,
-    icon: "",
+    icon: "cicd",
     iconBg: "bg-rose-500/20",
-    href: "/blog/quiz/system-design",
+    //href: "/blog/quiz/ci-cd",
+    href : ""
   },
 ];
 
-export const quizCategories2 = [
+export const quizCategories = [
   {
-    slug: "javascript",
+    //slug: "javascript",
+    slug : "",
     title: "Javascript",
     description:
         "Algorithmes, structures de données, langages et bonnes pratiques.",
@@ -839,7 +843,8 @@ export const quizCategories2 = [
     iconBg: "bg-cyan-500/10",
   },
   {
-    slug: "java",
+    slug : "",
+    //slug: "java",
     title: "Java",
     description:
         "Node.js, Go, Python, conception d'APIs robustes et architectures distribuées.",
@@ -849,7 +854,8 @@ export const quizCategories2 = [
     iconBg: "bg-red-500/10",
   },
   {
-    slug: "ia",
+    //slug: "ia",
+    slug : "",
     title: "IA",
     description:
         "CI/CD, sécurité, conteneurisation, infrastructure et automatisation.",
@@ -859,7 +865,8 @@ export const quizCategories2 = [
     iconBg: "bg-white-100/10",
   },
   {
-    slug: "ci-cd",
+    //slug: "ci-cd",
+    slug : "",
     title: "CI / CD",
     description:
         "CI/CD, sécurité, conteneurisation, infrastructure et automatisation.",

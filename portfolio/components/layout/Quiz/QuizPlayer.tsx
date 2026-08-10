@@ -46,7 +46,14 @@ export default function QuizPlayer({ quiz }: { quiz: Quiz }) {
             0
         );
         return (
-            <QuizResult quizTitle={quiz.title} score={score} total={total} onRestart={restart} />
+            <QuizResult
+                quizTitle={quiz.title}
+                score={score}
+                total={total}
+                questions={quiz.questions}
+                answers={answers}
+                onRestart={restart}
+            />
         );
     }
 

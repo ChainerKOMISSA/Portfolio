@@ -1,6 +1,6 @@
 "use client";
 import { BiSearch } from "react-icons/bi";
-import { quizCategories2 } from "@/data";
+import { quizCategories } from "@/data";
 import {IoIosArrowRoundBack} from "react-icons/io"
 import Link from 'next/link';
 import { SiReact, SiJavascript, SiJenkins } from "react-icons/si";
@@ -98,7 +98,7 @@ export default function QuizPage() {
 
                     {/* GRID */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {quizCategories2.map((category) => (
+                        {quizCategories.map((category) => (
                             <Link
                                 key={category.slug}
                                 href={`/blog/quiz/${category.slug}`}

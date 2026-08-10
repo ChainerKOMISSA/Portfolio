@@ -93,9 +93,7 @@ export default function ReactPage() {
 
                                 <div className="mt-6 grid grid-cols-2 gap-6">
                                     <Stat icon={<FaClock className="h-3.5 w-3.5" />} label="Durée" value="15 mins" />
-                                    <Stat icon={<FaListUl className="h-3.5 w-3.5" />} label="Questions" value="20" />
-                                    <Stat icon={<FaChartBar className="h-3.5 w-3.5" />} label="Difficulté" value="Expert" />
-                                    <Stat icon={<FaTrophy className="h-3.5 w-3.5" />} label="Points max" value="500 XP" />
+                                    <Stat icon={<FaListUl className="h-3.5 w-3.5" />} label="Questions" value="15" />
                                 </div>
 
                                 <Link
@@ -115,8 +113,7 @@ export default function ReactPage() {
                                     <div>
                                         <h3 className="text-sm font-semibold text-violet-300">Prêt à relever le défi ?</h3>
                                         <p className="mt-1.5 text-xs leading-5 text-white/50">
-                                            Obtenez un score de 80% ou plus pour débloquer le badge exclusif
-                                            d&apos;Architecture React.
+                                            Répondez aux questions pour évaluer votre compréhension des concepts avancés de React.
                                         </p>
                                     </div>
                                 </div>

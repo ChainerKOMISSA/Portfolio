@@ -3,11 +3,15 @@
 import React from 'react'
 import { motion } from "framer-motion";
 import Link from 'next/link';
-import { HiCodeBracket } from "react-icons/hi2";
-import { quizCategories } from '@/data';
+import {SiJavascript, SiJenkins, SiReact} from "react-icons/si";
+import { quizCategoriesFirst } from '@/data';
+import {FaJava} from "react-icons/fa";
 
 const icons: Record<string, JSX.Element> = {
-        code: <HiCodeBracket className="text-violet-400 w-5 h-5" />
+        react: <SiReact className="w-5 h-5"/>,
+        javascript : <SiJavascript className="w-5 h-5" />,
+        cicd : <SiJenkins className="w-5 h-5" />,
+        java : <FaJava className="w-5 h-5" />
     };
 
 const QuizSection = () => {
@@ -64,7 +68,7 @@ const QuizSection = () => {
           transition={{ delay: 0.4 }}
           className="flex-1 grid grid-cols-2 gap-4"
         >
-          {quizCategories.map((cat, i) => (
+          {quizCategoriesFirst.map((cat, i) => (
             <motion.div
               key={cat.label}
               initial={{ opacity: 0, y: 20 }}
